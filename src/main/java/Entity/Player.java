@@ -1,11 +1,11 @@
-package java.Entity;
+package Entity;
 
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Player {
+public class Player{
     private int maxHitPoint;
     //Maximum HP of the player
     private int currHitPoint;
@@ -16,8 +16,9 @@ public class Player {
     private HashMap<Character, Integer> location = new HashMap<Character, Integer>();
     private HashMap<String, Integer> inventory = new HashMap<String, Integer>();
     //A Hashmap of the player inventory so in python sense, it'll look something like this
-    //{"Collectibles": Collectible Class, "Win Collectibles": Collectible Class, "Weapon": Equipment Class,
+    //{"Essence": Collectible Class, "Artifact": Collectible Class, "Weapon": Equipment Class,
     // "Armor": Equipment Class}
+    // May be HashMap<Items, Integer> instead later on
 
 
     // NOTE: INTEGER IS PLACEHOLDER UNTIL ITEM CLASS IS CREATED
@@ -36,48 +37,80 @@ public class Player {
         this.location.put('y', 0);
         //May change starting location later depending on map design
     }
-
+    public HashMap<Character, Integer> getItem(String category){
+        // Subject to Change
+        // Idea is to get items and use polymorphism to get
+        // 1. If it is collectible, toString will show the string of the number of collectibles
+        // 2. If it is equipment, it will show the name and stats of the equipment
+        Item item = this.inventory.get(category);
+        return item.toString();
+    }
     public int getCurrHitPoint(){
         return this.currHitPoint;
-    }
-    public int increaseCurrHitPoint(int increase){
-        // Increase HP based on input, if HP after increasing is greater than max, then set the current HP to max, else
-        // set current HP to the newly updated HP stat
-        int currHP = getCurrHitPoint();
-        int newCurrHP = currHP + increase;
-        this.currHitPoint = Math.min(newCurrHP, maxHitPoint);
-        return getCurrHitPoint();
-    }
-    public int decreaseCurrHitPoint(int decrease){
-        // Decrease HP based on input, if HP after decrease is lesser than 0, then set the current HP to 0, else
-        // set current HP to the newly updated HP stat
-        int currHP = getCurrHitPoint();
-        int newCurrHP = currHP - decrease;
-        this.currHitPoint = Math.max(0, newCurrHP);
-        return getCurrHitPoint();
     }
     public int getAttackPoint(){
         return this.attackPoint;
     }
-    public HashMap<Character, Integer> getLocation(){
+    public HashMap<Character, Integer> getPlayerLocation(){
         return this.location;
     }
-    public HashMap<Character, Integer> locationIncreaseByOne(Character var){
-        //Since the player can only move 1 tile at a time and not diagonally, we are increasing x or y tile by 1
-        //Only Accepts 'x' or 'y' as input
-        int curr = this.location.get(var);
-        this.location.put(var, curr + 1);
-        return this.getLocation();
-        //May need to add exceptions
-    }
-    public HashMap<Character, Integer> locationDecreaseByOne(Character var){
-        //Since the player can only move 1 tile at a time and not diagonally, we are decreasing x or y tile by 1
-        //Only Accepts 'x' or 'y' as input
-        int curr = this.location.get(var);
-        this.location.put(var, curr - 1);
-        return this.getLocation();
-        //May need to add exceptions
+    public void changeCurrHitPoint(int x, boolean increase){
+        // Precondition:
+        //      - x : The number to increase or decrease the current health by
+        //      - increase: if True, increase health, else decrease health
+        // Increase HP based on input, if HP after increasing is greater than max, then set the current HP to max, else
+        // set current HP to the newly updated HP stat
+        int currHP = getCurrHitPoint();
+        int newCurrHP;
+        if (increase){
+            newCurrHP = currHP + x;
+            this.currHitPoint = Math.min(newCurrHP, maxHitPoint);
+        }
+        else{
+            newCurrHP = currHP - x;
+            this.currHitPoint = Math.max(0, newCurrHP);
+        }
     }
 
-    //TODO: add collectible(), reduce collectible(), change armor(), change weapon()
+    public void changeLocationByOne(Character axis, boolean increase){
+        // Precondition:
+        //      - axis: only 'x' or 'y'
+        //      - increase: If true then increase, else decrease axis by 1.
+        //Since the player can only move 1 tile at a time and not diagonally, we are increasing
+        // (if increase is true) or decreasing (if increase is false) x or y tile by 1
+        // TODO: If needed I may need to check for boundary (maybe not because that might be David's job)
+        int curr = this.location.get(axis);
+        assert(axis == 'x' | axis == 'y');
+        // Assert axis for error
+        if (increase){
+            this.location.put(axis, curr + 1);
+        }
+        else{
+            this.location.put(axis, curr - 1);
+        }
+    }
+
+
+    public void manageInventory(String collectibleType, boolean increase){
+        // Precondition:
+        //              - get the collectibles names "Essence" or "Artifacts"
+        //              - increase such collectible if true, else decrease
+        // TODO: May need to add a variable to increase or decrease things by.
+        Integer collectible = this.inventory.get(collectibleType);
+
+        if (increase){
+            collectible.increase();
+        }
+        else{
+            collectible.decrease();
+        }
+        //Or what ever it is named by you Jillian
+    }
+    public void manageInventory(String equipmentType, Equipment equipment){
+        // Precondition:
+        //              - Equipment Type in String ("Weapon", "Armor")
+        //              - equipment that you are changing
+        this.inventory.put(equipmentType, equipment);
+    }
+
 }
