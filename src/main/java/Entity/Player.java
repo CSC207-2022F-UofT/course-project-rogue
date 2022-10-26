@@ -45,6 +45,9 @@ public class Player{
         Item item = this.inventory.get(category);
         return item.toString();
     }
+    public int getMaxHitPoint(){
+        return this.maxHitPoint;
+    }
     public int getCurrHitPoint(){
         return this.currHitPoint;
     }
