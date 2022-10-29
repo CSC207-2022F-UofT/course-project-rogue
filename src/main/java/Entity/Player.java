@@ -15,6 +15,7 @@ public class Player{
     // INSTEAD IT WILL ONLY BE USED AS CALCULATION WITH THE WEAPONS ATK POINT
     private HashMap<Character, Integer> location = new HashMap<Character, Integer>();
     private HashMap<String, Integer> inventory = new HashMap<String, Integer>();
+
     //A Hashmap of the player inventory so in python sense, it'll look something like this
     //{"Essence": Collectible Class, "Artifact": Collectible Class, "Weapon": Equipment Class,
     // "Armor": Equipment Class}
@@ -22,7 +23,6 @@ public class Player{
 
 
     // NOTE: INTEGER IS PLACEHOLDER UNTIL ITEM CLASS IS CREATED
-
     public Player(){
         this.maxHitPoint = 100;
         this.currHitPoint = 100;
@@ -94,26 +94,36 @@ public class Player{
     }
 
 
-    public void manageInventory(String collectibleType, boolean increase){
+    public void manageInventory(String collectibleType, boolean increase) throws Exception {
         // Precondition:
         //              - get the collectibles names "Essence" or "Artifacts"
         //              - increase such collectible if true, else decrease
         // TODO: May need to add a variable to increase or decrease things by.
-        Integer collectible = this.inventory.get(collectibleType);
-
-        if (increase){
-            collectible.increase();
+        if ("Essence, Artifacts".contains(collectibleType)){
+            Integer collectible = this.inventory.get(collectibleType);
+            if (increase){
+                collectible.increase();
+            }
+            else{
+                collectible.decrease();
+            }
         }
         else{
-            collectible.decrease();
+            throw new Exception("Collectible Type inputted is incorrect");
         }
+
+
         //Or what ever it is named by you Jillian
     }
-    public void manageInventory(String equipmentType, Equipment equipment){
+    public void manageInventory(String equipmentType, Equipment equipment) throws Exception {
         // Precondition:
         //              - Equipment Type in String ("Weapon", "Armor")
         //              - equipment that you are changing
-        this.inventory.put(equipmentType, equipment);
+        if ("Sword, Armor".contains(equipmentType)) {
+            this.inventory.put(equipmentType, equipment);
+        }
+        else{
+            throw new Exception("Equipment Type inputted is incorrect");
+        }
     }
-
 }
