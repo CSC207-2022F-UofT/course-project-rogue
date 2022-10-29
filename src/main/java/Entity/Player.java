@@ -113,7 +113,7 @@ public class Player{
         }
 
 
-        //Or what ever it is named by you Jillian
+        //Or what ever it is named by you Jillian 
     }
     public void manageInventory(String equipmentType, Equipment equipment) throws Exception {
         // Precondition:
