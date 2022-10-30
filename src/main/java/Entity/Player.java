@@ -10,11 +10,11 @@ public class Player{
 
 
      */
-    private int maxHitPoint;
+    private final int maxHitPoint;
     //Maximum HP of the player
     private int currHitPoint;
     //Current HP of the Player
-    private int attackPoint;
+    private final int attackPoint;
     //Base Attack Point of the Player *** I MADE THIS FINAL BECAUSE I DON'T THINK WE WILL CHANGE IT**
     // INSTEAD IT WILL ONLY BE USED AS CALCULATION WITH THE WEAPONS ATK POINT
     private HashMap<Character, Integer> location = new HashMap<Character, Integer>();
@@ -33,13 +33,13 @@ public class Player{
         this.currHitPoint = maxHP;
         this.attackPoint = atkPT;
         //REMINDER TO MYSELF THAT THIS PART IS INCOMPLETE
-        this.inventory.setItem("Essence", essence);
-        this.inventory.setItem("Artifacts", artifact);
-        this.inventory.setItem("Weapon", sword);
-        this.inventory.setItem("Armor", armor);
+        setItem("Essence", essence);
+        setItem("Artifacts", artifact);
+        setItem("Weapon", sword);
+        setItem("Armor", armor);
         //REMINDING MYSELF TO CHANGE THIS WHEN ITEM CLASS IS DONE
-        this.location.put('x', x);
-        this.location.put('y', y);
+        setLocation('x', x);
+        setLocation('y', y);
         //May change starting location later depending on map design
     }
 
@@ -64,7 +64,7 @@ public class Player{
         return this.location;
     }
 
-    public void setItem(String item, Integer type){
+    public void setItem(String item, Item type){
         this.inventory.put(item, type);
     }
     public void setCurrHitPoint(int x){

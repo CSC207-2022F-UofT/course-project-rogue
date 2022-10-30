@@ -9,6 +9,7 @@ public class PlayerFactory {
         // gets the starter equipment and items for that specific class and build the player.
         Equipment sword = new Equipment();
         Equipment armor = new Equipment();
+        //This or get from GameData, so Player needs to be created after the items
         return new Player(maxHP, atkPT, essence, artifact, sword, armor, x, y);
     }
 }

@@ -2,7 +2,7 @@ package Usecase_Event;
 import Entity.Player;
 
 
-public class CollectibleEvent implements Triggerable{
+public class ArtifactEvent implements Triggerable{
 
     @Override
     public Object trigger(Player player) {

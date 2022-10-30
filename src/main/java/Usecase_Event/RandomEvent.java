@@ -14,12 +14,10 @@ public class RandomEvent implements Triggerable{
             return null;
         }
         else {
-            int random_int = random.nextInt(501);
-            increaseEssence(player, random_int);
+            EssenceEvent essenceEvent = new EssenceEvent();
+            essenceEvent.trigger(player);
             return null;
         }
     }
-    private void increaseEssence(Player player, int random){
-        player.setInventory("Essence", random);
-    }
+
 }
