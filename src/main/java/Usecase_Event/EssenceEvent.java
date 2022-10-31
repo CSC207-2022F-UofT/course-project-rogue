@@ -4,7 +4,7 @@ import Entity.Player;
 
 import java.util.Random;
 
-public class EssenceEvent implements Triggerable{
+public class EssenceEvent extends Event implements Triggerable{
     @Override
     public Object trigger(Player player) {
         Random random = new Random();

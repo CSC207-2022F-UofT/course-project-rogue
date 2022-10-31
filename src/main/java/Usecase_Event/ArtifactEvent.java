@@ -2,7 +2,7 @@ package Usecase_Event;
 import Entity.Player;
 
 
-public class ArtifactEvent implements Triggerable{
+public class ArtifactEvent extends Event implements Triggerable{
 
     @Override
     public Object trigger(Player player) {

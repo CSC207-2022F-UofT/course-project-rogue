@@ -3,7 +3,7 @@ package Usecase_Event;
 import java.util.Random;
 import Entity.Player;
 
-public class RandomEvent implements Triggerable{
+public class RandomEvent extends Event implements Triggerable{
     @Override
     public Object trigger(Player player) {
         Random random = new Random();
