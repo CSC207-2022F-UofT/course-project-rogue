@@ -18,7 +18,7 @@ public class Player{
     //Base Attack Point of the Player *** I MADE THIS FINAL BECAUSE I DON'T THINK WE WILL CHANGE IT**
     // INSTEAD IT WILL ONLY BE USED AS CALCULATION WITH THE WEAPONS ATK POINT
     private int[] location;
-    private HashMap<String, Integer> inventory = new HashMap<String, Integer>();
+    private HashMap<String, Integer> inventory = new HashMap<String, Item>();
 
     //A Hashmap of the player inventory so in python sense, it'll look something like this
     //{"Essence": Collectible Class, "Artifact": Collectible Class, "Weapon": Equipment Class,
@@ -38,8 +38,8 @@ public class Player{
         setItem("Weapon", sword);
         setItem("Armor", armor);
         //REMINDING MYSELF TO CHANGE THIS WHEN ITEM CLASS IS DONE
-        setLocation('x', x);
-        setLocation('y', y);
+        setLocation(0, x);
+        setLocation(1, y);
         //May change starting location later depending on map design
     }
 
