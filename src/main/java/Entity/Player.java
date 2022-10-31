@@ -17,7 +17,7 @@ public class Player{
     private final int attackPoint;
     //Base Attack Point of the Player *** I MADE THIS FINAL BECAUSE I DON'T THINK WE WILL CHANGE IT**
     // INSTEAD IT WILL ONLY BE USED AS CALCULATION WITH THE WEAPONS ATK POINT
-    private HashMap<Character, Integer> location = new HashMap<Character, Integer>();
+    private int[] location;
     private HashMap<String, Integer> inventory = new HashMap<String, Integer>();
 
     //A Hashmap of the player inventory so in python sense, it'll look something like this
@@ -60,7 +60,7 @@ public class Player{
     public int getAttackPoint(){
         return this.attackPoint;
     }
-    public HashMap<Character, Integer> getPlayerLocation(){
+    public int[] getPlayerLocation(){
         return this.location;
     }
 
@@ -71,8 +71,8 @@ public class Player{
         currHitPoint = x;
     }
 
-    public void setLocation(Character axis, int i){
-        location.put(axis, i);
+    public void setLocation(int axis, int i){
+        location[axis] = i;
     }
 
     public void setInventory(String collectibleType, int amount){
