@@ -7,9 +7,10 @@ public class CollectibleInventory extends BasicInventory{
     private String name;
     private HashMap<String, Collectible> inventory = new HashMap<String, Item>();
     public CollectibleInventory(String inventoryName, Collectible essence, Collectible artifact) {
+
         super(inventoryName);
         this.inventory.put("Essences", essence);
-        this.inventory.put("Essences", artifact);
+        this.inventory.put("Artifact", artifact);
     }
 
     @Override
@@ -22,6 +23,9 @@ public class CollectibleInventory extends BasicInventory{
     }
 
     public void setInventory(String collectibyType, int amount){
+        /*
+        Precondition: - Gets the collectibleType (in this case Essence or Artifact)
+         */
         Collectible collectible = getCollectible(collectibyType);
         int currAmoount = collectible.getAmount();
         collectible.setAmount(currAmoount + amount);
