@@ -7,7 +7,7 @@ class EquipmentTest {
 
     @Test
     void TestGetStats() {
-        assertEquals(helmet.getStats().get("DamageReduction"), 10);
+        assertEquals(10, helmet.getStats().get("DamageReduction"));
     }
 
     @Test

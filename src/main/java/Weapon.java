@@ -1,5 +1,4 @@
 public class Weapon extends Equipment{
-    private int weaponAttackPoint; // attack power
 
     /**
      * Creates a new Weapon object.
@@ -16,6 +15,6 @@ public class Weapon extends Equipment{
      * @return the attack point value.
      */
     public int getWeaponAttackPoint() {
-        return this.weaponAttackPoint;
+        return this.getStatValue();
     }
 }
