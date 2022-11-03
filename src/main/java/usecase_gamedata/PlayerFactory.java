@@ -1,6 +1,6 @@
-package Usecase_GameData;
+package usecase_gamedata;
 
-import Entity.Player;
+import entity.Player;
 
 public class PlayerFactory {
     public Player getPlayer(int maxHP, int atkPT, Collectible essence, Collectible artifact, int x, int y){

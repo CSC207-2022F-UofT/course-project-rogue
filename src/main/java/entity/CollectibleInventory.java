@@ -1,6 +1,5 @@
-package Entity;
+package entity;
 
-import java.util.Collections;
 import java.util.HashMap;
 
 public class CollectibleInventory extends BasicInventory{
@@ -22,9 +21,11 @@ public class CollectibleInventory extends BasicInventory{
         return this.inventory.get(collectibleType);
     }
 
-    public void setInventory(String collectibyType, int amount){
+    public void setInventory(String collectibleType, int amount){
         /*
         Precondition: - Gets the collectibleType (in this case Essence or Artifact)
+                      - The amount is -inf < amount < inf
+        Postcondition: - Changes the amount in collectible
          */
         Collectible collectible = getCollectible(collectibyType);
         int currAmoount = collectible.getAmount();

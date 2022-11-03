@@ -1,6 +1,6 @@
-package Usecase_Event;
+package usecase_event;
 
-import Entity.Player;
+import entity.Player;
 
 public interface Triggerable {
     public Object trigger(Player player);

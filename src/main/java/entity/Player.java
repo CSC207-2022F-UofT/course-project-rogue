@@ -1,6 +1,4 @@
-package Entity;
-
-import java.util.HashMap;
+package entity;
 
 public class Player{
     /*  The Basic Player Template, it is flexible in terms of being able to add an instance of class system if needed
@@ -38,6 +36,10 @@ public class Player{
     }
 
     public Equipment getEquipment(String equipmentType){
+        /*
+        Precondition: - Gets the equipment based on which equipment is chosen (Weapon and Armor)
+        Postcondition: - Returns the different Equipment desired
+         */
         if (equipmentType.equals("Weapon")){
             return this.equipments.getWeapon();
         } else if (equipmentType.equals("Armor")) {

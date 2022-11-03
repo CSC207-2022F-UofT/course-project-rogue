@@ -1,5 +1,5 @@
-package Usecase_Event;
-import Entity.Player;
+package usecase_event;
+import entity.Player;
 
 
 public class ArtifactEvent extends Event{

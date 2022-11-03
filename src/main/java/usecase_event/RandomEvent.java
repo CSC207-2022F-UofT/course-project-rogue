@@ -1,7 +1,7 @@
-package Usecase_Event;
+package usecase_event;
 
 import java.util.Random;
-import Entity.Player;
+import entity.Player;
 
 public class RandomEvent extends Event{
     @Override

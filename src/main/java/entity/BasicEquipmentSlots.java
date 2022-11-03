@@ -1,6 +1,4 @@
-package Entity;
-
-import java.util.HashMap;
+package entity;
 
 public class BasicEquipmentSlots {
     private Armor armor;

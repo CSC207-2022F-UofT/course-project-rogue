@@ -1,8 +1,8 @@
-package Usecase_Event;
+package usecase_event;
 
-import Entity.Player;
+import entity.Player;
 
-public class NoEvent extends Event{
+public class FightEvent extends Event{
     @Override
     public Object trigger(Player player) {
         return null;
