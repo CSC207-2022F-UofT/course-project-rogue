@@ -12,11 +12,11 @@ class EquipmentTest {
 
     @Test
     void TestGetStatType(){
-
+        assertEquals("DamageReduction", helmet.getStatType());
     }
 
     @Test
     void TestGetStatValue(){
-
+        assertEquals(10, helmet.getStatValue());
     }
 }
