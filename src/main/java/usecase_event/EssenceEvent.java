@@ -15,4 +15,9 @@ public class EssenceEvent extends Event{
     private void increaseEssence(Player player, int random){
         player.setInventory("Essence", random);
     }
+
+    @Override
+    public boolean enter(){
+        return true;
+    }
 }

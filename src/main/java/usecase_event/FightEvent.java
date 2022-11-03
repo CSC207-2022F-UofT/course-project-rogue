@@ -7,4 +7,8 @@ public class FightEvent extends Event{
     public Object trigger(Player player) {
         return null;
     }
+    @Override
+    public boolean enter(){
+        return true;
+    }
 }

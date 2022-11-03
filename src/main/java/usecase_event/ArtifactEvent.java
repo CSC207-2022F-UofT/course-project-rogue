@@ -9,4 +9,8 @@ public class ArtifactEvent extends Event{
         player.setInventory("Artifacts", 1);
         return null;
     }
+    @Override
+    public boolean enter(){
+        return true;
+    }
 }
