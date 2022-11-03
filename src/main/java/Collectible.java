@@ -3,10 +3,14 @@ public class Collectible extends Item {
     /**
      * Creates a new Collectible object.
      * @param collectibleType the type of this Collectible.
-     * @param num the collectible value.
      */
-    public Collectible(String collectibleType, int num){
-        super(collectibleType, num);
+    public Collectible(String collectibleType){
+        super(collectibleType, 0);
+    }
+
+    public void setCollectibleNum(int collectibleNum){
+        int difference = collectibleNum - this.getNum();
+        this.addNum(difference);
     }
 
 }
