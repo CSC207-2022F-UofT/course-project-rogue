@@ -8,4 +8,5 @@ public class Collectible extends Item {
     public Collectible(String collectibleType, int num){
         super(collectibleType, num);
     }
+
 }
