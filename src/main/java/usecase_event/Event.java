@@ -1,6 +1,8 @@
 package usecase_event;
 
-abstract class Event implements Triggerable{
+import entity.Player;
+
+abstract class Event implements Enterable{
 
     /** Tells Map whether this tile could be stepped on by Player
      *
@@ -9,5 +11,7 @@ abstract class Event implements Triggerable{
     public boolean enter() {
 
         return false;
+    }
+    public void trigger(Player player){
     }
 }

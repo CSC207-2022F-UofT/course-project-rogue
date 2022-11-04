@@ -4,16 +4,14 @@ import entity.Player;
 
 public class NoEvent extends Event{
 
-    /**Triggering this Event lets the player choose to either heal or upgrade their weapon
+    /**
+     * Triggering this Event lets the player choose to either heal or upgrade their weapon
      *
      * @param: player: the player triggering the Event
-     *
-     * @return The player heals or upgrade their weapon
      */
     @Override
-    public boolean trigger(Player player) {
+    public void trigger(Player player) {
 
-        return true;
     }
 
     /** Tells Map whether this tile could be stepped on by Player

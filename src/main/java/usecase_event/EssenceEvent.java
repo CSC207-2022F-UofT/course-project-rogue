@@ -6,19 +6,17 @@ import java.util.Random;
 
 public class EssenceEvent extends Event{
 
-    /**Triggering this Event adds a random amount to the Essence that the player holds
+    /**
+     * Triggering this Event adds a random amount to the Essence that the player holds
      *
      * @param: player: the player triggering the Event
-     *
-     * @return Adds from 0 to 501 Essences to the player inventory
      */
     @Override
-    public boolean trigger(Player player) {
+    public void trigger(Player player) {
 
         Random random = new Random();
         int random_int = random.nextInt(501);
         increaseEssence(player, random_int);
-        return true;
     }
 
     /**Adds the Essence by random amount from 0 to 500

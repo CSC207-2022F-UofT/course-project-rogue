@@ -4,8 +4,7 @@ import entity.Player;
 
 public class FightEvent extends Event{
     @Override
-    public boolean trigger(Player player) {
-        return true;
+    public void trigger(Player player) {
     }
 
     /** Tells Map whether this tile could be stepped on by Player

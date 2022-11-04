@@ -4,15 +4,14 @@ import entity.Player;
 
 public class ArtifactEvent extends Event{
 
-    /**Triggering this Event adds 1 to the Artifact that the player holds
+    /**
+     * Triggering this Event adds 1 to the Artifact that the player holds
      *
      * @param: player: the player triggering the Event
-     * @return Adds 1 to Artifact in player inventory
      */
     @Override
-    public boolean trigger(Player player) {
+    public void trigger(Player player) {
         player.setInventory("Artifacts", 1);
-        return true;
     }
 
     /** Tells Map whether this tile could be stepped on by Player

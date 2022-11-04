@@ -4,15 +4,13 @@ import entity.Player;
 
 public class WallEvent extends Event{
 
-    /**Triggering this Event does nothing
+    /**
+     * Triggering this Event does nothing
      *
      * @param: player: the player triggering the Event
-     *
-     * @return nothing happens, player cannot step on this event.
      */
     @Override
-    public boolean trigger(Player player) {
-        return false;
+    public void trigger(Player player) {
     }
 
     /** Tells Map whether this tile could be stepped on by Player

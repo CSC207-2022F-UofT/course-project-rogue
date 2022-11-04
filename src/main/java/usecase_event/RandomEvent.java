@@ -5,25 +5,22 @@ import entity.Player;
 
 public class RandomEvent extends Event{
 
-    /**Triggering this Event randomly Triggers Fight Event, no Event or Essence Event
+    /**
+     * Triggering this Event randomly Triggers Fight Event, no Event or Essence Event
      *
      * @param: player: the player triggering the Event
-     *
-     * @return Triggers the respective Event randomly
      */
     @Override
-    public boolean trigger(Player player) {
+    public void trigger(Player player) {
         Random random = new Random();
         int random_prob = random.nextInt(101);
         if (random_prob < 70){
             FightEvent fightEvent = new FightEvent();
             fightEvent.trigger(player);
-            return true;
         }
         else {
             EssenceEvent essenceEvent = new EssenceEvent();
             essenceEvent.trigger(player);
-            return true;
         }
     }
 
