@@ -9,6 +9,6 @@ public class Armor extends Equipment{
      * @return the damage reduced by the Armor.
      */
     public int getDmgReduced(){
-        return this.getStatValue();
+        return this.getStats();
     }
 }

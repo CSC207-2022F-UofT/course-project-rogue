@@ -21,6 +21,7 @@ public class Equipment extends Item implements Stats{
      * Returns the stat's value.
      * @return the stat's value.
      */
+    @Override
     public int getStats(){
         return this.statValue;
     }
@@ -32,19 +33,4 @@ public class Equipment extends Item implements Stats{
     public String getStatType(){
         return this.statType;
     }
-
-    /**
-     * Returns the stat value.
-     * @return the stat value
-     */
-    public int getStatValue(){
-        return this.statValue;
-    }
-
-//    public static void main(String[] args) {
-//        Equipment helmet = new Equipment("Helmet", 1, "DamageReduction", 1);
-//        System.out.println(helmet.getName());
-//        System.out.println(helmet.getNum());
-//        System.out.println(helmet.getStats());
-//    }
 }

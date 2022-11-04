@@ -25,12 +25,4 @@ public class Collectible extends Item {
         int difference = collectibleNum - this.getNum();
         this.changeNum(difference);
     }
-
-    public static void main(String[] args) {
-        Collectible c = new Collectible("Artifact");
-        c.setCollectibleNum(10);
-        System.out.println(c.getNum());
-        c.setCollectibleNum(60);
-        System.out.println(c.getNum());
-    }
 }

@@ -12,6 +12,6 @@ class EquipmentTest {
 
     @Test
     void TestGetStatValue(){
-        assertEquals(10, helmet.getStatValue());
+        assertEquals(10, helmet.getStats());
     }
 }

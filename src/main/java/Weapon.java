@@ -15,6 +15,6 @@ public class Weapon extends Equipment{
      * @return the attack point value.
      */
     public int getWeaponAttackPoint() {
-        return this.getStatValue();
+        return this.getStats();
     }
 }
