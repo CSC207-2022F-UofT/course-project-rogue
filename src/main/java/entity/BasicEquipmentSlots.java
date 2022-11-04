@@ -4,50 +4,49 @@ public class BasicEquipmentSlots {
     private Armor armor;
     private Weapon weapon;
 
+    /**
+     * Construct the BasicEquipmentSlot
+     *
+     * @param weapon: Weapon class
+     * @param armor: Armor class
+     */
     public BasicEquipmentSlots(Weapon weapon, Armor armor) {
-        /**
-         * Construct the class
-         *
-         * @param weapon: Weapon class
-         * @param armor: Armor class
-         * @return Setting up the class
-         */
+
         this.armor = armor;
         this.weapon = weapon;
     }
 
+    /** Returns the Armor
+     *
+     * @return Armor instance attribute
+     */
     public Armor getArmor() {
-        /** Returns the Armor
-         *
-         *
-         * @return Armor
-         */
         return armor;
     }
 
+    /** Returns the Weapon
+     * @return Weapon instance attribute
+     */
     public Weapon getWeapon() {
-        /** Returns the Weapon
-         *
-         *
-         * @return Weapon
-         */
         return weapon;
     }
 
+    /** Change the Armor in the equipment slots
+     *
+     * @param newArmor: Armor class
+     * @return Replaces the original Armor with the inputted Armor
+     */
     public void setArmor(Armor newArmor){
-        /** Change the Armor in the equipment slots
-         *
-         * @param newArmor: Armor class
-         * @return Replaces the original Armor with the inputted Armor
-         */
+
         this.armor = newArmor;
     }
+
+    /** Change the Weapon in the equipment slots
+     *
+     * @param newWeapon: Weapon class
+     */
     public void setWeapon(Weapon newWeapon){
-        /** Change the Weapon in the equipment slots
-         *
-         * @param newWeapon: Weapon class
-         * @return Replaces the original Weapon with the inputted Weapon
-         */
+
         this.weapon = newWeapon;
     }
 
