@@ -7,8 +7,8 @@ public class BasicEquipmentSlots {
     /**
      * Construct the BasicEquipmentSlot
      *
-     * @param weapon: Weapon class
-     * @param armor: Armor class
+     * @param weapon: entity.Weapon class
+     * @param armor: entity.Armor class
      */
     public BasicEquipmentSlots(Weapon weapon, Armor armor) {
 
@@ -16,34 +16,34 @@ public class BasicEquipmentSlots {
         this.weapon = weapon;
     }
 
-    /** Returns the Armor
+    /** Returns the entity.Armor
      *
-     * @return Armor instance attribute
+     * @return entity.Armor instance attribute
      */
     public Armor getArmor() {
         return armor;
     }
 
-    /** Returns the Weapon
-     * @return Weapon instance attribute
+    /** Returns the entity.Weapon
+     * @return entity.Weapon instance attribute
      */
     public Weapon getWeapon() {
         return weapon;
     }
 
-    /** Change the Armor in the equipment slots
+    /** Change the entity.Armor in the equipment slots
      *
-     * @param newArmor: Armor class
-     * @return Replaces the original Armor with the inputted Armor
+     * @param newArmor: entity.Armor class
+     * @return Replaces the original entity.Armor with the inputted entity.Armor
      */
     public void setArmor(Armor newArmor){
 
         this.armor = newArmor;
     }
 
-    /** Change the Weapon in the equipment slots
+    /** Change the entity.Weapon in the equipment slots
      *
-     * @param newWeapon: Weapon class
+     * @param newWeapon: entity.Weapon class
      */
     public void setWeapon(Weapon newWeapon){
 

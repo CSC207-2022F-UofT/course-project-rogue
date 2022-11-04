@@ -34,16 +34,16 @@ public class Player{
 
     /**Gets the equipment that the player is equipping based on the inputted equipment type
      *
-     * @param equipmentType: The type of Equipment the Player is equipping
-     *                     in this case {"Weapon", "Armor"}
+     * @param equipmentType: The type of entity.Equipment the Player is equipping
+     *                     in this case {"entity.Weapon", "entity.Armor"}
      *
-     * @return returns the Equipment class
+     * @return returns the entity.Equipment class
      */
     public Equipment getEquipment(String equipmentType){
 
-        if((equipmentType.equals("Weapon"))) {
+        if((equipmentType.equals("entity.Weapon"))) {
             return this.equipments.getWeapon();
-        } else if (equipmentType.equals("Armor")){
+        } else if (equipmentType.equals("entity.Armor")){
             return this.equipments.getArmor();
         }
 
@@ -52,7 +52,7 @@ public class Player{
 
     /**Gets the desired collectible class based on the CollectibleType String
      *
-     * @param collectibleType: The type of Collectible the Player has in their inventory
+     * @param collectibleType: The type of entity.Collectible the Player has in their inventory
      *                     in this case {"Essence", "Artifacts"}
      *
      * @return returns the collectible class of the desired object
@@ -123,7 +123,7 @@ public class Player{
     public void setInventory(String collectibleType, int amount){
         /**Sets the desired collectible class amount based on the CollectibleType String and Integer amount
          *
-         * @param collectibleType: The type of Collectible the Player has in their inventory
+         * @param collectibleType: The type of entity.Collectible the Player has in their inventory
          *                         in this case {"Essence", "Artifacts"}
          * @param amount: The amount to increase the desired collectibleType by,
          *              if amount is positive then increase
@@ -134,17 +134,17 @@ public class Player{
         this.collectibleInventory.setInventory(collectibleType, amount);
     }
     public void setEquipment(String equipmentType, Equipment equipment){
-        /**Change the equipment of Equipment Slot based on the equipment type to a new Equipment
+        /**Change the equipment of entity.Equipment Slot based on the equipment type to a new entity.Equipment
          *
-         * @param equipmentType: The type of Equipment the Player is equipping
-         *                     in this case {"Weapon", "Armor"}
+         * @param equipmentType: The type of entity.Equipment the Player is equipping
+         *                     in this case {"entity.Weapon", "entity.Armor"}
          * @param equipment: The new equipment to equip and replace in the equipment slot
          *
-         * @returns Change the equipment of Equipment Slot based on the equipment type to a new Equipment
+         * @returns Change the equipment of entity.Equipment Slot based on the equipment type to a new entity.Equipment
          */
-        if (equipmentType.equals("Weapon")){
+        if (equipmentType.equals("entity.Weapon")){
             this.equipments.setWeapon(equipment);
-        } else if (equipmentType.equals("Armor")) {
+        } else if (equipmentType.equals("entity.Armor")) {
             this.equipments.setArmor(equipment);
         }
     }

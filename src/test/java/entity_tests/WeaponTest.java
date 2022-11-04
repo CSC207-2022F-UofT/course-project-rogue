@@ -1,3 +1,7 @@
+package entity_tests;
+
+import entity.Weapon;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,12 +11,12 @@ class WeaponTest {
 
     @Test
     void TestGetStatType(){
-        assertEquals("Attack", sword.getStatType());
+        Assertions.assertEquals("Attack", sword.getStatType());
     }
 
     @Test
     void TestGetWeaponAttackPoint(){
-        assertEquals(25, sword.getWeaponAttackPoint());
+        Assertions.assertEquals(25, sword.getWeaponAttackPoint());
     }
 
 }

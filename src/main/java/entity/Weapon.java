@@ -1,8 +1,12 @@
-public class Weapon extends Equipment{
+package entity;
+
+import entity.Equipment;
+
+public class Weapon extends Equipment {
 
     /**
-     * Creates a new Weapon object.
-     * @param name the name of the Weapon.
+     * Creates a new entity.Weapon object.
+     * @param name the name of the entity.Weapon.
      * @param num the number of weapons.
      * @param weaponAttackPoint the attack power value.
      */

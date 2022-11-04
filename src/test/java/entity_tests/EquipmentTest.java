@@ -1,3 +1,7 @@
+package entity_tests;
+
+import entity.Equipment;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,11 +11,11 @@ class EquipmentTest {
 
     @Test
     void TestGetStatType(){
-        assertEquals("DamageReduction", helmet.getStatType());
+        Assertions.assertEquals("DamageReduction", helmet.getStatType());
     }
 
     @Test
     void TestGetStatValue(){
-        assertEquals(10, helmet.getStats());
+        Assertions.assertEquals(10, helmet.getStats());
     }
 }
