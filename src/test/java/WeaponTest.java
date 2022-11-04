@@ -6,11 +6,6 @@ class WeaponTest {
     Weapon sword = new Weapon("weapon", 1, 25);
 
     @Test
-    void TestGetStats(){
-        assertEquals(25, sword.getStats().get("Attack"));
-    }
-
-    @Test
     void TestGetStatType(){
         assertEquals("Attack", sword.getStatType());
     }

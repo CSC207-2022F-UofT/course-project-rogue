@@ -18,13 +18,11 @@ public class Equipment extends Item implements Stats{
     }
 
     /**
-     * Returns a Hashmap of the stat type and its value.
-     * @return the stat type and the stat's value.
+     * Returns the stat's value.
+     * @return the stat's value.
      */
-    public HashMap<String, Integer> getStats(){
-        HashMap<String, Integer> statsMap = new HashMap<>();
-        statsMap.put(this.statType, this.statValue);
-        return statsMap;
+    public int getStats(){
+        return this.statValue;
     }
 
     /**
@@ -42,4 +40,11 @@ public class Equipment extends Item implements Stats{
     public int getStatValue(){
         return this.statValue;
     }
+
+//    public static void main(String[] args) {
+//        Equipment helmet = new Equipment("Helmet", 1, "DamageReduction", 1);
+//        System.out.println(helmet.getName());
+//        System.out.println(helmet.getNum());
+//        System.out.println(helmet.getStats());
+//    }
 }

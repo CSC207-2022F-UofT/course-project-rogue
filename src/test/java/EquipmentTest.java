@@ -6,11 +6,6 @@ class EquipmentTest {
     Equipment helmet = new Equipment("helmet", 1, "DamageReduction", 10);
 
     @Test
-    void TestGetStats() {
-        assertEquals(10, helmet.getStats().get("DamageReduction"));
-    }
-
-    @Test
     void TestGetStatType(){
         assertEquals("DamageReduction", helmet.getStatType());
     }

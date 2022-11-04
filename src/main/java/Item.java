@@ -13,6 +13,10 @@ public abstract class Item {
         this.num = num;
     }
 
+    public Item(String name){
+        this.name = name;
+    }
+
     /**
      * Returns the name of the Item.
      * @return the name of the Item.
@@ -26,26 +30,14 @@ public abstract class Item {
     public int getNum(){return this.num;}
 
     /**
-     * Increases the value of num.
-     * @param be_added the value num is increased by.
+     * Decreases or increases num.
+     * @param be_added a negative or positive integer to add to num.
      */
-    public void addNum(int be_added) {
+    public void changeNum(int be_added) {
         this.num = this.num + be_added;
     }
 
-    /**
-     * Decreases the value of num.
-     * @param be_minus the value num is decreased by.
-     */
-    public void decreaseNum(int be_minus){
-        this.num = this.num - be_minus;
-    }
 
-    /**
-     * Returns whether num can be decreased by the int given.
-     * @param be_minus the value to decrease the Item by.
-     * @return if num can be decreased by the int given.
-     */
     public boolean checkMinusAvailable(int be_minus){
         return this.num - be_minus >= 0;
     }

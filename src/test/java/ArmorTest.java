@@ -5,11 +5,6 @@ class ArmorTest {
     Armor shield = new Armor("shield", 1, 10);
 
     @Test
-    void TestGetStats(){
-        assertEquals(10, shield.getStats().get("DamageReduction"));
-    }
-
-    @Test
     void TestGetStatType(){
         assertEquals("DamageReduction", shield.getStatType());
     }
