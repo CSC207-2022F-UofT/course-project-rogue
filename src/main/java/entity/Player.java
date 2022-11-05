@@ -120,28 +120,30 @@ public class Player{
         location[axis] = i;
     }
 
+
+    /**Sets the desired collectible class amount based on the CollectibleType String and Integer amount
+     *
+     * @param collectibleType: The type of Collectible the Player has in their inventory
+     *                         in this case {"Essence", "Artifacts"}
+     * @param amount: The amount to increase the desired collectibleType by,
+     *              if amount is positive then increase
+     *              if amount is negative then decrease
+     *
+     * @returns Adds amount to the desired collectible type of player
+     */
     public void setInventory(String collectibleType, int amount){
-        /**Sets the desired collectible class amount based on the CollectibleType String and Integer amount
-         *
-         * @param collectibleType: The type of Collectible the Player has in their inventory
-         *                         in this case {"Essence", "Artifacts"}
-         * @param amount: The amount to increase the desired collectibleType by,
-         *              if amount is positive then increase
-         *              if amount is negative then decrease
-         *
-         * @returns Adds amount to the desired collectible type of player
-         */
         this.collectibleInventory.setInventory(collectibleType, amount);
     }
+
+    /**Change the equipment of Equipment Slot based on the equipment type to a new Equipment
+     *
+     * @param equipmentType: The type of Equipment the Player is equipping
+     *                     in this case {"Weapon", "Armor"}
+     * @param equipment: The new equipment to equip and replace in the equipment slot
+     *
+     * @returns Change the equipment of Equipment Slot based on the equipment type to a new Equipment
+     */
     public void setEquipment(String equipmentType, Equipment equipment){
-        /**Change the equipment of Equipment Slot based on the equipment type to a new Equipment
-         *
-         * @param equipmentType: The type of Equipment the Player is equipping
-         *                     in this case {"Weapon", "Armor"}
-         * @param equipment: The new equipment to equip and replace in the equipment slot
-         *
-         * @returns Change the equipment of Equipment Slot based on the equipment type to a new Equipment
-         */
         if (equipmentType.equals("Weapon")){
             this.equipments.setWeapon(equipment);
         } else if (equipmentType.equals("Armor")) {
