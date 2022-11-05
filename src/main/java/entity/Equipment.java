@@ -1,9 +1,7 @@
 package entity;
 
-import entity.Item;
-
 public class Equipment extends Item implements Stats {
-    private String statType; // the type of stat
+    private final String statType; // the type of stat
     private int statValue; // the value of the stat
 
     /**
@@ -34,5 +32,21 @@ public class Equipment extends Item implements Stats {
      */
     public String getStatType(){
         return this.statType;
+    }
+
+    /**
+     * Changes statValue to newStatValue.
+     * @param newStatValue the new value of statValue.
+     */
+    public void setStatValue(int newStatValue){
+        this.statValue = newStatValue;
+    }
+
+    /**
+     * Adds a value to statValue.
+     * @param be_added the value added to statValue.
+     */
+    public void addStatValue(int be_added){
+        this.statValue = this.statValue + be_added;
     }
 }

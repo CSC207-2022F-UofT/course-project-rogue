@@ -1,7 +1,7 @@
 package entity;
 
 public abstract class Item {
-    private final String name; // is this final??? // the name of the entity.Item
+    private final String name; // the name of the entity.Item
     private int num; // the number of items in entity.Item
 
     /**
