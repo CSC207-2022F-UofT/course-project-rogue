@@ -5,11 +5,11 @@ public abstract class Equipment extends Item implements Stats {
     private int statValue; // the value of the stat
 
     /**
-     * Creates a new entity.Equipment object.
-     * @param name the name of the entity.Equipment.
+     * Creates a new Equipment object.
+     * @param name the name of the Equipment.
      * @param num the number of equipments.
-     * @param statType the type of stat associated with the entity.Equipment.
-     * @param statValue the value of the stat associated with the entity.Equipment.
+     * @param statType the type of stat associated with the Equipment.
+     * @param statValue the value of the stat associated with the Equipment.
      */
     public Equipment(String name, int num, String statType, int statValue){
         super(name, num);

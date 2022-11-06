@@ -1,32 +1,37 @@
 package entity;
 
 public abstract class Item {
-    private final String name; // the name of the entity.Item
-    private int num; // the number of items in entity.Item
+    private final String name; // the name of the Item
+    private int num; // the number of items in Item
 
     /**
-     * Creates a new entity.Item object.
+     * Creates a new Item object.
      * This constructor takes in a single String as and a single int as arguments..
-     * @param name the name of the entity.Item.
-     * @param num the number of items in the entity.Item object.
+     * @param name the name of the Item.
+     * @param num the number of items in the Item object.
      */
     public Item(String name, int num) {
         this(name); this.num = num;
     }
 
+    /**
+     * Creates a new Item object.
+     * This constructor takes in a single String for arguments.
+     * @param name the name of the Item.
+     */
     public Item(String name){
         this.name = name;
     }
 
     /**
-     * Returns the name of the entity.Item.
-     * @return the name of the entity.Item.
+     * Returns the name of the Item.
+     * @return the name of the Item.
      */
     public String getName(){return this.name;}
 
     /**
-     * Returns the number of items in the entity.Item object.
-     * @return the number of items in the entity.Item object.
+     * Returns the number of items in the Item object.
+     * @return the number of items in the Item object.
      */
     public int getNum(){return this.num;}
 
@@ -39,8 +44,8 @@ public abstract class Item {
     }
 
     /**
-     * Return the String representation of this entity.Item object.
-     * @return the name of this entity.Item.
+     * Return the String representation of this Item object.
+     * @return the name of this Item.
      */
     @Override
     public String toString(){

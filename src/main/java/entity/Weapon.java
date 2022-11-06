@@ -5,9 +5,8 @@ import entity.Equipment;
 public class Weapon extends Equipment {
 
     /**
-     * Creates a new entity.Weapon object.
-     * @param name the name of the entity.Weapon.
-     * @param num the number of weapons.
+     * Creates a new Weapon object.
+     * @param name the name of the Weapon.
      * @param weaponAttackPoint the attack power value.
      */
     public Weapon(String name, int weaponAttackPoint){
