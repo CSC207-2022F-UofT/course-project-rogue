@@ -10,8 +10,8 @@ public class Weapon extends Equipment {
      * @param num the number of weapons.
      * @param weaponAttackPoint the attack power value.
      */
-    public Weapon(String name, int num, int weaponAttackPoint){
-        super(name, num, "Attack", weaponAttackPoint);
+    public Weapon(String name, int weaponAttackPoint){
+        super(name, 1, "Attack", weaponAttackPoint);
     }
 
     /**

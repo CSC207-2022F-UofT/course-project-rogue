@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArmorTest {
-    Armor shield = new Armor("shield", 1, 10);
+    Armor shield = new Armor("shield", 10);
 
     @Test
     void TestGetStatType(){

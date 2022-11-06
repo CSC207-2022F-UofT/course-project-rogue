@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WeaponTest {
-    Weapon sword = new Weapon("weapon", 1, 25);
+    Weapon sword = new Weapon("weapon", 25);
 
     @Test
     void TestGetStatType(){

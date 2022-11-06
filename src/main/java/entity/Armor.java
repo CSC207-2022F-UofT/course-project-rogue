@@ -2,8 +2,8 @@ package entity;
 
 public class Armor extends Equipment {
 
-    public Armor(String name, int num, int dmgReduced){
-        super(name, num, "DamageReduction", dmgReduced);
+    public Armor(String name, int dmgReduced){
+        super(name,1, "DamageReduction", dmgReduced);
     }
 
     /**
