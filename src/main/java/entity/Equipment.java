@@ -1,6 +1,6 @@
 package entity;
 
-public class Equipment extends Item implements Stats {
+public abstract class Equipment extends Item implements Stats {
     private final String statType; // the type of stat
     private int statValue; // the value of the stat
 

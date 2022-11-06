@@ -11,8 +11,7 @@ public abstract class Item {
      * @param num the number of items in the entity.Item object.
      */
     public Item(String name, int num) {
-        this.name = name;
-        this.num = num;
+        this(name); this.num = num;
     }
 
     public Item(String name){
