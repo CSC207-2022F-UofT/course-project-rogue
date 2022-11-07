@@ -6,11 +6,11 @@ public class CollectibleInventory extends BasicInventory{
     private String name;
     private HashMap<String, Collectible> inventory = new HashMap<String, Item>();
 
-    /** Creates the entity.Collectible Inventory Class
+    /** Creates the Collectible Inventory Class
      *
      * @param inventoryName: Name of Inventory as String
-     * @param essence: entity.Collectible class of Player to upgrade and heal
-     * @param artifact entity.Collectible class of Player to win the game
+     * @param essence: Collectible class of Player to upgrade and heal
+     * @param artifact Collectible class of Player to win the game
      */
     public CollectibleInventory(String inventoryName, Collectible essence, Collectible artifact) {
 
@@ -39,7 +39,7 @@ public class CollectibleInventory extends BasicInventory{
         return this.inventory.get(collectibleType);
     }
 
-    /** Creates the entity.Collectible Inventory Class
+    /** Creates the Collectible Inventory Class
      *
      * @param collectibleType: Type of collectible you want to get from inventory
      * @param amount: Adds amoount to current amount, the boundary of amount is
