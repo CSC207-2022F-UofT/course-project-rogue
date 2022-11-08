@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_event.ArtifactEvent;
 import usecase_event.EssenceEvent;
 
 public class EssenceEventTest {
@@ -31,8 +30,9 @@ public class EssenceEventTest {
     @Test
     @DisplayName("Test Trigger")
     void testTrigger(){
+        int originalAmount = essence.getNum();
         event.trigger(player);
-        Assertions.assertTrue(player.getCollectible("Artifact").getNum() > essence.getNum());
+        Assertions.assertTrue(player.getCollectible("Essence").getNum() > originalAmount);
     }
     @Test
     @DisplayName("Test Enter")
