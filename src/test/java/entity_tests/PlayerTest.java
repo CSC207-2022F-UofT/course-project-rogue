@@ -40,7 +40,7 @@ public class PlayerTest {
 
     @Test
     @DisplayName("Test for Exceptions in getEquipment")
-    void testForExceptions(){
+    void testForExceptionsOfGetEquipment(){
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 player.getEquipment("SSS"));
         String expectedMessage = "equipmentType must be either Weapon or Armor";
@@ -83,15 +83,71 @@ public class PlayerTest {
     }
 
     @Test
-    @DisplayName("Test Subtract Current Hit Point")
+    @DisplayName("Test Change Current Hit Point")
     void testSubtractCurrentHitPoint(){
-        player.changeCurrHitPoint(-20);
-        Assertions.assertEquals(80, player.getCurrHitPoint());
+        Assertions.assertAll(
+                () -> player.changeCurrHitPoint(-20),
+                () -> Assertions.assertEquals(80, player.getCurrHitPoint()),
+                () -> player.changeCurrHitPoint(-300),
+                () -> Assertions.assertEquals(0, player.getCurrHitPoint()),
+                () -> player.changeCurrHitPoint(52),
+                () -> Assertions.assertEquals(52, player.getCurrHitPoint()),
+                () -> player.changeCurrHitPoint(30130),
+                () -> Assertions.assertEquals(maxHP, player.getCurrHitPoint())
+        );
     }
 
     @Test
-    @DisplayName("Test Add Current Hit Point")
-    void testAddCurrentHitPoint(){
+    @DisplayName("Test Set Location of Player")
+    void testSetLocation(){
+        player.setLocation(0, 4);
+        int[] expected = {4, 0};
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(expected[0], player.getPlayerLocation()[0]),
+                () -> Assertions.assertEquals(expected[1], player.getPlayerLocation()[1])
+        );
     }
+
+    @Test
+    @DisplayName("Test Exception of Set Player Location")
+    void testForExceptionForSetPlayerLocation(){
+        Exception exception = assertThrows(IndexOutOfBoundsException.class, () ->
+                player.setLocation(3, 1));
+        String expectedMessage = "out of bounds";
+        String actualMessage = exception.getMessage();
+        Assertions.assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    @DisplayName("Test Change Collectible Amount")
+    void testChangeCollectibleAmount(){
+        Assertions.assertAll(
+                () -> player.changeCollectibleAmount("Essence", 20),
+                () -> Assertions.assertEquals(120, player.getCollectible("Essence").getNum()),
+                () -> player.changeCollectibleAmount("Artifact", 2),
+                () -> Assertions.assertEquals(3, player.getCollectible("Artifact").getNum()),
+                () -> player.changeCollectibleAmount("Essence", -300),
+                () -> Assertions.assertEquals(0, player.getCollectible("Essence").getNum()),
+                () -> player.changeCollectibleAmount("Artifact", -30),
+                () -> Assertions.assertEquals(0, player.getCollectible("Artifact").getNum())
+        );
+    }
+
+    @Test
+    @DisplayName("Test for Changing Armor")
+    void testChangeArmor(){
+        Armor aegisShield = new Armor("Aegis Shield", 600000);
+        player.setEquipment(aegisShield);
+        Assertions.assertEquals(aegisShield, player.getEquipment("Armor"));
+    }
+
+    @Test
+    @DisplayName("Test for Changing Weapon")
+    void testChangeWeapon(){
+        Weapon durandal = new Weapon("Legendary Sword Durandal", 1000);
+        player.setEquipment(durandal);
+        Assertions.assertEquals(durandal, player.getEquipment("Weapon"));
+    }
+
 }
 
