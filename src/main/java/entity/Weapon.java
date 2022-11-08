@@ -1,7 +1,5 @@
 package entity;
 
-import entity.Equipment;
-
 public class Weapon extends Equipment {
 
     /**

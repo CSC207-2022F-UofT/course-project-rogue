@@ -3,18 +3,17 @@ package entity_tests;
 import entity.Armor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ArmorTest {
     Armor shield = new Armor("shield", 10);
 
     @Test
-    void TestGetStatType(){
+    void testGetStatType(){
         Assertions.assertEquals("DamageReduction", shield.getStatType());
     }
 
     @Test
-    void TestGetDmgReduced(){
+    void testGetDmgReduced(){
         Assertions.assertEquals(10, shield.getDmgReduced());
     }
 }

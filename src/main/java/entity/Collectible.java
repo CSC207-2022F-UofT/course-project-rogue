@@ -1,6 +1,5 @@
 package entity;
 
-import entity.Item;
 
 public class Collectible extends Item {
 

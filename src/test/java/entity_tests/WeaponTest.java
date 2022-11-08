@@ -4,18 +4,16 @@ import entity.Weapon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class WeaponTest {
     Weapon sword = new Weapon("weapon", 25);
 
     @Test
-    void TestGetStatType(){
+    void testGetStatType(){
         Assertions.assertEquals("Attack", sword.getStatType());
     }
 
     @Test
-    void TestGetWeaponAttackPoint(){
+    void testGetWeaponAttackPoint(){
         Assertions.assertEquals(25, sword.getWeaponAttackPoint());
     }
 

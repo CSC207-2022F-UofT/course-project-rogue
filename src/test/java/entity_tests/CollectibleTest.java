@@ -1,38 +1,33 @@
 package entity_tests;
 
 import entity.Collectible;
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CollectibleTest {
 
     Collectible Artifact1 = new Collectible("artifact");
 
     @Test
-    void TestChangeNum(){
+    void testChangeNum(){
         Artifact1.changeNum(2);
         Assertions.assertEquals(2, Artifact1.getNum());
     }
 
     @Test
-    void TestGetName(){
+    void testGetName(){
         Assertions.assertEquals("artifact", Artifact1.getName());
     }
 
     @Test
-    void TestGetNum(){
+    void testGetNum(){
         Assertions.assertEquals(0, Artifact1.getNum());
         Artifact1.changeNum(1);
         Assertions.assertEquals(1, Artifact1.getNum());
     }
 
     @Test
-    void TestSetCollectibleNum(){
+    void testSetCollectibleNum(){
         Artifact1.setCollectibleNum(5);
         Assertions.assertEquals(5, Artifact1.getNum());
         Artifact1.setCollectibleNum(3);
@@ -40,7 +35,7 @@ class CollectibleTest {
     }
 
     @Test
-    void TestToString(){
+    void testToString(){
         Assertions.assertEquals("artifact", Artifact1.toString());
     }
 }
