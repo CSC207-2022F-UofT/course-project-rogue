@@ -131,7 +131,7 @@ public class Player{
      *              if amount is positive then increase
      *              if amount is negative then decrease
      */
-    public void changeAmount(String collectibleType, int amount){
+    public void changeCollectibleAmount(String collectibleType, int amount){
         this.collectibleInventory.changeAmount(collectibleType, amount);
     }
 
