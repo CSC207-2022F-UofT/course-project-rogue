@@ -88,5 +88,10 @@ public class PlayerTest {
         player.changeCurrHitPoint(-20);
         Assertions.assertEquals(80, player.getCurrHitPoint());
     }
+
+    @Test
+    @DisplayName("Test Add Current Hit Point")
+    void testAddCurrentHitPoint(){
+    }
 }
 
