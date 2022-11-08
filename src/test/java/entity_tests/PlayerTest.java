@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class PlayerTest {
     int maxHP = 100;
@@ -37,12 +39,54 @@ public class PlayerTest {
     }
 
     @Test
+    @DisplayName("Test for Exceptions in getEquipment")
+    void testForExceptions(){
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                player.getEquipment("SSS"));
+        String expectedMessage = "equipmentType must be either Weapon or Armor";
+        String actualMessage = exception.getMessage();
+
+        Assertions.assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
     @DisplayName("Test Get Collectible")
     void testGetCollectible(){
         Assertions.assertAll(
                 () -> Assertions.assertEquals(essence, player.getCollectible("Essence")),
                 () -> Assertions.assertEquals(artifact, player.getCollectible("Artifact"))
         );
+    }
+
+    @Test
+    @DisplayName("Test Get Max Hit Point")
+    void testGetMaxHitPoint(){
+        Assertions.assertEquals(maxHP, player.getMaxHitPoint());
+    }
+
+    @Test
+    @DisplayName("Test Get Currect Hit Point")
+    void testGetCurrentHitPoint(){
+        Assertions.assertEquals(maxHP, player.getCurrHitPoint());
+    }
+
+    @Test
+    @DisplayName("Test Get Attack Point")
+    void testGetAttackPoint(){
+        Assertions.assertEquals(atkPt, player.getAttackPoint());
+    }
+
+    @Test
+    @DisplayName("Test Get Player Location")
+    void testGetPlayerLocation(){
+        Assertions.assertEquals(location, player.getPlayerLocation());
+    }
+
+    @Test
+    @DisplayName("Test Subtract Current Hit Point")
+    void testSubtractCurrentHitPoint(){
+        player.changeCurrHitPoint(-20);
+        Assertions.assertEquals(80, player.getCurrHitPoint());
     }
 }
 

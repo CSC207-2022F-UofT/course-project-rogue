@@ -43,7 +43,7 @@ public class Player{
         } else if (equipmentType.equals("Armor")){
             return this.equipments.getArmor();
         }else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("equipmentType must be either Weapon or Armor");
         }
     }
 
@@ -100,7 +100,7 @@ public class Player{
      * @param x: The integer to increase by, if x is positive then increase, else if it is negative, it'll decrease.
      *
      */
-    public void setCurrHitPoint(int x){
+    public void changeCurrHitPoint(int x){
 
         this.currHitPoint += x;
     }
