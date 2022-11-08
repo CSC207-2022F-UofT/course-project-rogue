@@ -32,10 +32,10 @@ public class CollectibleInventory extends BasicInventory{
     /** Creates the entity.Collectible Inventory Class
      *
      * @param collectibleType: Type of collectible you want to get from inventory
-     * @param amount: Adds amoount to current amount, the boundary of amount is
+     * @param amount: Adds amount to current amount, the boundary of amount is
      *                 -infinity < amount < infinity
      */
-    public void setInventory(String collectibleType, int amount){
+    public void changeAmount(String collectibleType, int amount){
 
         Collectible collectible = getCollectible(collectibleType);
         int currAmount = collectible.getNum();
