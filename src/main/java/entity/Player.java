@@ -6,8 +6,8 @@ public class Player{
     private int currHitPoint;
     private final int attackPoint;
     private int[] location;
-    private CollectibleInventory collectibleInventory;
-    private BasicEquipmentSlots equipments;
+    private final CollectibleInventory collectibleInventory;
+    private final BasicEquipmentSlots equipments;
 
 
     /**The Basic Player Template, it is flexible in terms of being able to add an instance of class system if needed

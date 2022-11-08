@@ -3,7 +3,7 @@ package entity;
 import java.util.HashMap;
 
 public class CollectibleInventory extends BasicInventory{
-    private String name;
+
     private HashMap<String, Collectible> inventory = new HashMap<>();
 
     /** Creates the entity.Collectible Inventory Class
@@ -14,21 +14,11 @@ public class CollectibleInventory extends BasicInventory{
      */
     public CollectibleInventory(String inventoryName, Collectible essence, Collectible artifact) {
 
-
         super(inventoryName);
         this.inventory.put("Essences", essence);
         this.inventory.put("Artifact", artifact);
     }
 
-    /** Gets the name of the inventory
-     *
-     * @return the name of the inventory
-     */
-    @Override
-    public String getName() {
-
-        return name;
-    }
 
     /** Gets the name of the inventory
      *
