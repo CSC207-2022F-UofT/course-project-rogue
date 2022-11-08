@@ -38,6 +38,15 @@ public class CollectibleInventoryTest {
         );
     }
 
-
+    @Test
+    @DisplayName("Test to subtract amount to Essence and Artifact")
+    void testSubtractAmount(){
+        Assertions.assertAll(
+                () -> inventory.changeAmount("Essence", -30),
+                () -> Assertions.assertEquals(70, inventory.getCollectible("Essence").getNum()),
+                () -> inventory.changeAmount("Artifact", -1),
+                () -> Assertions.assertEquals(0, inventory.getCollectible("Artifact").getNum())
+        );
+    }
 
 }
