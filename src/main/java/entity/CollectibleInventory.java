@@ -38,7 +38,6 @@ public class CollectibleInventory extends BasicInventory{
     public void changeAmount(String collectibleType, int amount){
 
         Collectible collectible = getCollectible(collectibleType);
-        int currAmount = collectible.getNum();
-        collectible.changeNum(currAmount + amount);
+        collectible.changeNum(amount);
     }
 }
