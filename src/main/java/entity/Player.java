@@ -130,7 +130,7 @@ public class Player{
      *              if amount is negative then decrease
      */
     public void setInventory(String collectibleType, int amount){
-        this.collectibleInventory.setInventory(collectibleType, amount);
+        this.collectibleInventory.changeAmount(collectibleType, amount);
     }
 
     /**Change the Weapon of Equipment Slot based on the new inputted Weapon
