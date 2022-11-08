@@ -5,7 +5,7 @@ public class Player{
     private final int maxHitPoint;
     private int currHitPoint;
     private final int attackPoint;
-    private int[] location;
+    private final int[] location;
     private final CollectibleInventory collectibleInventory;
     private final BasicEquipmentSlots equipments;
 

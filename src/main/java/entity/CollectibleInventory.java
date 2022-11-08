@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class CollectibleInventory extends BasicInventory{
 
-    private HashMap<String, Collectible> inventory = new HashMap<>();
+    private final HashMap<String, Collectible> inventory = new HashMap<>();
 
     /** Creates the entity.Collectible Inventory Class
      *
