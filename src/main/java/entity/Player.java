@@ -104,8 +104,10 @@ public class Player{
      *
      */
     public void changeCurrHitPoint(int x){
-
-        this.currHitPoint += x;
+        int afterAmount = this.currHitPoint + x;
+        if (afterAmount >= maxHitPoint){
+            this.currHitPoint = maxHitPoint;
+        } else this.currHitPoint = Math.max(afterAmount, 0);
     }
 
     /**Sets the location of Player based on axis and coordinate i
