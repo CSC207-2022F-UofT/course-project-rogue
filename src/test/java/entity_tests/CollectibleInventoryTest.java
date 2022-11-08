@@ -12,7 +12,7 @@ public class CollectibleInventoryTest {
     CollectibleInventory inventory;
 
     @BeforeEach
-    @DisplayName("Creates the same CollectibleInventory Class before each test")
+    @DisplayName("Setup before Each Test")
     void setUp(){
         inventory = new CollectibleInventory("Collectible Inventory", essence, artifact);
     }

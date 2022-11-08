@@ -1,7 +1,6 @@
 package entity_tests;
 
 import entity.*;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -24,7 +23,7 @@ public class PlayerTest {
 
 
     @BeforeEach
-    @DisplayName("Creates the same Player class before each test")
+    @DisplayName("Setup before Each Test")
     void setUp(){
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }

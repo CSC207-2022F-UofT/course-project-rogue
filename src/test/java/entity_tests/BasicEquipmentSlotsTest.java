@@ -14,7 +14,7 @@ public class BasicEquipmentSlotsTest {
     BasicEquipmentSlots equipmentSlots;
 
     @BeforeEach
-    @DisplayName("Creates the same BasicEquipmentSlot Class before each test")
+    @DisplayName("Setup before Each Test")
     void setUp(){
         equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
     }
