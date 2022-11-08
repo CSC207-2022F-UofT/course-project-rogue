@@ -24,30 +24,27 @@ public class Player{
         this.maxHitPoint = maxHitPoint;
         this.currHitPoint = maxHitPoint;
         this.attackPoint = attackPoint;
-        //REMINDER TO MYSELF THAT THIS PART IS INCOMPLETE
         this.collectibleInventory = inventory;
         this.equipments = equipments;
-        //REMINDING MYSELF TO CHANGE THIS WHEN ITEM CLASS IS DONE
         this.location = location;
-        //May change starting location later depending on map design
     }
 
     /**Gets the equipment that the player is equipping based on the inputted equipment type
      *
      * @param equipmentType: The type of entity.Equipment the Player is equipping
-     *                     in this case {"entity.Weapon", "entity.Armor"}
+     *                     in this case {"Weapon", "Armor"}
      *
      * @return returns the entity.Equipment class
      */
-    public Equipment getEquipment(String equipmentType){
+    public Equipment getEquipment(String equipmentType) throws IllegalArgumentException{
 
-        if((equipmentType.equals("entity.Weapon"))) {
+        if((equipmentType.equals("Weapon"))) {
             return this.equipments.getWeapon();
-        } else if (equipmentType.equals("entity.Armor")){
+        } else if (equipmentType.equals("Armor")){
             return this.equipments.getArmor();
+        }else {
+            throw new IllegalArgumentException();
         }
-
-        return null;
     }
 
     /**Gets the desired collectible class based on the CollectibleType String
