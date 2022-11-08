@@ -39,15 +39,15 @@ public class Player{
      *
      * @return returns the entity.Equipment class
      */
-    public Equipment getEquipment(String equipmentType){
+    public Equipment getEquipment(String equipmentType) throws IllegalArgumentException{
 
-        if((equipmentType.equals("entity.Weapon"))) {
+        if((equipmentType.equals("Weapon"))) {
             return this.equipments.getWeapon();
-        } else if (equipmentType.equals("entity.Armor")){
+        } else if (equipmentType.equals("Armor")){
             return this.equipments.getArmor();
+        }else {
+            throw new IllegalArgumentException();
         }
-
-        return null;
     }
 
     /**Gets the desired collectible class based on the CollectibleType String
