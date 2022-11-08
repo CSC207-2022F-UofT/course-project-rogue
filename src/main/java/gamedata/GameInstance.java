@@ -1,6 +1,4 @@
-package GameData;
-
-import FileReader.GameFileReader_interface;
+package gamedata;
 
 import java.util.HashMap;
 

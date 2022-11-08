@@ -1,4 +1,4 @@
-package FileReader;
+package filereader;
 
 import org.json.simple.parser.ParseException;
 
