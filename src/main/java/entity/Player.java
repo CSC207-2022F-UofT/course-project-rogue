@@ -103,7 +103,7 @@ public class Player{
      * @param x: The integer to increase by, if x is positive then increase, else if it is negative, it'll decrease.
      *
      */
-    public void setCurrHitPoint(int x){
+    public void changeCurrHitPoint(int x){
 
         this.currHitPoint += x;
     }
