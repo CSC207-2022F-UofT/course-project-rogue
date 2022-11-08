@@ -1,7 +1,7 @@
 package entity;
 
 public abstract class BasicInventory {
-    private String name;
+    private final String name;
 
     /** Constructs a Basic Inventory
      *

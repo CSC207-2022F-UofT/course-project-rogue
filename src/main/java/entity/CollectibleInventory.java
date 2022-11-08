@@ -3,8 +3,8 @@ package entity;
 import java.util.HashMap;
 
 public class CollectibleInventory extends BasicInventory{
-    private String name;
-    private HashMap<String, Collectible> inventory = new HashMap<String, Item>();
+
+    private final HashMap<String, Collectible> inventory = new HashMap<>();
 
     /** Creates the entity.Collectible Inventory Class
      *
@@ -14,21 +14,11 @@ public class CollectibleInventory extends BasicInventory{
      */
     public CollectibleInventory(String inventoryName, Collectible essence, Collectible artifact) {
 
-
         super(inventoryName);
         this.inventory.put("Essences", essence);
         this.inventory.put("Artifact", artifact);
     }
 
-    /** Gets the name of the inventory
-     *
-     * @return the name of the inventory
-     */
-    @Override
-    public String getName() {
-
-        return name;
-    }
 
     /** Gets the name of the inventory
      *
@@ -42,13 +32,12 @@ public class CollectibleInventory extends BasicInventory{
     /** Creates the entity.Collectible Inventory Class
      *
      * @param collectibleType: Type of collectible you want to get from inventory
-     * @param amount: Adds amoount to current amount, the boundary of amount is
+     * @param amount: Adds amount to current amount, the boundary of amount is
      *                 -infinity < amount < infinity
      */
-    public void setInventory(String collectibleType, int amount){
+    public void changeAmount(String collectibleType, int amount){
 
         Collectible collectible = getCollectible(collectibleType);
-        int currAmoount = collectible.getAmount();
-        collectible.setAmount(currAmoount + amount);
+        collectible.changeNum(amount);
     }
 }
