@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class CollectibleInventory extends BasicInventory{
     private String name;
-    private HashMap<String, Collectible> inventory = new HashMap<String, Item>();
+    private HashMap<String, Collectible> inventory = new HashMap<>();
 
     /** Creates the entity.Collectible Inventory Class
      *
@@ -48,7 +48,7 @@ public class CollectibleInventory extends BasicInventory{
     public void setInventory(String collectibleType, int amount){
 
         Collectible collectible = getCollectible(collectibleType);
-        int currAmoount = collectible.getAmount();
-        collectible.setAmount(currAmoount + amount);
+        int currAmount = collectible.getNum();
+        collectible.changeNum(currAmount + amount);
     }
 }

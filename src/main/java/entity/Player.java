@@ -20,7 +20,7 @@ public class Player{
      *
      */
     public Player(int maxHitPoint, int attackPoint, CollectibleInventory inventory, BasicEquipmentSlots equipments,
-                  Integer[] location){
+                  int[] location){
         this.maxHitPoint = maxHitPoint;
         this.currHitPoint = maxHitPoint;
         this.attackPoint = attackPoint;
@@ -128,28 +128,24 @@ public class Player{
      * @param amount: The amount to increase the desired collectibleType by,
      *              if amount is positive then increase
      *              if amount is negative then decrease
-     *
-     * @returns Adds amount to the desired collectible type of player
      */
     public void setInventory(String collectibleType, int amount){
         this.collectibleInventory.setInventory(collectibleType, amount);
     }
 
-    /**Change the equipment of Equipment Slot based on the equipment type to a new Equipment
+    /**Change the Weapon of Equipment Slot based on the new inputted Weapon
      *
-     * @param equipmentType: The type of Equipment the Player is equipping
-     *                     in this case {"Weapon", "Armor"}
-     * @param equipment: The new equipment to equip and replace in the equipment slot
-     *
-     * @returns Change the equipment of Equipment Slot based on the equipment type to a new Equipment
+     * @param newWeapon: The new equipment to equip and replace in the equipment slot
      */
-    public void setEquipment(String equipmentType, Equipment equipment){
-        if (equipmentType.equals("Weapon")){
-            this.equipments.setWeapon(equipment);
-        } else if (equipmentType.equals("Armor")) {
-            this.equipments.setArmor(equipment);
-        }
+    public void setEquipment(Weapon newWeapon) {
+        this.equipments.setWeapon(newWeapon);
     }
 
-
+    /**Change the Armor of Equipment Slot based on the new inputted Weapon
+     *
+     * @param newArmor: The new equipment to equip and replace in the equipment slot
+     */
+    public void setEquipment(Armor newArmor) {
+        this.equipments.setArmor(newArmor);
+    }
 }
