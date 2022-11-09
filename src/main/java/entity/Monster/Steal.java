@@ -1,5 +1,6 @@
 package entity.Monster;
 
+import entity.Character;
 import entity.Item;
 import entity.Player;
 import java.util.Arrays;
@@ -8,12 +9,13 @@ import java.util.Random;
 
 
 /** A Power that allows a Monster to steal a random number of one type of Item from the Player. */
-public class Steal extends BasePower implements Power{
+public class Steal extends MonsterPower implements Power{
 
     /** A list of stealable items in Player inventory. */
     private static final ArrayList<String> stealable = new ArrayList<>();
     // ArrayList to allow for additions, addStealable method prevents duplicates
     // if we want to change what can get stolen, just change value in data file
+    //
 
 
     /**
@@ -35,13 +37,14 @@ public class Steal extends BasePower implements Power{
      * @param player The Player that the Monster is stealing from.
      * @return A String describing the number of items stolen from the Player.
      */
-    public String usePower(Player player){
+    @Override
+    public String usePower(Character player){
         String item = this.randomItem();
-        Item toSteal = player.getCollectible(item);
+        Item toSteal = ((Player)player).getCollectible(item);
         int max = (toSteal.getNum())/4; // Just decided on 1/4 of Players current amount for now, open to change
         int stolen = this.steal(toSteal, max);
 
-        return String.format("%d %s(s) stolen.", stolen, toSteal.toString());
+        return String.format("%d %s(s) stolen.", stolen, toSteal);
     }
 
     /**
