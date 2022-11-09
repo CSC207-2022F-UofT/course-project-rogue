@@ -1,10 +1,9 @@
 package entity.Monster;
 
-import entity.Player;
+import entity.Character;
 
-/** A Power of a Monster. */
+/** A Power of a Character. */
 public interface Power {
-    /** Uses the Power of a Monster. */
-    String usePower(Player player);
-
+    /** Uses the Power of a Character. */
+    String usePower(Character character);
 }
