@@ -1,6 +1,4 @@
 package gamedata;
-import entity.BasicEquipmentSlots;
-import entity.CollectibleInventory;
 import filereader.GameFileReader_interface;
 import entity.Player;
 import org.json.simple.parser.ParseException;
@@ -34,9 +32,7 @@ public class PlayerInstances extends GameInstance implements EntityInstance_Inte
                 for (HashMap<String, Object> playerData : playerDatas) {
                     entityInstance.put((String) playerData.get("Class"), playerData);
                 }
-                entityData.put("BasicPlayer", factory.create(entityInstance, "BasicPlayer",
-                        (CollectibleInventory) entityData.get("Collectible Inventory"),
-                        (BasicEquipmentSlots) entityData.get("Basic Equipment Slot")));
+                entityData.put("BasicPlayer", factory.create(entityInstance, "BasicPlayer"));
                 return (Player) entityInstance.get("BasicPlayer");
             } catch (IOException | ParseException ex) {
                 String msg = ex.getMessage();
