@@ -9,7 +9,7 @@ import java.util.Random;
 
 
 /** A Power that allows a Monster to steal a random number of one type of Item from the Player. */
-public class Steal extends MonsterPower implements Power{
+public class Steal extends MonsterPower{
 
     /** A list of stealable items in Player inventory. */
     private static final ArrayList<String> stealable = new ArrayList<>();
