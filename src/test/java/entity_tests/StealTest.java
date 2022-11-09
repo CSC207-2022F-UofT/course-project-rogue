@@ -31,7 +31,6 @@ public class StealTest {
     /** Tests Steal.usePower when the item to be stolen has a count of 0. */
     @Test
     void TestUsePowerNone(){
-        // make a new player with 0 essence
         Player player = makePlayer(0);
         String result = steal.usePower(player);
         Assertions.assertEquals("Hurray! Nothing was stolen!", result);
