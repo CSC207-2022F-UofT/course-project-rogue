@@ -13,9 +13,9 @@ public class Steal extends MonsterPower{
 
     /** A list of stealable items in Player inventory. */
     private static final ArrayList<String> stealable = new ArrayList<>();
-    // ArrayList to allow for additions, addStealable method prevents duplicates
+    // ArrayList to allow for extension of adding new items. Can add a method that prevents duplicates
     // if we want to change what can get stolen, just change value in data file
-    //
+    // no getter for now since I don't think I need to access it
 
 
     /**
@@ -31,6 +31,7 @@ public class Steal extends MonsterPower{
         // Ex: for now since we will only allow essence, under power: Steal we have the list ["Essence"].
     }
 
+
     /**
      * Steals an item from Player.
      *
@@ -41,23 +42,41 @@ public class Steal extends MonsterPower{
     public String usePower(Character player){
         String item = this.randomItem();
         Item toSteal = ((Player)player).getCollectible(item);
+        int possible = toSteal.getNum();
         int max = (toSteal.getNum())/4; // Just decided on 1/4 of Players current amount for now, open to change
-        int stolen = this.steal(toSteal, max);
-
-        return String.format("%d %s(s) stolen.", stolen, toSteal);
+        int stolen = this.steal(toSteal, max, possible);
+        if (stolen == 0){
+            return "Hurray! Nothing was stolen!";
+        } else if (stolen == 1) {
+            return String.format("1 %s stolen.", toSteal);
+        } else{
+            return String.format("%d %s(s) stolen.", stolen, toSteal);
+        }
     }
 
     /**
      * Decreases the count of the given item in Players inventory by a minimum of 1 to the given maximum.
+     * If the count of the given item is 0, then nothing is stolen. If the count i
      *
      * @param item The Item that the Monster will steal from the Player.
      * @param max The maximum amount that can be stolen from Player.
      *
      * @return The number of items stolen.
      */
-    private int steal(Item item, int max){
+    private int steal(Item item, int max, int possible){
         Random random = new Random();
+        if (max == 0) {
+            if (possible == 0) { // if possible is 0, then amount stolen is always 0
+                return 0;
+            }
+            // when max is 0 (but possible isn't, so 1, 2, 3) then return 1
+            item.changeNum(-1);
+            return 1;
+        }
+        // continue here if max > 0,then no error for nextInt
         int stolen = random.nextInt(max) + 1; // steal a random number from 1 to max inclusive
+        // if max is 1, then returning 1 for sure
+        // when max is 2 (8 <= count < 12), then 1 <= stolen <= 2
         item.changeNum(-stolen);
         return (stolen);
     }
