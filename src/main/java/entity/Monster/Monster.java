@@ -1,12 +1,14 @@
 package entity.Monster;
 
+import entity.Character;
+
 import java.util.HashMap;
 
 import java.util.Random;
 
 
 /** A Monster that the Player can encounter in the game.*/
-public class Monster {
+public class Monster extends Character {
 
     /** The name of the Monster. */
     private final String NAME;
