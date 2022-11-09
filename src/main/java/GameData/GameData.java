@@ -1,5 +1,8 @@
-package gamedata;
+package GameData;
 
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 import java.util.HashMap;
 
 /**

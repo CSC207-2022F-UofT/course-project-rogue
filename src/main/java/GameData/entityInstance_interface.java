@@ -1,6 +1,6 @@
-package gamedata;
+package GameData;
 
-public interface EntityInstance_Interface<T> {
+public interface entityInstance_interface<T> {
     public T getInstance();
     public void store(T instance);
 }
