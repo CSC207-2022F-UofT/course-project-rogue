@@ -9,7 +9,6 @@ public class Player{
     private final CollectibleInventory collectibleInventory;
     private final BasicEquipmentSlots equipments;
 
-
     /**The Basic Player Template, it is flexible in terms of being able to add an instance of class system if needed
      * The inventory is open for adding more items.
      * @param maxHitPoint: Max Hit Point of Player and also the Current Hit Point during construction
