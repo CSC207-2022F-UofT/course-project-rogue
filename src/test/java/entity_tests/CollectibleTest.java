@@ -9,9 +9,16 @@ class CollectibleTest {
     Collectible Artifact1 = new Collectible("artifact");
 
     @Test
-    void testChangeNum(){
+    void testChangeNumIncrease(){
         Artifact1.changeNum(2);
         Assertions.assertEquals(2, Artifact1.getNum());
+    }
+
+    @Test
+    void testChangeNumDecrease(){
+        Artifact1.changeNum(4);
+        Artifact1.changeNum(-4);
+        Assertions.assertEquals(0, Artifact1.getNum());
     }
 
     @Test
@@ -28,9 +35,9 @@ class CollectibleTest {
 
     @Test
     void testSetCollectibleNum(){
-        Artifact1.setCollectibleNum(5);
+        Artifact1.setNum(5);
         Assertions.assertEquals(5, Artifact1.getNum());
-        Artifact1.setCollectibleNum(3);
+        Artifact1.setNum(3);
         Assertions.assertEquals(3, Artifact1.getNum());
     }
 

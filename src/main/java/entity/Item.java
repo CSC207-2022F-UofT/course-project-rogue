@@ -36,6 +36,12 @@ public abstract class Item {
     public int getNum(){return this.num;}
 
     /**
+     * Sets the value of num to the number given.
+     * @param n the new value of num.
+     */
+    public void setNum(int n){this.num = n;}
+
+    /**
      * Decreases or increases num.
      * @param be_added a negative or positive integer to add to num. If be_added makes num negative, num is set to 0.
      */
