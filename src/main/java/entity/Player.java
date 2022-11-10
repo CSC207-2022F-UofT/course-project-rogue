@@ -39,15 +39,15 @@ public class Player{
      *
      * @return returns the entity.Equipment class
      */
-    public Equipment getEquipment(String equipmentType){
+    public Equipment getEquipment(String equipmentType) throws IllegalArgumentException{
 
-        if((equipmentType.equals("entity.Weapon"))) {
+        if((equipmentType.equals("Weapon"))) {
             return this.equipments.getWeapon();
-        } else if (equipmentType.equals("entity.Armor")){
+        } else if (equipmentType.equals("Armor")){
             return this.equipments.getArmor();
+        }else {
+            throw new IllegalArgumentException();
         }
-
-        return null;
     }
 
     /**Gets the desired collectible class based on the CollectibleType String
@@ -103,9 +103,11 @@ public class Player{
      * @param x: The integer to increase by, if x is positive then increase, else if it is negative, it'll decrease.
      *
      */
-    public void setCurrHitPoint(int x){
-
-        this.currHitPoint += x;
+    public void changeCurrHitPoint(int x){
+        int afterAmount = this.currHitPoint + x;
+        if (afterAmount >= maxHitPoint){
+            this.currHitPoint = maxHitPoint;
+        } else this.currHitPoint = Math.max(afterAmount, 0);
     }
 
     /**Sets the location of Player based on axis and coordinate i
@@ -129,7 +131,7 @@ public class Player{
      *              if amount is positive then increase
      *              if amount is negative then decrease
      */
-    public void changeAmount(String collectibleType, int amount){
+    public void changeCollectibleAmount(String collectibleType, int amount){
         this.collectibleInventory.changeAmount(collectibleType, amount);
     }
 
