@@ -15,7 +15,7 @@ public class CollectibleInventory extends BasicInventory{
     public CollectibleInventory(String inventoryName, Collectible essence, Collectible artifact) {
 
         super(inventoryName);
-        this.inventory.put("Essences", essence);
+        this.inventory.put("Essence", essence);
         this.inventory.put("Artifact", artifact);
     }
 

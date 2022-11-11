@@ -1,6 +1,6 @@
 package entity;
 
-public class Player{
+public class Player extends Character{
 
     private final int maxHitPoint;
     private int currHitPoint;
