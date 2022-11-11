@@ -2,7 +2,7 @@ package usecase_event;
 
 import entity.Player;
 
-abstract class Event implements Enterable{
+public class Event implements Enterable{
 
     /** Tells Map whether this tile could be stepped on by Player
      *
