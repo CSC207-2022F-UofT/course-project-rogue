@@ -23,30 +23,39 @@ class MonsterTest {
     Monster monster = new Monster("Slime", "Basic", stats, false);
     Monster special = new Monster("Stealer", "Basic", stats, true, power);
 
+    /** Tests Monster.getName() and Monster.getType(). */
     @Test
-    void TestMonsterGetNameType() {
+    void testMonsterGetNameType() {
         Assertions.assertAll("Should return Monster name and type",
                 () -> Assertions.assertEquals("Slime", monster.getName()),
                 () -> Assertions.assertEquals("Basic", monster.getType())
         );
     }
 
+    /** Tests that Monster.getStats returns a value within the range of minimum and maximum provided. */
     @Test
-    void TestMonsterGetStats(){
+    void testMonsterGetStats(){
         Assertions.assertAll("Should return an int within the max and min bounds.",
                 () -> Assertions.assertTrue(monster.getAttack() >= 1 && monster.getAttack() <= 5),
                 () -> Assertions.assertTrue(monster.getHealth() >= 1 && monster.getAttack() <= 5)
         );
     }
 
+    /** Tests Monster.isHasPower() when Monster has no power and when it does. */
     @Test
-    void TestMonsterHasPower(){
+    void testMonsterHasPower(){
         Assertions.assertFalse(monster.isHasPower());
         Assertions.assertTrue(special.isHasPower());
     }
 
+    /** Tests Monster.getPower() when Monster has a power. */
     @Test
-    void TestMonsterGetPower(){
+    void testMonsterGetPower(){
         Assertions.assertEquals(power, special.getPower());
     }
+
+    /** Tests Monster.getPower() when Monster has no power. */
+    @Test
+    void testMonsterGetPowerNoPower() {
+        Assertions.assertNull(monster.getPower());}
 }
