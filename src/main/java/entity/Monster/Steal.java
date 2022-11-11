@@ -13,7 +13,7 @@ public class Steal extends MonsterPower{
 
     /** A list of stealable items in Player inventory. */
     private static final ArrayList<String> stealable = new ArrayList<>();
-    // ArrayList to allow for extension of adding new items. Can add a method that prevents duplicates
+    // ArrayList to allow for extension of adding new items (if not final). Can add a method that prevents duplicates
     // if we want to change what can get stolen, just change value in data file
     // no getter for now since I don't think I need to access it
 
@@ -66,17 +66,14 @@ public class Steal extends MonsterPower{
     private int steal(Item item, int max, int possible){
         Random random = new Random();
         if (max == 0) {
-            if (possible == 0) { // if possible is 0, then amount stolen is always 0
+            if (possible == 0) {
                 return 0;
             }
-            // when max is 0 (but possible isn't, so 1, 2, 3) then return 1
             item.changeNum(-1);
             return 1;
         }
-        // continue here if max > 0,then no error for nextInt
         int stolen = random.nextInt(max) + 1; // steal a random number from 1 to max inclusive
-        // if max is 1, then returning 1 for sure
-        // when max is 2 (8 <= count < 12), then 1 <= stolen <= 2
+        // stolen is always maximum one quarter of the Collectible count
         item.changeNum(-stolen);
         return (stolen);
     }
