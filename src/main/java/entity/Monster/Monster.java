@@ -23,10 +23,10 @@ public class Monster extends Character {
     private final int BASE_HEALTH;
 
     /** Whether the Monster has a power. */
-    private final boolean HAS_POWER; // not final to allow for possibility of removing powers
+    private final boolean HAS_POWER;
 
     /** The power of the Monster. Null if hasPower is false. */
-    private Power power;
+    private Power power; // not final to allow for extension of changing powers
 
 
     /**
@@ -77,7 +77,6 @@ public class Monster extends Character {
         return this.TYPE;
     }
     // for now this method is not coded for multiple types
-    // probably would need to format string
 
     /**
      * @return The base attack of the Monster.
@@ -117,4 +116,6 @@ public class Monster extends Character {
         this.power = newP;
     }
 
+
+    // Perhaps override toString for Monster representation, might be helpful for FightEvent
 }
