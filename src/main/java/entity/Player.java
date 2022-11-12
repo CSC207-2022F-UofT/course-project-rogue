@@ -1,5 +1,11 @@
 package entity;
 
+import FileReader.deserialization.playerDeserialization;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = playerDeserialization.class)
 public class Player{
 
     private final int maxHitPoint;
@@ -19,6 +25,7 @@ public class Player{
      * @param equipments: The player's equipment slot in which they equip equipments to increase their battle strength
      *
      */
+
     public Player(int maxHitPoint, int attackPoint, CollectibleInventory inventory, BasicEquipmentSlots equipments,
                   int[] location){
         this.maxHitPoint = maxHitPoint;

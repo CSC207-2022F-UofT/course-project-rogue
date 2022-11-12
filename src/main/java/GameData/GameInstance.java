@@ -8,10 +8,11 @@ import java.util.HashMap;
  * This class is used to store instances of entities.
  * @author John Chen
  */
-public class GameInstance extends GameData{
-
-
+public abstract class GameInstance<Entity>{
     protected boolean stored;
-    //without declaring public, protected, private, the default access level is anywhere in the GameData package.
-    static HashMap<String, Object> entityInstance;
+    protected HashMap<String, Entity> entityInstance;
+
+    public abstract Entity getInstance();
+
+    public abstract void store(Entity instance);
 }

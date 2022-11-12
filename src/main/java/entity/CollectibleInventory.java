@@ -1,7 +1,14 @@
 package entity;
 
+import FileReader.deserialization.collectibleInventoryDeserialization;
+import FileReader.deserialization.playerDeserialization;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.HashMap;
 
+@JsonDeserialize(using = collectibleInventoryDeserialization.class)
 public class CollectibleInventory extends BasicInventory{
 
     private final HashMap<String, Collectible> inventory = new HashMap<>();
@@ -12,6 +19,7 @@ public class CollectibleInventory extends BasicInventory{
      * @param essence: entity.Collectible class of Player to upgrade and heal
      * @param artifact entity.Collectible class of Player to win the game
      */
+
     public CollectibleInventory(String inventoryName, Collectible essence, Collectible artifact) {
 
         super(inventoryName);

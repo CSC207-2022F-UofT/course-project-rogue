@@ -1,20 +1,20 @@
 package GameData;
 import FileReader.GameFileReader_interface;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import entity.Player;
 import org.json.simple.parser.ParseException;
-import usecase_gamedata.PlayerFactory;
+import usecase_gamedata.factory;
+
 import java.io.IOException;
+import java.util.HashMap;
 
 
-public class PlayerInstances extends GameInstance implements entityInstance_interface<Player>{
-
-    private GameFileReader_interface fileReader;
-    PlayerFactory factory;
-    public PlayerInstances(GameFileReader_interface fileReader) throws IOException, ParseException {
-        this.fileReader =fileReader;
-        entityData.put("Player", this.fileReader.getPlayerData());
+public class PlayerInstances extends GameInstance<Player>{
+    factory factory;
+    public PlayerInstances(factory f) throws IOException, ParseException {
+        this.entityInstance = new HashMap<String, Player>();
         this.stored = false;
-        this.factory = new PlayerFactory();
+        this.factory = f;
     }
 
     /**
@@ -23,18 +23,19 @@ public class PlayerInstances extends GameInstance implements entityInstance_inte
     @Override
     public Player getInstance() {
         if(this.stored){
-            return (Player) entityInstance.get("Player");
+            return this.entityInstance.get("Basic Player");
         }else{
-            //Create Player from data stored in entityData and return it
+            return (Player) this.factory.create();
         }
     }
 
     /**
-     * @param instance
+     * Persist the instance created or used.
+     * @param instance : The instance of the Player we are storing
      */
     @Override
     public void store(Player instance) {
-        entityInstance.replace("Player", instance);
+        entityInstance.put("Basic Player", instance);
         this.stored = true;
     }
 }
