@@ -24,7 +24,13 @@ public abstract class Equipment extends Item implements Stats {
     @Override
     public int getStats(){
         return this.statValue;
-    }
+    } // might remove this
+
+    /**
+     * Returns the stat's value.
+     * @return the stat's value.
+     */
+    public int getStatValue(){return this.statValue;}
 
     /**
      * Returns the type of stat.
@@ -43,7 +49,7 @@ public abstract class Equipment extends Item implements Stats {
     }
 
     /**
-     * Adds a value to statValue.
+     * Adds a value to statValue. Can add any integer.
      * @param be_added the value added to statValue.
      */
     public void addStatValue(int be_added){

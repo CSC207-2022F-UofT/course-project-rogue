@@ -1,8 +1,5 @@
 package entity;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import entity.Item;
 
 public class Collectible extends Item {
 
@@ -11,7 +8,6 @@ public class Collectible extends Item {
      * It should only be used for artifacts, since its num attribute will always start at 0.
      * @param collectibleType the type of this Collectible.
      */
-
     public Collectible(String collectibleType){
         super(collectibleType);
     }
@@ -24,14 +20,5 @@ public class Collectible extends Item {
      */
     public Collectible(String collectibleType, int num){
         super(collectibleType, num);
-    }
-
-    /**
-     * Sets the num of the Collectible to the collectibleNum given.
-     * @param collectibleNum the new value for num.
-     */
-    public void setCollectibleNum(int collectibleNum){
-        int difference = collectibleNum - this.getNum();
-        this.changeNum(difference);
     }
 }

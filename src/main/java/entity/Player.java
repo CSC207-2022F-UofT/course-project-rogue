@@ -1,12 +1,6 @@
 package entity;
 
-import FileReader.deserialization.playerDeserialization;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-@JsonDeserialize(using = playerDeserialization.class)
-public class Player{
+public class Player extends Character{
 
     private final int maxHitPoint;
     private int currHitPoint;
@@ -25,24 +19,20 @@ public class Player{
      * @param equipments: The player's equipment slot in which they equip equipments to increase their battle strength
      *
      */
-
     public Player(int maxHitPoint, int attackPoint, CollectibleInventory inventory, BasicEquipmentSlots equipments,
                   int[] location){
         this.maxHitPoint = maxHitPoint;
         this.currHitPoint = maxHitPoint;
         this.attackPoint = attackPoint;
-        //REMINDER TO MYSELF THAT THIS PART IS INCOMPLETE
         this.collectibleInventory = inventory;
         this.equipments = equipments;
-        //REMINDING MYSELF TO CHANGE THIS WHEN ITEM CLASS IS DONE
         this.location = location;
-        //May change starting location later depending on map design
     }
 
     /**Gets the equipment that the player is equipping based on the inputted equipment type
      *
      * @param equipmentType: The type of entity.Equipment the Player is equipping
-     *                     in this case {"entity.Weapon", "entity.Armor"}
+     *                     in this case {"Weapon", "Armor"}
      *
      * @return returns the entity.Equipment class
      */
@@ -53,7 +43,7 @@ public class Player{
         } else if (equipmentType.equals("Armor")){
             return this.equipments.getArmor();
         }else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("equipmentType must be either Weapon or Armor");
         }
     }
 
