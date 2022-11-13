@@ -17,8 +17,8 @@ public class healing implements Observer{
         //player = getPlayer();
         //event = getEvent();
 
-        //if(event.isinstanceof(NoEvent) && arg == "H" || arg == "h"){
-            //heal(Player player);
+        //if(event instanceof NoEvent && arg == "H" || arg == "h"){
+            //heal(player);
 
         //json_input();
         }
@@ -61,6 +61,8 @@ public class healing implements Observer{
         }
         return true;
     }
+
+    private boolean
 
     private void heal(Player player){
         int Essence_need;
