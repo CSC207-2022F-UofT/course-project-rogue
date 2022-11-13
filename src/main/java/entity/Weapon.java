@@ -1,7 +1,5 @@
 package entity;
 
-import entity.Equipment;
-
 public class Weapon extends Equipment {
 
     /**
@@ -11,13 +9,5 @@ public class Weapon extends Equipment {
      */
     public Weapon(String name, int weaponAttackPoint){
         super(name, 1, "Attack", weaponAttackPoint);
-    }
-
-    /**
-     * Returns the attack point value.
-     * @return the attack point value.
-     */
-    public int getWeaponAttackPoint() {
-        return this.getStats();
     }
 }
