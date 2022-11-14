@@ -1,7 +1,9 @@
 package usecase_healing;
 
+import Interface.Visual;
 import entity.Collectible;
 import entity.Player;
+import presenter.Presenter_bottom;
 import usecase_event.Event;
 import usecase_event.NoEvent;
 import usecase_map.Map;
@@ -77,6 +79,7 @@ public class healing implements Observer{
         Collectible Essence;
         Collectible Artifact;
         String info_text;
+        Visual vision = new Presenter_bottom();
         Essence = player.getCollectible("Essence");
         Artifact = player.getCollectible("Artifact");
         Essence_need = determine_Ess();
@@ -85,12 +88,12 @@ public class healing implements Observer{
             info_text = "You have Essence " + Integer.toString(Essence.getNum()) + "/" + Integer.toString(Essence_need)
                     + ". /n You have Artifact " + Integer.toString(Artifact.getNum()) + "/" +
                     Integer.toString(Artifact_need) + "/n You can heal! /n Healing? [Y]/[N]";
-
+            vision.show_heal_info(info_text);
             player.changeCurrHitPoint(player.getMaxHitPoint());
             player.changeCollectibleAmount("Essence", Essence_need);
             player.changeCollectibleAmount("Artifact", Artifact_need);
         }
-        };
+    };
 
-    }
+}
 
