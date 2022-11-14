@@ -1,6 +1,8 @@
 package usecase_healing;
 
+import Interface.InputBoundary;
 import Interface.Visual;
+import controller.Controller;
 import entity.Collectible;
 import entity.Player;
 import presenter.Presenter_bottom;
@@ -69,31 +71,47 @@ public class healing implements Observer{
         return true;
     }
 
+    private boolean CheckFullHP(){
+        return this.player.getMaxHitPoint() == this.player.getCurrHitPoint();
+    }
 
-    private void heal(){
-        /**
-         * The basic part of the healing, it will return two string to return
-         */
-        int Essence_need;
-        int Artifact_need;
-        Collectible Essence;
-        Collectible Artifact;
-        String info_text;
-        Visual vision = new Presenter_bottom();
-        Essence = player.getCollectible("Essence");
-        Artifact = player.getCollectible("Artifact");
-        Essence_need = determine_Ess();
-        Artifact_need = determine_Art();
-        if (able_to_heal(Essence.getNum(),Artifact.getNum(),Essence_need,Artifact_need)) {
-            info_text = "You have Essence " + Integer.toString(Essence.getNum()) + "/" + Integer.toString(Essence_need)
-                    + ". /n You have Artifact " + Integer.toString(Artifact.getNum()) + "/" +
+    private String info_writer(int Essence_have, int Essence_need, int Artifact_have, int Artifact_need){
+        if(able_to_heal(Essence_have,Artifact_have,Essence_need,Artifact_need)) {
+            return "You have Essence " + Integer.toString(Essence_have) + "/" + Integer.toString(Essence_need)
+                    + ". /n You have Artifact " + Integer.toString(Artifact_have) + "/" +
                     Integer.toString(Artifact_need) + "/n You can heal! /n Healing? [Y]/[N]";
-            vision.show_heal_info(info_text);
-            player.changeCurrHitPoint(player.getMaxHitPoint());
-            player.changeCollectibleAmount("Essence", Essence_need);
-            player.changeCollectibleAmount("Artifact", Artifact_need);
         }
-    };
+            return "You have Essence " + Integer.toString(Essence_have) + "/" + Integer.toString(Essence_need)
+                    + ". /n You have Artifact " + Integer.toString(Artifact_have) + "/" +
+                    Integer.toString(Artifact_need) + "/n You cannot heal! /n Try to grt more collections!";
+        }
 
+
+    private void heal() {
+        /**
+         * The basic part of the healing, it will return nothing but send message to presenter.
+         */
+        Visual vision = new Presenter_bottom();
+        if (CheckFullHP()) {
+            vision.show_heal_info("You are full, fool!");
+            return;
+        }
+        InputBoundary input = new Controller();
+        int Essence_need = determine_Ess();
+        int Artifact_need = determine_Art();
+        Collectible Essence = player.getCollectible("Essence");
+        Collectible Artifact = player.getCollectible("Artifact");
+        if (able_to_heal(Essence.getNum(), Artifact.getNum(), Essence_need, Artifact_need)) {
+            vision.show_heal_info(info_writer(Essence.getNum(),Essence_need, Artifact.getNum(), Artifact_need));
+            if (input.get_heal_decision()) {
+                player.changeCurrHitPoint(player.getMaxHitPoint());
+                player.changeCollectibleAmount("Essence", Essence_need);
+                player.changeCollectibleAmount("Artifact", Artifact_need);
+                vision.show_heal_info("Your healing success!!! HP is full now!!!");
+                return;
+            }
+            vision.show_heal_info("You choose not to heal. Good Luck!");
+            return;
+        }
+    }
 }
-

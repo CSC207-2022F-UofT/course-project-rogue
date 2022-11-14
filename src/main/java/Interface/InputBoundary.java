@@ -1,7 +1,9 @@
 package Interface;
 
-public interface InputBoundary {
-    char get_upgrade_decision();
+import javafx.beans.Observable;
+
+public interface InputBoundary extends Observable {
+    char get_upgrade_decision(boolean EquipmentChoice);
     //The method will return the player decide to upgrade sword or armor. It will let the player press [A] or [S]
     //If player press other letters or numbers, the method will print "I need to decide what to upgrade, please
     // press [A] or [S]"

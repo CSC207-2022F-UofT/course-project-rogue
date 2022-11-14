@@ -15,5 +15,9 @@ public class Presenter_bottom implements Visual{
         System.out.println("******Healing Yourself******");
         System.out.println(Text);
     }
+
+    public void show_info(String Text){
+        System.out.println(Text);
+    }
 }
 
