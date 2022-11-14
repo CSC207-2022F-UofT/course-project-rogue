@@ -95,7 +95,7 @@ public class Player extends Character{
         return this.location;
     }
 
-    /**Sets the current hitpoint of Player based on the the inputted integer x
+    /**Sets the current hitpoint of Player based on the inputted integer x
      *
      * @param x: The integer to increase by, if x is positive then increase, else if it is negative, it'll decrease.
      *
