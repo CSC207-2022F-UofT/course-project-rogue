@@ -94,15 +94,10 @@ public class upgrading implements Observer{
         Collectible Essence = player.getCollectible("Essence");
         Collectible Artifact = player.getCollectible("Artifact");
         if (able_to_upgrade(Essence.getNum(), Artifact.getNum(), Essence_need, Artifact_need)) {
-            vision.show_heal_info(info_writer(Essence.getNum(),Essence_need, Artifact.getNum(), Artifact_need));
-            if (input.get_heal_decision()) {
-                player.changeCurrHitPoint(player.getMaxHitPoint());
-                player.changeCollectibleAmount("Essence", Essence_need);
-                player.changeCollectibleAmount("Artifact", Artifact_need);
-                vision.show_heal_info("Your healing success!!! HP is full now!!!");
-                return;
+            vision.show_upgrade_info(info_writer(Essence.getNum(),Essence_need, Artifact.getNum(), Artifact_need));
+
             }
-            vision.show_heal_info("You choose not to heal. Good Luck!");
+            vision.show_upgrade_info("You choose not to upgrade. Good Luck!");
             return;
         }
     }
