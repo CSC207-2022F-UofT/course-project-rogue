@@ -24,7 +24,7 @@ public class Map{
     }
 
     /**
-     * attempts to move the player to (x,y).
+     * Attempts to move the player to (x,y).
      * Return false if (x,y) is unreachable(e.g. is a wall)
      *, then place the player on that tile
      *, triggers the event on that tile, and return True.

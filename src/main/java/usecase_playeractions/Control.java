@@ -11,7 +11,7 @@ import entity.Player;
 public class Control extends Observable {
 
     /**
-     * Initialize the basic control class will no Observer
+     * Initialize the basic control class with no Observer
      */
     public Control(){}
 
