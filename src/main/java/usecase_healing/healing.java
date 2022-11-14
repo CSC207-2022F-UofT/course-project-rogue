@@ -105,8 +105,8 @@ public class healing implements Observer{
             vision.show_heal_info(info_writer(Essence.getNum(),Essence_need, Artifact.getNum(), Artifact_need));
             if (input.get_heal_decision()) {
                 player.changeCurrHitPoint(player.getMaxHitPoint());
-                player.changeCollectibleAmount("Essence", Essence_need);
-                player.changeCollectibleAmount("Artifact", Artifact_need);
+                player.changeCollectibleAmount("Essence", -Essence_need);
+                player.changeCollectibleAmount("Artifact", -Artifact_need);
                 vision.show_heal_info("Your healing success!!! HP is full now!!!");
                 return;
             }
