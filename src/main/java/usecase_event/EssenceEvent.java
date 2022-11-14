@@ -34,7 +34,7 @@ public class EssenceEvent extends Event{
      * @return True if player can step on it, false if it can's
      */
     @Override
-    public boolean enter(Player player){
+    public boolean enter(){
         return true;
     }
 }

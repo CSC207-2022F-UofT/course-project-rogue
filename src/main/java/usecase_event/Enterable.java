@@ -6,5 +6,5 @@ public interface Enterable {
     /**
      * Return whether player can enter this Event Tile
      */
-    boolean enter(Player player);
+    boolean enter();
 }
