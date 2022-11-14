@@ -1,13 +1,13 @@
 package entity;
 
-public class Player{
+public class Player extends Character{
 
     private final int maxHitPoint;
     private int currHitPoint;
     private final int attackPoint;
-    private int[] location;
-    private CollectibleInventory collectibleInventory;
-    private BasicEquipmentSlots equipments;
+    private final int[] location;
+    private final CollectibleInventory collectibleInventory;
+    private final BasicEquipmentSlots equipments;
 
 
     /**The Basic Player Template, it is flexible in terms of being able to add an instance of class system if needed
@@ -20,39 +20,36 @@ public class Player{
      *
      */
     public Player(int maxHitPoint, int attackPoint, CollectibleInventory inventory, BasicEquipmentSlots equipments,
-                  Integer[] location){
+                  int[] location){
         this.maxHitPoint = maxHitPoint;
         this.currHitPoint = maxHitPoint;
         this.attackPoint = attackPoint;
-        //REMINDER TO MYSELF THAT THIS PART IS INCOMPLETE
         this.collectibleInventory = inventory;
         this.equipments = equipments;
-        //REMINDING MYSELF TO CHANGE THIS WHEN ITEM CLASS IS DONE
         this.location = location;
-        //May change starting location later depending on map design
     }
 
     /**Gets the equipment that the player is equipping based on the inputted equipment type
      *
-     * @param equipmentType: The type of Equipment the Player is equipping
+     * @param equipmentType: The type of entity.Equipment the Player is equipping
      *                     in this case {"Weapon", "Armor"}
      *
-     * @return returns the Equipment class
+     * @return returns the entity.Equipment class
      */
-    public Equipment getEquipment(String equipmentType){
+    public Equipment getEquipment(String equipmentType) throws IllegalArgumentException{
 
         if((equipmentType.equals("Weapon"))) {
             return this.equipments.getWeapon();
         } else if (equipmentType.equals("Armor")){
             return this.equipments.getArmor();
+        }else {
+            throw new IllegalArgumentException("equipmentType must be either Weapon or Armor");
         }
-
-        return null;
     }
 
     /**Gets the desired collectible class based on the CollectibleType String
      *
-     * @param collectibleType: The type of Collectible the Player has in their inventory
+     * @param collectibleType: The type of entity.Collectible the Player has in their inventory
      *                     in this case {"Essence", "Artifacts"}
      *
      * @return returns the collectible class of the desired object
@@ -103,9 +100,11 @@ public class Player{
      * @param x: The integer to increase by, if x is positive then increase, else if it is negative, it'll decrease.
      *
      */
-    public void setCurrHitPoint(int x){
-
-        this.currHitPoint += x;
+    public void changeCurrHitPoint(int x){
+        int afterAmount = this.currHitPoint + x;
+        if (afterAmount >= maxHitPoint){
+            this.currHitPoint = maxHitPoint;
+        } else this.currHitPoint = Math.max(afterAmount, 0);
     }
 
     /**Sets the location of Player based on axis and coordinate i
@@ -120,34 +119,32 @@ public class Player{
         location[axis] = i;
     }
 
-    public void setInventory(String collectibleType, int amount){
-        /**Sets the desired collectible class amount based on the CollectibleType String and Integer amount
-         *
-         * @param collectibleType: The type of Collectible the Player has in their inventory
-         *                         in this case {"Essence", "Artifacts"}
-         * @param amount: The amount to increase the desired collectibleType by,
-         *              if amount is positive then increase
-         *              if amount is negative then decrease
-         *
-         * @returns Adds amount to the desired collectible type of player
-         */
-        this.collectibleInventory.setInventory(collectibleType, amount);
-    }
-    public void setEquipment(String equipmentType, Equipment equipment){
-        /**Change the equipment of Equipment Slot based on the equipment type to a new Equipment
-         *
-         * @param equipmentType: The type of Equipment the Player is equipping
-         *                     in this case {"Weapon", "Armor"}
-         * @param equipment: The new equipment to equip and replace in the equipment slot
-         *
-         * @returns Change the equipment of Equipment Slot based on the equipment type to a new Equipment
-         */
-        if (equipmentType.equals("Weapon")){
-            this.equipments.setWeapon(equipment);
-        } else if (equipmentType.equals("Armor")) {
-            this.equipments.setArmor(equipment);
-        }
+
+    /**Sets the desired collectible class amount based on the CollectibleType String and Integer amount
+     *
+     * @param collectibleType: The type of Collectible the Player has in their inventory
+     *                         in this case {"Essence", "Artifacts"}
+     * @param amount: The amount to increase the desired collectibleType by,
+     *              if amount is positive then increase
+     *              if amount is negative then decrease
+     */
+    public void changeCollectibleAmount(String collectibleType, int amount){
+        this.collectibleInventory.changeAmount(collectibleType, amount);
     }
 
+    /**Change the Weapon of Equipment Slot based on the new inputted Weapon
+     *
+     * @param newWeapon: The new equipment to equip and replace in the equipment slot
+     */
+    public void setEquipment(Weapon newWeapon) {
+        this.equipments.setWeapon(newWeapon);
+    }
 
+    /**Change the Armor of Equipment Slot based on the new inputted Weapon
+     *
+     * @param newArmor: The new equipment to equip and replace in the equipment slot
+     */
+    public void setEquipment(Armor newArmor) {
+        this.equipments.setArmor(newArmor);
+    }
 }

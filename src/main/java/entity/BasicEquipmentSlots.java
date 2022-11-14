@@ -34,7 +34,6 @@ public class BasicEquipmentSlots {
     /** Change the Armor in the equipment slots
      *
      * @param newArmor: Armor class
-     * @return Replaces the original Armor with the inputted Armor
      */
     public void setArmor(Armor newArmor){
 
@@ -46,7 +45,6 @@ public class BasicEquipmentSlots {
      * @param newWeapon: Weapon class
      */
     public void setWeapon(Weapon newWeapon){
-
         this.weapon = newWeapon;
     }
 

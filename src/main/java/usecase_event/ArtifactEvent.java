@@ -11,7 +11,7 @@ public class ArtifactEvent extends Event{
      */
     @Override
     public void trigger(Player player) {
-        player.setInventory("Artifacts", 1);
+        player.changeCollectibleAmount("Artifact", 1);
     }
 
     /** Tells Map whether this tile could be stepped on by Player

@@ -15,8 +15,8 @@ public class EssenceEvent extends Event{
     public void trigger(Player player) {
 
         Random random = new Random();
-        int random_int = random.nextInt(501);
-        increaseEssence(player, random_int);
+        int random_int = random.nextInt(500);
+        increaseEssence(player, random_int + 1);
     }
 
     /**Adds the Essence by random amount from 0 to 500
@@ -26,7 +26,7 @@ public class EssenceEvent extends Event{
      */
     private void increaseEssence(Player player, int random){
 
-        player.setInventory("Essence", random);
+        player.changeCollectibleAmount("Essence", random);
     }
 
     /** Tells Map whether this tile could be stepped on by Player
