@@ -4,6 +4,8 @@ import entity.Collectible;
 import entity.Equipment;
 import entity.Player;
 import usecase_event.Event;
+import usecase_event.NoEvent;
+import usecase_map.Map;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -11,18 +13,25 @@ import java.util.Observer;
 
 public class upgrading implements Observer {
 
+    private final Player player;
+    private final Map map;
+
+    public upgrading(Player player, Map map) {
+        this.player = player;
+        this.map = map;
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         Player player;
         Event event;
-        //player = getPlayer();
-        //event = getEvent();
+        event = this.map.getEvent(this.player.getPlayerLocation());
 
-        //if(event.isinstanceof(NoEvent) && arg == "U" || arg == "u"){
-        //heal(Player player);
-
-        //json_input();
+        if (event instanceof NoEvent && arg == "U" || arg == "h") {
+            upgrade();
+        }
     }
+
 
 
     private int determine_Ess() {
@@ -63,7 +72,7 @@ public class upgrading implements Observer {
         return true;
     }
 
-    private void upgrade(Player player) {
+    private void upgrade() {
         int Essence_need;
         int Artifact_need;
         Collectible Essence;

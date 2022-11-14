@@ -3,25 +3,32 @@ package usecase_healing;
 import entity.Collectible;
 import entity.Player;
 import usecase_event.Event;
+import usecase_event.NoEvent;
+import usecase_map.Map;
 
 import java.util.Observable;
 import java.util.Observer;
 
 
 public class healing implements Observer{
+    private final Player player;
+    private final Map map;
+
+    public healing(Player player, Map map) {
+        this.player = player;
+        this.map = map;
+    }
 
     @Override
     public void update(Observable o, Object arg) {
         Player player;
         Event event;
-        //player = getPlayer();
-        //event = getEvent();
+        event = this.map.getEvent(this.player.getPlayerLocation());
 
-        //if(event instanceof NoEvent && arg == "H" || arg == "h"){
-            //heal(player);
-
-        //json_input();
+        if (event instanceof NoEvent && arg == "H" || arg == "h") {
+            heal();
         }
+    }
 
 
     private int determine_Ess(){
@@ -34,7 +41,6 @@ public class healing implements Observer{
         */
         int i;
         i = 1;
-        //i = get_difficulty()
         return i;
     }
 
@@ -48,7 +54,6 @@ public class healing implements Observer{
          */
         int i;
         i = 1;
-        //i = get_difficulty()
         return i;
     }
 
@@ -62,22 +67,25 @@ public class healing implements Observer{
         return true;
     }
 
-    private boolean
 
-    private void heal(Player player){
+    private void heal(){
+        /**
+         * The basic part of the healing, it will return two string to return
+         */
         int Essence_need;
         int Artifact_need;
         Collectible Essence;
         Collectible Artifact;
-        boolean able_to_heal;
-        boolean decide_to_heal;
+        String info_text;
         Essence = player.getCollectible("Essence");
         Artifact = player.getCollectible("Artifact");
         Essence_need = determine_Ess();
         Artifact_need = determine_Art();
-        able_to_heal = able_to_heal(Essence.getNum(),Artifact.getNum(),Essence_need,Artifact_need);
-        decide_to_heal = popup_window_heal(Essence.getNum(),Artifact.getNum(),Essence_need,Artifact_need, able_to_heal);
-        if (decide_to_heal) {
+        if (able_to_heal(Essence.getNum(),Artifact.getNum(),Essence_need,Artifact_need)) {
+            info_text = "You have Essence " + Integer.toString(Essence.getNum()) + "/" + Integer.toString(Essence_need)
+                    + ". /n You have Artifact " + Integer.toString(Artifact.getNum()) + "/" +
+                    Integer.toString(Artifact_need) + "/n You can heal! /n Healing? [Y]/[N]";
+
             player.changeCurrHitPoint(player.getMaxHitPoint());
             player.changeCollectibleAmount("Essence", Essence_need);
             player.changeCollectibleAmount("Artifact", Artifact_need);
