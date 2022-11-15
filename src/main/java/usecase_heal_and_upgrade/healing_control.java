@@ -3,8 +3,6 @@ package usecase_heal_and_upgrade;
 import Interface.InputBoundary_h_u;
 import Interface.Visual_h_u;
 import controller.Controller;
-import entity.Collectible;
-import entity.Equipment;
 import entity.Player;
 import presenter.Presenter_bottom;
 import usecase_event.NoEvent;
@@ -12,11 +10,15 @@ import usecase_event.NoEvent;
 import java.util.Observable;
 import java.util.Observer;
 
-
 public class healing_control implements Observer {
     private final Player player;
     private final Map map;
 
+    /**
+     * The constructor of healing_control
+     * @param player the player
+     * @param map the map player in
+     */
     public healing_control(Player player, Map map) {
         this.player = player;
         this.map = map;
@@ -31,27 +33,27 @@ public class healing_control implements Observer {
 
 
 
+    /**
+     * Determine the Essence required to do the healing. This method will return a non-negative integer.
+     * I will set the initial value as 1 here.In the future, I hope I can let the difficulty of the game decide the
+     * collectible items required for healing.
+     *
+     * @return the Essence for the heal need.
+     */
     private int determine_Ess(){
-        /*
-          Determine the Essence required to do the healing. This method will return a non-negative integer.
-
-          I will set the initial value as 1 here.In the future, I hope I can let the difficulty of the game decide the
-          collectible items required for healing.
-
-        */
         int i;
         i = 1;
         return i;
     }
 
+
+    /**
+     * Determine the Artifact required to do the healing. This method will return a non-negative integer.
+     * I will set the initial value as 1 here.In the future, I hope I can let the difficulty of the game decide the
+     * collectible items required for healing.
+     * @return the Artifact for the heal need.
+     */
     private int determine_Art(){
-        /*
-          Determine the Artifact required to do the healing. This method will return a non-negative integer.
-
-          I will set the initial value as 1 here.In the future, I hope I can let the difficulty of the game decide the
-          collectible items required for healing.
-
-         */
         int i;
         i = 1;
         return i;
@@ -62,12 +64,10 @@ public class healing_control implements Observer {
     }
 
 
-
-
+    /**
+     * The basic part of the healing, it will return nothing but send message to presenter.
+     */
     private void heal() {
-        /*
-          The basic part of the healing, it will return nothing but send message to presenter.
-         */
         Visual_h_u speaker = new Presenter_bottom();
         if (CheckFullHP()) {
             speaker.Warn_FullHP();
