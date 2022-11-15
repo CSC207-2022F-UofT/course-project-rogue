@@ -25,9 +25,12 @@ public class Mover implements Observer {
      */
     private int y;
 
-    Mover(Player player,Map map,String trigger,int x,int y){
+    public Mover(Player player, Map map, String trigger, int x, int y){
         this.player = player;
         this.map = map;
+        this.trigger = trigger;
+        this.x = x;
+        this.y = y;
     }
 
     @Override

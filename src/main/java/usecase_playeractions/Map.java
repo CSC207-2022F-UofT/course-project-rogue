@@ -62,7 +62,7 @@ public class Map{
     public boolean move(Player p,int x, int y){
         int[] location = p.getPlayerLocation();
 
-        if(onBoard(location[0],location[1])){
+        if(onBoard(location[0]+x,location[1]+y)){
             return moveTo(p,location[0]+x,location[1]+y);
         }else{
             return false;
