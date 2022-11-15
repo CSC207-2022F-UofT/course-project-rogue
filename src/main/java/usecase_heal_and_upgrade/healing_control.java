@@ -1,47 +1,30 @@
-package usecase_healing;
+package usecase_heal_and_upgrade;
 
-import Interface.InputBoundary;
-import Interface.Visual;
+import Interface.InputBoundary_h_u;
+import Interface.Visual_h_u;
 import controller.Controller;
 import entity.Collectible;
 import entity.Player;
 import presenter.Presenter_bottom;
-import usecase_event.Event;
-import usecase_event.NoEvent;
-import usecase_map.Map;
-
-import java.util.Observable;
-import java.util.Observer;
 
 
-public class healing implements Observer{
+public class healing_control {
     private final Player player;
     private final Map map;
 
-    public healing(Player player, Map map) {
+    public healing_control(Player player, Map map) {
         this.player = player;
         this.map = map;
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        Player player;
-        Event event;
-        event = this.map.getEvent(this.player.getPlayerLocation());
-
-        if (event instanceof NoEvent && arg == "H" || arg == "h") {
-            heal();
-        }
-    }
-
 
     private int determine_Ess(){
-        /**
-         * Determine the Essence required to do the healing. This method will return a non-negative integer.
-         *
-         * I will set the initial value as 1 here.In the future, I hope I can let the difficulty of the game decide the
-         * collectible items required for healing.
-         *
+        /*
+          Determine the Essence required to do the healing. This method will return a non-negative integer.
+
+          I will set the initial value as 1 here.In the future, I hope I can let the difficulty of the game decide the
+          collectible items required for healing.
+
         */
         int i;
         i = 1;
@@ -49,26 +32,16 @@ public class healing implements Observer{
     }
 
     private int determine_Art(){
-        /**
-         * Determine the Artifact required to do the healing. This method will return a non-negative integer.
-         *
-         * I will set the initial value as 1 here.In the future, I hope I can let the difficulty of the game decide the
-         * collectible items required for healing.
-         *
+        /*
+          Determine the Artifact required to do the healing. This method will return a non-negative integer.
+
+          I will set the initial value as 1 here.In the future, I hope I can let the difficulty of the game decide the
+          collectible items required for healing.
+
          */
         int i;
         i = 1;
         return i;
-    }
-
-    private boolean able_to_heal(int Essence_have, int Artifact_have, int Essence_need, int Artifact_need){
-        /**
-         *A small helper function
-         */
-        if (Essence_need>Essence_have || Artifact_need>Artifact_have){
-            return false;
-        }
-        return true;
     }
 
     private boolean CheckFullHP(){
@@ -88,15 +61,15 @@ public class healing implements Observer{
 
 
     private void heal() {
-        /**
-         * The basic part of the healing, it will return nothing but send message to presenter.
+        /*
+          The basic part of the healing, it will return nothing but send message to presenter.
          */
-        Visual vision = new Presenter_bottom();
+        Visual_h_u vision = new Presenter_bottom();
         if (CheckFullHP()) {
             vision.show_heal_info("You are full, fool!");
             return;
         }
-        InputBoundary input = new Controller();
+        InputBoundary_h_u input = new Controller();
         int Essence_need = determine_Ess();
         int Artifact_need = determine_Art();
         Collectible Essence = player.getCollectible("Essence");
@@ -111,7 +84,6 @@ public class healing implements Observer{
                 return;
             }
             vision.show_heal_info("You choose not to heal. Good Luck!");
-            return;
         }
     }
 }
