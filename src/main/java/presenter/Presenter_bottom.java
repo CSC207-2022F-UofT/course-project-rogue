@@ -81,5 +81,15 @@ public class Presenter_bottom implements Visual_h_u {
         System.out.println(info);
     }
 
+    /**
+     * Tell player that he/she give up upgrade/heal
+     * @param type upgrade/heal
+     */
+    @Override
+    public void notifyGiveUp(String type) {
+        String info = String.format("You decide not to %s, good luck!", type);
+        System.out.println(info);
+    }
+
 }
 

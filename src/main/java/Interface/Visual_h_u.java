@@ -25,7 +25,6 @@ public interface Visual_h_u {
 
     /**
      * It will tell the player that the update/heal success
-     * @param success
      * @param type
      */
     void show_result(String type);
@@ -46,4 +45,10 @@ public interface Visual_h_u {
      * Tell player's equipment is full, can not upgrade.
      */
     void Warn_MaxLv(String Equipment);
+
+    /**
+     * Tell player that he/she give up upgrade/heal
+     * @param type upgrade/heal
+     */
+    void notifyGiveUp(String type);
 }

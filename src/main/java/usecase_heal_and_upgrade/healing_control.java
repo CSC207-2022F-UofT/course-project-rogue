@@ -4,11 +4,16 @@ import Interface.InputBoundary_h_u;
 import Interface.Visual_h_u;
 import controller.Controller;
 import entity.Collectible;
+import entity.Equipment;
 import entity.Player;
 import presenter.Presenter_bottom;
+import usecase_event.NoEvent;
+
+import java.util.Observable;
+import java.util.Observer;
 
 
-public class healing_control {
+public class healing_control implements Observer {
     private final Player player;
     private final Map map;
 
@@ -16,6 +21,14 @@ public class healing_control {
         this.player = player;
         this.map = map;
     }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (this.map.getEvent(this.player.getPlayerLocation()) instanceof NoEvent && arg == "H" || arg == "h") {
+            heal();
+        }
+    }
+
 
 
     private int determine_Ess(){
@@ -48,42 +61,31 @@ public class healing_control {
         return this.player.getMaxHitPoint() == this.player.getCurrHitPoint();
     }
 
-    private String info_writer(int Essence_have, int Essence_need, int Artifact_have, int Artifact_need){
-        if(able_to_heal(Essence_have,Artifact_have,Essence_need,Artifact_need)) {
-            return "You have Essence " + Integer.toString(Essence_have) + "/" + Integer.toString(Essence_need)
-                    + ". /n You have Artifact " + Integer.toString(Artifact_have) + "/" +
-                    Integer.toString(Artifact_need) + "/n You can heal! /n Healing? [Y]/[N]";
-        }
-            return "You have Essence " + Integer.toString(Essence_have) + "/" + Integer.toString(Essence_need)
-                    + ". /n You have Artifact " + Integer.toString(Artifact_have) + "/" +
-                    Integer.toString(Artifact_need) + "/n You cannot heal! /n Try to grt more collections!";
-        }
+
 
 
     private void heal() {
         /*
           The basic part of the healing, it will return nothing but send message to presenter.
          */
-        Visual_h_u vision = new Presenter_bottom();
+        Visual_h_u speaker = new Presenter_bottom();
         if (CheckFullHP()) {
-            vision.show_heal_info("You are full, fool!");
+            speaker.Warn_FullHP();
             return;
         }
         InputBoundary_h_u input = new Controller();
-        int Essence_need = determine_Ess();
-        int Artifact_need = determine_Art();
-        Collectible Essence = player.getCollectible("Essence");
-        Collectible Artifact = player.getCollectible("Artifact");
-        if (able_to_heal(Essence.getNum(), Artifact.getNum(), Essence_need, Artifact_need)) {
-            vision.show_heal_info(info_writer(Essence.getNum(),Essence_need, Artifact.getNum(), Artifact_need));
-            if (input.get_heal_decision()) {
-                player.changeCurrHitPoint(player.getMaxHitPoint());
-                player.changeCollectibleAmount("Essence", -Essence_need);
-                player.changeCollectibleAmount("Artifact", -Artifact_need);
-                vision.show_heal_info("Your healing success!!! HP is full now!!!");
-                return;
+        CollectibleUseManage ColHelper = new CollectibleUseManage(this.player, determine_Ess(), determine_Art(),
+                "heal");
+        ColHelper.ItemBroadcast();
+        if (ColHelper.able) {
+            speaker.keypress_request("Y", "N");
+            if (input.get_decision()) {
+                this.player.changeCurrHitPoint(player.getMaxHitPoint());
+                ColHelper.spendCollectible();
+                speaker.show_result("heal");
+            } else {
+                speaker.notifyGiveUp("heal");
             }
-            vision.show_heal_info("You choose not to heal. Good Luck!");
         }
     }
 }

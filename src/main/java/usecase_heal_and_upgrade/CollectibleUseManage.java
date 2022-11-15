@@ -10,7 +10,7 @@ public class CollectibleUseManage {
     Collectible Artifact;
     int Essence_need;
     int Artifact_need;
-    boolean Upgrade_able;
+    boolean able;
     String verb;
 
     /**
@@ -26,7 +26,7 @@ public class CollectibleUseManage {
         this.Artifact = player.getCollectible("Artifact");
         this.Artifact_need = Artifact_need;
         this.Essence_need = Essence_need;
-        this.Upgrade_able = this.Essence.getNum() >= Essence_need && this.Artifact.getNum() >= Artifact_need;
+        this.able = this.Essence.getNum() >= Essence_need && this.Artifact.getNum() >= Artifact_need;
         this.verb = verb;
     }
 
@@ -34,8 +34,8 @@ public class CollectibleUseManage {
      * Return if we can upgrade
      * @return whether the player can upgrade
      */
-    public boolean getUpgrade_able(){
-        return this.Upgrade_able;
+    public boolean get_able(){
+        return this.able;
     }
 
     /**
@@ -49,6 +49,6 @@ public class CollectibleUseManage {
     public void ItemBroadcast(){
         Visual_h_u speaker = new Presenter_bottom();
         speaker.show_info(this.Essence.getNum(), this.Essence_need, this.Artifact.getNum(), this.Artifact_need,
-                this.Upgrade_able, this.verb);
+                this.able, this.verb);
     }
 }
