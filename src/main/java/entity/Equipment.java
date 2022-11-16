@@ -1,6 +1,6 @@
 package entity;
 
-public abstract class Equipment extends Item implements Stats {
+public abstract class Equipment extends Item implements Comparable<Equipment> {
     private final String statType; // the type of stat
     private int statValue; // the value of the stat
 
@@ -33,15 +33,6 @@ public abstract class Equipment extends Item implements Stats {
         this.statValue = statValue;
         this.timesUpgraded = upgrades;
     }
-
-    /**
-     * Returns the stat's value.
-     * @return the stat's value.
-     */
-    @Override
-    public int getStats(){
-        return this.statValue;
-    } // might remove this
 
     /**
      * Returns the stat's value.
@@ -93,5 +84,22 @@ public abstract class Equipment extends Item implements Stats {
      */
     public void addTimesUpgraded(int upgradeNum){
         this.timesUpgraded = this.timesUpgraded + upgradeNum;
+    }
+
+    /**
+     * Compares the statValue of this Equipment to another Equipment.
+     * @param newEquip the other Equipment to compare to.
+     * @return a positive integer, negative integer, or zero depending on if
+     * this object's statValue is greater than, less than, or equal to the newEquip's statValue.
+     */
+    @Override
+    public int compareTo(Equipment newEquip){
+        if (this.statValue > newEquip.statValue){
+            return 1;
+        } else if (this.statValue < newEquip.statValue){
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }
