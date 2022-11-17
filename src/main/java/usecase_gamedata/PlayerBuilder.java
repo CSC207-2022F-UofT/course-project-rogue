@@ -12,5 +12,5 @@ public interface PlayerBuilder {
 
     public void buildEquipmentSlot(JSONObject jsonObject);
 
-    public void buildInventory(GameData gameData);
+//    public void buildInventory(GameData gameData);
 }

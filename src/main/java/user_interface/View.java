@@ -10,7 +10,7 @@ public class View implements KeyListener {
 
     public View(){
         JFrame game_play = new JFrame();
-        game_play.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        game_play.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         //game_play.setLayout(null);
         int screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int screen_hight = Toolkit.getDefaultToolkit().getScreenSize().height;
