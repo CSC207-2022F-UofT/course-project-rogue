@@ -8,7 +8,7 @@ public class Player extends Character{
     private final int[] location;
     private final CollectibleInventory collectibleInventory;
     private final BasicEquipmentSlots equipments;
-
+    private final States state;
 
     /**The Basic Player Template, it is flexible in terms of being able to add an instance of class system if needed
      * The inventory is open for adding more items.
@@ -27,6 +27,7 @@ public class Player extends Character{
         this.collectibleInventory = inventory;
         this.equipments = equipments;
         this.location = location;
+        this.state = new States();
     }
 
     /**Gets the equipment that the player is equipping based on the inputted equipment type
@@ -146,5 +147,80 @@ public class Player extends Character{
      */
     public void setEquipment(Armor newArmor) {
         this.equipments.setArmor(newArmor);
+    }
+
+    /**Sets whether if the player can Heal
+     *
+     * @param canHeal: True if player can Heal, else false
+     */
+    public void setCanHeal(boolean canHeal) {
+        state.setCanHeal(canHeal);
+    }
+
+    /**Sets whether if the player can move
+     *
+     * @param canMove: True if player can move, else false
+     */
+    public void setCanMove(boolean canMove){
+        state.setCanMove(canMove);
+    }
+
+    /**Sets whether if the player can Upgrade
+     *
+     * @param canUpgrade: True if player can Upgrade, else false
+     */
+    public void setCanUpgrade(boolean canUpgrade) {
+        state.setCanUpgrade(canUpgrade);
+    }
+
+    /**Sets whether if the player is Fighting
+     *
+     * @param fighting: True if player is Fighting, else false
+     */
+    public void setFighting(boolean fighting) {
+        state.setFighting(fighting);
+    }
+
+    /**Sets whether if the player is upgrading
+     *
+     * @param upgrading: True if player is upgrading, else false
+     */
+    public void setUpgrading(boolean upgrading) {
+        state.setUpgrading(upgrading);
+    }
+
+    /**Gets canHeal from states
+     *
+     */
+    public boolean getCanHeal() {
+        return state.getCanHeal();
+    }
+
+    /**Gets canMove from states
+     *
+     */
+    public boolean getCanMove() {
+        return state.getCanMove();
+    }
+
+    /**Gets canUpgrade from states
+     *
+     */
+    public boolean getCanUpgrade() {
+        return state.getCanUpgrade();
+    }
+
+    /**Gets fighting from states
+     *
+     */
+    public boolean getFighting() {
+        return state.getFighting();
+    }
+
+    /**Gets upgrading from states
+     *
+     */
+    public boolean getUpgrading() {
+        return state.getUpgrading();
     }
 }
