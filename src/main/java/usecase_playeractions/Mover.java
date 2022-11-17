@@ -35,7 +35,7 @@ public class Mover implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(trigger.equals(arg)){
+        if(player.getCanMove() && trigger.equals(arg)){
             map.move(player, x, y);
         }
     }
