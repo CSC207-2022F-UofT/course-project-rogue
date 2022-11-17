@@ -143,10 +143,70 @@ public class PlayerTest {
     @Test
     @DisplayName("Test for Changing Weapon")
     void testChangeWeapon(){
-        Weapon durandal = new Weapon("Legendary Sword Durandal", 1000);
+        Weapon durandal = new Weapon("Legendary Sword Durandal", 1001);
         player.setEquipment(durandal);
         Assertions.assertEquals(durandal, player.getEquipment("Weapon"));
     }
 
+    @Test
+    @DisplayName("Test for get can Move")
+    void testGetCanMove(){
+        Assertions.assertTrue(player.getCanMove());
+    }
+    @Test
+    @DisplayName("Test for get can Heal")
+    void testGetCanHeal(){
+        Assertions.assertFalse(player.getCanHeal());
+    }
+
+    @Test
+    @DisplayName("Test for get can upgrade")
+    void testGetCanUpgrade(){
+        Assertions.assertFalse(player.getCanUpgrade());
+    }
+
+    @Test
+    @DisplayName("Test for get is Fighting")
+    void testGetFighting(){
+        Assertions.assertFalse(player.getFighting());
+    }
+    @Test
+    @DisplayName("Test for get is Upgrading")
+    void testGetUpgrading(){
+        Assertions.assertFalse(player.getUpgrading());
+    }
+
+    @Test
+    @DisplayName("Test for set can Move")
+    void testSetCanMove(){
+        player.setCanMove(false);
+        Assertions.assertFalse(player.getCanMove());
+    }
+    @Test
+    @DisplayName("Test for set can Heal")
+    void testSetCanHeal(){
+        player.setCanHeal(true);
+        Assertions.assertTrue(player.getCanHeal());
+    }
+
+    @Test
+    @DisplayName("Test for set can upgrade")
+    void testSetCanUpgrade(){
+        player.setCanUpgrade(true);
+        Assertions.assertTrue(player.getCanUpgrade());
+    }
+
+    @Test
+    @DisplayName("Test for set is Fighting")
+    void testSetFighting(){
+        player.setFighting(true);
+        Assertions.assertTrue(player.getFighting());
+    }
+    @Test
+    @DisplayName("Test for set is upgrading")
+    void testSetUpgrading(){
+        player.setUpgrading(true);
+        Assertions.assertTrue(player.getUpgrading());
+    }
 }
 
