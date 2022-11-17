@@ -11,7 +11,9 @@ public class NoEvent extends Event{
      */
     @Override
     public void trigger(Player player) {
-
+        player.setCanHeal(true);
+        player.setCanMove(false);
+        // And then let player choose if they want to heal or upgrade
     }
 
     /** Tells Map whether this tile could be stepped on by Player

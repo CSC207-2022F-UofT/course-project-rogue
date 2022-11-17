@@ -7,7 +7,7 @@ public class States {
     private boolean isUpgrading;
     private boolean fighting;
 
-    States(){
+    public States(){
         this.canMove = true;
         this.canHeal = false;
         this.canUpgrade = false;
