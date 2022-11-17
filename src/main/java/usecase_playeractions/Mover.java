@@ -15,7 +15,7 @@ public class Mover implements Observer {
     /**
      * The command that triggers this movement
      */
-    private String trigger;
+    private final String trigger;
     /**
      * Change in x coordinate when moved
      */
