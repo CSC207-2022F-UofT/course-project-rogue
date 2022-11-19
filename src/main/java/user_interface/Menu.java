@@ -77,6 +77,15 @@ public class Menu extends JPanel{
         }
 
         if (start != false){
+            try {
+                BufferedImage img = ImageIO.read(new File("pictures/b9db1d7d93c1709.png"));
+                g.drawImage(img,0,0,size.width,size.height,this);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
             g.setColor(new Color(0x050505));
             g.fillRect(0,0,size.width-1000,size.height-300);
             g.setColor(new Color(0xA6287886, true));
