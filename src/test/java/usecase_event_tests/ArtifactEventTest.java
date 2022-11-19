@@ -34,7 +34,7 @@ public class ArtifactEventTest {
     @DisplayName("Test Trigger")
     void testTrigger(){
         event.trigger(player);
-        Assertions.assertEquals(2, player.getCollectible("Artifact").getNum());
+        Assertions.assertEquals(2, player.getArtifact().getNum());
     }
     @Test
     @DisplayName("Test Enter")

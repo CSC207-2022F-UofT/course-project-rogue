@@ -5,13 +5,16 @@ import entity.Player;
 public class NoEvent extends Event{
 
     /**
-     * Triggering this Event lets the player choose to either heal or upgrade their weapon
+     * Triggering this Event lets the player choose to either heal or upgrade their weapon once. The Player also has the
+     * choice to neither heal nor upgrade if they have insufficient essence.
      *
-     * @param: player: the player triggering the Event
+     * @param player the player triggering the Event
      */
     @Override
     public void trigger(Player player) {
-
+        player.setCanHeal(true);
+        player.setCanMove(false);
+        // And then let player choose if they want to heal or upgrade
     }
 
     /** Tells Map whether this tile could be stepped on by Player

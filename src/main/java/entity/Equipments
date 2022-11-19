@@ -1,0 +1,34 @@
+[
+ {
+    "name": "Iron Sword"
+    "weaponAttackPoint": 100
+ },
+ {
+    "name": "Bronze Sword"
+    "weaponAttackPoint": 200
+ },
+ {
+    "name": "Silver Sword"
+    "weaponAttackPoint": 300
+ },
+ {
+    "name": "Gold Sword"
+    "weaponAttackPoint": 400
+ },
+ {
+    "name": "Iron Armor"
+    "dmgReduced": 50
+ },
+ {
+    "name": "Bronze Armor"
+    "dmgReduced": 100
+ },
+ {
+    "name": "Silver Armor"
+    "dmgReduced": 150
+ },
+ {
+    "name": "Gold Armor"
+    "dmgReduced": 200
+ }
+]

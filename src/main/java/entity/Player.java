@@ -13,7 +13,7 @@ public class Player extends Character{
     private final int[] location;
     private final CollectibleInventory collectibleInventory;
     private final BasicEquipmentSlots equipments;
-
+    private final States state;
 
     /**The Basic Player Template, it is flexible in terms of being able to add an instance of class system if needed
      * The inventory is open for adding more items.
@@ -32,6 +32,7 @@ public class Player extends Character{
         this.collectibleInventory = inventory;
         this.equipments = equipments;
         this.location = location;
+        this.state = new States();
     }
 
     /**Gets the equipment that the player is equipping based on the inputted equipment type
@@ -52,16 +53,21 @@ public class Player extends Character{
         }
     }
 
-    /**Gets the desired collectible class based on the CollectibleType String
+    /** Gets the essence Collectible
      *
-     * @param collectibleType: The type of entity.Collectible the Player has in their inventory
-     *                     in this case {"Essence", "Artifacts"}
-     *
-     * @return returns the collectible class of the desired object
+     * @return The collectible stored inside the inventory
      */
-    public Collectible getCollectible(String collectibleType){
+    public Collectible getEssence(){
+        return this.collectibleInventory.getEssence();
+    }
 
-        return this.collectibleInventory.getCollectible(collectibleType);
+    /** Gets the artifact Collectible
+     *
+     * @return The collectible stored inside the inventory
+     */
+    public Collectible getArtifact(){
+
+        return this.collectibleInventory.getArtifact();
     }
 
     /**Gets the instance variable of the Max HP of player
@@ -100,7 +106,7 @@ public class Player extends Character{
         return this.location;
     }
 
-    /**Sets the current hitpoint of Player based on the the inputted integer x
+    /**Sets the current hitpoint of Player based on the inputted integer x
      *
      * @param x: The integer to increase by, if x is positive then increase, else if it is negative, it'll decrease.
      *
@@ -125,17 +131,24 @@ public class Player extends Character{
     }
 
 
-    /**Sets the desired collectible class amount based on the CollectibleType String and Integer amount
+    /** Changes the number of Essence in the inventory
      *
-     * @param collectibleType: The type of Collectible the Player has in their inventory
-     *                         in this case {"Essence", "Artifacts"}
-     * @param amount: The amount to increase the desired collectibleType by,
-     *              if amount is positive then increase
-     *              if amount is negative then decrease
+     * @param amount: Adds amoount to current amount, the boundary of amount is
+     *                 -infinity < amount < infinity
      */
-    public void changeCollectibleAmount(String collectibleType, int amount){
-        this.collectibleInventory.changeAmount(collectibleType, amount);
+    public void changeEssenceAmount(int amount){
+        this.collectibleInventory.changeEssenceAmount(amount);
     }
+
+    /** Changes the number of Artifact in the inventory
+     *
+     * @param amount: Adds amoount to current amount, the boundary of amount is
+     *                 -infinity < amount < infinity
+     */
+    public void changeArtifactAmount(int amount){
+        this.collectibleInventory.changeArtifactAmount(amount);
+    }
+
 
     /**Change the Weapon of Equipment Slot based on the new inputted Weapon
      *
@@ -151,5 +164,94 @@ public class Player extends Character{
      */
     public void setEquipment(Armor newArmor) {
         this.equipments.setArmor(newArmor);
+    }
+
+    /**Sets whether if the player can Heal
+     *
+     * @param canHeal: True if player can Heal, else false
+     */
+    public void setCanHeal(boolean canHeal) {
+        state.setCanHeal(canHeal);
+    }
+
+    /**Sets whether if the player can move
+     *
+     * @param canMove: True if player can move, else false
+     */
+    public void setCanMove(boolean canMove){
+        state.setCanMove(canMove);
+    }
+
+    /**Sets whether if the player can Upgrade
+     *
+     * @param canUpgrade: True if player can Upgrade, else false
+     */
+    public void setCanUpgrade(boolean canUpgrade) {
+        state.setCanUpgrade(canUpgrade);
+    }
+
+    /**Sets whether if the player is Fighting
+     *
+     * @param fighting: True if player is Fighting, else false
+     */
+    public void setFighting(boolean fighting) {
+        state.setFighting(fighting);
+    }
+
+    /**Sets whether if the player is upgrading
+     *
+     * @param upgrading: True if player is upgrading, else false
+     */
+    public void setUpgrading(boolean upgrading) {
+        state.setUpgrading(upgrading);
+    }
+
+    /**Gets canHeal from states
+     *
+     */
+    public boolean getCanHeal() {
+        return state.getCanHeal();
+    }
+
+    /**Gets canMove from states
+     *
+     */
+    public boolean getCanMove() {
+        return state.getCanMove();
+    }
+
+    /**Gets canUpgrade from states
+     *
+     */
+    public boolean getCanUpgrade() {
+        return state.getCanUpgrade();
+    }
+
+    /**Gets fighting from states
+     *
+     */
+    public boolean getFighting() {
+        return state.getFighting();
+    }
+
+    /**Gets upgrading from states
+     *
+     */
+    public boolean getUpgrading() {
+        return state.getUpgrading();
+    }
+
+    /**Gets Collectible Inventory from Player
+     *
+     */
+    public CollectibleInventory getCollectibleInventory(){
+        return this.collectibleInventory;
+    }
+
+    /**Gets Equipment Slot From Player Inventory from Player
+     *
+     */
+    public BasicEquipmentSlots getEquipments(){
+        return this.equipments;
     }
 }

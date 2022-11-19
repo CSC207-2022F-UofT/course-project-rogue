@@ -43,8 +43,9 @@ public class BasicEquipmentSlots {
      * @param newArmor: Armor class
      */
     public void setArmor(Armor newArmor){
-
-        this.armor = newArmor;
+        if (this.armor.compareTo(newArmor) < 0){
+            this.armor = newArmor;
+        }
     }
 
     /** Change the Weapon in the equipment slots
@@ -52,7 +53,9 @@ public class BasicEquipmentSlots {
      * @param newWeapon: Weapon class
      */
     public void setWeapon(Weapon newWeapon){
-        this.weapon = newWeapon;
+        if (this.weapon.compareTo(newWeapon) < 0){
+            this.weapon = newWeapon;
+        }
     }
 
 }

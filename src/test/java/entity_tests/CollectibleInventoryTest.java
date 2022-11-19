@@ -21,8 +21,8 @@ public class CollectibleInventoryTest {
     @DisplayName("Test Get Collectible Type")
     void testGetCollectible(){
         Assertions.assertAll(
-                () -> Assertions.assertEquals(essence, inventory.getCollectible("Essence")),
-                () -> Assertions.assertEquals(artifact, inventory.getCollectible("Artifact"))
+                () -> Assertions.assertEquals(essence, inventory.getEssence()),
+                () -> Assertions.assertEquals(artifact, inventory.getArtifact())
         );
     }
 
@@ -31,10 +31,10 @@ public class CollectibleInventoryTest {
     void testAddAmount(){
 
         Assertions.assertAll(
-                () -> inventory.changeAmount("Essence", 20),
-                () -> Assertions.assertEquals(120, inventory.getCollectible("Essence").getNum()),
-                () -> inventory.changeAmount("Artifact", 1),
-                () -> Assertions.assertEquals(2, inventory.getCollectible("Artifact").getNum())
+                () -> inventory.changeEssenceAmount(20),
+                () -> Assertions.assertEquals(120, inventory.getEssence().getNum()),
+                () -> inventory.changeArtifactAmount(1),
+                () -> Assertions.assertEquals(2, inventory.getArtifact().getNum())
         );
     }
 
@@ -42,10 +42,10 @@ public class CollectibleInventoryTest {
     @DisplayName("Test to subtract amount to Essence and Artifact")
     void testSubtractAmount(){
         Assertions.assertAll(
-                () -> inventory.changeAmount("Essence", -30),
-                () -> Assertions.assertEquals(70, inventory.getCollectible("Essence").getNum()),
-                () -> inventory.changeAmount("Artifact", -1),
-                () -> Assertions.assertEquals(0, inventory.getCollectible("Artifact").getNum())
+                () -> inventory.changeEssenceAmount(-30),
+                () -> Assertions.assertEquals(70, inventory.getEssence().getNum()),
+                () -> inventory.changeArtifactAmount(-1),
+                () -> Assertions.assertEquals(0, inventory.getArtifact().getNum())
         );
     }
 
