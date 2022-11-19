@@ -1,5 +1,6 @@
 package user_interface;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.JPanel;
 import java.awt.*;
@@ -9,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Menu extends JPanel{
     boolean start = false;
@@ -48,13 +52,19 @@ public class Menu extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Dimension size=this.getParent().getSize();
 
         if (start == false){
-            Dimension size=this.getParent().getSize();
-            Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/user_interface/1.jpg"));
-            g.drawImage(image,0,0,size.width,size.height,this);
+//            Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("C:\\Users\\ZHY\\Desktop\\.idea\\course-project-rogue\\src\\main\\java\\user_interface\\1.jpg"));
+            try {
+                BufferedImage img = ImageIO.read(new File("pictures/b9db1d7d93c1709.png"));
+                g.drawImage(img,0,0,size.width,size.height,this);
 
-            g.setColor(new Color(0xF8F6F6));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            g.setColor(new Color(0xF10707));
             g.setFont(new Font("TimesRoman",Font.CENTER_BASELINE,100));
             g.drawString("Welcome to Adventure !",150,200);
 
@@ -64,6 +74,13 @@ public class Menu extends JPanel{
             quitbutton.setBounds(500,600,300,100);
             quitbutton.setFont(new Font("TimesRoman",Font.CENTER_BASELINE,40));
             add(quitbutton);
+        }
+
+        if (start != false){
+            g.setColor(new Color(0x050505));
+            g.fillRect(0,0,size.width-1000,size.height-300);
+            g.setColor(new Color(0xA6287886, true));
+            g.fillRect(0,size.height-300,size.width,300);
         }
 
     }

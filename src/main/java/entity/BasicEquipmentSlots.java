@@ -1,5 +1,12 @@
 package entity;
 
+import FileReader.deserialization.basicEquipmentSlotsDeserialization;
+import FileReader.deserialization.collectibleInventoryDeserialization;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = basicEquipmentSlotsDeserialization.class)
 public class BasicEquipmentSlots {
     private Armor armor;
     private Weapon weapon;
@@ -34,7 +41,6 @@ public class BasicEquipmentSlots {
     /** Change the Armor in the equipment slots
      *
      * @param newArmor: Armor class
-     * @return Replaces the original Armor with the inputted Armor
      */
     public void setArmor(Armor newArmor){
 
@@ -46,7 +52,6 @@ public class BasicEquipmentSlots {
      * @param newWeapon: Weapon class
      */
     public void setWeapon(Weapon newWeapon){
-
         this.weapon = newWeapon;
     }
 
