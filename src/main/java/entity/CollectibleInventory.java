@@ -1,10 +1,9 @@
 package entity;
 
-import java.util.HashMap;
-
 public class CollectibleInventory extends BasicInventory{
 
-    private final HashMap<String, Collectible> inventory = new HashMap<>();
+    private final Collectible artifact;
+    private final Collectible essence;
 
     /** Creates the entity.Collectible Inventory Class, which holds only the Essence
      * and Artifact for the Player
@@ -16,30 +15,44 @@ public class CollectibleInventory extends BasicInventory{
     public CollectibleInventory(String inventoryName, Collectible essence, Collectible artifact) {
 
         super(inventoryName);
-        this.inventory.put(essence.getName(), essence);
-        this.inventory.put(artifact.getName(), artifact);
+        this.artifact = artifact;
+        this.essence = essence;
     }
 
 
-    /** Gets the name of the inventory
+    /** Gets the artifact Collectible
      *
      * @return The collectible stored inside the inventory
      */
-    public Collectible getCollectible(String collectibleType){
+    public Collectible getArtifact(){
 
-        return this.inventory.get(collectibleType);
+        return this.artifact;
     }
 
-    /** Creates the entity.Collectible Inventory Class
+    /** Gets the essence Collectible
      *
-     * @param collectibleType: Type of collectible you want to get from inventory
-     *                       which is either "Essence", or "Artifact" in this case.
+     * @return The collectible stored inside the inventory
+     */
+    public Collectible getEssence(){
+        return this.essence;
+    }
+
+    /** Changes the number of Essence in the inventory
+     *
      * @param amount: Adds amoount to current amount, the boundary of amount is
      *                 -infinity < amount < infinity
      */
-    public void changeAmount(String collectibleType, int amount){
+    public void changeEssenceAmount(int amount){
+        this.essence.changeNum(amount);
+    }
 
-        Collectible collectible = getCollectible(collectibleType);
-        collectible.changeNum(amount);
+    /** Changes the number of Artifact in the inventory
+     *
+     * @param amount: Adds amoount to current amount, the boundary of amount is
+     *                 -infinity < amount < infinity
+     */
+
+    public void changeArtifactAmount(int amount){
+        this.artifact.changeNum(amount);
     }
 }
