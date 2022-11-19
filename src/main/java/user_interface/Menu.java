@@ -52,9 +52,9 @@ public class Menu extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Dimension size=this.getParent().getSize();
 
         if (start == false){
-            Dimension size=this.getParent().getSize();
 //            Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("C:\\Users\\ZHY\\Desktop\\.idea\\course-project-rogue\\src\\main\\java\\user_interface\\1.jpg"));
             try {
                 BufferedImage img = ImageIO.read(new File("pictures/b9db1d7d93c1709.png"));
@@ -74,6 +74,16 @@ public class Menu extends JPanel{
             quitbutton.setBounds(500,600,300,100);
             quitbutton.setFont(new Font("TimesRoman",Font.CENTER_BASELINE,40));
             add(quitbutton);
+        }
+
+        if (start != false){
+            try {
+                BufferedImage img = ImageIO.read(new File("pictures/score.png"));
+                g.drawImage(img,0,0,100,size.height-200,this);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
