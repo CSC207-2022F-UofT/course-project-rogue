@@ -3,6 +3,7 @@ package user_interface;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.JPanel;
+import javax.swing.text.View;
 import java.awt.*;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -20,11 +21,15 @@ public class Menu extends JPanel{
     private JButton quitbutton = new JButton("QUIT");
     int screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
     int screen_hight = Toolkit.getDefaultToolkit().getScreenSize().height;
+    int hp = 100;
+    String text1 = "Welcome the great adventurer to this evil world.";
+    String text2 = "Welcome the great adventurer to this evil world.";
+    String text3 = "Welcome the great adventurer to this evil world.";
+    String text4 = "Welcome the great adventurer to this evil world.";
 
 
     public Menu() {
         JPanel panel = new JPanel();
-
         panel.setLayout(null);
 
 
@@ -44,6 +49,30 @@ public class Menu extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
+            }
+        });
+
+        this.setFocusable(true);
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                int keycode = e.getKeyCode();
+                System.out.println(keycode);
+                if (keycode == 32){
+                    hp-=10;
+                    text1 = text1 + "w";
+                    repaint();
+                }
+                if (keycode == 27){
+                    int d = JOptionPane.showConfirmDialog(null,"Back to Menu?","Menu",JOptionPane.CLOSED_OPTION);
+                    if (d == JOptionPane.OK_OPTION){
+                        start = !start;
+                        startbutton.setVisible(true);
+                        quitbutton.setVisible(true);
+                        repaint();
+                    }
+                }
             }
         });
 
@@ -79,17 +108,27 @@ public class Menu extends JPanel{
         if (start != false){
             try {
                 BufferedImage img = ImageIO.read(new File("pictures/b9db1d7d93c1709.png"));
-                g.drawImage(img,0,0,size.width,size.height,this);
+                g.drawImage(img,0,size.height-300,size.width,300,this);
+                //g.drawImage(img,0,0,size.width-1000,size.height-300,this);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
-            g.setColor(new Color(0x050505));
+            g.setColor(new Color(0x698C8989, true));
             g.fillRect(0,0,size.width-1000,size.height-300);
+            g.setColor(new Color(0xFF090909, true));
+            g.setFont(new Font("TimesRoman",Font.CENTER_BASELINE,30));
+            g.drawString("HP:      "+hp,30,120);
+            g.drawString("Artifact:",30,240);
+            g.drawString("Essence:",30,360);
+
             g.setColor(new Color(0xA6287886, true));
             g.fillRect(0,size.height-300,size.width,300);
+            g.setColor(new Color(0xFF090909, true));
+            g.drawString(text1 ,100,size.height-220);
+            g.drawString(text2 ,100,size.height-170);
+            g.drawString(text3 ,100,size.height-120);
+            g.drawString(text4 ,100,size.height-70);
         }
 
     }
