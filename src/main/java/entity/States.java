@@ -55,35 +55,35 @@ public class States {
         isUpgrading = upgrading;
     }
 
-    /**Gets canHeal from states
+    /**Returns true if player can Heal
      *
      */
     public boolean getCanHeal() {
         return canHeal;
     }
 
-    /**Gets canMove from states
+    /**Returns true if player can Move
      *
      */
     public boolean getCanMove() {
         return canMove;
     }
 
-    /**Gets canUpgrade from states
+    /**Returns true if player can Upgrade
      *
      */
     public boolean getCanUpgrade() {
         return canUpgrade;
     }
 
-    /**Gets fighting from states
+    /**Returns true if player is in a Fight
      *
      */
     public boolean getFighting() {
         return fighting;
     }
 
-    /**Gets upgrading from states
+    /**Returns true if player is choosing between upgrade
      *
      */
     public boolean getUpgrading() {
