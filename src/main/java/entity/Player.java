@@ -235,4 +235,18 @@ public class Player extends Character{
     public boolean getUpgrading() {
         return state.getUpgrading();
     }
+
+    /**Gets Collectible Inventory from Player
+     *
+     */
+    public CollectibleInventory getCollectibleInventory(){
+        return this.collectibleInventory;
+    }
+
+    /**Gets Equipment Slot From Player Inventory from Player
+     *
+     */
+    public BasicEquipmentSlots getEquipments(){
+        return this.equipments;
+    }
 }
