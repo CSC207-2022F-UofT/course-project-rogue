@@ -9,27 +9,31 @@ public class DropRetriever {
      */
     public void getDrops(){
         // determine whether we will drop weapon or armour, essence or artifact
-        boolean dropWeapon = this.toDrop();
-        boolean dropArtifact = this.toDrop();
+        boolean dropEquipment = this.isEquipmentDrop();
+        boolean dropArtifact = this.isArtifactDrop();
         if (dropArtifact){
             int artifact = this.getCollectibleNum("Artifact");
         } else{
             int essence = this.getCollectibleNum("Essence");
         }
 
-        if(dropWeapon){
-            // create a new weapon
-        } else{
-            // create new armor
-        }
+        // if(dropEquipment){
+            // choose a random index to create weapon
+        // }
     }
 
     /**
-     * @return Whether to drop an Item.
+     * @return Whether to drop an Artifact
      */
-    private boolean toDrop() {
+    private boolean isArtifactDrop() {
         Random rand = new Random();
         return rand.nextBoolean(); // randomly decides if Artifact is dropped
+    }
+
+    private boolean isEquipmentDrop() {
+        Random rand = new Random();
+        int result = rand.nextInt(101);
+        return result <= 10; // drops a piece of equipment w/ 10% chance
     }
 
     /**
