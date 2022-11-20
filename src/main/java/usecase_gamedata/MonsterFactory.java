@@ -1,16 +1,18 @@
 package usecase_gamedata;
 
 import entity.Monster.Monster;
-import entity.Monster.Power;
-
-import java.util.HashMap;
 
 public class MonsterFactory {
-    public Monster getMonster(String n, String t, HashMap<String, int[]> stats, boolean state){
-        return new Monster(n, t, stats, state);
-    }
 
-    public Monster getMonster(String n, String t, HashMap<String, int[]> stats, boolean state, Power pwr){
-        return new Monster(n, t, stats, state, pwr);
+    /**
+     * @param index The index of the Monster in the database.
+     * @return A random Monster.
+     */
+    public Monster create(int index){
+        try {
+            return new ObjectMapper().readValue(fileReader.findInt("index", index), Monster.class);
+        } catch (JsonProcessingException e) {
+             throw new RuntimeException(e);
+        }
     }
 }
