@@ -13,7 +13,7 @@ public class EssenceEvent extends Event{
      */
     @Override
     public void trigger(Player player) {
-
+        
         Random random = new Random();
         int random_int = random.nextInt(500);
         increaseEssence(player, random_int + 1);

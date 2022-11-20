@@ -1,9 +1,9 @@
 package entity;
 
-import file_reader.deserialization.playerDeserialization;
+import file_reader.deserialization.PlayerDeserialization;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = playerDeserialization.class)
+@JsonDeserialize(using = PlayerDeserialization.class)
 public class Player extends Character{
 
     private final int maxHitPoint;

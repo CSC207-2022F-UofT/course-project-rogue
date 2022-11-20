@@ -12,12 +12,12 @@ import entity.Weapon;
 
 import java.io.IOException;
 
-public class basicEquipmentSlotsDeserialization extends StdDeserializer<BasicEquipmentSlots> {
-    public basicEquipmentSlotsDeserialization() {
+public class BasicEquipmentSlotsDeserialization extends StdDeserializer<BasicEquipmentSlots> {
+    public BasicEquipmentSlotsDeserialization() {
         this(null);
     }
 
-    public basicEquipmentSlotsDeserialization(Class<?> vc){
+    public BasicEquipmentSlotsDeserialization(Class<?> vc){
         super(vc);
     }
 
@@ -25,7 +25,7 @@ public class basicEquipmentSlotsDeserialization extends StdDeserializer<BasicEqu
     public BasicEquipmentSlots deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
         ObjectMapper om = new ObjectMapper();
         JsonNode node = p.getCodec().readTree(p);
-        deserializeHelper h = new deserializeHelper();
+        DeserializeHelper h = new DeserializeHelper();
         Weapon w = om.treeToValue(node.get("weapon"), Weapon.class);
         Armor a = om.treeToValue(node.get("armor"), Armor.class);
         return new BasicEquipmentSlots(w, a);

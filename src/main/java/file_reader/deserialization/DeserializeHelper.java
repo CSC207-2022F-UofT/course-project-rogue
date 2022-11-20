@@ -3,7 +3,7 @@ package file_reader.deserialization;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.IntNode;
 
-public class deserializeHelper {
+public class DeserializeHelper {
     public int readInt(JsonNode node){
         return (Integer) ((IntNode) node).numberValue();
     }

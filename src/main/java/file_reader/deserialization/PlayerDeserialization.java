@@ -12,18 +12,18 @@ import entity.Player;
 
 import java.io.IOException;
 
-public class playerDeserialization extends StdDeserializer<Player> {
-    public playerDeserialization() {
+public class PlayerDeserialization extends StdDeserializer<Player> {
+    public PlayerDeserialization() {
         this(null);
     }
-    public playerDeserialization(Class<?> vc){
+    public PlayerDeserialization(Class<?> vc){
         super(vc);
     }
     @Override
     public Player deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
         ObjectMapper om = new ObjectMapper();
         JsonNode node = p.getCodec().readTree(p);
-        deserializeHelper h = new deserializeHelper();
+        DeserializeHelper h = new DeserializeHelper();
         int mHP = h.readInt(node.get("maxHitPoint"));
         int aTP = h.readInt(node.get("attackPoint"));
         CollectibleInventory inventory = om.treeToValue(node.get("inventory"), CollectibleInventory.class);

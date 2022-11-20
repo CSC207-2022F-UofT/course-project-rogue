@@ -8,7 +8,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public interface GameFileReader_interface {
+public interface GameFileReaderInterface {
     static JSONArray find_helper(String dir) throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader(dir);
@@ -18,7 +18,7 @@ public interface GameFileReader_interface {
     default String findInt_helper(String key, int value, String dir){
         JSONArray jarr;
         try {
-            jarr = GameFileReader_interface.find_helper(dir);
+            jarr = GameFileReaderInterface.find_helper(dir);
             for(int i = 0; i < jarr.size(); i++){
                 JSONObject jsonObject = (JSONObject) jarr.get(i);
                 if(jsonObject.get(key) instanceof Number && (Long)jsonObject.get(key) == value){
@@ -37,7 +37,7 @@ public interface GameFileReader_interface {
     default String findString_helper(String key, String value, String dir){
         JSONArray jarr;
         try {
-            jarr = GameFileReader_interface.find_helper(dir);
+            jarr = GameFileReaderInterface.find_helper(dir);
             for(int i = 0; i < jarr.size(); i++){
                 JSONObject jsonObject = (JSONObject) jarr.get(i);
                 if(jsonObject.get(key) instanceof String && ((String)(jsonObject.get(key))).equals(value)){
@@ -56,7 +56,7 @@ public interface GameFileReader_interface {
     default String findBoolean_helper(String key, Boolean value, String dir){
         JSONArray jarr;
         try {
-            jarr = GameFileReader_interface.find_helper(dir);
+            jarr = GameFileReaderInterface.find_helper(dir);
             for(int i = 0; i < jarr.size(); i++){
                 JSONObject jsonObject = (JSONObject) jarr.get(i);
                 if(jsonObject.get(key) instanceof Boolean && (Boolean) jsonObject.get(key) == value){
