@@ -22,6 +22,8 @@ public class Menu extends JPanel{
     int screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
     int screen_hight = Toolkit.getDefaultToolkit().getScreenSize().height;
     int hp = 100;
+    int af = 99;
+    int es = 66;
     String text1 = "Welcome the great adventurer to this evil world.";
     String text2 = "Welcome the great adventurer to this evil world.";
     String text3 = "Welcome the great adventurer to this evil world.";
@@ -119,8 +121,8 @@ public class Menu extends JPanel{
             g.setColor(new Color(0xFF090909, true));
             g.setFont(new Font("TimesRoman",Font.CENTER_BASELINE,30));
             g.drawString("HP:      "+hp,30,120);
-            g.drawString("Artifact:",30,240);
-            g.drawString("Essence:",30,360);
+            g.drawString("Artifact:      "+af,30,240);
+            g.drawString("Essence:      "+es,30,360);
 
             g.setColor(new Color(0xA6287886, true));
             g.fillRect(0,size.height-300,size.width,300);
@@ -135,7 +137,4 @@ public class Menu extends JPanel{
 
 
 }
-
-
-
 
