@@ -1,6 +1,6 @@
 package usecase_gamedata;
 
-import FileReader.playerFileReader;
+import file_reader.playerFileReader;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.BasicEquipmentSlots;

@@ -1,7 +1,6 @@
 package entity;
 
-import FileReader.deserialization.basicEquipmentSlotsDeserialization;
-import FileReader.deserialization.playerDeserialization;
+import file_reader.deserialization.playerDeserialization;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = playerDeserialization.class)

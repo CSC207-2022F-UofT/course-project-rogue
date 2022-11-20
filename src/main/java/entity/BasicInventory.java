@@ -1,8 +1,5 @@
 package entity;
 
-import FileReader.deserialization.basicEquipmentSlotsDeserialization;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 public abstract class BasicInventory {
     private final String name;
 
