@@ -1,5 +1,11 @@
 package entity;
+import FileReader.deserialization.collectibleInventoryDeserialization;
+import FileReader.deserialization.playerDeserialization;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@JsonDeserialize(using = collectibleInventoryDeserialization.class)
 public class CollectibleInventory extends BasicInventory{
 
     private final Collectible artifact;
