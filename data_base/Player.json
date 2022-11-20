@@ -1,0 +1,27 @@
+[
+  {
+    "class": "Basic Player",
+    "maxHitPoint": 100,
+    "attackPoint": 1,
+    "inventory": {
+      "inventoryName": "Inventory5629",
+      "essence": {
+        "collectibleType": "essence",
+        "num": 12323
+      },
+      "artifact": {
+        "collectibleType" : "artifact"
+      }
+    },
+    "equipments": {
+      "weapon": {
+        "name": "sword",
+        "weaponAttackPoint": 1223
+      },
+      "armor": {
+        "name": "armor",
+        "dmgReduced": 122
+      }
+    }
+  }
+]
