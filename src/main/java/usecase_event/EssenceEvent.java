@@ -9,7 +9,7 @@ public class EssenceEvent extends Event{
     /**
      * Triggering this Event adds a random amount to the Essence that the player holds
      *
-     * @param: player: the player triggering the Event
+     * @param player the player triggering the Event
      */
     @Override
     public void trigger(Player player) {
@@ -21,12 +21,12 @@ public class EssenceEvent extends Event{
 
     /**Adds the Essence by random amount from 0 to 500
      *
-     * @param: player: the player triggering the Event
+     * @param player the player triggering the Event
      *
      */
     private void increaseEssence(Player player, int random){
 
-        player.changeCollectibleAmount("Essence", random);
+        player.changeEssenceAmount(random);
     }
 
     /** Tells Map whether this tile could be stepped on by Player

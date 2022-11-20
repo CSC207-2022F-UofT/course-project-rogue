@@ -32,7 +32,7 @@ public class EssenceEventTest {
     void testTrigger(){
         int originalAmount = essence.getNum();
         event.trigger(player);
-        Assertions.assertTrue(player.getCollectible("Essence").getNum() > originalAmount);
+        Assertions.assertTrue(player.getEssence().getNum() > originalAmount);
     }
     @Test
     @DisplayName("Test Enter")

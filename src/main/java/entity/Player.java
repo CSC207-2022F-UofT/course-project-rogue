@@ -48,16 +48,21 @@ public class Player extends Character{
         }
     }
 
-    /**Gets the desired collectible class based on the CollectibleType String
+    /** Gets the essence Collectible
      *
-     * @param collectibleType: The type of entity.Collectible the Player has in their inventory
-     *                     in this case {"Essence", "Artifacts"}
-     *
-     * @return returns the collectible class of the desired object
+     * @return The collectible stored inside the inventory
      */
-    public Collectible getCollectible(String collectibleType){
+    public Collectible getEssence(){
+        return this.collectibleInventory.getEssence();
+    }
 
-        return this.collectibleInventory.getCollectible(collectibleType);
+    /** Gets the artifact Collectible
+     *
+     * @return The collectible stored inside the inventory
+     */
+    public Collectible getArtifact(){
+
+        return this.collectibleInventory.getArtifact();
     }
 
     /**Gets the instance variable of the Max HP of player
@@ -96,7 +101,7 @@ public class Player extends Character{
         return this.location;
     }
 
-    /**Sets the current hitpoint of Player based on the the inputted integer x
+    /**Sets the current hitpoint of Player based on the inputted integer x
      *
      * @param x: The integer to increase by, if x is positive then increase, else if it is negative, it'll decrease.
      *
@@ -121,17 +126,24 @@ public class Player extends Character{
     }
 
 
-    /**Sets the desired collectible class amount based on the CollectibleType String and Integer amount
+    /** Changes the number of Essence in the inventory
      *
-     * @param collectibleType: The type of Collectible the Player has in their inventory
-     *                         in this case {"Essence", "Artifacts"}
-     * @param amount: The amount to increase the desired collectibleType by,
-     *              if amount is positive then increase
-     *              if amount is negative then decrease
+     * @param amount: Adds amoount to current amount, the boundary of amount is
+     *                 -infinity < amount < infinity
      */
-    public void changeCollectibleAmount(String collectibleType, int amount){
-        this.collectibleInventory.changeAmount(collectibleType, amount);
+    public void changeEssenceAmount(int amount){
+        this.collectibleInventory.changeEssenceAmount(amount);
     }
+
+    /** Changes the number of Artifact in the inventory
+     *
+     * @param amount: Adds amoount to current amount, the boundary of amount is
+     *                 -infinity < amount < infinity
+     */
+    public void changeArtifactAmount(int amount){
+        this.collectibleInventory.changeArtifactAmount(amount);
+    }
+
 
     /**Change the Weapon of Equipment Slot based on the new inputted Weapon
      *
@@ -222,5 +234,19 @@ public class Player extends Character{
      */
     public boolean getUpgrading() {
         return state.getUpgrading();
+    }
+
+    /**Gets Collectible Inventory from Player
+     *
+     */
+    public CollectibleInventory getCollectibleInventory(){
+        return this.collectibleInventory;
+    }
+
+    /**Gets Equipment Slot From Player Inventory from Player
+     *
+     */
+    public BasicEquipmentSlots getEquipments(){
+        return this.equipments;
     }
 }
