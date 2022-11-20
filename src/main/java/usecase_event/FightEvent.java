@@ -2,7 +2,11 @@ package usecase_event;
 
 import entity.Monster.Monster;
 import entity.Player;
+import usecase_fights.DamageCalculator;
+import usecase_fights.WinCalculator;
 import usecase_gamedata.MonsterFactory;
+
+import java.util.Random;
 
 public class FightEvent extends Event{
     MonsterFactory factory;
@@ -12,8 +16,15 @@ public class FightEvent extends Event{
     }
     @Override
     public void trigger(Player player) {
-        MonsterFactory monsterFactory = new MonsterFactory();
-        // Monster monster = monsterFactory.getMonster()
+        Random random = new Random();
+        int index = random.nextInt(4); // for now pick between the first 3 monsters
+        Monster monster = this.factory.create(index);
+
+        DamageCalculator damageCalculator = new DamageCalculator(monster, player);
+        WinCalculator winCalculator = new WinCalculator(monster, player);
+        int winChance = winCalculator.calculate();
+        int damage = damageCalculator.calculate();
+
 
         // obtain a monster, calculate win chance, damage, and drops
         // maybe i need a class to hold this info?? or will i just have to calculate twice...
