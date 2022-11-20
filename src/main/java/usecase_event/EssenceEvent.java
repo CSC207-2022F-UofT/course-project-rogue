@@ -15,8 +15,9 @@ public class EssenceEvent extends Event{
     public void trigger(Player player) {
 
         Random random = new Random();
-        int random_int = random.nextInt(500);
-        increaseEssence(player, random_int + 1);
+        int random_int = random.nextInt(100);
+        increaseEssence(player, random_int + 1); // get essence from 1 to 100 inclusive
+        // call presenter here to tell player that they found random_int amount of essence
     }
 
     /**Adds the Essence by random amount from 0 to 500
