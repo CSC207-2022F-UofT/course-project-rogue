@@ -14,22 +14,32 @@ public class WinChance implements Calculated{
     }
 
     /**
-     * The maximum win chance a Player can have is 100%.
-     * @return
+     * @return The percentage likelihood of the Player winning a fight against Monster, the maximum likelihood being 100
+     * and the minimum being 0.
      */
     @Override
     public int calculate(){
         int mAtk = monster.getAttack() - player.getEquipment("Armor").getStatValue();
         int mHp = monster.getHealth();
-        int pAtk = player.getAttackPoint();
+        int pAtk = player.getAttackPoint() + player.getEquipment("Weapon").getStatValue();
         int pHp = player.getCurrHitPoint();
 
-        // compare power difference. character with stronger attack (damage reduction should have a 5% win increase)
-        // compare health, character with high health has increased survival chance (increase by 5 or lose by 5)
-        // if monster hp: 10 and player hp = 15. then 15/10 = 1.5 multiplier
-        // compare monster attack to player hp, if monster attack = higher than hp, lower the chance of winning
-        //
-        // compare player attack to monster hp, if player attack = higher than hp, higher chance of winning
-        return 0;
+        return this.getWinChance(pHp, mHp, pAtk, mAtk);
+    }
+
+    private int getWinChance(int pHp, int mHp, int pAtk, int mAtk){
+        float pHitsRequired = (float)pHp / mAtk; // the number hits required to kill player
+        float mHitsRequired = (float)mHp / pAtk; // the number hits required to kill monster
+
+        float bonus = ((pHitsRequired - mHitsRequired)* 5);
+        // 5 bonus percent per every 1 hit in the difference b/w hits required
+
+        int winChance = Math.round(50 + bonus);
+        if (winChance > 100){
+            return 100;
+        } else if (winChance < 0) {
+            return 0;
+        }
+        return winChance;
     }
 }
