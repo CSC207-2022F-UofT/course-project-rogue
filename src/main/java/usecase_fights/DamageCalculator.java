@@ -4,11 +4,11 @@ import entity.Monster.Monster;
 import entity.Player;
 
 /** A calculator that determines Monster damage to Player. */
-public class DamageInflicted implements Calculated {
+public class DamageCalculator extends Calculator {
     Monster monster;
     Player player;
 
-    public DamageInflicted(Monster mon, Player play){
+    public DamageCalculator(Monster mon, Player play){
         this.monster = mon;
         this.player = play;
     }

@@ -4,11 +4,11 @@ import entity.Monster.Monster;
 import entity.Player;
 
 /** A calculator that determines the winning chance of the Player in a fight. */
-public class WinChance implements Calculated{
+public class WinCalculator extends Calculator{
     Monster monster;
     Player player;
 
-    public WinChance(Monster monster, Player player){
+    public WinCalculator(Monster monster, Player player){
         this.monster = monster;
         this.player = player;
     }
