@@ -30,12 +30,11 @@ public class CollectibleInventory extends BasicInventory{
         return this.inventory.get(collectibleType);
     }
 
-    /** Creates the entity.Collectible Inventory Class
+    /** Changes the amount of the given collectible to the given amount.
      *
      * @param collectibleType: Type of collectible you want to get from inventory
      *                       which is either "Essence", or "Artifact" in this case.
-     * @param amount: Adds amoount to current amount, the boundary of amount is
-     *                 -infinity < amount < infinity
+     * @param amount: The number to be added to the collectible amount. Can be positive or negative.
      */
     public void changeAmount(String collectibleType, int amount){
 
