@@ -26,7 +26,7 @@ public class EssenceEvent extends Event{
      */
     private void increaseEssence(Player player, int random){
 
-        player.changeCollectibleAmount("Essence", random);
+        player.changeEssenceAmount(random);
     }
 
     /** Tells Map whether this tile could be stepped on by Player
