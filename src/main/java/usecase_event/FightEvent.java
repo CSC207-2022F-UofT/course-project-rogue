@@ -64,9 +64,9 @@ public class FightEvent extends Event{
         FightSummary summary;
         if (drop.isPresent()){
             Equipment equip = drop.get();
-            summary = new FightSummary(essence, winChance, damage, equip); // dependency injection here?
+            summary = new FightSummary(monster, essence, winChance, damage, equip); // dependency injection here?
         } else{
-            summary = new FightSummary(essence, winChance, damage); // DI??
+            summary = new FightSummary(monster, essence, winChance, damage); // DI??
         }
         return summary;
     }
@@ -81,7 +81,7 @@ public class FightEvent extends Event{
         String line1 = String.format("You encountered a %s", monster.toString());
         String line2 = String.format("Power: %s", this.getPowerString(monster));
         String line3 = String.format("Win chance: %d", summary.getWinChance()) + "%, "
-                + String.format("Possible damage: %d", summary.getDamage());
+                + String.format("Damage: %d", summary.getDamage());
         String line4 = String.format("Drops: %d essence,", summary.getAmountDrop()) +
                 String.format(" %s", summary.getEquipment().toString());
         String line5 = "[F]Fight    or      [R]Run";
