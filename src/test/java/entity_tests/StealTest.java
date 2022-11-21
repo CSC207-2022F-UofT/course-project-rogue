@@ -1,7 +1,7 @@
 package entity_tests;
 
 import entity.*;
-import entity.Monster.Steal;
+import entity.monster.Steal;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

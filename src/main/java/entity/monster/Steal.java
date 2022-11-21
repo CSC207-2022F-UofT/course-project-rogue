@@ -1,4 +1,4 @@
-package entity.Monster;
+package entity.monster;
 
 import entity.Character;
 import entity.Item;

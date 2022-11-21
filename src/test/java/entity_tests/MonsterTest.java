@@ -1,8 +1,8 @@
 package entity_tests;
 
-import entity.Monster.Monster;
-import entity.Monster.Power;
-import entity.Monster.Steal;
+import entity.monster.Monster;
+import entity.monster.Power;
+import entity.monster.Steal;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
