@@ -14,7 +14,7 @@ import java.util.Random;
 /** A fight sequence. */
 public class Fighter implements Observer {
     private final Player player;
-    private final String trigger; // should be "F"
+    private final String trigger; // 'F'
 
     public Fighter(Player player, String trigger){
         this.player = player;
