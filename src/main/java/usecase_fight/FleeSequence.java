@@ -5,7 +5,7 @@ public class FleeSequence {
         // does not change player state
         // calculate flee success
         // if successful, call presenter, choose a random flee success message
-        // if not successful, inflict flee damage and call presenter, choose random flee fail message
+        // if not successful, inflict flee damage
     }
 
     // flee strings:
