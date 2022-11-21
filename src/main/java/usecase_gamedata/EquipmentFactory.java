@@ -3,16 +3,22 @@ package usecase_gamedata;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Equipment;
-import file_reader.GameFileReader;
+import file_reader.GameFileReaderInterface;
 
 public class EquipmentFactory {
+
+    private static GameFileReaderInterface ef; // not sure if its problematic to have this as static
+
+    public EquipmentFactory(GameFileReaderInterface ef){
+        EquipmentFactory.ef = ef;
+    }
+
     /**
      * @param index The index of the Equipment in the database.
      * @return A random Monster.
      */
 
     public static Equipment create(int index){
-        GameFileReader ef = new GameFileReader("data_base");
         try {
             return new ObjectMapper().readValue(ef.findInt("index", index), Equipment.class);
         } catch (JsonProcessingException e) {
