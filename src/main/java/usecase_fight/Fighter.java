@@ -137,6 +137,7 @@ public class Fighter implements Observer {
         } else {
             this.inflictDamage(summary);
             if (this.checkGameOver()){
+                this.player.setGameOver();
                 this.displayResults();
             } else {
                 this.displayResults(powerResult, summary.getDamage());
