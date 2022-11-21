@@ -1,4 +1,4 @@
-package usecase_fights;
+package usecase_fight;
 
 import entity.Monster.Monster;
 import entity.Player;
