@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class EssenceEvent extends Event{
 
+
     /**
      * Triggering this Event adds a random amount to the Essence that the player holds
      *
@@ -18,6 +19,7 @@ public class EssenceEvent extends Event{
         int random_int = random.nextInt(500);
         increaseEssence(player, random_int + 1);
     }
+
 
     /**Adds the Essence by random amount from 0 to 500
      *

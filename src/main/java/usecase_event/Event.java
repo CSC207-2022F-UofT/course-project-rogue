@@ -12,6 +12,6 @@ abstract public class Event implements Enterable{
 
         return false;
     }
-    public void trigger(Player player){
-    }
+    public abstract void trigger(Player player);
+
 }
