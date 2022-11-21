@@ -10,10 +10,4 @@ public class Weapon extends Equipment {
     public Weapon(String name, int weaponAttackPoint){
         super(name, 1, "Attack", weaponAttackPoint);
     }
-
-    /** Represents the weapon as its name. */
-    @Override
-    public String toString(){
-        return this.getName();
-    }
 }
