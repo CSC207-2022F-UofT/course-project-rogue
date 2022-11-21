@@ -42,7 +42,7 @@ public class FightEvent extends Event{
     private Monster randomMonster(){
         Random random = new Random();
         int index = random.nextInt(4); // for now pick between the first 3 monsters
-        return MonsterFactory.create(index);
+        return MonsterFactory.createRandom(index);
     }
 
     /**
