@@ -137,7 +137,6 @@ public class Fighter implements Observer {
         } else {
             this.inflictDamage(summary);
             if (this.checkGameOver()){
-                // change state to out of fighting? so can execute the restart use case??
                 this.displayResults();
             } else {
                 this.displayResults(powerResult, summary.getDamage());
@@ -181,6 +180,7 @@ public class Fighter implements Observer {
         String line2 = "Damage Taken: 0";
         String line3 = "Items Received: " + received;
         String line5 = "Press [SpaceBar] to continue.";
+
         // call presenter where line 4 arg is empty string.
     }
 
