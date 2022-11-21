@@ -1,5 +1,9 @@
 package entity;
 
+import file_reader.deserialization.PlayerDeserialization;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = PlayerDeserialization.class)
 public class Player extends Character{
 
     private final int maxHitPoint;
@@ -234,5 +238,19 @@ public class Player extends Character{
      */
     public boolean getUpgrading() {
         return state.getUpgrading();
+    }
+
+    /**Gets Collectible Inventory from Player
+     *
+     */
+    public CollectibleInventory getCollectibleInventory(){
+        return this.collectibleInventory;
+    }
+
+    /**Gets Equipment Slot From Player Inventory from Player
+     *
+     */
+    public BasicEquipmentSlots getEquipments(){
+        return this.equipments;
     }
 }

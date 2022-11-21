@@ -1,5 +1,9 @@
 package entity;
 
+import file_reader.deserialization.BasicEquipmentSlotsDeserialization;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = BasicEquipmentSlotsDeserialization.class)
 public class BasicEquipmentSlots {
     private Armor armor;
     private Weapon weapon;

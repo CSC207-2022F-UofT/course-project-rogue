@@ -1,0 +1,27 @@
+[
+  {
+    "class": "Basic Player",
+    "maxHitPoint": 100,
+    "attackPoint": 10,
+    "inventory": {
+      "inventoryName": "Inventory",
+      "essence": {
+        "collectibleType": "Essence",
+        "num": 12323
+      },
+      "artifact": {
+        "collectibleType" : "Artifact"
+      }
+    },
+    "equipments": {
+      "weapon": {
+        "name": "Fragile Sword",
+        "weaponAttackPoint": 1223
+      },
+      "armor": {
+        "name": "Broken Armor",
+        "dmgReduced": 122
+      }
+    }
+  }
+]

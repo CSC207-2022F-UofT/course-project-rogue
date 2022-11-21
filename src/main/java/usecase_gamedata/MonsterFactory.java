@@ -1,7 +1,7 @@
 package usecase_gamedata;
 
-import entity.Monster.Monster;
-import entity.Monster.Power;
+import entity.monster.Monster;
+import entity.monster.Power;
 
 import java.util.HashMap;
 

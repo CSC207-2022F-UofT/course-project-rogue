@@ -13,7 +13,7 @@ public class EssenceEvent extends Event{
      */
     @Override
     public void trigger(Player player) {
-
+        
         Random random = new Random();
         int random_int = random.nextInt(500);
         increaseEssence(player, random_int + 1);
@@ -34,7 +34,7 @@ public class EssenceEvent extends Event{
      * @return True if player can step on it, false if it can's
      */
     @Override
-    public boolean enter(){
+    public boolean enter(Player player){
         return true;
     }
 }

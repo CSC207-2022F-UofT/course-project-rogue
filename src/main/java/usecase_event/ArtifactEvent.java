@@ -19,7 +19,7 @@ public class ArtifactEvent extends Event{
      * @return True if player can step on it, false if it can's
      */
     @Override
-    public boolean enter(){
+    public boolean enter(Player player){
 
         return true;
     }
