@@ -15,15 +15,15 @@ public class DamageCalculator extends Calculator {
 
     /**
      * Amount of damage dealt is the attack power of the Monster subtracted by the damage reduction of the Player.
-     * (This is temporary as I don't know how you guys want me to balance this)
+     * (This is temporary as I don't know how you guys want me to balance this).
+     * If the damage reduction of the Player is greater than attack power of Monster, return 0.
      *
      * @return The amount of damage that this monster will inflict.
      */
     @Override
-    public int calculate() { // should I make the interface a calculator????
+    public int calculate() {
         int mAtk = this.monster.getAttack();
         int pRed = this.player.getEquipment("Armor").getStatValue();
-        // what happens when damage reduction is somehow greater than monster attack?
-        return (mAtk - pRed);
+        return Math.max((mAtk - pRed), 0);
     }
 }
