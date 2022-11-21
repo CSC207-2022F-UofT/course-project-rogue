@@ -4,7 +4,7 @@ import entity.Equipment;
 import entity.Monster.Monster;
 
 public class FightSummary {
-    Monster monster;
+    private final Monster monster;
     /** The amount of damage to be done to Player. */
     private final int damage;
     /** The number of essence being dropped. */
@@ -56,5 +56,10 @@ public class FightSummary {
     /** @return The Equipment being dropped. */
     public Equipment getEquipment(){
         return this.equipment;
+    }
+
+    /** @return The Monster in the fight. */
+    public Monster getMonster(){
+        return this.monster;
     }
 }
