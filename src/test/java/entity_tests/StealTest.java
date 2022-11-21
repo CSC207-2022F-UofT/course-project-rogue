@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class StealTest {
 
-    String[] items = new String[]{"Essence"};
-    Steal steal = new Steal(items);
+    Steal steal = new Steal();
 
     /** Makes a new Player with the given Essence count. */
     private Player makePlayer(int n){
@@ -43,7 +42,7 @@ public class StealTest {
     void testUsePowerLess(){
         Player player = makePlayer(3);
         String result = steal.usePower(player);
-        Assertions.assertEquals("1 Essence stolen.", result);
+        Assertions.assertEquals("1 essence stolen.", result);
         // checks that the output is correct
         Assertions.assertEquals(2, player.getEssence().getNum());
         // checks that item count was reduced
@@ -54,7 +53,7 @@ public class StealTest {
     void testUsePowerEnough(){
         Player player = makePlayer(4);
         String result = steal.usePower(player);
-        Assertions.assertEquals("1 Essence stolen.", result);
+        Assertions.assertEquals("1 essence stolen.", result);
         //checks the output
         Assertions.assertEquals(3, player.getEssence().getNum());
         // checks that item count was reduced
@@ -68,9 +67,9 @@ public class StealTest {
     void testUsePowerGreater(){
         Player player = makePlayer(8);
         String result = steal.usePower(player);
-        if (result.equals("2 Essence(s) stolen.")){
+        if (result.equals("2 essence stolen.")){
             Assertions.assertEquals(6, player.getEssence().getNum());
-        } else if (result.equals("1 Essence stolen.")) {
+        } else if (result.equals("1 essence stolen.")) {
             Assertions.assertEquals(7, player.getEssence().getNum());
         }
 
