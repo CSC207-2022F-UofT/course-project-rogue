@@ -41,7 +41,7 @@ public class Steal extends MonsterPower{
     @Override
     public String usePower(Character player){
         String item = this.randomItem();
-        Item toSteal = ((Player)player).getCollectible(item);
+        Item toSteal = item.equals("Artifact")? ((Player)player).getArtifact():((Player)player).getEssence();
         int possible = toSteal.getNum();
         int max = (toSteal.getNum())/4; // Just decided on 1/4 of Players current amount for now, open to change
         int stolen = this.steal(toSteal, max, possible);

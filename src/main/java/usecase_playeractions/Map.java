@@ -1,7 +1,6 @@
 package usecase_playeractions;
 
 
-import entity.Monster.Monster;
 import entity.Player;
 import usecase_event.Event;
 
