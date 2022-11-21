@@ -30,6 +30,7 @@ public class MapTest {
     void setUp(){
         map = new Map();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
+        player.setCanMove(true);
     }
 
     @Test

@@ -1,10 +1,14 @@
 package usecase_event;
 
+import entity.Monster.Monster;
 import entity.Player;
+import interface_adapters.OutputBoundary;
 
 public class FightEvent extends Event{
+
     @Override
     public void trigger(Player player) {
+
     }
 
     /** Tells Map whether this tile could be stepped on by Player
