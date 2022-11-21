@@ -15,7 +15,6 @@ public class DropRetriever {
      * @return the Equipment drop of a fight.
      */
     public Optional<Equipment> getEquipment(){
-        // determine whether equip drop
         boolean dropEquipment = this.isEquipmentDrop();
 
         // get equipment drop
