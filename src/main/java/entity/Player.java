@@ -210,6 +210,12 @@ public class Player extends Character{
         state.setUpgrading(upgrading);
     }
 
+    /**
+     * Changes Player into GameOver state.
+     * To chang out of GameOver state, any other Player state must be set to true.
+     */
+    public void setGameOver(){state.setGameOver();}
+
     /**Gets canHeal from states
      *
      */
@@ -244,6 +250,11 @@ public class Player extends Character{
     public boolean getUpgrading() {
         return state.getUpgrading();
     }
+
+    /**
+     * @return GameOver state of Player.
+     */
+    public boolean getGameOver() {return state.getGameOver();}
 
     /**Gets Collectible Inventory from Player
      *
