@@ -1,0 +1,42 @@
+[
+ {
+    "index": 0,
+    "name": "Iron Sword",
+    "weaponAttackPoint": 100
+ },
+ {
+    "index": 1,
+    "name": "Bronze Sword",
+    "weaponAttackPoint": 200
+ },
+ {
+    "index": 2,
+    "name": "Silver Sword",
+    "weaponAttackPoint": 300
+ },
+ {
+    "index": 3,
+    "name": "Gold Sword",
+    "weaponAttackPoint": 400
+ },
+ {
+    "index": 4,
+    "name": "Iron Armor",
+    "dmgReduced": 50
+ },
+ {
+    "index": 5,
+    "name": "Bronze Armor",
+    "dmgReduced": 100
+ },
+ {
+    "index": 6,
+    "name": "Silver Armor",
+    "dmgReduced": 150
+ },
+ {
+    "index": 7,
+    "name": "Gold Armor",
+    "dmgReduced": 200
+ }
+]

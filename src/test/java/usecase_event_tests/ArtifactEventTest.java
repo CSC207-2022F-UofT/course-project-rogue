@@ -39,6 +39,6 @@ public class ArtifactEventTest {
     @Test
     @DisplayName("Test Enter")
     void testEnter(){
-        Assertions.assertTrue(event.enter());
+        Assertions.assertTrue(event.enter(player));
     }
 }
