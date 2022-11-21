@@ -1,4 +1,4 @@
-package usecase_fights;
+package usecase_fight;
 
 public class FleeSequence {
     public void flee(){
