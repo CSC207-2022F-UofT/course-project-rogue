@@ -105,7 +105,7 @@ public class Player extends Character{
         return this.location;
     }
 
-    /** Sets the current hitpoint of Player based on the inputted integer x. If the change results in a negative number,
+    /** Sets currHitPoint of Player based on the inputted integer x. If the change results in a negative number
      * currHitPoint is set to 0.
      *
      * @param x: The integer to increase by, if x is positive then increase, else if it is negative, it'll decrease.
