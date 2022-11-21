@@ -1,6 +1,4 @@
-package GameData;
-import FileReader.GameFileReader_interface;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+package game_data;
 import entity.Player;
 import org.json.simple.parser.ParseException;
 import usecase_gamedata.factory;

@@ -1,9 +1,6 @@
 package entity;
 
-import FileReader.deserialization.basicEquipmentSlotsDeserialization;
-import FileReader.deserialization.collectibleInventoryDeserialization;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import file_reader.deserialization.basicEquipmentSlotsDeserialization;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = basicEquipmentSlotsDeserialization.class)

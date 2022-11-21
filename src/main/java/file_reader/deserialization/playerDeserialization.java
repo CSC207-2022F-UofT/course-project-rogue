@@ -1,4 +1,4 @@
-package FileReader.deserialization;
+package file_reader.deserialization;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -6,12 +6,9 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.databind.node.IntNode;
 import entity.BasicEquipmentSlots;
-import entity.Collectible;
 import entity.CollectibleInventory;
 import entity.Player;
-import org.json.simple.JSONArray;
 
 import java.io.IOException;
 

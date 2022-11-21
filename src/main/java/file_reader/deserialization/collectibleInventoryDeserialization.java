@@ -1,4 +1,4 @@
-package FileReader.deserialization;
+package file_reader.deserialization;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import entity.Collectible;
 import entity.CollectibleInventory;
-import org.w3c.dom.html.HTMLTableColElement;
 
 import java.io.IOException;
 

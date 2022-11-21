@@ -1,4 +1,4 @@
-package FileReader.deserialization;
+package file_reader.deserialization;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.IntNode;

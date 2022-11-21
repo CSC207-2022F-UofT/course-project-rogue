@@ -1,4 +1,4 @@
-package FileReader.deserialization;
+package file_reader.deserialization;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;

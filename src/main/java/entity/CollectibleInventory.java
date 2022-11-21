@@ -1,5 +1,8 @@
 package entity;
+import file_reader.deserialization.collectibleInventoryDeserialization;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@JsonDeserialize(using = collectibleInventoryDeserialization.class)
 public class CollectibleInventory extends BasicInventory{
 
     private final Collectible artifact;
