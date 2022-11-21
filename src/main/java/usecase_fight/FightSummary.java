@@ -1,8 +1,10 @@
 package usecase_fight;
 
 import entity.Equipment;
+import entity.Monster.Monster;
 
 public class FightSummary {
+    Monster monster;
     /** The amount of damage to be done to Player. */
     private final int damage;
     /** The number of essence being dropped. */
@@ -15,10 +17,12 @@ public class FightSummary {
     /**
      * Create a FightSummary with details on the amount of essence being dropped, and the Player's win chance.
      *
-     * @param num The number of Collectible being dropped from the fight.
-     * @param chance The chance Player has to win the fight.
+     * @param monster The Monster in the fight.
+     * @param num     The number of Collectible being dropped from the fight.
+     * @param chance  The chance Player has to win the fight.
      */
-    public FightSummary(int num, int chance, int damage){
+    public FightSummary(Monster monster, int num, int chance, int damage){
+        this.monster = monster;
         this.essenceNum = num;
         this.winChance = chance;
         this.damage = damage;
@@ -29,8 +33,8 @@ public class FightSummary {
      *
      * @param equipment The equipment being dropped from the fight.
      */
-    public FightSummary(int num, int chance, int damage, Equipment equipment){
-        this(num, chance, damage);
+    public FightSummary(Monster monster, int num, int chance, int damage, Equipment equipment){
+        this(monster, num, chance, damage);
         this.equipment = equipment;
     }
 
