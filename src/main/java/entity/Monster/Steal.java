@@ -31,7 +31,7 @@ public class Steal extends MonsterPower{
         int max = (toSteal.getNum())/4; // Just decided on 1/4 of Players current amount for now, open to change
         int stolen = this.steal(toSteal, max, possible);
         if (stolen == 0){
-            return "Hurray! Nothing was stolen!";
+            return "Nothing was stolen!";
         } else if (stolen == 1) {
             return "1 essence stolen.";
         } else{

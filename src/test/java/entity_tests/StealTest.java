@@ -33,7 +33,7 @@ public class StealTest {
     void testUsePowerNone(){
         Player player = makePlayer(0);
         String result = steal.usePower(player);
-        Assertions.assertEquals("Hurray! Nothing was stolen!", result);
+        Assertions.assertEquals("Nothing was stolen!", result);
         Assertions.assertEquals(0, player.getEssence().getNum());
     }
 
