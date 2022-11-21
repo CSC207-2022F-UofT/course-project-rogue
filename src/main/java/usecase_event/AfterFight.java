@@ -11,14 +11,14 @@ public class AfterFight implements Observer {
     private final String trigger;
     public AfterFight(Player player, String trigger){
         this.player = player;
-        this.trigger = trigger; // not sure yet, wanna do space bar but idk if that is possible
+        this.trigger = trigger; // not sure yet
     }
 
     private void changeStates(){
         this.player.setFighting(false);
         this.player.setCanHeal(true);
-        this.player.setCanUpgrade(true); // make canupgradeheal into one state?
-        // canMove should still be no (i never changed it back in fighter class)
+        this.player.setCanUpgrade(true);
+        // canMove should still be no (I never changed it back in fighter class)
     }
 
     @Override
