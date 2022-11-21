@@ -17,8 +17,7 @@ class MonsterTest {
     HashMap<String, int[]> stats = new HashMap<>(Map.ofEntries(
                                                                 entry("Attack", atkStat),
                                                                 entry("Health", hpStat)));
-    String[] items = new String[]{"Essence"};
-    Power power = new Steal(items);
+    Power power = new Steal();
 
     Monster monster = new Monster("Slime", "Basic", stats, false);
     Monster special = new Monster("Stealer", "Basic", stats, true, power);
