@@ -107,15 +107,10 @@ public class Monster extends Character {
         return this.power;
     }
 
-    /**
-     * Change the power of the Monster to the given Power.
-     *
-     * @param newP  The new Power of the Monster.
-     */
-    public void changePower(Power newP){
-        this.power = newP;
+
+    /** Represents a Monster as its name. */
+    @Override
+    public String toString(){
+        return this.NAME;
     }
-
-
-    // Perhaps override toString for Monster representation, might be helpful for FightEvent
 }
