@@ -33,7 +33,7 @@ public class FightEvent extends Event{
         Monster monster = this.randomMonster();
         FightSummary summary = this.createFight(player, monster);
         player.setFight(summary); // gives player current fight details
-        this.displaySummary(summary, monster);
+        this.displaySummary(summary);
     }
 
     /**
@@ -75,9 +75,9 @@ public class FightEvent extends Event{
      * Displays the summary of the fight to the user.
      *
      * @param summary Summary of fight details.
-     * @param monster Monster in the fight.
      */
-    private void displaySummary(FightSummary summary, Monster monster){
+    private void displaySummary(FightSummary summary){
+        Monster monster = summary.getMonster();
         String line1 = String.format("You encountered a %s", monster.toString());
         String line2 = String.format("Power: %s", this.getPowerString(monster));
         String line3 = String.format("Win chance: %d", summary.getWinChance()) + "%, "
