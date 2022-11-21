@@ -1,4 +1,4 @@
-package usecase_event;
+package usecase_fight;
 
 import entity.Player;
 
@@ -8,10 +8,10 @@ import java.util.Observer;
 
 public class AfterFight implements Observer {
     private final Player player;
-    private final String trigger;
+    private final String trigger; // Continue key
     public AfterFight(Player player, String trigger){
         this.player = player;
-        this.trigger = trigger; // not sure yet
+        this.trigger = trigger;
     }
 
     private void changeStates(){
