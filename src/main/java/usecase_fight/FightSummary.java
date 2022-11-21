@@ -1,0 +1,56 @@
+package usecase_fight;
+
+import entity.Equipment;
+
+public class FightSummary {
+    /** The amount of damage to be done to Player. */
+    private final int damage;
+    /** The number of essence being dropped. */
+    private final int essenceNum;
+    /** The win chance of the Player. */
+    private final int winChance;
+    /** The equipment being dropped. This won't always be assigned. */
+    private Equipment equipment;
+
+    /**
+     * Create a FightSummary with details on the amount of essence being dropped, and the Player's win chance.
+     *
+     * @param num The number of Collectible being dropped from the fight.
+     * @param chance The chance Player has to win the fight.
+     */
+    public FightSummary(int num, int chance, int damage){
+        this.essenceNum = num;
+        this.winChance = chance;
+        this.damage = damage;
+    }
+
+    /**
+     * Create a FightSummary with details on collectible, collectible amount, win chance, and equipment drops.
+     *
+     * @param equipment The equipment being dropped from the fight.
+     */
+    public FightSummary(int num, int chance, int damage, Equipment equipment){
+        this(num, chance, damage);
+        this.equipment = equipment;
+    }
+
+    /** @return The amount of damage to be done to Player. */
+    public int getDamage(){
+        return this.damage;
+    }
+
+    /** @return The amount of Collectible being dropped. */
+    public int getAmountDrop(){
+        return this.essenceNum;
+    }
+
+    /** @return The win chance of Player. */
+    public int getWinChance(){
+        return this.winChance;
+    }
+
+    /** @return The Equipment being dropped. */
+    public Equipment getEquipment(){
+        return this.equipment;
+    }
+}
