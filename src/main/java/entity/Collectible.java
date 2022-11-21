@@ -1,6 +1,5 @@
 package entity;
 
-import entity.Item;
 
 public class Collectible extends Item {
 
@@ -21,14 +20,5 @@ public class Collectible extends Item {
      */
     public Collectible(String collectibleType, int num){
         super(collectibleType, num);
-    }
-
-    /**
-     * Sets the num of the Collectible to the collectibleNum given.
-     * @param collectibleNum the new value for num.
-     */
-    public void setCollectibleNum(int collectibleNum){
-        int difference = collectibleNum - this.getNum();
-        this.changeNum(difference);
     }
 }

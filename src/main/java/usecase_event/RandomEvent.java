@@ -30,7 +30,6 @@ public class RandomEvent extends Event{
      */
     @Override
     public boolean enter(){
-
         return true;
     }
 

@@ -52,8 +52,8 @@ public class PlayerTest {
     @DisplayName("Test Get Collectible")
     void testGetCollectible(){
         Assertions.assertAll(
-                () -> Assertions.assertEquals(essence, player.getCollectible("Essence")),
-                () -> Assertions.assertEquals(artifact, player.getCollectible("Artifact"))
+                () -> Assertions.assertEquals(essence, player.getEssence()),
+                () -> Assertions.assertEquals(artifact, player.getArtifact())
         );
     }
 
@@ -121,14 +121,14 @@ public class PlayerTest {
     @DisplayName("Test Change Collectible Amount")
     void testChangeCollectibleAmount(){
         Assertions.assertAll(
-                () -> player.changeCollectibleAmount("Essence", 20),
-                () -> Assertions.assertEquals(120, player.getCollectible("Essence").getNum()),
-                () -> player.changeCollectibleAmount("Artifact", 2),
-                () -> Assertions.assertEquals(3, player.getCollectible("Artifact").getNum()),
-                () -> player.changeCollectibleAmount("Essence", -300),
-                () -> Assertions.assertEquals(0, player.getCollectible("Essence").getNum()),
-                () -> player.changeCollectibleAmount("Artifact", -30),
-                () -> Assertions.assertEquals(0, player.getCollectible("Artifact").getNum())
+                () -> player.changeEssenceAmount(20),
+                () -> Assertions.assertEquals(120, player.getEssence().getNum()),
+                () -> player.changeArtifactAmount(2),
+                () -> Assertions.assertEquals(3, player.getArtifact().getNum()),
+                () -> player.changeEssenceAmount(-300),
+                () -> Assertions.assertEquals(0, player.getEssence().getNum()),
+                () -> player.changeArtifactAmount(-30),
+                () -> Assertions.assertEquals(0, player.getArtifact().getNum())
         );
     }
 
@@ -143,10 +143,82 @@ public class PlayerTest {
     @Test
     @DisplayName("Test for Changing Weapon")
     void testChangeWeapon(){
-        Weapon durandal = new Weapon("Legendary Sword Durandal", 1000);
+        Weapon durandal = new Weapon("Legendary Sword Durandal", 1001);
         player.setEquipment(durandal);
         Assertions.assertEquals(durandal, player.getEquipment("Weapon"));
     }
 
+    @Test
+    @DisplayName("Test for get can Move")
+    void testGetCanMove(){
+        Assertions.assertTrue(player.getCanMove());
+    }
+    @Test
+    @DisplayName("Test for get can Heal")
+    void testGetCanHeal(){
+        Assertions.assertFalse(player.getCanHeal());
+    }
+
+    @Test
+    @DisplayName("Test for get can upgrade")
+    void testGetCanUpgrade(){
+        Assertions.assertFalse(player.getCanUpgrade());
+    }
+
+    @Test
+    @DisplayName("Test for get is Fighting")
+    void testGetFighting(){
+        Assertions.assertFalse(player.getFighting());
+    }
+    @Test
+    @DisplayName("Test for get is Upgrading")
+    void testGetUpgrading(){
+        Assertions.assertFalse(player.getUpgrading());
+    }
+
+    @Test
+    @DisplayName("Test for set can Move")
+    void testSetCanMove(){
+        player.setCanMove(false);
+        Assertions.assertFalse(player.getCanMove());
+    }
+    @Test
+    @DisplayName("Test for set can Heal")
+    void testSetCanHeal(){
+        player.setCanHeal(true);
+        Assertions.assertTrue(player.getCanHeal());
+    }
+
+    @Test
+    @DisplayName("Test for set can upgrade")
+    void testSetCanUpgrade(){
+        player.setCanUpgrade(true);
+        Assertions.assertTrue(player.getCanUpgrade());
+    }
+
+    @Test
+    @DisplayName("Test for set is Fighting")
+    void testSetFighting(){
+        player.setFighting(true);
+        Assertions.assertTrue(player.getFighting());
+    }
+    @Test
+    @DisplayName("Test for set is upgrading")
+    void testSetUpgrading(){
+        player.setUpgrading(true);
+        Assertions.assertTrue(player.getUpgrading());
+    }
+
+    @Test
+    @DisplayName("Test for getting Player Collectible Inventory")
+    void testGetCollectibleInventory(){
+        Assertions.assertEquals(inventory, player.getCollectibleInventory());
+    }
+
+    @Test
+    @DisplayName("Test for getting Player Equipment Slot")
+    void testGetEquipmentSlot(){
+        Assertions.assertEquals(equipmentSlots, player.getEquipments());
+    }
 }
 

@@ -1,6 +1,6 @@
 package entity;
 
-import entity.Equipment;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Weapon extends Equipment {
 
@@ -9,15 +9,7 @@ public class Weapon extends Equipment {
      * @param name the name of the Weapon.
      * @param weaponAttackPoint the attack power value.
      */
-    public Weapon(String name, int weaponAttackPoint){
+    public Weapon(@JsonProperty("name")String name, @JsonProperty("weaponAttackPoint")int weaponAttackPoint){
         super(name, 1, "Attack", weaponAttackPoint);
-    }
-
-    /**
-     * Returns the attack point value.
-     * @return the attack point value.
-     */
-    public int getWeaponAttackPoint() {
-        return this.getStats();
     }
 }
