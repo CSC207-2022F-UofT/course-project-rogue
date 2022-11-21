@@ -10,7 +10,7 @@ import java.util.Random;
 public class Runner implements Observer {
 
     private final Player player;
-    private final String trigger;
+    private final String trigger; // "R"
     public Runner(Player player, String trigger){
         this.player = player;
         this.trigger = trigger;

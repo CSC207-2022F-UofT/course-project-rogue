@@ -7,7 +7,7 @@ import java.util.Observer;
 
 public class Restarter implements Observer {
     private final Player player;
-    private final String trigger;
+    private final String trigger; // (Continue key)
 
     /**
      * Creates a Restarter with the given Player and trigger string.
