@@ -1,14 +1,18 @@
 package entity;
 
+import usecase_fight.FightSummary;
+
 public class Player extends Character{
 
-    private final int maxHitPoint;
+    private final int maxHitPoint; // maybe we can combine Player's info into its own class
     private int currHitPoint;
     private final int attackPoint;
     private final int[] location;
     private final CollectibleInventory collectibleInventory;
     private final BasicEquipmentSlots equipments;
     private final States state;
+    /** Details of the fight that Player is in. */
+    private FightSummary fight;
 
     /**The Basic Player Template, it is flexible in terms of being able to add an instance of class system if needed
      * The inventory is open for adding more items.
@@ -101,7 +105,8 @@ public class Player extends Character{
         return this.location;
     }
 
-    /**Sets the current hitpoint of Player based on the inputted integer x
+    /** Sets the current hitpoint of Player based on the inputted integer x. If the change results in a negative number,
+     * currHitPoint is set to 0.
      *
      * @param x: The integer to increase by, if x is positive then increase, else if it is negative, it'll decrease.
      *
@@ -248,5 +253,17 @@ public class Player extends Character{
      */
     public BasicEquipmentSlots getEquipments(){
         return this.equipments;
+    }
+
+    /** Reassigns a new FightSummary to Player. */
+    public void setFight(FightSummary summary){
+        this.fight = summary;
+    }
+
+    /**
+     * @return Fight details of Player fight.
+     */
+    public FightSummary getFight(){
+        return this.fight;
     }
 }
