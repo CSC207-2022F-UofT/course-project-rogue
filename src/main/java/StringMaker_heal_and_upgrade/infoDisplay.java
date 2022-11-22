@@ -40,7 +40,7 @@ public class infoDisplay implements VisualHealUpgrade {
 
     /**
      * It will tell the player that the update/heal success
-     * @param type
+     * @param type "upgrade"/"heal"
      */
     @Override
     public void showResult(String type) {
