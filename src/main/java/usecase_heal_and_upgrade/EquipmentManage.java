@@ -18,8 +18,8 @@ public class EquipmentManage {
         return this.EquipmentSelected.getTimesUpgraded() >=4;
     }
 
-    public void StatsIncrease(int be_added){
-        this.EquipmentSelected.addStatValue(be_added);
+    public void StatsIncrease(int beAdded){
+        this.EquipmentSelected.addStatValue(beAdded);
     }
 
 }

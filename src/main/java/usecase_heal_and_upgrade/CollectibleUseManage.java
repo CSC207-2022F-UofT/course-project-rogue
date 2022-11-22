@@ -27,7 +27,7 @@ public class CollectibleUseManage {
      * Return if we can upgrade
      * @return whether the player can upgrade
      */
-    public boolean get_able(){
+    public boolean getAble(){
         return this.able;
     }
 

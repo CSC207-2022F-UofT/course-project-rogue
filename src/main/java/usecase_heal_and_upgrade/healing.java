@@ -1,6 +1,6 @@
 package usecase_heal_and_upgrade;
 
-import Interface_heal_and_upgrade.Visual_h_u;
+import Interface_heal_and_upgrade.VisualHealUpgrade;
 import entity.Player;
 import StringMaker_heal_and_upgrade.infoDisplay;
 
@@ -52,15 +52,15 @@ public class healing implements Observer {
      * the player to make choice.
      */
     public void healInfo(){
-        Visual_h_u speaker = new infoDisplay();
+        VisualHealUpgrade speaker = new infoDisplay();
         if (CheckFullHP()) {
             speaker.WarnFullHP();
             return;
         }
         CollectibleUseManage ColHealper= new CollectibleUseManage(this.player, this.EssenceRequire, "heal");
         speaker.showInfo(this.player.getEssence().getNum(), this.EssenceRequire, 0, 0,
-                ColHealper.get_able(), "heal");
-        if(ColHealper.get_able()){
+                ColHealper.getAble(), "heal");
+        if(ColHealper.getAble()){
             speaker.keypressRequest("Y","N");
         }
     }

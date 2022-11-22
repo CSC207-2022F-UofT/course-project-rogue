@@ -11,7 +11,7 @@ public class StatCalculator {
      * This method will return the Stat increase in one upgrade
      * @return the stat to be added
      */
-    public int determine_add() {
+    public int determineAdd() {
         return this.statIncrese;
     }
 }

@@ -4,17 +4,17 @@ import entity.Player;
 
 import java.util.Observable;
 
-public class healing_upgrading_control extends Observable {
+public class healingUpgradingControl extends Observable {
     /**
      * Initialize the basic control class with no Observer
      */
-    public healing_upgrading_control(){}
+    public healingUpgradingControl(){}
 
     /**
      * Initialize the actions choice of the player.
      * The basic Upgrade and Heal actions will be initialized.
      */
-    public healing_upgrading_control(Player player){
+    public healingUpgradingControl(Player player){
         this.setDefaultUP(player);
     }
 

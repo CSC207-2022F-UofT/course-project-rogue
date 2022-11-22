@@ -1,8 +1,8 @@
 package StringMaker_heal_and_upgrade;
 
-import Interface_heal_and_upgrade.Visual_h_u;
+import Interface_heal_and_upgrade.VisualHealUpgrade;
 
-public class infoDisplay implements Visual_h_u {
+public class infoDisplay implements VisualHealUpgrade {
 
     /**
      *The method will be showed in the bottom text part. It will shows that the collectible items the player has verse

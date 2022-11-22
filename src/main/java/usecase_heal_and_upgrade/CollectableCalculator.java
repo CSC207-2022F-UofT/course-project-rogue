@@ -17,8 +17,6 @@ public class CollectableCalculator {
 
     /**
      * Determine the Essence required to do the upgrading. This method will return a non-negative integer.
-     * I will set the initial value as 20 here.In the future,
-     *
      * @return the Essence for the upgrade need.
      */
     public int EssenceForUpgrade(){

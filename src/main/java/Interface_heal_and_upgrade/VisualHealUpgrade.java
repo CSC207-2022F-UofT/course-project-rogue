@@ -1,6 +1,6 @@
 package Interface_heal_and_upgrade;
 
-public interface Visual_h_u {
+public interface VisualHealUpgrade {
     /**
      *The method will be showed in the bottom text part. It will shows that the collectible items the player has verse
      * the collectible items the player need.

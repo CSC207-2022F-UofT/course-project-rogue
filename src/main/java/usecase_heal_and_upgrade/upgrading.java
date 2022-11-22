@@ -1,6 +1,6 @@
 package usecase_heal_and_upgrade;
 
-import Interface_heal_and_upgrade.Visual_h_u;
+import Interface_heal_and_upgrade.VisualHealUpgrade;
 import entity.Equipment;
 import entity.Player;
 import StringMaker_heal_and_upgrade.infoDisplay;
@@ -36,11 +36,11 @@ public class upgrading implements Observer{
      * the player to make choice.
      */
     private void upgrade_info(){
-        Visual_h_u speaker = new infoDisplay();
+        VisualHealUpgrade speaker = new infoDisplay();
         CollectibleUseManage ColHealper= new CollectibleUseManage(this.player, this.essenceRequire, "upgrade");
         speaker.showInfo(this.player.getEssence().getNum(), this.essenceRequire, 0, 0,
-                ColHealper.get_able(), "upgrade");
-        if(ColHealper.get_able()){
+                ColHealper.getAble(), "upgrade");
+        if(ColHealper.getAble()){
             speaker.keypressRequest("1","2");
         }
     }
@@ -51,7 +51,7 @@ public class upgrading implements Observer{
     private void upgrade(Equipment to_upgrade) {
         CollectibleUseManage ColHelper= new CollectibleUseManage(this.player, this.essenceRequire, "upgrade");
         EquipmentManage EquipHelper = new EquipmentManage(to_upgrade);
-        EquipHelper.StatsIncrease(this.statCount.determine_add());
+        EquipHelper.StatsIncrease(this.statCount.determineAdd());
         ColHelper.spendCollectible();
     }
 
