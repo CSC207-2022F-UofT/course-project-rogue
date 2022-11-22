@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ArmorTest {
+    Armor otherShield = new Armor("otherShield", 5);
     Armor shield = new Armor("shield", 10);
 
     @Test
@@ -36,5 +37,33 @@ class ArmorTest {
     void testAddStatValueDecrease(){
         shield.addStatValue(-10);
         Assertions.assertEquals(0, shield.getStatValue());
+    }
+
+    @Test
+    void testCompareToGreaterThan(){
+        Assertions.assertEquals(1, shield.compareTo(otherShield));
+    }
+
+    @Test
+    void testCompareToLessThan(){
+        otherShield.addStatValue(10);
+        Assertions.assertEquals(-1, shield.compareTo(otherShield));
+    }
+
+    @Test
+    void testCompareEqual(){
+        otherShield.setStatValue(shield.getStatValue());
+        Assertions.assertEquals(0, shield.compareTo(otherShield));
+    }
+
+    @Test
+    void testGetTimesUpgraded(){
+        Assertions.assertEquals(0, shield.getTimesUpgraded());
+    }
+
+    @Test
+    void testSetTimesUpgraded(){
+        shield.setTimesUpgraded(1);
+        Assertions.assertEquals(1, shield.getTimesUpgraded());
     }
 }

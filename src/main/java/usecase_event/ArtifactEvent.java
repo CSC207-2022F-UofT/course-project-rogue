@@ -11,7 +11,7 @@ public class ArtifactEvent extends Event{
      */
     @Override
     public void trigger(Player player) {
-        player.changeCollectibleAmount("Artifact", 1);
+        player.changeArtifactAmount(1);
     }
 
     /** Tells Map whether this tile could be stepped on by Player
@@ -19,7 +19,7 @@ public class ArtifactEvent extends Event{
      * @return True if player can step on it, false if it can's
      */
     @Override
-    public boolean enter(){
+    public boolean enter(Player player){
 
         return true;
     }

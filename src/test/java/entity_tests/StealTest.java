@@ -1,7 +1,7 @@
 package entity_tests;
 
 import entity.*;
-import entity.Monster.Steal;
+import entity.monster.Steal;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -35,7 +35,7 @@ public class StealTest {
         Player player = makePlayer(0);
         String result = steal.usePower(player);
         Assertions.assertEquals("Hurray! Nothing was stolen!", result);
-        Assertions.assertEquals(0, player.getCollectible("Essence").getNum());
+        Assertions.assertEquals(0, player.getEssence().getNum());
     }
 
     /** Tests Steal.usePower when the item to be stolen has a count of less than 4. Always steals 1. */
@@ -45,7 +45,7 @@ public class StealTest {
         String result = steal.usePower(player);
         Assertions.assertEquals("1 Essence stolen.", result);
         // checks that the output is correct
-        Assertions.assertEquals(2, player.getCollectible("Essence").getNum());
+        Assertions.assertEquals(2, player.getEssence().getNum());
         // checks that item count was reduced
     }
 
@@ -56,7 +56,7 @@ public class StealTest {
         String result = steal.usePower(player);
         Assertions.assertEquals("1 Essence stolen.", result);
         //checks the output
-        Assertions.assertEquals(3, player.getCollectible("Essence").getNum());
+        Assertions.assertEquals(3, player.getEssence().getNum());
         // checks that item count was reduced
     }
 
@@ -69,9 +69,9 @@ public class StealTest {
         Player player = makePlayer(8);
         String result = steal.usePower(player);
         if (result.equals("2 Essence(s) stolen.")){
-            Assertions.assertEquals(6, player.getCollectible("Essence").getNum());
+            Assertions.assertEquals(6, player.getEssence().getNum());
         } else if (result.equals("1 Essence stolen.")) {
-            Assertions.assertEquals(7, player.getCollectible("Essence").getNum());
+            Assertions.assertEquals(7, player.getEssence().getNum());
         }
 
     }

@@ -1,12 +1,9 @@
 package entity;
 
-import FileReader.deserialization.basicEquipmentSlotsDeserialization;
-import FileReader.deserialization.collectibleInventoryDeserialization;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import file_reader.deserialization.BasicEquipmentSlotsDeserialization;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = basicEquipmentSlotsDeserialization.class)
+@JsonDeserialize(using = BasicEquipmentSlotsDeserialization.class)
 public class BasicEquipmentSlots {
     private Armor armor;
     private Weapon weapon;
@@ -43,8 +40,9 @@ public class BasicEquipmentSlots {
      * @param newArmor: Armor class
      */
     public void setArmor(Armor newArmor){
-
-        this.armor = newArmor;
+        if (this.armor.compareTo(newArmor) < 0){
+            this.armor = newArmor;
+        }
     }
 
     /** Change the Weapon in the equipment slots
@@ -52,7 +50,9 @@ public class BasicEquipmentSlots {
      * @param newWeapon: Weapon class
      */
     public void setWeapon(Weapon newWeapon){
-        this.weapon = newWeapon;
+        if (this.weapon.compareTo(newWeapon) < 0){
+            this.weapon = newWeapon;
+        }
     }
 
 }
