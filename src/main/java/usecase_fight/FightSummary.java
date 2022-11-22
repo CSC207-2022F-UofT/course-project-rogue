@@ -3,6 +3,7 @@ package usecase_fight;
 import entity.Equipment;
 import entity.Monster.Monster;
 
+/** A summary of the fight a Player is in. */
 public class FightSummary {
     private final Monster monster;
     /** The amount of damage to be done to Player. */
