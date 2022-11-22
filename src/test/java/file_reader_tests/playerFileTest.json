@@ -19,8 +19,11 @@
         "name": "armor",
         "dmgReduced": 122
       }
-    }
+    },
+    "StraitCurve": false
   },
+
+
   {
     "class": "Different Player",
     "maxHitPoint": 1,
@@ -43,9 +46,12 @@
       }
     }
   },
+
+
   {
     "class": "",
     "maxHitPoint": 41,
+    "index" : 4,
     "attackPoint": 2,
     "inventory": {
       "inventoryName": "Inventory",
@@ -62,6 +68,32 @@
       "armor": {
         "name": "armor",
         "dmgReduced": 5
+      }
+    },
+    "StraitCurve": true
+  },
+
+
+  {
+    "test": "Test",
+    "class": "Basic Player",
+    "maxHitPoint": 0,
+    "attackPoint": 0,
+    "inventory": {
+      "inventoryName": "Inventory",
+      "essence": {
+        "collectibleType": "Essence",
+        "num": 0
+      }
+    },
+    "equipments": {
+      "weapon": {
+        "name": "sword",
+        "weaponAttackPoint": 1
+      },
+      "armor": {
+        "name": "armor",
+        "dmgReduced": 0
       }
     }
   }
