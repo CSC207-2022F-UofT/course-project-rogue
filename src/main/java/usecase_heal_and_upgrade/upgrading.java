@@ -38,10 +38,10 @@ public class upgrading implements Observer{
     private void upgrade_info(){
         Visual_h_u speaker = new infoDisplay();
         CollectibleUseManage ColHealper= new CollectibleUseManage(this.player, this.essenceRequire, "upgrade");
-        speaker.show_info(this.player.getEssence().getNum(), this.essenceRequire, 0, 0,
+        speaker.showInfo(this.player.getEssence().getNum(), this.essenceRequire, 0, 0,
                 ColHealper.get_able(), "upgrade");
         if(ColHealper.get_able()){
-            speaker.keypress_request("1","2");
+            speaker.keypressRequest("1","2");
         }
     }
 

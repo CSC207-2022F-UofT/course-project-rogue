@@ -11,7 +11,7 @@ public interface Visual_h_u {
      * @param able_to_upgrade the number of essence the player need
      * @param verb heal or upgrade
      */
-    void show_info(int Essence_have, int Essence_need, int Artifact_have, int Artifact_need,
+    void showInfo(int Essence_have, int Essence_need, int Artifact_have, int Artifact_need,
                            boolean able_to_upgrade, String verb);
     //This method will be showed in the bottom text part of the game.
     //The window will show the numbers of collectible items the player have for the healing required.
@@ -21,30 +21,30 @@ public interface Visual_h_u {
      * It will tell the player the system scan result.
      * @param Equipment the equipment player decide to upgrade.
      */
-    void show_upgrade_choice(String Equipment);
+    void showUpgradeChoice(String Equipment);
 
     /**
      * It will tell the player that the update/heal success
      * @param type
      */
-    void show_result(String type);
+    void showResult(String type);
 
     /**
      * It will show the two keys that player can press for choice.
      * @param key1 first key to press
      * @param key2 second key to press
      */
-    void keypress_request(String key1, String key2);
+    void keypressRequest(String key1, String key2);
 
     /**
      * Tell player's HP is full, no need for heal
      */
-    void Warn_FullHP();
+    void WarnFullHP();
 
     /**
      * Tell player's equipment is full, can not upgrade.
      */
-    void Warn_MaxLv(String Equipment);
+    void WarnMaxLv(String Equipment);
 
     /**
      * Tell player that he/she give up upgrade/heal

@@ -7,24 +7,24 @@ public class infoDisplay implements Visual_h_u {
     /**
      *The method will be showed in the bottom text part. It will shows that the collectible items the player has verse
      * the collectible items the player need.
-     * @param Essence_have the number of essence the player have
-     * @param Essence_need the number of essence the player need
-     * @param Artifact_have the number of essence the player need
-     * @param Artifact_need the number of essence the player need
-     * @param able_to_upgrade the number of essence the player need
+     * @param EssenceHave the number of essence the player have
+     * @param EssenceNeed the number of essence the player need
+     * @param ArtifactHave the number of essence the player need
+     * @param ArtifactNeed the number of essence the player need
+     * @param ableToUpgrade the number of essence the player need
      * @param verb heal or upgrade
      */
     @Override
-    public void show_info(int Essence_have, int Essence_need, int Artifact_have, int Artifact_need,
-                                  boolean able_to_upgrade, String verb) {
+    public void showInfo(int EssenceHave, int EssenceNeed, int ArtifactHave, int ArtifactNeed,
+                                  boolean ableToUpgrade, String verb) {
         String info;
-        if (able_to_upgrade){
-            info = String.format("You have Essence %d/%d. \n You have Artifact %d/%d. \n You can %s!",Essence_have,
-                    Essence_need, Artifact_have, Artifact_need, verb);
+        if (ableToUpgrade){
+            info = String.format("You have Essence %d/%d. \n You have Artifact %d/%d. \n You can %s!",EssenceHave,
+                    EssenceNeed, ArtifactHave, ArtifactNeed, verb);
         }
         else {
             info = String.format("You have Essence %d/%d. \n You have Artifact %d/%d. \n You don't have enough " +
-                            "collections, try to get them!",Essence_have, Essence_need, Artifact_have, Artifact_need);
+                            "collections, try to get them!",EssenceHave, EssenceNeed, ArtifactHave, ArtifactNeed);
         }
         System.out.println(info);
     }
@@ -34,7 +34,7 @@ public class infoDisplay implements Visual_h_u {
      * @param Equipment the equipment player decide to upgrade.
      */
     @Override
-    public void show_upgrade_choice(String Equipment) {
+    public void showUpgradeChoice(String Equipment) {
         String info;
         info = String.format("You decide to upgrade %s",Equipment);
         System.out.println(info);
@@ -45,7 +45,7 @@ public class infoDisplay implements Visual_h_u {
      * @param type
      */
     @Override
-    public void show_result(String type) {
+    public void showResult(String type) {
         String info;
         info = String.format("Congratulations! %s success!", type);
         System.out.println(info);
@@ -57,7 +57,7 @@ public class infoDisplay implements Visual_h_u {
      * @param key2 second key to press, without []
      */
     @Override
-    public void keypress_request(String key1, String key2) {
+    public void keypressRequest(String key1, String key2) {
         String info;
         info = String.format("Please press [%s]/[%s] and then press [Enter] for confirm", key1, key2);
         System.out.println(info);
@@ -67,7 +67,7 @@ public class infoDisplay implements Visual_h_u {
      * Tell player's HP is full, no need for heal
      */
     @Override
-    public void Warn_FullHP() {
+    public void WarnFullHP() {
         String info = new String("Your HP is full, there are no need for healing.");
         System.out.println(info);
     }
@@ -76,7 +76,7 @@ public class infoDisplay implements Visual_h_u {
      * Tell player's equipment is full, can not upgrade.
      */
     @Override
-    public void Warn_MaxLv(String Equipment) {
+    public void WarnMaxLv(String Equipment) {
         String info = String.format("Your %s is the highest level, you can not upgrade.", Equipment);
         System.out.println(info);
     }

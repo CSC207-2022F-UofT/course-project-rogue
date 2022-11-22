@@ -11,9 +11,9 @@ public class healing implements Observer {
     private Player player;
     private final String trigger;
 
-    private int HP_require;
+    private int HPRequire;
 
-    private int Essence_require;
+    private int EssenceRequire;
 
     private CollectableCalculator EssenceCalculator;
 
@@ -26,9 +26,9 @@ public class healing implements Observer {
     public healing(Player player, String trigger) {
         this.player = player;
         this.trigger = trigger;
-        this.HP_require = 0;
+        this.HPRequire = 0;
         this.EssenceCalculator = new CollectableCalculator();
-        this.Essence_require = EssenceCalculator.EssenceForHeal(this.HP_require);
+        this.EssenceRequire = EssenceCalculator.EssenceForHeal(this.HPRequire);
     }
 
     /**
@@ -42,26 +42,26 @@ public class healing implements Observer {
     /**
      * Show the healing information: if the player are able to heal and how much it will
      */
-    public void update_HP(){
-        this.HP_require = this.player.getMaxHitPoint() - this.player.getCurrHitPoint();
-        this.Essence_require = this.EssenceCalculator.EssenceForHeal(HP_require);
+    public void updateHP(){
+        this.HPRequire = this.player.getMaxHitPoint() - this.player.getCurrHitPoint();
+        this.EssenceRequire = this.EssenceCalculator.EssenceForHeal(HPRequire);
     }
 
     /**
      * Show player the info: how many collectible need, how many do the player have, if the player can heal, and request
      * the player to make choice.
      */
-    public void heal_info(){
+    public void healInfo(){
         Visual_h_u speaker = new infoDisplay();
         if (CheckFullHP()) {
-            speaker.Warn_FullHP();
+            speaker.WarnFullHP();
             return;
         }
-        CollectibleUseManage ColHealper= new CollectibleUseManage(this.player, this.Essence_require, "heal");
-        speaker.show_info(this.player.getEssence().getNum(), this.Essence_require, 0, 0,
+        CollectibleUseManage ColHealper= new CollectibleUseManage(this.player, this.EssenceRequire, "heal");
+        speaker.showInfo(this.player.getEssence().getNum(), this.EssenceRequire, 0, 0,
                 ColHealper.get_able(), "heal");
         if(ColHealper.get_able()){
-            speaker.keypress_request("Y","N");
+            speaker.keypressRequest("Y","N");
         }
     }
 
@@ -69,8 +69,8 @@ public class healing implements Observer {
      * The basic part of the healing, it will return nothing but send message to presenter.
      */
     public void heal() {
-        CollectibleUseManage Colhelper= new CollectibleUseManage(this.player, this.Essence_require, "heal");
-        this.player.changeCurrHitPoint(this.HP_require);
+        CollectibleUseManage Colhelper= new CollectibleUseManage(this.player, this.EssenceRequire, "heal");
+        this.player.changeCurrHitPoint(this.HPRequire);
         Colhelper.spendCollectible();
     }
 
@@ -79,7 +79,7 @@ public class healing implements Observer {
     public void update(Observable o, Object arg) {
         this.player.setCanMove(false);
         this.player.setCanUpgrade(false);
-        update_HP();
-        heal_info();
+        updateHP();
+        healInfo();
     }
 }
