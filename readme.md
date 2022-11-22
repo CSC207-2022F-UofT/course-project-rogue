@@ -11,7 +11,7 @@ The will be able to Heal and Upgrade, after encountering an Event or winning a f
 
 So try to stay alive, collect the artifact and escape the maze!
 
-#UI
+# UI
 * Artifact: The winning condition for the player, you need at least 5 to Win
 * Essence: The currency to heal player and upgrade equipments
 * HP: Health Point, you die if it reaches 0
