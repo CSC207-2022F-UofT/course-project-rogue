@@ -1,7 +1,7 @@
 package entity_tests;
 
 import entity.Monster.Monster;
-import entity.Monster.Power;
+import entity.Monster.MonsterPower;
 import entity.Monster.Steal;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -17,7 +17,7 @@ class MonsterTest {
     HashMap<String, int[]> stats = new HashMap<>(Map.ofEntries(
                                                                 entry("Attack", atkStat),
                                                                 entry("Health", hpStat)));
-    Power power = new Steal();
+    MonsterPower power = new Steal();
 
     Monster monster = new Monster("Slime", "Basic", stats, false);
     Monster special = new Monster("Stealer", "Basic", stats, true, power);
