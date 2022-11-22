@@ -4,6 +4,7 @@ import entity.*;
 import entity.monster.Steal;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class StealTest {
@@ -24,12 +25,14 @@ public class StealTest {
 
     /** Tests Monster.isMustBeat. */
     @Test
+    @DisplayName("Test Is Must Beat")
     void testIsMustBeat(){
         Assertions.assertFalse(steal.isMustBeat());
     }
 
     /** Tests Steal.usePower when the item to be stolen has a count of 0. Steals nothing. */
     @Test
+    @DisplayName("Test Use Power None")
     void testUsePowerNone(){
         Player player = makePlayer(0);
         String result = steal.usePower(player);
@@ -39,6 +42,7 @@ public class StealTest {
 
     /** Tests Steal.usePower when the item to be stolen has a count of less than 4. Always steals 1. */
     @Test
+    @DisplayName("Test Use Power Less")
     void testUsePowerLess(){
         Player player = makePlayer(3);
         String result = steal.usePower(player);
@@ -50,6 +54,7 @@ public class StealTest {
 
     /** Tests Steal.usePower when the item to be stolen has a count of 4. Steals 1 item. */
     @Test
+    @DisplayName("Test Use Power Enough")
     void testUsePowerEnough(){
         Player player = makePlayer(4);
         String result = steal.usePower(player);
@@ -64,6 +69,7 @@ public class StealTest {
      * item count.
      * */
     @Test
+    @DisplayName("Test Use Power Greater")
     void testUsePowerGreater(){
         Player player = makePlayer(8);
         String result = steal.usePower(player);

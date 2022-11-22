@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Player;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class GameFileReaderTest {
@@ -55,6 +56,7 @@ public class GameFileReaderTest {
     }
 
     @Test
+    @DisplayName("Test Creating Player")
     void testBasicPlayerCreation(){
         try {
             //1st JSONObject in list
@@ -67,6 +69,7 @@ public class GameFileReaderTest {
     }
 
     @Test
+    @DisplayName("Test Find String")
     void testFindString(){
         try {
             //4th JSONObject in list
@@ -79,6 +82,7 @@ public class GameFileReaderTest {
     }
 
     @Test
+    @DisplayName("Test Find Empty String")
     void testFindStringEmptyString(){
         try {
             //3rd JSONObject in list
@@ -91,6 +95,7 @@ public class GameFileReaderTest {
     }
 
     @Test
+    @DisplayName("Test Find Int")
     void testFindInt(){
         try {
             //2nd JSONObject in list
@@ -103,6 +108,7 @@ public class GameFileReaderTest {
     }
 
     @Test
+    @DisplayName("Test Find Boolean")
     void testFindBoolean(){
         try {
             //3rd JSONObject in list
@@ -115,6 +121,7 @@ public class GameFileReaderTest {
     }
 
     @Test
+    @DisplayName("Test Find String Value Does not Exist")
     void testFindStringValueDoesNotExist(){
         Assertions.assertNull(playerFileReader.findString("class", "Difficult"));
     }

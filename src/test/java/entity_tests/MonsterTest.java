@@ -3,6 +3,7 @@ package entity_tests;
 import entity.monster.Monster;
 import entity.monster.Power;
 import entity.monster.Steal;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -24,6 +25,7 @@ class MonsterTest {
 
     /** Tests Monster.getName() and Monster.getType(). */
     @Test
+    @DisplayName("Test Monster Get Name Type")
     void testMonsterGetNameType() {
         Assertions.assertAll("Should return Monster name and type",
                 () -> Assertions.assertEquals("Slime", monster.getName()),
@@ -33,6 +35,7 @@ class MonsterTest {
 
     /** Tests that Monster.getStats returns a value within the range of minimum and maximum provided. */
     @Test
+    @DisplayName("Test Monster Get Stats")
     void testMonsterGetStats(){
         Assertions.assertAll("Should return an int within the max and min bounds.",
                 () -> Assertions.assertTrue(monster.getAttack() >= 1 && monster.getAttack() <= 5),
@@ -42,6 +45,7 @@ class MonsterTest {
 
     /** Tests Monster.isHasPower() when Monster has no power and when it does. */
     @Test
+    @DisplayName("Test Monster Has Power")
     void testMonsterHasPower(){
         Assertions.assertFalse(monster.isHasPower());
         Assertions.assertTrue(special.isHasPower());
@@ -49,12 +53,14 @@ class MonsterTest {
 
     /** Tests Monster.getPower() when Monster has a power. */
     @Test
+    @DisplayName("Test Monster Get Power")
     void testMonsterGetPower(){
         Assertions.assertEquals(power, special.getPower());
     }
 
     /** Tests Monster.getPower() when Monster has no power. */
     @Test
+    @DisplayName("Test Monster Get Power Null")
     void testMonsterGetPowerNoPower() {
         Assertions.assertNull(monster.getPower());}
 }

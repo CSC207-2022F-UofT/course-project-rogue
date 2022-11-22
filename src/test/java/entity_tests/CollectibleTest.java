@@ -9,6 +9,7 @@ class CollectibleTest {
     Collectible Artifact1 = new Collectible("artifact");
 
     @Test
+    
     void testChangeNumIncrease(){
         Artifact1.changeNum(2);
         Assertions.assertEquals(2, Artifact1.getNum());
