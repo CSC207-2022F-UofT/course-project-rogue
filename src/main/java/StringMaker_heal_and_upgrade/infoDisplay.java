@@ -26,7 +26,6 @@ public class infoDisplay implements VisualHealUpgrade {
             Info = String.format("You have Essence %d/%d. \n You have Artifact %d/%d. \n You don't have enough " +
                             "collections, try to get them!",EssenceHave, EssenceNeed, ArtifactHave, ArtifactNeed);
         }
-        System.out.println(Info);
     }
 
     /**
@@ -37,7 +36,6 @@ public class infoDisplay implements VisualHealUpgrade {
     public void showUpgradeChoice(String Equipment) {
         String info;
         info = String.format("You decide to upgrade %s",Equipment);
-        System.out.println(info);
     }
 
     /**
@@ -48,7 +46,6 @@ public class infoDisplay implements VisualHealUpgrade {
     public void showResult(String type) {
         String info;
         info = String.format("Congratulations! %s success!", type);
-        System.out.println(info);
     }
 
     /**
@@ -60,7 +57,6 @@ public class infoDisplay implements VisualHealUpgrade {
     public void keypressRequest(String key1, String key2) {
         String info;
         info = String.format("Please press [%s]/[%s] and then press [Enter] for confirm", key1, key2);
-        System.out.println(info);
     }
 
     /**
@@ -69,7 +65,6 @@ public class infoDisplay implements VisualHealUpgrade {
     @Override
     public void WarnFullHP() {
         String info = new String("Your HP is full, there are no need for healing.");
-        System.out.println(info);
     }
 
     /**
@@ -78,7 +73,6 @@ public class infoDisplay implements VisualHealUpgrade {
     @Override
     public void WarnMaxLv(String Equipment) {
         String info = String.format("Your %s is the highest level, you can not upgrade.", Equipment);
-        System.out.println(info);
     }
 
     /**
@@ -88,7 +82,6 @@ public class infoDisplay implements VisualHealUpgrade {
     @Override
     public void notifyGiveUp(String type) {
         String info = String.format("You decide not to %s, good luck!", type);
-        System.out.println(info);
     }
 
 }
