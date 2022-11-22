@@ -35,14 +35,14 @@ public class healing implements Observer {
      * Check if the player has full HP.
      * @return
      */
-    private boolean CheckFullHP(){
+    public boolean CheckFullHP(){
         return this.player.getMaxHitPoint() == this.player.getCurrHitPoint();
     }
 
     /**
      * Show the healing information: if the player are able to heal and how much it will
      */
-    private void update_HP(){
+    public void update_HP(){
         this.HP_require = this.player.getMaxHitPoint() - this.player.getCurrHitPoint();
         this.Essence_require = this.EssenceCalculator.EssenceForHeal(HP_require);
     }
@@ -51,7 +51,7 @@ public class healing implements Observer {
      * Show player the info: how many collectible need, how many do the player have, if the player can heal, and request
      * the player to make choice.
      */
-    private void heal_info(){
+    public void heal_info(){
         Visual_h_u speaker = new Presenter_bottom();
         if (CheckFullHP()) {
             speaker.Warn_FullHP();
@@ -68,7 +68,7 @@ public class healing implements Observer {
     /**
      * The basic part of the healing, it will return nothing but send message to presenter.
      */
-    private void heal() {
+    public void heal() {
         CollectibleUseManage Colhelper= new CollectibleUseManage(this.player, this.Essence_require, "heal");
         this.player.changeCurrHitPoint(this.HP_require);
         Colhelper.spendCollectible();
