@@ -2,7 +2,7 @@ package presenter;
 
 import Interface.Visual_h_u;
 
-public class Presenter_bottom implements Visual_h_u {
+public class infoDisplay implements Visual_h_u {
 
     /**
      *The method will be showed in the bottom text part. It will shows that the collectible items the player has verse

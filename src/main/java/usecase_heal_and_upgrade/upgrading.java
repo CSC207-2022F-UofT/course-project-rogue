@@ -3,9 +3,8 @@ package usecase_heal_and_upgrade;
 import Interface.Visual_h_u;
 import entity.Equipment;
 import entity.Player;
-import presenter.Presenter_bottom;
+import presenter.infoDisplay;
 
-import java.util.Locale;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,10 +13,10 @@ public class upgrading implements Observer{
     private Player player;
     private final String trigger;
 
-    private int Essence_require;
+    private int essenceRequire;
 
-    private CollectableCalculator EssenceCalculator;
-    private StatCalculator StatCount;
+    private CollectableCalculator essenceCalculator;
+    private StatCalculator statCount;
 
 
     /**
@@ -27,9 +26,9 @@ public class upgrading implements Observer{
     public upgrading(Player player, String trigger) {
         this.player = player;
         this.trigger = trigger;
-        this.EssenceCalculator = new CollectableCalculator();
-        this.Essence_require = this.EssenceCalculator.EssenceForUpgrade();
-        this.StatCount = new StatCalculator();
+        this.essenceCalculator = new CollectableCalculator();
+        this.essenceRequire = this.essenceCalculator.EssenceForUpgrade();
+        this.statCount = new StatCalculator();
     }
 
     /**
@@ -37,9 +36,9 @@ public class upgrading implements Observer{
      * the player to make choice.
      */
     private void upgrade_info(){
-        Visual_h_u speaker = new Presenter_bottom();
-        CollectibleUseManage ColHealper= new CollectibleUseManage(this.player, this.Essence_require, "upgrade");
-        speaker.show_info(this.player.getEssence().getNum(), this.Essence_require, 0, 0,
+        Visual_h_u speaker = new infoDisplay();
+        CollectibleUseManage ColHealper= new CollectibleUseManage(this.player, this.essenceRequire, "upgrade");
+        speaker.show_info(this.player.getEssence().getNum(), this.essenceRequire, 0, 0,
                 ColHealper.get_able(), "upgrade");
         if(ColHealper.get_able()){
             speaker.keypress_request("1","2");
@@ -50,9 +49,9 @@ public class upgrading implements Observer{
      * The basic part of the upgrading, it will return nothing but send messages to presenter.
      */
     private void upgrade(Equipment to_upgrade) {
-        CollectibleUseManage ColHelper= new CollectibleUseManage(this.player, this.Essence_require, "upgrade");
+        CollectibleUseManage ColHelper= new CollectibleUseManage(this.player, this.essenceRequire, "upgrade");
         EquipmentManage EquipHelper = new EquipmentManage(to_upgrade);
-        EquipHelper.StatsIncrease(this.StatCount.determine_add());
+        EquipHelper.StatsIncrease(this.statCount.determine_add());
         ColHelper.spendCollectible();
     }
 

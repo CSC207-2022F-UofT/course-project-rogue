@@ -2,7 +2,7 @@ package usecase_heal_and_upgrade;
 
 import Interface.Visual_h_u;
 import entity.Player;
-import presenter.Presenter_bottom;
+import presenter.infoDisplay;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -52,7 +52,7 @@ public class healing implements Observer {
      * the player to make choice.
      */
     public void heal_info(){
-        Visual_h_u speaker = new Presenter_bottom();
+        Visual_h_u speaker = new infoDisplay();
         if (CheckFullHP()) {
             speaker.Warn_FullHP();
             return;

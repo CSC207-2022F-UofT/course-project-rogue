@@ -5,21 +5,21 @@ import entity.Player;
 
 public class CollectibleUseManage {
     Collectible Essence;
-    int Essence_need;
+    int essenceNeed;
     boolean able;
     String verb;
 
     /**
      * Counstruct the class CollectibleUseManage. This class is in charge of the spend of the collectible items.
      * @param player the plaeyer
-     * @param Essence_need Essence required for upgrade/heal
+     * @param essenceNeed Essence required for upgrade/heal
      * @param verb
      */
 
-    public CollectibleUseManage(Player player, int Essence_need, String verb){
+    public CollectibleUseManage(Player player, int essenceNeed, String verb){
         this.Essence = player.getEssence();
-        this.Essence_need = Essence_need;
-        this.able = this.Essence.getNum() >= Essence_need;
+        this.essenceNeed = essenceNeed;
+        this.able = this.Essence.getNum() >= essenceNeed;
         this.verb = verb;
     }
 
@@ -35,7 +35,7 @@ public class CollectibleUseManage {
      * Decrease the player's collection number according to the upgrade/heal need.
      */
     public void spendCollectible(){
-        this.Essence.changeNum(-Essence_need);
+        this.Essence.changeNum(-essenceNeed);
     }
 
     public int EssenceLeft(){
