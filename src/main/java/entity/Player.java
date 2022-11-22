@@ -1,18 +1,22 @@
 package entity;
 
+import usecase_fight.FightSummary;
+
 import file_reader.deserialization.PlayerDeserialization;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = PlayerDeserialization.class)
 public class Player extends Character{
 
-    private final int maxHitPoint;
+    private final int maxHitPoint; // maybe we can combine Player's info into its own class
     private int currHitPoint;
     private final int attackPoint;
     private final int[] location;
     private final CollectibleInventory collectibleInventory;
     private final BasicEquipmentSlots equipments;
     private final States state;
+    /** Details of the fight that Player is in. */
+    private FightSummary fight;
 
     /**The Basic Player Template, it is flexible in terms of being able to add an instance of class system if needed
      * The inventory is open for adding more items.
@@ -105,7 +109,8 @@ public class Player extends Character{
         return this.location;
     }
 
-    /**Sets the current hitpoint of Player based on the inputted integer x
+    /** Sets currHitPoint of Player based on the inputted integer x. If the change results in a negative number
+     * currHitPoint is set to 0.
      *
      * @param x: The integer to increase by, if x is positive then increase, else if it is negative, it'll decrease.
      *
@@ -205,6 +210,12 @@ public class Player extends Character{
         state.setUpgrading(upgrading);
     }
 
+    /**
+     * Changes Player into GameOver state.
+     * To chang out of GameOver state, any other Player state must be set to true.
+     */
+    public void setGameOver(){state.setGameOver();}
+
     /**Gets canHeal from states
      *
      */
@@ -240,6 +251,11 @@ public class Player extends Character{
         return state.getUpgrading();
     }
 
+    /**
+     * @return GameOver state of Player.
+     */
+    public boolean getGameOver() {return state.getGameOver();}
+
     /**Gets Collectible Inventory from Player
      *
      */
@@ -252,5 +268,17 @@ public class Player extends Character{
      */
     public BasicEquipmentSlots getEquipments(){
         return this.equipments;
+    }
+
+    /** Reassigns a new FightSummary to Player. */
+    public void setFight(FightSummary summary){
+        this.fight = summary;
+    }
+
+    /**
+     * @return Fight details of Player fight.
+     */
+    public FightSummary getFight(){
+        return this.fight;
     }
 }

@@ -10,20 +10,22 @@ public class EssenceEvent extends Event{
     /**
      * Triggering this Event adds a random amount to the Essence that the player holds
      *
-     * @param: player: the player triggering the Event
+     * @param player the player triggering the Event
      */
     @Override
     public void trigger(Player player) {
         
         Random random = new Random();
-        int random_int = random.nextInt(500);
-        increaseEssence(player, random_int + 1);
+        int random_int = random.nextInt(100);
+        increaseEssence(player, random_int + 1); // get essence from 1 to 100 inclusive
+        // call presenter here to tell player that they found random_int amount of essence
+        // "You found x amount of essence lying on the ground!"
     }
 
 
     /**Adds the Essence by random amount from 0 to 500
      *
-     * @param: player: the player triggering the Event
+     * @param player the player triggering the Event
      *
      */
     private void increaseEssence(Player player, int random){

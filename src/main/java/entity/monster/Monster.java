@@ -26,7 +26,7 @@ public class Monster extends Character {
     private final boolean HAS_POWER;
 
     /** The power of the Monster. Null if hasPower is false. */
-    private Power power; // not final to allow for extension of changing powers
+    private MonsterPower power; // not final to allow for extension of changing powers
 
 
     /**
@@ -58,7 +58,7 @@ public class Monster extends Character {
      *
      * @param pwr The power of Monster.
      */
-    public Monster(String n, String t, HashMap<String, int[]> stats, boolean state, Power pwr) {
+    public Monster(String n, String t, HashMap<String, int[]> stats, boolean state, MonsterPower pwr) {
         this(n, t, stats, state);
         this.power = pwr;
     }
@@ -103,19 +103,14 @@ public class Monster extends Character {
     /**
      * @return The Power of the Monster.
      */
-    public Power getPower(){
+    public MonsterPower getPower(){
         return this.power;
     }
 
-    /**
-     * Change the power of the Monster to the given Power.
-     *
-     * @param newP  The new Power of the Monster.
-     */
-    public void changePower(Power newP){
-        this.power = newP;
+
+    /** Represents a Monster as its name. */
+    @Override
+    public String toString(){
+        return this.NAME;
     }
-
-
-    // Perhaps override toString for Monster representation, might be helpful for FightEvent
 }
