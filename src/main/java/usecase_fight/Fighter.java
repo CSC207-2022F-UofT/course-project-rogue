@@ -14,13 +14,16 @@ import java.util.Random;
 /** A fight sequence. */
 public class Fighter implements Observer {
     private final Player player;
+    /** Keystroke that triggers this use case. */
     private final String trigger; // 'F'
 
+    /** Creates a new Fighter with the given Player and trigger. */
     public Fighter(Player player, String trigger){
         this.player = player;
         this.trigger = trigger;
     }
 
+    /** Helper method - get the summary of the fight a player is in. */
     private FightSummary getSummary(){
         return this.player.getFight();
     }
@@ -38,8 +41,6 @@ public class Fighter implements Observer {
             return false;
         }
         return (rand.nextInt(100) + 1) <= chance; // pick a number between 1 - 100.
-        // if win chance = 1, then win is true only if 1 is picked (1/100 chance)
-        // if win chance = 80, then win is true if 80 and anything less is picked (80/100)
     }
 
     /**
@@ -106,7 +107,6 @@ public class Fighter implements Observer {
         if (equip instanceof Weapon){
             // if current weapon is weaker than dropped, replace
             if (player.getEquipment("Weapon").compareTo(equip) < 0){
-                // then replace equipment
                 player.setEquipment((Weapon) equip);
                 return true;
             }
@@ -143,22 +143,6 @@ public class Fighter implements Observer {
                 this.displayResults(powerResult, summary.getDamage());
             }
         }
-
-        // if win:
-            // You won! + Power result if it exists
-            // Damage Taken: 0
-            // Items Received: # essence, equipment
-            //
-            // Press [SpaceBar] to continue
-        // if lost:
-            // You lost. Power result
-            // Damage taken:
-            // Items Received: None
-            //
-            // Press [SpaceBar] to continue
-        // if gameover:
-            // call presenter to show gameover screen
-            // do something after gameover
     }
 
     /**
@@ -180,7 +164,7 @@ public class Fighter implements Observer {
         String line1 = "You won!" + powerResult;
         String line2 = "Damage Taken: 0";
         String line3 = "Items Received: " + received;
-        String line5 = "Press [SpaceBar] to continue.";
+        String line5 = "Press [SpaceBar] to continue."; // not sure if space bar or a different key
 
         // call presenter where line 4 arg is empty string.
     }
@@ -207,6 +191,7 @@ public class Fighter implements Observer {
     }
 
 
+    /** Execute a fight if the key input from the user matches trigger and Player is in a fight. */
     @Override
     public void update(Observable o, Object arg) {
         if(player.getFighting() && trigger.equals(arg)){
