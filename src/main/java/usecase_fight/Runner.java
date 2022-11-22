@@ -7,14 +7,28 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
 
+/** A runner that allows Player to flee from a fight. */
 public class Runner implements Observer {
 
     private final Player player;
+
+    /** Keystroke that triggers this runner. */
     private final String trigger; // "R"
+
+    /**
+     * Creates a new Runner with the given Player and trigger.
+     * @param player Player
+     * @param trigger Key stroke to trigger this runner.
+     */
     public Runner(Player player, String trigger){
         this.player = player;
         this.trigger = trigger;
     }
+
+    /**
+     * Flee from a fight. Sets Player's fighting state to false and move state to true.
+     * @return The result of the flee attempt.
+     */
     public String flee(){
         player.setFighting(false);
         player.setCanMove(true);
@@ -31,6 +45,7 @@ public class Runner implements Observer {
         }
     }
 
+    /** Triggers this runner if Player is in a fight and if the user gives key input matching trigger. */
     @Override
     public void update(Observable o, Object arg) {
         if(player.getFighting() && trigger.equals(arg)){
