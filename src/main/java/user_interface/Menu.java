@@ -28,7 +28,7 @@ public class Menu extends JPanel{
     String text2 = "Welcome the great adventurer to this evil world.";
     String text3 = "Welcome the great adventurer to this evil world.";
     String text4 = "Welcome the great adventurer to this evil world.";
-
+    private String textMap = "";
 
     public Menu() {
         JPanel panel = new JPanel();
@@ -79,6 +79,9 @@ public class Menu extends JPanel{
         });
 
 
+    }
+    public void setMap(String map){
+        this.textMap = map;
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -131,6 +134,8 @@ public class Menu extends JPanel{
             g.drawString(text2 ,100,size.height-170);
             g.drawString(text3 ,100,size.height-120);
             g.drawString(text4 ,100,size.height-70);
+            g.drawString(textMap ,1000,50);
+
         }
 
     }
