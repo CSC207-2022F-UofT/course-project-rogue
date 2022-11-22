@@ -5,8 +5,10 @@ import entity.Player;
 import java.util.Observable;
 import java.util.Observer;
 
+/** A restarter that restarts the game from last Player save. */
 public class Restarter implements Observer {
     private final Player player;
+    /** The keystroke that triggers this restarter. */
     private final String trigger; // (Continue key)
 
     /**
@@ -20,7 +22,7 @@ public class Restarter implements Observer {
     }
 
     /**
-     * Causes the game to restart from the last save.
+     * Causes the game to restart from the last save if the Player is in a game over state.
      * @param o     the observable object.
      * @param arg   key input string
      */
