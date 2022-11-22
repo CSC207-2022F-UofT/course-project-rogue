@@ -55,6 +55,17 @@ public class States {
         isUpgrading = upgrading;
     }
 
+    /**
+     * Changes all states to false.
+     */
+    public void setGameOver(){
+        setCanHeal(false);
+        setCanMove(false);
+        setCanUpgrade(false);
+        setUpgrading(false);
+        setFighting(false);
+    }
+
     /**Returns true if player can Heal
      *
      */
@@ -88,5 +99,12 @@ public class States {
      */
     public boolean getUpgrading() {
         return isUpgrading;
+    }
+
+    /**
+     * @return Whether Player is in a GameOver state. A Player is in a GameOverState if all states are false.
+     */
+    public boolean getGameOver() {
+        return !(canMove && canHeal && canUpgrade && isUpgrading && fighting);
     }
 }
