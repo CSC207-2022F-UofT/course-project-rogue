@@ -4,15 +4,15 @@ public interface VisualHealUpgrade {
     /**
      *The method will be showed in the bottom text part. It will shows that the collectible items the player has verse
      * the collectible items the player need.
-     * @param Essence_have the number of essence the player have
-     * @param Essence_need the number of essence the player need
-     * @param Artifact_have the number of essence the player need
-     * @param Artifact_need the number of essence the player need
-     * @param able_to_upgrade the number of essence the player need
+     * @param EssenceHave the number of essence the player have
+     * @param EssenceNeed the number of essence the player need
+     * @param ArtifactHave the number of essence the player need
+     * @param ArtifactNeed the number of essence the player need
+     * @param ableToUpgrade the number of essence the player need
      * @param verb heal or upgrade
      */
-    void showInfo(int Essence_have, int Essence_need, int Artifact_have, int Artifact_need,
-                           boolean able_to_upgrade, String verb);
+    void showInfo(int EssenceHave, int EssenceNeed, int ArtifactHave, int ArtifactNeed,
+                           boolean ableToUpgrade, String verb);
     //This method will be showed in the bottom text part of the game.
     //The window will show the numbers of collectible items the player have for the healing required.
     //And it will tell if the player can finish the healing action.
