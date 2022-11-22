@@ -17,16 +17,16 @@ public class infoDisplay implements VisualHealUpgrade {
     @Override
     public void showInfo(int EssenceHave, int EssenceNeed, int ArtifactHave, int ArtifactNeed,
                                   boolean ableToUpgrade, String verb) {
-        String info;
+        String Info;
         if (ableToUpgrade){
-            info = String.format("You have Essence %d/%d. \n You have Artifact %d/%d. \n You can %s!",EssenceHave,
+            Info = String.format("You have Essence %d/%d. \n You have Artifact %d/%d. \n You can %s!",EssenceHave,
                     EssenceNeed, ArtifactHave, ArtifactNeed, verb);
         }
         else {
-            info = String.format("You have Essence %d/%d. \n You have Artifact %d/%d. \n You don't have enough " +
+            Info = String.format("You have Essence %d/%d. \n You have Artifact %d/%d. \n You don't have enough " +
                             "collections, try to get them!",EssenceHave, EssenceNeed, ArtifactHave, ArtifactNeed);
         }
-        System.out.println(info);
+        System.out.println(Info);
     }
 
     /**
