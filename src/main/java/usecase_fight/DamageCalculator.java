@@ -5,9 +5,17 @@ import entity.Player;
 
 /** A calculator that determines Monster damage to Player. */
 public class DamageCalculator extends Calculator {
+    /** Monster in this Calculator. */
     Monster monster;
+    /** Monster in this Calculator. */
     Player player;
 
+
+    /**
+     * Creates a new DamageCalculator with the given Monster and Player.
+     * @param mon Monster
+     * @param play Player
+     */
     public DamageCalculator(Monster mon, Player play){
         this.monster = mon;
         this.player = play;
@@ -25,5 +33,21 @@ public class DamageCalculator extends Calculator {
         int mAtk = this.monster.getAttack();
         int pRed = this.player.getEquipment("Armor").getStatValue();
         return Math.max((mAtk - pRed), 0);
+    }
+
+    /**
+     *
+     * @return Monster in this Calculator.
+     */
+    public Monster getMonster(){ // for testing purposes
+        return this.monster;
+    }
+
+    /**
+     *
+     * @return Player in this Calculator
+     */
+    public Player getPlayer(){ // for testing purposes
+        return this.player;
     }
 }
