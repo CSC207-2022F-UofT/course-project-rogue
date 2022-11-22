@@ -1,0 +1,68 @@
+[
+  {
+    "class": "Basic Player",
+    "maxHitPoint": 100,
+    "attackPoint": 1,
+    "inventory": {
+      "inventoryName": "Inventory",
+      "essence": {
+        "collectibleType": "Essence",
+        "num": 12323
+      }
+    },
+    "equipments": {
+      "weapon": {
+        "name": "sword",
+        "weaponAttackPoint": 1223
+      },
+      "armor": {
+        "name": "armor",
+        "dmgReduced": 122
+      }
+    }
+  },
+  {
+    "class": "Different Player",
+    "maxHitPoint": 1,
+    "attackPoint": 512,
+    "inventory": {
+      "inventoryName": "NotiNventory",
+      "essence": {
+        "collectibleType": "2",
+        "num": 234
+      }
+    },
+    "equipments": {
+      "weapon": {
+        "name": "sword",
+        "weaponAttackPoint": 2
+      },
+      "armor": {
+        "name": "armor",
+        "dmgReduced": 122
+      }
+    }
+  },
+  {
+    "class": "",
+    "maxHitPoint": 41,
+    "attackPoint": 2,
+    "inventory": {
+      "inventoryName": "Inventory",
+      "essence": {
+        "collectibleType": "Essence",
+        "num": -23
+      }
+    },
+    "equipments": {
+      "weapon": {
+        "name": "sword",
+        "weaponAttackPoint": 4
+      },
+      "armor": {
+        "name": "armor",
+        "dmgReduced": 5
+      }
+    }
+  }
+]
