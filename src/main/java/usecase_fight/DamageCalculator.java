@@ -1,7 +1,7 @@
 package usecase_fight;
 
-import entity.Monster.Monster;
 import entity.Player;
+import entity.monster.Monster;
 
 /** A calculator that determines Monster damage to Player. */
 public class DamageCalculator extends Calculator {

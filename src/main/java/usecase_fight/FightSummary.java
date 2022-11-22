@@ -1,7 +1,7 @@
 package usecase_fight;
 
 import entity.Equipment;
-import entity.Monster.Monster;
+import entity.monster.Monster;
 
 public class FightSummary {
     private final Monster monster;

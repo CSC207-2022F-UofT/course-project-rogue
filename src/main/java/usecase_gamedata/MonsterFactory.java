@@ -2,7 +2,7 @@ package usecase_gamedata;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.Monster.Monster;
+import entity.monster.Monster;
 import file_reader.GameFileReaderInterface;
 
 public class MonsterFactory{

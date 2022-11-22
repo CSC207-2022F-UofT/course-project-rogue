@@ -1,7 +1,7 @@
 package usecase_event;
 
 import entity.Equipment;
-import entity.Monster.Monster;
+import entity.monster.Monster;
 import entity.Player;
 import entity.monster.Monster;
 import usecase_fight.DamageCalculator;

@@ -2,8 +2,8 @@ package usecase_fight;
 
 import entity.Armor;
 import entity.Equipment;
-import entity.Monster.Monster;
-import entity.Monster.MonsterPower;
+import entity.monster.Monster;
+import entity.monster.MonsterPower;
 import entity.Player;
 import entity.Weapon;
 

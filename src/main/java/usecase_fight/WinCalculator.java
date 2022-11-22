@@ -1,6 +1,6 @@
 package usecase_fight;
 
-import entity.Monster.Monster;
+import entity.monster.Monster;
 import entity.Player;
 
 /** A calculator that determines the winning chance of the Player in a fight. */
