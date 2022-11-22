@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class EssenceEvent extends Event{
 
+
     /**
      * Triggering this Event adds a random amount to the Essence that the player holds
      *
@@ -20,6 +21,7 @@ public class EssenceEvent extends Event{
         // call presenter here to tell player that they found random_int amount of essence
         // "You found x amount of essence lying on the ground!"
     }
+
 
     /**Adds the Essence by random amount from 0 to 500
      *
