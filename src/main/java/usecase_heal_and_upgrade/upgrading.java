@@ -33,10 +33,27 @@ public class upgrading implements Observer{
     }
 
     /**
+     * Show player the info: how many collectible need, how many do the player have, if the player can heal, and request
+     * the player to make choice.
+     */
+    private void upgrade_info(){
+        Visual_h_u speaker = new Presenter_bottom();
+        CollectibleUseManage ColHealper= new CollectibleUseManage(this.player, this.Essence_require, "upgrade");
+        speaker.show_info(this.player.getEssence().getNum(), this.Essence_require, 0, 0,
+                ColHealper.get_able(), "upgrade");
+        if(ColHealper.get_able()){
+            speaker.keypress_request("1","2");
+        }
+    }
+
+    /**
      * The basic part of the upgrading, it will return nothing but send messages to presenter.
      */
     private void upgrade(Equipment to_upgrade) {
-
+        CollectibleUseManage ColHelper= new CollectibleUseManage(this.player, this.Essence_require, "upgrade");
+        EquipmentManage EquipHelper = new EquipmentManage(to_upgrade);
+        EquipHelper.StatsIncrease(this.StatCount.determine_add());
+        ColHelper.spendCollectible();
     }
 
 

@@ -14,11 +14,11 @@ public class EquipmentManage {
      *
      * @return the number of collectible items needed for upgrading
      */
-    private boolean checkMaxLv() {
+    public boolean checkMaxLv() {
         return this.EquipmentSelected.getTimesUpgraded() >=4;
     }
 
-    private void StatsIncrease(int be_added){
+    public void StatsIncrease(int be_added){
         this.EquipmentSelected.addStatValue(be_added);
     }
 
