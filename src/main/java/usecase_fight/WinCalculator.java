@@ -27,6 +27,14 @@ public class WinCalculator extends Calculator{
         return this.getWinChance(pHp, mHp, pAtk, mAtk);
     }
 
+    /**
+     * Determines the chance of a Player winning the fight.
+     * @param pHp Player hp.
+     * @param mHp Monster hp
+     * @param pAtk Player attack
+     * @param mAtk Monster attack
+     * @return Win chance, in percent.
+     */
     private int getWinChance(int pHp, int mHp, int pAtk, int mAtk){
         float pHitsRequired = (float)pHp / mAtk; // the number hits required to kill player
         float mHitsRequired = (float)mHp / pAtk; // the number hits required to kill monster
