@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.ArtifactEvent;
-import usecase_event.EssenceEvent;
 import usecase_event.WallEvent;
 import usecase_playeractions.Map;
 
@@ -38,7 +37,7 @@ public class MapTest {
         map.setBoard(new ArtifactEvent(),0,1);
         map.move(player,0,1);
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
-        Assertions.assertEquals(1, player.getCollectible("Artifact").getNum());
+        Assertions.assertEquals(1, player.getArtifact().getNum());
         map.setBoard(new WallEvent(),0,2);
         map.move(player,0,1);
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
