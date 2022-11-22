@@ -3,6 +3,7 @@ package usecase_event;
 import entity.Equipment;
 import entity.Monster.Monster;
 import entity.Player;
+import entity.monster.Monster;
 import usecase_fight.DamageCalculator;
 import usecase_fight.DropRetriever;
 import usecase_fight.FightSummary;
