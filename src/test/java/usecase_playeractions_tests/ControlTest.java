@@ -6,12 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.ArtifactEvent;
-import usecase_event.WallEvent;
 import usecase_playeractions.Control;
 import usecase_playeractions.Map;
-import usecase_playeractions.Mover;
 
-import java.util.Observable;
 
 public class ControlTest {
 
@@ -42,7 +39,7 @@ public class ControlTest {
         Control control = new Control(player,map);
         control.keyPressed("W");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
-        Assertions.assertEquals(1, player.getCollectible("Artifact").getNum());
+        Assertions.assertEquals(1, player.getArtifact().getNum());
         control.keyPressed("W");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
     }
