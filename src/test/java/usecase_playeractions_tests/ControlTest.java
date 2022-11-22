@@ -42,7 +42,7 @@ public class ControlTest {
         Control control = new Control(player,map);
         control.keyPressed("W");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
-        Assertions.assertEquals(1, player.getCollectible("Artifact").getNum());
+        Assertions.assertEquals(1, player.getArtifact().getNum());
         control.keyPressed("W");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
     }
