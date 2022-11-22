@@ -1,8 +1,8 @@
 package usecase_heal_and_upgrade;
 
-import Interface.Visual_h_u;
+import Interface_heal_and_upgrade.Visual_h_u;
 import entity.Player;
-import presenter.infoDisplay;
+import StringMaker_heal_and_upgrade.infoDisplay;
 
 import java.util.Observable;
 import java.util.Observer;

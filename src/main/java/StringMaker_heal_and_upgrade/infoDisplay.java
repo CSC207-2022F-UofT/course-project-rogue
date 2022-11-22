@@ -1,6 +1,6 @@
-package presenter;
+package StringMaker_heal_and_upgrade;
 
-import Interface.Visual_h_u;
+import Interface_heal_and_upgrade.Visual_h_u;
 
 public class infoDisplay implements Visual_h_u {
 
