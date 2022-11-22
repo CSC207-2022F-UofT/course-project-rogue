@@ -11,12 +11,12 @@ import entity.CollectibleInventory;
 
 import java.io.IOException;
 
-public class collectibleInventoryDeserialization extends StdDeserializer<CollectibleInventory> {
-    public collectibleInventoryDeserialization() {
+public class CollectibleInventoryDeserialization extends StdDeserializer<CollectibleInventory> {
+    public CollectibleInventoryDeserialization() {
         this(null);
     }
 
-    public collectibleInventoryDeserialization(Class<?> vc){
+    public CollectibleInventoryDeserialization(Class<?> vc){
         super(vc);
     }
 
@@ -25,7 +25,7 @@ public class collectibleInventoryDeserialization extends StdDeserializer<Collect
             JacksonException {
         ObjectMapper om = new ObjectMapper();
         JsonNode node = p.getCodec().readTree(p);
-        deserializeHelper h = new deserializeHelper();
+        DeserializeHelper h = new DeserializeHelper();
         String invN = h.readString(node.get("inventoryName"));
         Collectible e = new Collectible(h.readString(node.get("essence").get("collectibleType")),
                 h.readInt(node.get("essence").get("num")));

@@ -1,6 +1,6 @@
 package file_reader;
 
-public class GameFileReader implements GameFileReader_interface{
+public class GameFileReader implements GameFileReaderInterface {
 
     private String dir;
     public GameFileReader(String dir){
