@@ -9,22 +9,19 @@ public class infoDisplay implements VisualHealUpgrade {
      * the collectible items the player need.
      * @param EssenceHave the number of essence the player have
      * @param EssenceNeed the number of essence the player need
-     * @param ArtifactHave the number of essence the player need
-     * @param ArtifactNeed the number of essence the player need
      * @param ableToUpgrade the number of essence the player need
      * @param verb heal or upgrade
      */
     @Override
-    public void showInfo(int EssenceHave, int EssenceNeed, int ArtifactHave, int ArtifactNeed,
-                                  boolean ableToUpgrade, String verb) {
+    public void showInfo(int EssenceHave, int EssenceNeed, boolean ableToUpgrade, String verb) {
         String Info;
         if (ableToUpgrade){
-            Info = String.format("You have Essence %d/%d. \n You have Artifact %d/%d. \n You can %s!",EssenceHave,
-                    EssenceNeed, ArtifactHave, ArtifactNeed, verb);
+            Info = String.format("You have Essence %d/%d. \n You can %s!",EssenceHave,
+                    EssenceNeed, verb);
         }
         else {
-            Info = String.format("You have Essence %d/%d. \n You have Artifact %d/%d. \n You don't have enough " +
-                            "collections, try to get them!",EssenceHave, EssenceNeed, ArtifactHave, ArtifactNeed);
+            Info = String.format("You have Essence %d/%d. \n You don't have enough " +
+                            "collections, try to get them!",EssenceHave, EssenceNeed);
         }
     }
 

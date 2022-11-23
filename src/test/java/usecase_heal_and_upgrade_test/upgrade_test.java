@@ -4,8 +4,7 @@ import entity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.healing;
-import usecase_heal_and_upgrade.upgrading;
+import usecase_heal_and_upgrade.Upgrader;
 import usecase_playeractions.Control;
 import usecase_playeractions.Map;
 
@@ -27,13 +26,10 @@ public class upgrade_test {
     @DisplayName("Setup before Each Test")
     void setUp(){
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
-        upgrading upgrade= new upgrading(player,"U");
     }
     @Test
     @DisplayName("Test Upgrade")
     void testMove(){
-        Control control = new Control(player,map);
-        control.keyPressed("U");
     }
 }
 
