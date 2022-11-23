@@ -7,10 +7,10 @@ import file_reader.GameFileReaderInterface;
 
 public class EquipmentFactory {
 
-    private static GameFileReaderInterface ef; // not sure if its problematic to have this as static
+    private final GameFileReaderInterface readerInterface; // not sure if its problematic to have this as static
 
     public EquipmentFactory(GameFileReaderInterface ef){
-        EquipmentFactory.ef = ef;
+        this.readerInterface = ef;
     }
 
     /**
@@ -18,9 +18,9 @@ public class EquipmentFactory {
      * @return A random Monster.
      */
 
-    public static Equipment create(int index){
+    public Equipment create(int index){
         try {
-            return new ObjectMapper().readValue(ef.findInt("index", index), Equipment.class);
+            return new ObjectMapper().readValue(readerInterface.findInt("index", index), Equipment.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
