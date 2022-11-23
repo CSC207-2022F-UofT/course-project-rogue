@@ -8,8 +8,13 @@ import java.util.Random;
 
 /** A Retriever that obtains the items dropped after a fight. */
 public class DropRetriever {
+    EquipmentFactory ef;
 
     Random rand = new Random();
+
+    public DropRetriever(EquipmentFactory ef) {
+        this.ef = ef;
+    }
 
     /**
      * @return the Equipment drop of a fight.
@@ -20,7 +25,7 @@ public class DropRetriever {
         // get equipment drop
         if(dropEquipment){
             int index = rand.nextInt(8); // index from 0 to 7
-            Equipment equipment = EquipmentFactory.create(index);
+            Equipment equipment = ef.create(index);
             return Optional.of(equipment);
         }
         return Optional.empty();
