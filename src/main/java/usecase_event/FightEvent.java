@@ -7,13 +7,21 @@ import usecase_fight.DamageCalculator;
 import usecase_fight.DropRetriever;
 import usecase_fight.FightSummary;
 import usecase_fight.WinCalculator;
+import usecase_gamedata.EquipmentFactory;
 import usecase_gamedata.MonsterFactory;
 
 import java.util.Optional;
 import java.util.Random;
 
 public class FightEvent extends Event{
-    public FightEvent(){}
+
+    private final MonsterFactory mf;
+    private final EquipmentFactory ef;
+
+    public FightEvent(MonsterFactory monsterFactory, EquipmentFactory equipmentFactory){
+        this.mf = monsterFactory;
+        this.ef = equipmentFactory;
+    }
 
     /**
      * Triggers a fight between Player and a Monster. Displays a summary of the following to the user:
@@ -42,7 +50,7 @@ public class FightEvent extends Event{
     private Monster randomMonster(){
         Random random = new Random();
         int index = random.nextInt(3); // for now pick between the first 3 monsters
-        return MonsterFactory.createRandom(index);
+        return mf.create(index);
     }
 
     /**
@@ -55,7 +63,7 @@ public class FightEvent extends Event{
     private FightSummary createFight(Player player, Monster monster){
         DamageCalculator damageCalculator = new DamageCalculator(monster, player);
         WinCalculator winCalculator = new WinCalculator(monster, player);
-        DropRetriever dr = new DropRetriever();
+        DropRetriever dr = new DropRetriever(ef);
         int winChance = winCalculator.calculate();
         int damage = damageCalculator.calculate();
         int essence = dr.getEssenceNum();
