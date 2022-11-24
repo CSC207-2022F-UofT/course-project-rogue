@@ -1,8 +1,9 @@
 # Adventure Guy
 Game created by David, Ian, John, Thomas, Jaemi, Henry, Jillian
+![Adventure Guy Image](https://github.com/CSC207-2022F-UofT/course-project-rogue/image/"Menu Sample".jpg?raw=true)
 
-# How to Run the Game
-Download the file from the Repository, run from main
+# Running
+1. Run Game which is located in the Game Drive
 
 # Basic Flow of the Game
 Player has to explore the maze, obtain at least 5 artifacts and find the exit to win. 
