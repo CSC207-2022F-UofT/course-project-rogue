@@ -128,18 +128,22 @@ public class Fighter implements Observer {
     private void fight(){
         FightSummary summary = this.getSummary();
         Monster monster = summary.getMonster();
+
+        if (summary.getStaleMate()){    // tie: no drops, no damage received.
+            this.displayResults();
+        }
         boolean win = this.determineWin(summary);
         String powerResult = this.getPowerResult(monster, win);
-        if (win){
+        if (win){   // win: drops, no damage
             this.acceptEssence(summary);
             boolean exchange = this.acceptEquipment(summary);
             this.displayResults(powerResult, summary.getAmountDrop(), exchange, summary.getEquipment());
         } else {
             this.inflictDamage(summary);
-            if (this.checkGameOver()){
+            if (this.checkGameOver()){  // game over
                 this.player.setGameOver();
-                this.displayResults();
-            } else {
+                this.displayGameOver();
+            } else {    // lose: no drops, damage received
                 this.displayResults(powerResult, summary.getDamage());
             }
         }
@@ -184,10 +188,21 @@ public class Fighter implements Observer {
     }
 
     /**
-     * Display game over results to Player.
+     * Display stalemate results to PLayer.
      */
     private void displayResults(){
-        // call a presenter to change to a game over screen
+        String line1 = "A Draw!";
+        String line2 = "Damage Taken: 0";
+        String line3 = "Items Received: None";
+        String line5 = "Press [SpaceBar] to continue.";
+        //  call presenter to update text
+    }
+
+    /**
+     * Display game over results to Player.
+     */
+    private void displayGameOver(){
+        // call presenter to change to game over screen
     }
 
 
