@@ -20,11 +20,11 @@ So try to stay alive, collect the artifact and escape the maze!
 
 
 # Basic Controls
-[W] Move Up
-[A] Move Left
-[S] Move Down
-[D] Move Right
-[H] Heal
-[U] Upgrade
-[F] Fight
-[R] Flee
+* [W] Move Up
+* [A] Move Left
+* [S] Move Down
+* [D] Move Right
+* [H] Heal
+* [U] Upgrade
+* [F] Fight
+* [R] Flee
