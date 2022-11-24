@@ -23,12 +23,17 @@ public class WinCalculator extends Calculator{
         int mHp = monster.getHealth();
         int pAtk = player.getAttackPoint() + player.getEquipment("Weapon").getStatValue();
         int pHp = player.getCurrHitPoint();
-
-        return this.getWinChance(pHp, mHp, pAtk, mAtk);
+        if (pAtk == 0 && mAtk == 0){
+            return 0; // if in stalemate, no chance in winning
+        } else{
+            return this.getWinChance(pHp, mHp, pAtk, mAtk);
+        }
     }
 
     /**
-     * Determines the chance of a Player winning the fight.
+     * Determines the chance of a Player winning the fight, with maximum chance being 100 percent and minimum being zero
+     * percent. Win chance is determined by the number of hits required to kill Player vs. Monster.
+     *
      * @param pHp Player hp.
      * @param mHp Monster hp
      * @param pAtk Player attack
@@ -36,9 +41,17 @@ public class WinCalculator extends Calculator{
      * @return Win chance, in percent.
      */
     private int getWinChance(int pHp, int mHp, int pAtk, int mAtk){
+        // based on condition in calculate, we know mAtk and pAtk are not both zero
+        if (mAtk <= 0){ // the monster can never kill the player
+            return 100;
+        } else if (pAtk <= 0) { // the player can never kill the monster
+            return 0;
+        }
+
+        // we know that both mAtk and pAtk are positive integers
+        // the equations below will be defined
         float pHitsRequired = (float)pHp / mAtk; // the number hits required to kill player
         float mHitsRequired = (float)mHp / pAtk; // the number hits required to kill monster
-
         float bonus = ((pHitsRequired - mHitsRequired)* 5);
         // 5 bonus percent per every 1 hit in the difference b/w hits required
 
