@@ -1,7 +1,6 @@
 # Adventure Guy
 Game created by David, Ian, John, Thomas, Jaemi, Henry, Jillian
-![Adventure Guy Image](https://github.com/CSC207-2022F-UofT/course-project-rogue/pictures/"Menu Sample".jpg](https://github.com/CSC207-2022F-UofT/course-project-rogue/blob/main/pictures/Menu%20Sample.PNG?raw=true)
-
+![Adventure Guy Image](https://github.com/CSC207-2022F-UofT/course-project-rogue/blob/main/pictures/Menu%20Sample.PNG?raw=true)
 # Running
 1. Run Game which is located in the Game Drive
 
