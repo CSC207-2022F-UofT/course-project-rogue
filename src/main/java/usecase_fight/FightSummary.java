@@ -54,6 +54,15 @@ public class FightSummary {
         return this.winChance;
     }
 
+    /**
+     * A fight is a stalemate iff the Player's win chance is 0 and the damage dealt by the Monster is also 0.
+     *
+     * @return True iff this fight is a stalemate.
+     */
+    public boolean getStaleMate(){
+        return (winChance == 0 && damage == 0);
+    }
+
     /** @return The Equipment being dropped. */
     public Equipment getEquipment(){
         return this.equipment;
