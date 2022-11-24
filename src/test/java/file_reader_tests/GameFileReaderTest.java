@@ -1,10 +1,12 @@
 package file_reader_tests;
 
+import entity.monster.Monster;
 import file_reader.GameFileReader;
 import file_reader.GameFileReaderInterface;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Player;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -118,5 +120,24 @@ public class GameFileReaderTest {
         Assertions.assertNull(playerFileReader.findString("class", "Difficult"));
     }
 
+
+    void verifyMonster1(Monster monster){
+        Assertions.assertEquals(monster.getName(), "Clown");
+        Assertions.assertEquals(monster.getType(), "type");
+        Assertions.assertTrue(1 <= monster.getAttack() && monster.getAttack() <= 3);
+        Assertions.assertTrue(2 <= monster.getHealth() && monster.getHealth() <= 100);
+        Assertions.assertFalse(monster.isHasPower());
+    }
+    @Test
+    void testMakeClownMonster(){
+        try {
+            Monster monster = new ObjectMapper().
+                    readValue(monsterFileReader.findString("n","Clown"), Monster.class);
+            verifyMonster1(monster);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 }

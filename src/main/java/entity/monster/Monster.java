@@ -1,6 +1,9 @@
 package entity.monster;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import entity.Character;
+import file_reader.deserialization.MonsterDeserialization;
+import file_reader.deserialization.PlayerDeserialization;
 
 import java.util.HashMap;
 
@@ -8,6 +11,8 @@ import java.util.Random;
 
 
 /** A Monster that the Player can encounter in the game.*/
+
+@JsonDeserialize(using = MonsterDeserialization.class)
 public class Monster extends Character {
 
     /** The name of the Monster. */
