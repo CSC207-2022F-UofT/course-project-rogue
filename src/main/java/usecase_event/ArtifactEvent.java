@@ -7,7 +7,7 @@ public class ArtifactEvent extends Event{
     /**
      * Triggering this Event adds 1 to the Artifact that the player holds
      *
-     * @param: player: the player triggering the Event
+     * @param player the player triggering the Event
      */
     @Override
     public void trigger(Player player) {

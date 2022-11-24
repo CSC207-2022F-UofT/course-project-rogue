@@ -1,4 +1,4 @@
-package entity.Monster;
+package entity.monster;
 
 import entity.Character;
 
@@ -6,4 +6,6 @@ import entity.Character;
 public interface Power {
     /** Uses the Power of a Character. */
     String usePower(Character character);
+
+    // make as an abstract class instead?? tbh no need for interface
 }

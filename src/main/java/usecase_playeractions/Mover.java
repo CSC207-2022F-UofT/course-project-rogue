@@ -10,8 +10,8 @@ import java.util.Observer;
  */
 public class Mover implements Observer {
 
-    private Player player;
-    private Map map;
+    private final Player player;
+    private final Map map;
     /**
      * The command that triggers this movement
      */
@@ -19,12 +19,20 @@ public class Mover implements Observer {
     /**
      * Change in x coordinate when moved
      */
-    private int x;
+    private final int x;
     /**
      * Change in y coordinate when moved
      */
-    private int y;
+    private final int y;
 
+    /**
+     * Initialize Mover for player on map.
+     * @param player the player
+     * @param map map to move on.
+     * @param trigger The command that triggers this movement
+     * @param x Change in x coordinate when moved
+     * @param y Change in y coordinate when moved
+     */
     public Mover(Player player, Map map, String trigger, int x, int y){
         this.player = player;
         this.map = map;
