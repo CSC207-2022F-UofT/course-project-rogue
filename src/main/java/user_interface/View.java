@@ -47,7 +47,4 @@ public class View implements KeyListener {
     public void keyReleased(KeyEvent e) {
         System.out.println(e.getKeyChar());
     }
-    public static void main(String[] args) {
-        new View();
-    }
 }

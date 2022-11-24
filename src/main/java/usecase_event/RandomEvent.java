@@ -8,7 +8,7 @@ public class RandomEvent extends Event{
     /**
      * Triggering this Event randomly Triggers Fight Event, no Event or Essence Event
      *
-     * @param: player: the player triggering the Event
+     * @param player the player triggering the Event
      */
     @Override
     public void trigger(Player player) {

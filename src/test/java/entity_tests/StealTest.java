@@ -4,12 +4,12 @@ import entity.*;
 import entity.monster.Steal;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class StealTest {
 
-    String[] items = new String[]{"Essence"};
-    Steal steal = new Steal(items);
+    Steal steal = new Steal();
 
     /** Makes a new Player with the given Essence count. */
     private Player makePlayer(int n){
@@ -25,25 +25,28 @@ public class StealTest {
 
     /** Tests Monster.isMustBeat. */
     @Test
+    @DisplayName("Test Is Must Beat")
     void testIsMustBeat(){
         Assertions.assertFalse(steal.isMustBeat());
     }
 
     /** Tests Steal.usePower when the item to be stolen has a count of 0. Steals nothing. */
     @Test
+    @DisplayName("Test Use Power None")
     void testUsePowerNone(){
         Player player = makePlayer(0);
         String result = steal.usePower(player);
-        Assertions.assertEquals("Hurray! Nothing was stolen!", result);
+        Assertions.assertEquals("Nothing was stolen!", result);
         Assertions.assertEquals(0, player.getEssence().getNum());
     }
 
     /** Tests Steal.usePower when the item to be stolen has a count of less than 4. Always steals 1. */
     @Test
+    @DisplayName("Test Use Power Less")
     void testUsePowerLess(){
         Player player = makePlayer(3);
         String result = steal.usePower(player);
-        Assertions.assertEquals("1 Essence stolen.", result);
+        Assertions.assertEquals("1 essence stolen.", result);
         // checks that the output is correct
         Assertions.assertEquals(2, player.getEssence().getNum());
         // checks that item count was reduced
@@ -51,10 +54,11 @@ public class StealTest {
 
     /** Tests Steal.usePower when the item to be stolen has a count of 4. Steals 1 item. */
     @Test
+    @DisplayName("Test Use Power Enough")
     void testUsePowerEnough(){
         Player player = makePlayer(4);
         String result = steal.usePower(player);
-        Assertions.assertEquals("1 Essence stolen.", result);
+        Assertions.assertEquals("1 essence stolen.", result);
         //checks the output
         Assertions.assertEquals(3, player.getEssence().getNum());
         // checks that item count was reduced
@@ -65,12 +69,13 @@ public class StealTest {
      * item count.
      * */
     @Test
+    @DisplayName("Test Use Power Greater")
     void testUsePowerGreater(){
         Player player = makePlayer(8);
         String result = steal.usePower(player);
-        if (result.equals("2 Essence(s) stolen.")){
+        if (result.equals("2 essence stolen.")){
             Assertions.assertEquals(6, player.getEssence().getNum());
-        } else if (result.equals("1 Essence stolen.")) {
+        } else if (result.equals("1 essence stolen.")) {
             Assertions.assertEquals(7, player.getEssence().getNum());
         }
 

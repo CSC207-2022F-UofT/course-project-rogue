@@ -12,12 +12,18 @@ public class Map{
     private final int LENGTH = 15;
     private final Event[][] board;
 
+    /**
+     * Initialize an empty Map.
+     */
     public Map(){
         board = new Event[WIDTH][LENGTH];
     }
 
     /**
      * place e at point (x,y) on the board
+     * @param e The Event.
+     * @param x x coordinate.
+     * @param y y coordinate.
      **/
     public void setBoard(Event e,int x, int y){
         board[x][y] = e;
@@ -28,6 +34,9 @@ public class Map{
      * Return false if (x,y) is unreachable(e.g. is a wall)
      *, then place the player on that tile
      *, triggers the event on that tile, and return True.
+     * @param p the player.
+     * @param x The x coordinate to move to.
+     * @param y The y coordinate to move to.
      * @return true if the move is successful, false otherwise
      */
     private boolean moveTo(Player p,int x,int y){
@@ -43,7 +52,7 @@ public class Map{
 
     /**
      * Check if (x,y) is on the board and not null
-     * @return true if (x,y) is an Event
+     * @return true if (x,y) is an Event.
      */
     private boolean onBoard(int x,int y){
         if(x>=WIDTH || y>=LENGTH){
@@ -57,7 +66,10 @@ public class Map{
      * Return false if (a+x,b+y) is unreachable(e.g. is a wall)
      *, then place the player on that tile
      *, triggers the event on that tile, and return True.
-     * @return true if the move is successful, false otherwise
+     * @param p The player to move.
+     * @param x Change in x coordinate when moved.
+     * @param y Change in y coordinate when moved.
+     * @return true if the move is successful, false otherwise.
      */
     public boolean move(Player p,int x, int y){
         int[] location = p.getPlayerLocation();
