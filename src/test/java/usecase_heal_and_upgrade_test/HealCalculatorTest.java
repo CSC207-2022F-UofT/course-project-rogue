@@ -29,7 +29,7 @@ public class HealCalculatorTest {
     }
     @Test
     @DisplayName("Test Heal Calculator")
-    void testMove(){
+    void testHealCalculator(){
         player.setCanHeal(true);
         HealCalculator healCalculator = new HealCalculator(player);
         player.changeCurrHitPoint(-20);
@@ -37,5 +37,6 @@ public class HealCalculatorTest {
         healCalculator.heal();
         Assertions.assertEquals(player.getCurrHitPoint(), 100);
         Assertions.assertEquals(player.getEssence().getNum(), 80);
+        Assertions.assertEquals(player.getCanHeal(), false);
     }
 }

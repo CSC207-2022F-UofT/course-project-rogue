@@ -30,7 +30,7 @@ public class UpgradeCalculatorTest {
     }
     @Test
     @DisplayName("Test Upgrade Calculator")
-    void testMove(){
+    void testUpgradeCalculator(){
         player.setCanHeal(true);
         UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
         weaponUpgradeCalculator.UpgradeInfoUpdate();

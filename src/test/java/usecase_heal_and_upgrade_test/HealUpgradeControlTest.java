@@ -32,7 +32,7 @@ public class HealUpgradeControlTest {
     }
     @Test
     @DisplayName("Test Heal and Upgrade Control")
-    void testMove(){
+    void testHealUpgradeControl(){
         player.setCanHeal(true);
         HealUpgradeCalculator healUpgradeCalculator= new HealUpgradeCalculator(player);
         HealingUpgradingControl control = new HealingUpgradingControl(player, healUpgradeCalculator);
