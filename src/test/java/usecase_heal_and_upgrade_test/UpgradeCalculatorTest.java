@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.HealCalculator;
 import usecase_heal_and_upgrade.UpgradeCalculator;
 import usecase_playeractions.Map;
 
@@ -36,5 +35,6 @@ public class UpgradeCalculatorTest {
         weaponUpgradeCalculator.UpgradeInfoUpdate();
         weaponUpgradeCalculator.upgrade();
         Assertions.assertEquals(player.getEquipment("Weapon").getStatValue(), 1020);
+        Assertions.assertEquals(player.getEquipment("Weapon").getTimesUpgraded(),1);
     }
 }
