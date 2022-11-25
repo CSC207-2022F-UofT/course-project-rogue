@@ -13,7 +13,7 @@ public class HealingUpgradingControl extends Observable {
 
     }
 
-    public final String[] DEFAULT = new String[]{"W","A","H","N"};
+    public final String[] DEFAULT = new String[]{"1","2","H","N"};
 
     /**
      * Initialize the actions choice of the player.
