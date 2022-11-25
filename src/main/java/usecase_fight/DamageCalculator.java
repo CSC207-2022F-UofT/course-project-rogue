@@ -60,15 +60,13 @@ public class DamageCalculator extends Calculator {
         float pHitsRequired = (float) pHp / monsterAtk; // the number hits required to kill player
 
         if (pAtk <= 0){ // player can never kill monster
-            return Math.round(pHitsRequired); // turns determined by number of hits required to kill player
+            return Math.max(Math.round(pHitsRequired), 1); // turns determined by number of hits required to kill player
+            // returns a minimum of 1 turn
         }
         float mHitsRequired = (float) mHp / pAtk; // the number hits required to kill monster
 
-        int result = Math.round(Math.min(pHitsRequired, mHitsRequired));
-        if (result <= 0){
-            return 1;   // if the rounded lowest turns is 0, then return at least 1
-        }
-        return result;
+        int result = Math.round(Math.min(pHitsRequired, mHitsRequired)); // value will be equal to or greater than 0
+        return Math.max(result, 1); // returns a minimum of 1 turn
     }
 
     /**
