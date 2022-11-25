@@ -5,7 +5,7 @@ import StringMaker_heal_and_upgrade.infoDisplay;
 import entity.Equipment;
 import entity.Player;
 
-public class UpgradeInfo {
+public class UpgradeCalculator {
 
     private CollectibleUseManage CollectHelper;
     private Player player;
@@ -22,7 +22,7 @@ public class UpgradeInfo {
      * Constructor of Heal info. This class will collect the information of player and determine how to heal
      * @param player
      */
-    public UpgradeInfo(Player player, String EquipType){
+    public UpgradeCalculator(Player player, String EquipType){
         this.player = player;
         this.Essenceneed = new CalculatorCollectable();
         this.CollectHelper = new CollectibleUseManage(player, this.Essenceneed.EssenceForUpgrade());
@@ -66,6 +66,8 @@ public class UpgradeInfo {
     }
 
     public void upgrade(){
+        this.CollectHelper.spendCollectible();
         this.equipment.addStatValue(this.StatAdded.determineAdd());
+        this.equipment.getTimesUpgraded();
     }
 }

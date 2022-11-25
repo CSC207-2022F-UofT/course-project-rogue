@@ -1,14 +1,14 @@
 package usecase_heal_and_upgrade_test;
 
 import entity.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.Upgrader;
-import usecase_playeractions.Control;
+import usecase_heal_and_upgrade.HealCalculator;
 import usecase_playeractions.Map;
 
-public class upgrade_test {
+public class HealCalculatorTest {
     Map map;
     Player player;
     int maxHP = 100;
@@ -28,8 +28,14 @@ public class upgrade_test {
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
     @Test
-    @DisplayName("Test Upgrade")
+    @DisplayName("Test Heal Calculator")
     void testMove(){
+        player.setCanHeal(true);
+        HealCalculator healCalculator = new HealCalculator(player);
+        player.changeCurrHitPoint(-20);
+        healCalculator.HealInfoUpdate();
+        healCalculator.heal();
+        Assertions.assertEquals(player.getCurrHitPoint(), 100);
+        Assertions.assertEquals(player.getEssence().getNum(), 80);
     }
 }
-

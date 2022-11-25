@@ -4,7 +4,7 @@ import Interface_heal_and_upgrade.VisualHealUpgrade;
 import StringMaker_heal_and_upgrade.infoDisplay;
 import entity.Player;
 
-public class HealInfo {
+public class HealCalculator {
     private CollectibleUseManage CollectHelper;
     private Player player;
     private CalculatorCollectable Essenceneed;
@@ -16,7 +16,7 @@ public class HealInfo {
      * Constructor of Heal info. This class will collect the information of player and determine how to heal
      * @param player
      */
-    public HealInfo(Player player){
+    public HealCalculator(Player player){
         this.player = player;
         this.RequireHP = 0;
         this.HPtoHeal = 0;

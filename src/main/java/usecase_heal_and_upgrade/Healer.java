@@ -1,6 +1,5 @@
 package usecase_heal_and_upgrade;
 
-import entity.Collectible;
 import entity.Player;
 
 import java.util.Observable;
@@ -8,7 +7,7 @@ import java.util.Observer;
 
 public class Healer implements Observer {
     private Player player;
-    private HealInfo Manager;
+    private HealCalculator Manager;
     private final String trigger;
 
 
@@ -17,7 +16,7 @@ public class Healer implements Observer {
      * certain amount of HP that is determined by the HealInfo
      * @param player the player
      */
-    public Healer(Player player, HealInfo Manager, String trigger) {
+    public Healer(Player player, HealCalculator Manager, String trigger) {
         this.player = player;
         this.Manager = Manager;
         this.trigger = trigger;

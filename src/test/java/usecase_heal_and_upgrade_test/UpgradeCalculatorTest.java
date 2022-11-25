@@ -1,14 +1,15 @@
 package usecase_heal_and_upgrade_test;
 
 import entity.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.Healer;
-import usecase_playeractions.Control;
+import usecase_heal_and_upgrade.HealCalculator;
+import usecase_heal_and_upgrade.UpgradeCalculator;
 import usecase_playeractions.Map;
 
-public class heal_test {
+public class UpgradeCalculatorTest {
     Map map;
     Player player;
     int maxHP = 100;
@@ -28,7 +29,12 @@ public class heal_test {
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
     @Test
-    @DisplayName("Test Heal")
+    @DisplayName("Test Upgrade Calculator")
     void testMove(){
+        player.setCanHeal(true);
+        UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
+        weaponUpgradeCalculator.UpgradeInfoUpdate();
+        weaponUpgradeCalculator.upgrade();
+        Assertions.assertEquals(player.getEquipment("Weapon").getStatValue(), 1020);
     }
 }

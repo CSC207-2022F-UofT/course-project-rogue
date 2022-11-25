@@ -1,6 +1,5 @@
 package usecase_heal_and_upgrade;
 
-import entity.Equipment;
 import entity.Player;
 
 import java.util.Observable;
@@ -10,7 +9,7 @@ import java.util.Observer;
 public class Upgrader implements Observer{
     private Player player;
 
-    private UpgradeInfo Manager;
+    private UpgradeCalculator Manager;
     private final String trigger;
 
 
@@ -18,7 +17,7 @@ public class Upgrader implements Observer{
      * The constructor of upgrading_control.
      * @param player the player
      */
-    public Upgrader(Player player, UpgradeInfo upgradeManage, String trigger) {
+    public Upgrader(Player player, UpgradeCalculator upgradeManage, String trigger) {
         this.player = player;
         this.Manager = upgradeManage;
         this.trigger = trigger;
