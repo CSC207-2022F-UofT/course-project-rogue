@@ -35,11 +35,12 @@ public class DamageCalculator extends Calculator {
         int mAtk = this.monster.getAttack();
         int pRed = this.player.getEquipment("Armor").getStatValue();
         int attackDmg = Math.max((mAtk - pRed), 0); // attack per turn, minimum of 0
-        // if attackDmg is 0, then return attackDmg
+        // if attackDmg is 0, then no damage dealt
         if (attackDmg == 0){
             return attackDmg;
-        } else {  // else, get number of turns
+        } else {
             int turns = this.getNumberTurns(attackDmg);
+            // turns cannot be 0 to avoid false alarm stalemates
             return attackDmg * turns;
         }
     }
@@ -49,7 +50,7 @@ public class DamageCalculator extends Calculator {
      * either the Player or Monster.
      *
      * @param monsterAtk The damage per turn of the Monster. Value is always > 0.
-     * @return The number of turns in the fight.
+     * @return The number of turns in the fight with the minimum being 1 turn.
      */
     private int getNumberTurns(int monsterAtk){
         int pHp = player.getCurrHitPoint();
@@ -63,7 +64,11 @@ public class DamageCalculator extends Calculator {
         }
         float mHitsRequired = (float) mHp / pAtk; // the number hits required to kill monster
 
-        return Math.round(Math.min(pHitsRequired, mHitsRequired));
+        int result = Math.round(Math.min(pHitsRequired, mHitsRequired));
+        if (result <= 0){
+            return 1;   // if the rounded lowest turns is 0, then return at least 1
+        }
+        return result;
     }
 
     /**
