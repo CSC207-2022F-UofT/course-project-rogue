@@ -1,7 +1,7 @@
 package usecase_heal_and_upgrade;
 
-import Interface_heal_and_upgrade.VisualHealUpgrade;
-import StringMaker_heal_and_upgrade.infoDisplay;
+import interface_heal_and_upgrade.VisualHealUpgrade;
+import stringmaker_heal_and_upgrade.InfoDisplay;
 import entity.Player;
 
 public class HealCalculator {
@@ -55,7 +55,7 @@ public class HealCalculator {
      * let the presenter print the information of heal
      */
     public void HealInfoPrint(){
-        VisualHealUpgrade speaker = new infoDisplay();
+        VisualHealUpgrade speaker = new InfoDisplay();
         if (this.RequireHP==0){
             speaker.WarnFullHP();
             return;

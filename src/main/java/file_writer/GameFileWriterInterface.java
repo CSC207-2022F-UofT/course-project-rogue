@@ -1,9 +1,9 @@
-package fileWriter;
+package file_writer;
 
 import entity.Player;
 import file_reader.GameFileReaderInterface;
 
-public interface GameFileWriter_Interface {
+public interface GameFileWriterInterface {
 
     public void register(GameFileReaderInterface fileReader);
     public void notifyReader();

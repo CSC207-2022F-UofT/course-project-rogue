@@ -1,7 +1,7 @@
 package usecase_heal_and_upgrade;
 
-import Interface_heal_and_upgrade.VisualHealUpgrade;
-import StringMaker_heal_and_upgrade.infoDisplay;
+import interface_heal_and_upgrade.VisualHealUpgrade;
+import stringmaker_heal_and_upgrade.InfoDisplay;
 import entity.Equipment;
 import entity.Player;
 
@@ -51,7 +51,7 @@ public class UpgradeCalculator {
      * let the presenter print the information of heal
      */
     public void HealInfoPrint(){
-        VisualHealUpgrade speaker = new infoDisplay();
+        VisualHealUpgrade speaker = new InfoDisplay();
         if (this.equipment.getTimesUpgraded() == 4){
             speaker.WarnMaxLv(this.EquipType);
             return;

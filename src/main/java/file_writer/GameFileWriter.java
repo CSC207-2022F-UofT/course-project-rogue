@@ -1,7 +1,5 @@
-package fileWriter;
+package file_writer;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Player;
 import file_reader.GameFileReaderInterface;
 import org.json.simple.JSONArray;
@@ -9,9 +7,8 @@ import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class GameFileWriter implements GameFileWriter_Interface{
+public class GameFileWriter implements GameFileWriterInterface {
     private String dir;
     private GameFileReaderInterface reader;
 

@@ -1,4 +1,4 @@
-package Interface_heal_and_upgrade;
+package interface_heal_and_upgrade;
 
 public interface VisualHealUpgrade {
     /**
