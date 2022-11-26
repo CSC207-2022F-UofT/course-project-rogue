@@ -1,15 +1,21 @@
 package user_interface;
+import interface_adapters.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JFrame;
 
-public class View implements KeyListener {
+public class View implements KeyListener, View_Interface {
     //Controller control;//keyReleased pass in string
     private int progress = 0;
 
+    private Controller controller;
+
+    private JFrame game_play;
+
     public View(){
-        JFrame game_play = new JFrame();
+        game_play = new JFrame();
         game_play.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         //game_play.setLayout(null);
         int screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -23,7 +29,6 @@ public class View implements KeyListener {
             Menu m = new Menu();
             game_play.add(m);
         }
-        game_play.setVisible(true);
 
         game_play.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -38,6 +43,10 @@ public class View implements KeyListener {
     }
 
     @Override
+    public void setVisible(boolean b){
+        this.game_play.setVisible(b);
+    }
+    @Override
     public void keyTyped(KeyEvent e) {}
 
     @Override
@@ -47,7 +56,12 @@ public class View implements KeyListener {
     public void keyReleased(KeyEvent e) {
         System.out.println(e.getKeyChar());
     }
-    public static void main(String[] args) {
-        new View();
+
+    /**
+     * @param c : Controller to be passed in
+     */
+    @Override
+    public void setController(Controller c) {
+        this.controller = c;
     }
 }

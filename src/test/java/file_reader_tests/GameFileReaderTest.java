@@ -1,12 +1,13 @@
 package file_reader_tests;
 
+import entity.monster.Monster;
 import file_reader.GameFileReader;
 import file_reader.GameFileReaderInterface;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Player;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class GameFileReaderTest {
@@ -54,9 +55,7 @@ public class GameFileReaderTest {
         Assertions.assertEquals(2, player.getEquipment("Weapon").getStatValue());
         Assertions.assertEquals(122, player.getEquipment("Armor").getStatValue());
     }
-
     @Test
-    @DisplayName("Test Creating Player")
     void testBasicPlayerCreation(){
         try {
             //1st JSONObject in list
@@ -69,7 +68,6 @@ public class GameFileReaderTest {
     }
 
     @Test
-    @DisplayName("Test Find String")
     void testFindString(){
         try {
             //4th JSONObject in list
@@ -82,7 +80,6 @@ public class GameFileReaderTest {
     }
 
     @Test
-    @DisplayName("Test Find Empty String")
     void testFindStringEmptyString(){
         try {
             //3rd JSONObject in list
@@ -95,7 +92,6 @@ public class GameFileReaderTest {
     }
 
     @Test
-    @DisplayName("Test Find Int")
     void testFindInt(){
         try {
             //2nd JSONObject in list
@@ -108,7 +104,6 @@ public class GameFileReaderTest {
     }
 
     @Test
-    @DisplayName("Test Find Boolean")
     void testFindBoolean(){
         try {
             //3rd JSONObject in list
@@ -121,10 +116,28 @@ public class GameFileReaderTest {
     }
 
     @Test
-    @DisplayName("Test Find String Value Does not Exist")
     void testFindStringValueDoesNotExist(){
         Assertions.assertNull(playerFileReader.findString("class", "Difficult"));
     }
 
+
+    void verifyMonster1(Monster monster){
+        Assertions.assertEquals(monster.getName(), "Clown");
+        Assertions.assertEquals(monster.getType(), "type");
+        Assertions.assertTrue(1 <= monster.getAttack() && monster.getAttack() <= 3);
+        Assertions.assertTrue(2 <= monster.getHealth() && monster.getHealth() <= 100);
+        Assertions.assertFalse(monster.isHasPower());
+    }
+    @Test
+    void testMakeClownMonster(){
+        try {
+            Monster monster = new ObjectMapper().
+                    readValue(monsterFileReader.findString("n","Clown"), Monster.class);
+            verifyMonster1(monster);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 }

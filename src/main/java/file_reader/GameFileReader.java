@@ -46,4 +46,8 @@ public class GameFileReader implements GameFileReaderInterface {
     public void update(String dir) {
         this.dir = dir;
     }
+    @Override
+    public String getDir(){
+        return this.dir;
+    }
 }
