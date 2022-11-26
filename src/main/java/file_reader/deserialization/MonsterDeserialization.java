@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import entity.Player;
 import entity.monster.Monster;
 
 import java.io.IOException;
@@ -22,7 +21,7 @@ public class MonsterDeserialization  extends StdDeserializer<Monster> {
      * @param p    Parsed used for reading JSON content
      * @param ctxt Context that can be used to access information about
      *             this deserialization activity.
-     * @return
+     * @return Monster
      * @throws IOException
      * @throws JacksonException
      */

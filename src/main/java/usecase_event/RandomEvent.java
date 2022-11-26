@@ -1,7 +1,7 @@
 package usecase_event;
 
 import java.util.Random;
-import entity.Player;
+import entity.player.Player;
 
 public class RandomEvent extends Event{
 

@@ -1,6 +1,6 @@
 package usecase_event;
 
-import entity.Player;
+import entity.player.Player;
 
 import java.util.Random;
 

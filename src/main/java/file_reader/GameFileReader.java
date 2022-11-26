@@ -42,7 +42,7 @@ public class GameFileReader implements GameFileReaderInterface {
     }
 
     /**
-     * @param dir : new directory that this GameFileReader reads.
+     * @param dir : update the directory this reader reads from.
      */
     @Override
     public void update(String dir) {
