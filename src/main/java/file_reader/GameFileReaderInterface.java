@@ -74,4 +74,6 @@ public interface GameFileReaderInterface {
 //    default String getMap() throws IOException, ParseException {
 //        throw new UnsupportedOperationException("getMap is not properly implemented");
 //    }
+    public void setDir(String dir);
+    public String getDir();
 }
