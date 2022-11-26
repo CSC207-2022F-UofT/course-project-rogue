@@ -1,6 +1,8 @@
 # Adventure Guy
 Game created by David, Ian, John, Thomas, Jaemi, Henry, Jillian
 ![Adventure Guy Image](https://github.com/CSC207-2022F-UofT/course-project-rogue/blob/main/pictures/Menu%20Sample.PNG?raw=true)
+# Lore
+You are a novice adventurer who has accidentally fell into a maze, your knowledge tells you that this maze is rumored to be ferocious and unforgiving to even the most reputated adventurer. It has been said that only by finding artifacts, the maze will reveal the exit to the surface. Otherwise, the poor souls who has entered the maze will be trapped eternally....
 # Running
 1. Run Game which is located in the Game Drive
 
