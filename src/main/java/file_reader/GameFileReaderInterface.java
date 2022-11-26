@@ -75,4 +75,6 @@ public interface GameFileReaderInterface {
 //        throw new UnsupportedOperationException("getMap is not properly implemented");
 //    }
     public void update(String dir);
+
+    String getDir();
 }

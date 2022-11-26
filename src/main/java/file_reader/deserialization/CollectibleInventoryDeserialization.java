@@ -21,8 +21,7 @@ public class CollectibleInventoryDeserialization extends StdDeserializer<Collect
     }
 
     @Override
-    public CollectibleInventory deserialize(JsonParser p, DeserializationContext ctxt) throws IOException,
-            JacksonException {
+    public CollectibleInventory deserialize(JsonParser p, DeserializationContext ctxt) throws IOException{
         ObjectMapper om = new ObjectMapper();
         JsonNode node = p.getCodec().readTree(p);
         DeserializeHelper h = new DeserializeHelper();
