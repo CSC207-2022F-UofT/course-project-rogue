@@ -22,10 +22,9 @@ public class BasicEquipmentSlotsDeserialization extends StdDeserializer<BasicEqu
     }
 
     @Override
-    public BasicEquipmentSlots deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
+    public BasicEquipmentSlots deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         ObjectMapper om = new ObjectMapper();
         JsonNode node = p.getCodec().readTree(p);
-        DeserializeHelper h = new DeserializeHelper();
         Weapon w = om.treeToValue(node.get("weapon"), Weapon.class);
         Armor a = om.treeToValue(node.get("armor"), Armor.class);
         return new BasicEquipmentSlots(w, a);

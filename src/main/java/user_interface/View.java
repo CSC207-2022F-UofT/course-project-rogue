@@ -1,5 +1,7 @@
 package user_interface;
 import interface_adapters.Controller;
+import user_interface.Graphics.GameFrame;
+import user_interface.Graphics.ViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +16,8 @@ public class View implements KeyListener, View_Interface {
 
     private JFrame game_play;
 
+    private GameFrame gameFrame;
+
     public View(){
         game_play = new JFrame();
         game_play.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -26,8 +30,8 @@ public class View implements KeyListener, View_Interface {
 
         //Add Menu panel
         if (progress == 0){
-            Menu m = new Menu();
-            game_play.add(m);
+            gameFrame = new GameFrame();
+            game_play.add(gameFrame);
         }
 
         game_play.addWindowListener(new WindowAdapter() {
@@ -39,13 +43,22 @@ public class View implements KeyListener, View_Interface {
                 }
             }
         });
-
+        game_play.setVisible(true);
     }
 
     @Override
     public void setVisible(boolean b){
         this.game_play.setVisible(b);
     }
+
+    /**
+     * @param model : the model made and passed from visual
+     */
+    @Override
+    public void update(ViewModel model) {
+        gameFrame.setViewModel(model);
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {}
 
@@ -64,4 +77,9 @@ public class View implements KeyListener, View_Interface {
     public void setController(Controller c) {
         this.controller = c;
     }
+
+    public static void main(String[] args) {
+        new View();
+    }
+
 }

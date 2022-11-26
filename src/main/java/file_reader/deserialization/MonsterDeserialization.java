@@ -27,8 +27,7 @@ public class MonsterDeserialization  extends StdDeserializer<Monster> {
      * @throws JacksonException
      */
     @Override
-    public Monster deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
-        ObjectMapper om = new ObjectMapper();
+    public Monster deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         JsonNode node = p.getCodec().readTree(p);
         DeserializeHelper h = new DeserializeHelper();
         String name = h.readString(node.get("n"));

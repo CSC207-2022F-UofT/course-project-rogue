@@ -20,7 +20,7 @@ public class PlayerDeserialization extends StdDeserializer<Player> {
         super(vc);
     }
     @Override
-    public Player deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
+    public Player deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         ObjectMapper om = new ObjectMapper();
         JsonNode node = p.getCodec().readTree(p);
         DeserializeHelper h = new DeserializeHelper();
