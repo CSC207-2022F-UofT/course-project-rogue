@@ -4,7 +4,7 @@ import entity.equipment_slots.item.Collectible;
 import entity.player.Player;
 
 public class CollectibleUseManager {
-    private Collectible Essence;
+    private final Collectible Essence;
     private int essenceNeed;
     private boolean able;
 
