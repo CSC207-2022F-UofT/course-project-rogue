@@ -1,11 +1,7 @@
 package driver;
 
-import entity.Player;
-import fileAccess.GameFileAccess;
-import fileAccess.GameFileAccessInterface;
 import file_reader.GameFileReader;
 import file_reader.GameFileReaderInterface;
-import interface_adapters.OutputBoundary;
 import user_interface.View;
 import user_interface.View_Interface;
 import user_interface.Visual;
@@ -22,9 +18,9 @@ public class Game {
         GameFileReaderInterface equipmentReader = new GameFileReader("data_base/Equipment.json");
         GameFileReaderInterface collectibleReader = new GameFileReader("data_base/Collectible.json");
         GameFileWriter_Interface playerWriter = new GameFileWriter("data_base/Player_save.json");
-        GameFileAccessInterface<Player> playerAccess = new GameFileAccess(playerReader, playerWriter);
+        playerWriter.register(playerReader);
 
-        //Use cases inject outputBoundary and fileReader(Note - use playerAccess for player fileReader or saving),
+        //Use cases inject outputBoundary, fileReader, fileWriter
 
 
         //Controller inject inputBoundaries
