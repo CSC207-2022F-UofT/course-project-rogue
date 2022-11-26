@@ -1,6 +1,6 @@
 package file_writer;
 
-import entity.Player;
+import entity.player.Player;
 import file_reader.GameFileReaderInterface;
 
 public interface GameFileWriterInterface {

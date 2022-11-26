@@ -1,8 +1,13 @@
 package entity_tests;
 
-import entity.*;
+import entity.equipment_slots.BasicEquipmentSlots;
+import entity.inventory_slots.CollectibleInventory;
+import entity.item.Armor;
+import entity.item.Collectible;
+import entity.item.Weapon;
 import entity.monster.Steal;
 
+import entity.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

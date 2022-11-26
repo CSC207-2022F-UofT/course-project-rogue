@@ -2,8 +2,8 @@ package usecase_heal_and_upgrade;
 
 import interface_heal_and_upgrade.VisualHealUpgrade;
 import stringmaker_heal_and_upgrade.InfoDisplay;
-import entity.Equipment;
-import entity.Player;
+import entity.item.Equipment;
+import entity.player.Player;
 
 public class UpgradeCalculator {
 

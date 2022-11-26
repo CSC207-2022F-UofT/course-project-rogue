@@ -1,14 +1,17 @@
 package usecase_heal_and_upgrade_test;
 
-import entity.*;
+import entity.equipment_slots.BasicEquipmentSlots;
+import entity.inventory_slots.CollectibleInventory;
+import entity.item.Armor;
+import entity.item.Collectible;
+import entity.item.Weapon;
+import entity.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.HealCalculator;
 import usecase_heal_and_upgrade.HealUpgradeCalculator;
 import usecase_heal_and_upgrade.HealingUpgradingControl;
-import usecase_heal_and_upgrade.UpgradeCalculator;
 import usecase_playeractions.Map;
 
 public class HealUpgradeControlTest {

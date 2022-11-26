@@ -5,8 +5,7 @@ import file_reader.GameFileReader;
 import file_reader.GameFileReaderInterface;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.Player;
-import org.junit.Assert;
+import entity.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

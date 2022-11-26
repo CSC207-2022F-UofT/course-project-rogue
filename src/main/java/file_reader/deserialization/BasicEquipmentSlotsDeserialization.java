@@ -6,9 +6,9 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import entity.Armor;
-import entity.BasicEquipmentSlots;
-import entity.Weapon;
+import entity.item.Armor;
+import entity.equipment_slots.BasicEquipmentSlots;
+import entity.item.Weapon;
 
 import java.io.IOException;
 

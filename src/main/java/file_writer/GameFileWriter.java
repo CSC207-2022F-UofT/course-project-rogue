@@ -1,6 +1,6 @@
 package file_writer;
 
-import entity.Player;
+import entity.player.Player;
 import file_reader.GameFileReaderInterface;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

@@ -1,4 +1,4 @@
-package entity;
+package entity.inventory_slots;
 
 public abstract class BasicInventory {
     private final String name;

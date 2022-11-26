@@ -1,6 +1,6 @@
 package usecase_heal_and_upgrade;
 
-import entity.Player;
+import entity.player.Player;
 
 public class HealUpgradeCalculator {
     private HealCalculator healCount;

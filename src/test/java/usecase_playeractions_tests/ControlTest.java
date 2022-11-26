@@ -1,17 +1,18 @@
 package usecase_playeractions_tests;
 
-import entity.*;
+import entity.equipment_slots.BasicEquipmentSlots;
+import entity.inventory_slots.CollectibleInventory;
+import entity.item.Armor;
+import entity.item.Collectible;
+import entity.item.Weapon;
+import entity.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.ArtifactEvent;
-import usecase_event.WallEvent;
 import usecase_playeractions.Control;
 import usecase_playeractions.Map;
-import usecase_playeractions.Mover;
-
-import java.util.Observable;
 
 public class ControlTest {
 

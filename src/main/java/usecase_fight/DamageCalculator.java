@@ -1,6 +1,6 @@
 package usecase_fight;
 
-import entity.Player;
+import entity.player.Player;
 import entity.monster.Monster;
 
 /** A calculator that determines Monster damage to Player. */

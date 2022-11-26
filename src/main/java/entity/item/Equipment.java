@@ -1,4 +1,4 @@
-package entity;
+package entity.item;
 
 public abstract class Equipment extends Item implements Comparable<Equipment> {
     private final String statType; // the type of stat

@@ -2,7 +2,7 @@ package usecase_heal_and_upgrade;
 
 import interface_heal_and_upgrade.VisualHealUpgrade;
 import stringmaker_heal_and_upgrade.InfoDisplay;
-import entity.Player;
+import entity.player.Player;
 
 public class HealCalculator {
     private CollectibleUseManage CollectHelper;

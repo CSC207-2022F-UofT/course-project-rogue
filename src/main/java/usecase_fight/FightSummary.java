@@ -1,6 +1,6 @@
 package usecase_fight;
 
-import entity.Equipment;
+import entity.item.Equipment;
 import entity.monster.Monster;
 
 public class FightSummary {

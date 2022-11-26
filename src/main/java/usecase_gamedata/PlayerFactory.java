@@ -3,7 +3,7 @@ package usecase_gamedata;
 import file_reader.GameFileReader;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.Player;
+import entity.player.Player;
 
 public class PlayerFactory extends Factory<Player>{
     @Override

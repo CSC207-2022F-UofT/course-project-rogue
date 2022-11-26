@@ -1,7 +1,7 @@
 package usecase_fight;
 
 import entity.monster.Monster;
-import entity.Player;
+import entity.player.Player;
 
 /** A calculator that determines the winning chance of the Player in a fight. */
 public class WinCalculator extends Calculator{

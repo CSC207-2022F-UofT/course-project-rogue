@@ -1,7 +1,7 @@
 package usecase_heal_and_upgrade;
 
-import entity.Collectible;
-import entity.Player;
+import entity.item.Collectible;
+import entity.player.Player;
 
 public class CollectibleUseManage {
     private Collectible Essence;

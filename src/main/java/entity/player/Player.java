@@ -1,12 +1,19 @@
-package entity;
+package entity.player;
 
+import entity.item.Armor;
+import entity.Character;
+import entity.item.Weapon;
+import entity.equipment_slots.BasicEquipmentSlots;
+import entity.inventory_slots.CollectibleInventory;
+import entity.item.Collectible;
+import entity.item.Equipment;
 import usecase_fight.FightSummary;
 
 import file_reader.deserialization.PlayerDeserialization;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = PlayerDeserialization.class)
-public class Player extends Character{
+public class Player extends Character {
 
     private final int maxHitPoint; // maybe we can combine Player's info into its own class
     private int currHitPoint;
@@ -40,10 +47,10 @@ public class Player extends Character{
 
     /**Gets the equipment that the player is equipping based on the inputted equipment type
      *
-     * @param equipmentType: The type of entity.Equipment the Player is equipping
+     * @param equipmentType: The type of entity.item.Equipment the Player is equipping
      *                     in this case {"Weapon", "Armor"}
      *
-     * @return returns the entity.Equipment class
+     * @return returns the entity.item.Equipment class
      */
     public Equipment getEquipment(String equipmentType) throws IllegalArgumentException{
 

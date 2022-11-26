@@ -1,8 +1,8 @@
 package entity.monster;
 
 import entity.Character;
-import entity.Collectible;
-import entity.Player;
+import entity.item.Collectible;
+import entity.player.Player;
 import java.util.Random;
 
 

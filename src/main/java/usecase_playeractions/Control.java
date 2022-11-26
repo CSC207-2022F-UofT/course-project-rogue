@@ -2,7 +2,7 @@ package usecase_playeractions;
 
 import java.util.Observable;
 
-import entity.Player;
+import entity.player.Player;
 
 /**
  * A class that stores the actions the user may perform.

@@ -1,5 +1,7 @@
-package entity;
+package entity.item;
 
+
+import entity.item.Item;
 
 public class Collectible extends Item {
 

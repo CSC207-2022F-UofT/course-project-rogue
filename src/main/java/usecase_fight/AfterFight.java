@@ -1,6 +1,6 @@
 package usecase_fight;
 
-import entity.Player;
+import entity.player.Player;
 
 import java.util.Observable;
 import java.util.Observer;
