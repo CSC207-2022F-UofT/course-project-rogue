@@ -1,9 +1,9 @@
 package usecase_heal_and_upgrade;
 
-import entity.item.Collectible;
+import entity.equipment_slots.item.Collectible;
 import entity.player.Player;
 
-public class CollectibleUseManage {
+public class CollectibleUseManager {
     private Collectible Essence;
     private int essenceNeed;
     private boolean able;
@@ -14,7 +14,7 @@ public class CollectibleUseManage {
      * @param essenceNeed Essence required for upgrade/heal
      */
 
-    public CollectibleUseManage(Player player, int essenceNeed){
+    public CollectibleUseManager(Player player, int essenceNeed){
         this.Essence = player.getEssence();
         this.essenceNeed = essenceNeed;
         this.able = this.Essence.getNum() >= essenceNeed;
@@ -43,7 +43,7 @@ public class CollectibleUseManage {
      * Change the Essence the player need
      * @param NumEssence
      */
-    public void EssenceNeedUpdate(int NumEssence){
+    public void essenceNeededToUpdate(int NumEssence){
         this.essenceNeed = NumEssence;
         this.able = this.Essence.getNum() >= this.essenceNeed;
     }

@@ -1,7 +1,5 @@
-package entity.item;
+package entity.equipment_slots.item;
 
-
-import entity.item.Item;
 
 public class Collectible extends Item {
 

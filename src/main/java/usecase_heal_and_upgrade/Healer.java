@@ -6,8 +6,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Healer implements Observer {
-    private Player player;
-    private HealCalculator Manager;
+    private final Player player;
+    private final HealCalculator Manager;
     private final String trigger;
 
 
@@ -25,7 +25,8 @@ public class Healer implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals(this.trigger))
-        Manager.heal();
+        if(arg.equals(this.trigger)) {
+            Manager.heal();
+        }
     }
 }

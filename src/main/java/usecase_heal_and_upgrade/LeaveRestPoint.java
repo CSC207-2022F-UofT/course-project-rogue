@@ -6,7 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class LeaveRestPoint implements Observer {
-    private Player player;
+    private final Player player;
 
     private final String trigger;
 

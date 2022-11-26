@@ -1,4 +1,4 @@
-package interface_heal_and_upgrade;
+package usecase_heal_and_upgrade;
 
 public interface VisualHealUpgrade {
     /**
@@ -22,7 +22,7 @@ public interface VisualHealUpgrade {
 
     /**
      * It will tell the player that the update/heal success
-     * @param type
+     * @param type the string representing the result
      */
     void showResult(String type);
 
@@ -36,12 +36,12 @@ public interface VisualHealUpgrade {
     /**
      * Tell player's HP is full, no need for heal
      */
-    void WarnFullHP();
+    void warnFullHP();
 
     /**
      * Tell player's equipment is full, can not upgrade.
      */
-    void WarnMaxLv(String Equipment);
+    void warnMaxLv(String Equipment);
 
     /**
      * Tell player that he/she give up upgrade/heal

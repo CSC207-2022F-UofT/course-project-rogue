@@ -1,5 +1,5 @@
 package entity_tests;
-import entity.item.Collectible;
+import entity.equipment_slots.item.Collectible;
 import entity.inventory_slots.CollectibleInventory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

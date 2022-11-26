@@ -23,7 +23,7 @@ public class DamageCalculator extends Calculator {
     @Override
     public int calculate() {
         int mAtk = this.monster.getAttack();
-        int pRed = this.player.getEquipment("Armor").getStatValue();
+        int pRed = this.player.getArmor().getStatValue();
         return Math.max((mAtk - pRed), 0);
     }
 }

@@ -21,7 +21,7 @@ public class Controller implements KeyListener {
     /**
      * Contain actions that depend on a Player only.
      */
-    private Control control;
+    private final Control control;
 
 
     /**

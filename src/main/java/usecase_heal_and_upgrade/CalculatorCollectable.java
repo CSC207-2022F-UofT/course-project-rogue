@@ -1,11 +1,11 @@
 package usecase_heal_and_upgrade;
 
 public class CalculatorCollectable {
-    int HealEssenceRate;
+    int healEssenceRate;
     int upgradeEssenceNeed;
 
     public CalculatorCollectable(){
-        HealEssenceRate = 1;
+        healEssenceRate = 1;
         upgradeEssenceNeed =20;
     }
 
@@ -14,9 +14,9 @@ public class CalculatorCollectable {
      * @param HP the HP to be healed
      * @return the Essence for the upgrade need.
      */
-    public int EssenceForHeal(int HP){
+    public int essenceForHeal(int HP){
         int EssenceNum;
-        EssenceNum = HP * this.HealEssenceRate;
+        EssenceNum = HP * this.healEssenceRate;
         return EssenceNum;
     }
 
@@ -24,7 +24,7 @@ public class CalculatorCollectable {
      * Determine the Essence required to do the upgrading. This method will return a non-negative integer.
      * @return the Essence for the upgrade need.
      */
-    public int EssenceForUpgrade(){
+    public int essenceForUpgrade(){
         return this.upgradeEssenceNeed;
     }
 
@@ -33,9 +33,9 @@ public class CalculatorCollectable {
      * @param CollectableNum the collectable that the player have
      * @return The max HP that the player can recover
      */
-    public int AffordableHP(int CollectableNum){
+    public int affordableHP(int CollectableNum){
         int i;
-        i = CollectableNum / this.HealEssenceRate;
+        i = CollectableNum / this.healEssenceRate;
         return i;
     }
 }

@@ -1,12 +1,12 @@
 package entity.player;
 
-import entity.item.Armor;
+import entity.equipment_slots.item.Armor;
 import entity.Character;
-import entity.item.Weapon;
+import entity.equipment_slots.item.Weapon;
 import entity.equipment_slots.BasicEquipmentSlots;
 import entity.inventory_slots.CollectibleInventory;
-import entity.item.Collectible;
-import entity.item.Equipment;
+import entity.equipment_slots.item.Collectible;
+import entity.equipment_slots.item.Equipment;
 import usecase_fight.FightSummary;
 
 import file_reader.deserialization.PlayerDeserialization;
@@ -45,22 +45,20 @@ public class Player extends Character {
         this.state = new States();
     }
 
-    /**Gets the equipment that the player is equipping based on the inputted equipment type
+    /**Gets the Weapon that the player is equipping
      *
-     * @param equipmentType: The type of entity.item.Equipment the Player is equipping
-     *                     in this case {"Weapon", "Armor"}
-     *
-     * @return returns the entity.item.Equipment class
+     * @return returns the Weapon in Equipment Slots
      */
-    public Equipment getEquipment(String equipmentType) throws IllegalArgumentException{
+    public Equipment getWeapon(){
+        return this.equipments.getWeapon();
+    }
 
-        if((equipmentType.equals("Weapon"))) {
-            return this.equipments.getWeapon();
-        } else if (equipmentType.equals("Armor")){
-            return this.equipments.getArmor();
-        }else {
-            throw new IllegalArgumentException("equipmentType must be either Weapon or Armor");
-        }
+    /**Gets the Armor that the player is equipping
+     *
+     * @return returns the Armor in Equipment Slots
+     */
+    public Equipment getArmor(){
+        return this.equipments.getArmor();
     }
 
     /** Gets the essence Collectible

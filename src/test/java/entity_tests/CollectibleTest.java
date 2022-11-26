@@ -1,6 +1,6 @@
 package entity_tests;
 
-import entity.item.Collectible;
+import entity.equipment_slots.item.Collectible;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

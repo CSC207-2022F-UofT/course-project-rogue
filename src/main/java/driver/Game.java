@@ -2,6 +2,9 @@ package driver;
 
 import file_reader.GameFileReader;
 import file_reader.GameFileReaderInterface;
+import file_writer.GameFileWriter;
+import file_writer.GameFileWriterInterface;
+import interface_adapters.OutputBoundary;
 import user_interface.View;
 import user_interface.View_Interface;
 import user_interface.Visual;
@@ -17,7 +20,7 @@ public class Game {
         GameFileReaderInterface mapReader = new GameFileReader("data_base/Map.json");
         GameFileReaderInterface equipmentReader = new GameFileReader("data_base/Equipment.json");
         GameFileReaderInterface collectibleReader = new GameFileReader("data_base/Collectible.json");
-        GameFileWriter_Interface playerWriter = new GameFileWriter("data_base/Player_save.json");
+        GameFileWriterInterface playerWriter = new GameFileWriter("data_base/Player_save.json");
         playerWriter.register(playerReader);
 
         //Use cases inject outputBoundary, fileReader, fileWriter

@@ -2,9 +2,9 @@ package usecase_heal_and_upgrade_test;
 
 import entity.equipment_slots.BasicEquipmentSlots;
 import entity.inventory_slots.CollectibleInventory;
-import entity.item.Armor;
-import entity.item.Collectible;
-import entity.item.Weapon;
+import entity.equipment_slots.item.Armor;
+import entity.equipment_slots.item.Collectible;
+import entity.equipment_slots.item.Weapon;
 import entity.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +38,7 @@ public class HealCalculatorTest {
         player.setCanHeal(true);
         HealCalculator healCalculator = new HealCalculator(player);
         player.changeCurrHitPoint(-20);
-        healCalculator.HealInfoUpdate();
+        healCalculator.healInfoUpdate();
         healCalculator.heal();
         Assertions.assertEquals(player.getCurrHitPoint(), 100);
         Assertions.assertEquals(player.getEssence().getNum(), 80);

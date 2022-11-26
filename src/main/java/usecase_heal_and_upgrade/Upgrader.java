@@ -27,7 +27,8 @@ public class Upgrader implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        if (player.getCanUpgrade() && arg.equals(trigger))
-        Manager.upgrade();
+        if (player.getCanUpgrade() && arg.equals(trigger)) {
+            Manager.upgrade();
+        }
     }
 }

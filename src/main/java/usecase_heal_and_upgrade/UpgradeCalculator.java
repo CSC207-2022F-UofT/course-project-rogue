@@ -1,47 +1,53 @@
 package usecase_heal_and_upgrade;
 
-import interface_heal_and_upgrade.VisualHealUpgrade;
-import stringmaker_heal_and_upgrade.InfoDisplay;
-import entity.item.Equipment;
+import entity.equipment_slots.item.Equipment;
 import entity.player.Player;
 
 public class UpgradeCalculator {
 
-    private CollectibleUseManage CollectHelper;
-    private Player player;
-    private CalculatorCollectable Essenceneed;
+    private final CollectibleUseManager CollectHelper;
+    private final Player player;
+    private final CalculatorCollectable essenceNeed;
 
-    private CalculatorStat StatAdded;
+    private final CalculatorStat StatAdded;
 
     private Equipment equipment;
 
-    private String EquipType;
+    private final String EquipType;
 
 
     /**
      * Constructor of Heal info. This class will collect the information of player and determine how to heal
      * @param player
      */
-    public UpgradeCalculator(Player player, String EquipType){
+    public UpgradeCalculator(Player player, String equipType){
         this.player = player;
-        this.Essenceneed = new CalculatorCollectable();
-        this.CollectHelper = new CollectibleUseManage(player, this.Essenceneed.EssenceForUpgrade());
-        //do I need try/catch here
-        this.equipment = player.getEquipment(EquipType);
-        this.EquipType = EquipType;
+        this.essenceNeed = new CalculatorCollectable();
+        this.CollectHelper = new CollectibleUseManager(player, this.essenceNeed.essenceForUpgrade());
+        this.equipment = getEquipment(player , equipType);
+        this.EquipType = equipType;
         this.StatAdded = new CalculatorStat();
+    }
+
+    private Equipment getEquipment(Player player, String equipType){
+        if (equipType.equals("Weapon")){
+            return player.getWeapon();
+        } else if (equipType.equals("Armor")) {
+            return player.getArmor();
+        }
+        return null;
     }
 
     /**
      * Update the require HP of the player
      */
     private void UpgradeEquipUpdate(){
-        this.equipment = player.getEquipment(this.EquipType);
+        this.equipment = getEquipment(player, this.EquipType);
     }
 
 
     /**
-     * Update the heal infomation. The method must be called before the game print the heal summary.
+     * Update heal infomation. The method must be called before the game print heal summary.
      */
     public void UpgradeInfoUpdate(){
         UpgradeEquipUpdate();
@@ -51,9 +57,9 @@ public class UpgradeCalculator {
      * let the presenter print the information of heal
      */
     public void HealInfoPrint(){
-        VisualHealUpgrade speaker = new InfoDisplay();
+        VisualHealUpgrade speaker = new HealAndUpgradeInfoDisplay();
         if (this.equipment.getTimesUpgraded() == 4){
-            speaker.WarnMaxLv(this.EquipType);
+            speaker.warnMaxLv(this.EquipType);
             return;
         }
         if(!this.CollectHelper.getAble()){

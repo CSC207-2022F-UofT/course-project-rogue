@@ -2,9 +2,9 @@ package usecase_heal_and_upgrade_test;
 
 import entity.equipment_slots.BasicEquipmentSlots;
 import entity.inventory_slots.CollectibleInventory;
-import entity.item.Armor;
-import entity.item.Collectible;
-import entity.item.Weapon;
+import entity.equipment_slots.item.Armor;
+import entity.equipment_slots.item.Collectible;
+import entity.equipment_slots.item.Weapon;
 import entity.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,7 +39,7 @@ public class UpgradeCalculatorTest {
         UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
         weaponUpgradeCalculator.UpgradeInfoUpdate();
         weaponUpgradeCalculator.upgrade();
-        Assertions.assertEquals(player.getEquipment("Weapon").getStatValue(), 1020);
-        Assertions.assertEquals(player.getEquipment("Weapon").getTimesUpgraded(),1);
+        Assertions.assertEquals(player.getWeapon().getStatValue(), 1020);
+        Assertions.assertEquals(player.getArmor().getTimesUpgraded(),1);
     }
 }

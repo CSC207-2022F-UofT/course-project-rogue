@@ -1,11 +1,11 @@
 package usecase_fight;
 
-import entity.item.Armor;
-import entity.item.Equipment;
+import entity.equipment_slots.item.Armor;
+import entity.equipment_slots.item.Equipment;
 import entity.monster.Monster;
 import entity.monster.MonsterPower;
 import entity.player.Player;
-import entity.item.Weapon;
+import entity.equipment_slots.item.Weapon;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -105,14 +105,14 @@ public class Fighter implements Observer {
         Equipment equip = summary.getEquipment();
         if (equip instanceof Weapon){
             // if current weapon is weaker than dropped, replace
-            if (player.getEquipment("Weapon").compareTo(equip) < 0){
+            if (player.getWeapon().compareTo(equip) < 0){
                 // then replace equipment
                 player.setEquipment((Weapon) equip);
                 return true;
             }
             return false;
         } else if (equip instanceof Armor) {
-            if (player.getEquipment("Armor").compareTo(equip) < 0){
+            if (player.getArmor().compareTo(equip) < 0){
                 player.setEquipment((Armor) equip);
                 return true;
             }

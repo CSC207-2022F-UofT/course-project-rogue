@@ -1,4 +1,4 @@
-package usecase_gamedata;
+package usecase_factories;
 
 import file_reader.GameFileReader;
 import com.fasterxml.jackson.core.JsonProcessingException;

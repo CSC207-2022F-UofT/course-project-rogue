@@ -1,7 +1,7 @@
 package game_data;
 import entity.player.Player;
 import org.json.simple.parser.ParseException;
-import usecase_gamedata.Factory;
+import usecase_factories.Factory;
 
 import java.io.IOException;
 import java.util.HashMap;

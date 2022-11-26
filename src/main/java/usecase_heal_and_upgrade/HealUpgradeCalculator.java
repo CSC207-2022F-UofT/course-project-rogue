@@ -3,9 +3,9 @@ package usecase_heal_and_upgrade;
 import entity.player.Player;
 
 public class HealUpgradeCalculator {
-    private HealCalculator healCount;
-    private UpgradeCalculator weaponUpgradeCount;
-    private UpgradeCalculator armorUpgradeCount;
+    private final HealCalculator healCount;
+    private final UpgradeCalculator weaponUpgradeCount;
+    private final UpgradeCalculator armorUpgradeCount;
 
     public HealUpgradeCalculator(Player player){
         healCount = new HealCalculator(player);
@@ -32,6 +32,6 @@ public class HealUpgradeCalculator {
     public void updateInfo(){
         this.armorUpgradeCount.UpgradeInfoUpdate();
         this.weaponUpgradeCount.UpgradeInfoUpdate();
-        this.healCount.HealInfoUpdate();
+        this.healCount.healInfoUpdate();
     }
 }

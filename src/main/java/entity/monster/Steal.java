@@ -1,7 +1,7 @@
 package entity.monster;
 
 import entity.Character;
-import entity.item.Collectible;
+import entity.equipment_slots.item.Collectible;
 import entity.player.Player;
 import java.util.Random;
 

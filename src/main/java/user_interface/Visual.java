@@ -18,7 +18,7 @@ public class Visual implements OutputBoundary {
      */
     @Override
     public void update_Text(String line1, String line2, String line3, String line4) {
-        return
+        
     }
 
     /**

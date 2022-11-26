@@ -1,8 +1,6 @@
-package stringmaker_heal_and_upgrade;
+package usecase_heal_and_upgrade;
 
-import interface_heal_and_upgrade.VisualHealUpgrade;
-
-public class InfoDisplay implements VisualHealUpgrade {
+public class HealAndUpgradeInfoDisplay implements VisualHealUpgrade {
 
     /**
      *The method will be showed in the bottom text part. It will shows that the collectible items the player has verse
@@ -60,15 +58,15 @@ public class InfoDisplay implements VisualHealUpgrade {
      * Tell player's HP is full, no need for heal
      */
     @Override
-    public void WarnFullHP() {
+    public void warnFullHP() {
         String info = new String("Your HP is full, there are no need for healing.");
     }
 
     /**
-     * Tell player's equipment is full, can not upgrade.
+     * Tell player's equipment's number of upgrade is max, can not continue to upgrade.
      */
     @Override
-    public void WarnMaxLv(String Equipment) {
+    public void warnMaxLv(String Equipment) {
         String info = String.format("Your %s is the highest level, you can not upgrade.", Equipment);
     }
 

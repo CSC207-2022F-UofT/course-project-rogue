@@ -1,4 +1,4 @@
-package usecase_gamedata;
+package usecase_factories;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

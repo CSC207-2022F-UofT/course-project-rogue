@@ -1,13 +1,13 @@
 package usecase_event;
 
-import entity.item.Equipment;
+import entity.equipment_slots.item.Equipment;
 import entity.monster.Monster;
 import entity.player.Player;
 import usecase_fight.DamageCalculator;
 import usecase_fight.DropRetriever;
 import usecase_fight.FightSummary;
 import usecase_fight.WinCalculator;
-import usecase_gamedata.MonsterFactory;
+import usecase_factories.MonsterFactory;
 
 import java.util.Optional;
 import java.util.Random;

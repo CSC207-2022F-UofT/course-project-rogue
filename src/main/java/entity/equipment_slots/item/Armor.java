@@ -1,7 +1,6 @@
-package entity.item;
+package entity.equipment_slots.item;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import entity.item.Equipment;
 
 public class Armor extends Equipment {
 
