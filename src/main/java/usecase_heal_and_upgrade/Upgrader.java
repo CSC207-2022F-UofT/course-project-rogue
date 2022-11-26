@@ -7,9 +7,9 @@ import java.util.Observer;
 
 
 public class Upgrader implements Observer{
-    private Player player;
+    private final Player player;
 
-    private UpgradeCalculator Manager;
+    private final UpgradeCalculator Manager;
     private final String trigger;
 
 

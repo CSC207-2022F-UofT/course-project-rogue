@@ -7,7 +7,7 @@ public class UpgradeCalculator {
 
     private final CollectibleUseManager CollectHelper;
     private final Player player;
-    private final CalculatorCollectable essenceNeed;
+    private final CalculatorCollectible essenceNeed;
 
     private final CalculatorStat StatAdded;
 
@@ -22,7 +22,7 @@ public class UpgradeCalculator {
      */
     public UpgradeCalculator(Player player, String equipType){
         this.player = player;
-        this.essenceNeed = new CalculatorCollectable();
+        this.essenceNeed = new CalculatorCollectible();
         this.CollectHelper = new CollectibleUseManager(player, this.essenceNeed.essenceForUpgrade());
         this.equipment = getEquipment(player , equipType);
         this.EquipType = equipType;

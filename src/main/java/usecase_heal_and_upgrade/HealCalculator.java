@@ -5,10 +5,10 @@ import entity.player.Player;
 public class HealCalculator {
     private CollectibleUseManager collectHelper;
     private Player player;
-    private CalculatorCollectable essenceNeed;
+    private CalculatorCollectible essenceNeed;
 
     private int requireHP;
-    private int hptoHeal;
+    private int hpToHeal;
 
     /**
      * Constructor of Heal info. This class will collect the information of player and determine how to heal
@@ -17,9 +17,9 @@ public class HealCalculator {
     public HealCalculator(Player player){
         this.player = player;
         this.requireHP = 0;
-        this.hptoHeal = 0;
-        this.essenceNeed = new CalculatorCollectable();
-        this.collectHelper = new CollectibleUseManager(player, this.essenceNeed.essenceForHeal(this.hptoHeal));
+        this.hpToHeal = 0;
+        this.essenceNeed = new CalculatorCollectible();
+        this.collectHelper = new CollectibleUseManager(player, this.essenceNeed.essenceForHeal(this.hpToHeal));
     }
 
     /**
@@ -34,10 +34,10 @@ public class HealCalculator {
      */
     private void healHPtoHealUpdate(){
         this.collectHelper.essenceNeededToUpdate(this.essenceNeed.essenceForHeal(this.requireHP));
-        this.hptoHeal = this.requireHP;
+        this.hpToHeal = this.requireHP;
         if(!this.collectHelper.getAble()){
-            this.hptoHeal = essenceNeed.affordableHP(this.essenceNeed.affordableHP(this.collectHelper.getEssenceNum()));
-            this.collectHelper.essenceNeededToUpdate(this.essenceNeed.essenceForHeal(this.hptoHeal));
+            this.hpToHeal = essenceNeed.affordableHP(this.essenceNeed.affordableHP(this.collectHelper.getEssenceNum()));
+            this.collectHelper.essenceNeededToUpdate(this.essenceNeed.essenceForHeal(this.hpToHeal));
         }
     }
 
@@ -58,12 +58,12 @@ public class HealCalculator {
             speaker.warnFullHP();
             return;
         }
-        if (this.hptoHeal ==0){
+        if (this.hpToHeal ==0){
             speaker.showInfo(collectHelper.getEssenceNum(), collectHelper.getEssenceNeed(),
                     false, "heal");
             return;
         }
-        if(this.hptoHeal < this.requireHP){
+        if(this.hpToHeal < this.requireHP){
             speaker.showInfo(collectHelper.getEssenceNum(), collectHelper.getEssenceNeed(),
                     true, "heal a part");
             return;
@@ -73,7 +73,7 @@ public class HealCalculator {
     }
 
     public void heal(){
-        this.player.changeCurrHitPoint(this.hptoHeal);
+        this.player.changeCurrHitPoint(this.hpToHeal);
 
         healInfoUpdate();
     }
