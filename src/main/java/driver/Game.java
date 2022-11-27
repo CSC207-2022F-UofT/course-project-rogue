@@ -6,13 +6,13 @@ import file_writer.GameFileWriter;
 import file_writer.GameFileWriterInterface;
 import interface_adapters.OutputBoundary;
 import user_interface.View;
-import user_interface.View_Interface;
+import user_interface.ViewInterface;
 import user_interface.Visual;
 
 public class Game {
 
     public static void main(String[] args) {
-        View_Interface vi = new View();
+        ViewInterface vi = new View();
         OutputBoundary outBound = new Visual(vi);
 
         GameFileReaderInterface playerReader = new GameFileReader("data_base/Player.json");
@@ -30,7 +30,7 @@ public class Game {
 
 
         //replace c with initialized controller
-        vi.setController(c);
+//        vi.setController(c);
         vi.setVisible(true);
     }
 

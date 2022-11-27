@@ -3,8 +3,8 @@ import interface_adapters.OutputBoundary;
 
 public class Visual implements OutputBoundary {
 
-    private View_Interface vi;
-    public Visual(View_Interface vi){
+    private ViewInterface vi;
+    public Visual(ViewInterface vi){
         this.vi = vi;
     }
 

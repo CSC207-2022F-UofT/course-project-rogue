@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JFrame;
 
-public class View implements KeyListener, View_Interface {
+public class View implements KeyListener, ViewInterface {
     //Controller control;//keyReleased pass in string
     private int progress = 0;
 

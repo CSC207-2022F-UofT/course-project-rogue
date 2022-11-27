@@ -14,6 +14,8 @@ import usecase_event.ArtifactEvent;
 import usecase_event.WallEvent;
 import usecase_playeractions.Map;
 import usecase_playeractions.Mover;
+import user_interface.View;
+import user_interface.Visual;
 
 import java.util.Observable;
 
@@ -42,7 +44,7 @@ public class MoverTest {
     @Test
     @DisplayName("Test Move")
     void testMove(){
-        map.setBoard(new ArtifactEvent(),0,1);
+        map.setBoard(new ArtifactEvent(new Visual(new View())),0,1);
         Mover mover = new Mover(player,map,"W",0,1);
         mover.update(new Observable(),"W");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);

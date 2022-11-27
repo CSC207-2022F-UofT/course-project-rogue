@@ -44,11 +44,11 @@ public class HealUpgradeControlTest {
         control.keyPressed("H");
         Assertions.assertEquals(player.getCurrHitPoint(),100);
         control.keyPressed("1");
-        Assertions.assertEquals(player.getEquipment("Weapon").getStatValue(),1020);
+        Assertions.assertEquals(player.getWeapon().getStatValue(),1020);
         control.keyPressed("2");
-        Assertions.assertEquals(player.getEquipment("Armor").getStatValue(),25);
+        Assertions.assertEquals(player.getArmor().getStatValue(),25);
         control.keyPressed("N");
-        Assertions.assertEquals(player.getCanHeal(), false);
-        Assertions.assertEquals(player.getCanUpgrade(), false);
+        Assertions.assertFalse(player.getCanHeal());
+        Assertions.assertFalse(player.getCanUpgrade());
     }
 }

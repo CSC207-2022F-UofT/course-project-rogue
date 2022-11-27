@@ -1,11 +1,16 @@
 package usecase_event;
 
 import entity.player.Player;
+import interface_adapters.OutputBoundary;
 
 import java.util.Random;
 
 public class EssenceEvent extends Event{
+    OutputBoundary outputBoundary;
 
+    public EssenceEvent(OutputBoundary outputBoundary){
+        this.outputBoundary = outputBoundary;
+    }
 
     /**
      * Triggering this Event adds a random amount to the Essence that the player holds
@@ -18,8 +23,9 @@ public class EssenceEvent extends Event{
         Random random = new Random();
         int random_int = random.nextInt(100);
         increaseEssence(player, random_int + 1); // get essence from 1 to 100 inclusive
-        // call presenter here to tell player that they found random_int amount of essence
-        // "You found x amount of essence lying on the ground!"
+
+        outputBoundary.update_Text(String.format("You gained %d Essence!", random_int), "", "", "");
+        outputBoundary.update_EssenceCnt(player.getEssence().getNum());
     }
 
 

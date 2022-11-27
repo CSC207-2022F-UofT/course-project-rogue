@@ -2,6 +2,8 @@ package usecase_event;
 
 import java.util.Random;
 import entity.player.Player;
+import user_interface.View;
+import user_interface.Visual;
 
 public class RandomEvent extends Event{
 
@@ -19,7 +21,7 @@ public class RandomEvent extends Event{
             fightEvent.trigger(player);
         }
         else {
-            EssenceEvent essenceEvent = new EssenceEvent();
+            EssenceEvent essenceEvent = new EssenceEvent(new Visual(new View()));
             essenceEvent.trigger(player);
         }
     }

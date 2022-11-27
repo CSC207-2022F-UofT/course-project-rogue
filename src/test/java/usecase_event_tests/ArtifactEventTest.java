@@ -11,6 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.ArtifactEvent;
+import user_interface.View;
+import user_interface.Visual;
 
 
 public class ArtifactEventTest {
@@ -31,7 +33,7 @@ public class ArtifactEventTest {
     @BeforeEach
     @DisplayName("Setup before Each Test")
     void setUp(){
-        event = new ArtifactEvent();
+        event = new ArtifactEvent(new Visual(new View()));
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 

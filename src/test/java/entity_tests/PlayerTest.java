@@ -37,20 +37,9 @@ public class PlayerTest {
     @DisplayName("Test Get Equipment")
     void testGetEquipment(){
         Assertions.assertAll(
-                () -> Assertions.assertEquals(excalibur, player.getEquipment("Weapon")),
-                () -> Assertions.assertEquals(armor, player.getEquipment("Armor"))
+                () -> Assertions.assertEquals(excalibur, player.getWeapon()),
+                () -> Assertions.assertEquals(armor, player.getArmor())
         );
-    }
-
-    @Test
-    @DisplayName("Test for Exceptions in getEquipment")
-    void testForExceptionsOfGetEquipment(){
-        Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                player.getEquipment("SSS"));
-        String expectedMessage = "equipmentType must be either Weapon or Armor";
-        String actualMessage = exception.getMessage();
-
-        Assertions.assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
@@ -142,7 +131,7 @@ public class PlayerTest {
     void testChangeArmor(){
         Armor aegisShield = new Armor("Aegis Shield", 600000);
         player.setEquipment(aegisShield);
-        Assertions.assertEquals(aegisShield, player.getEquipment("Armor"));
+        Assertions.assertEquals(aegisShield, player.getArmor());
     }
 
     @Test
@@ -150,7 +139,7 @@ public class PlayerTest {
     void testChangeWeapon(){
         Weapon durandal = new Weapon("Legendary Sword Durandal", 1001);
         player.setEquipment(durandal);
-        Assertions.assertEquals(durandal, player.getEquipment("Weapon"));
+        Assertions.assertEquals(durandal, player.getWeapon());
     }
 
     @Test
