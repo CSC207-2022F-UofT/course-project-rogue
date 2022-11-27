@@ -1,11 +1,18 @@
 package usecase_event_tests;
 
-import entity.*;
+import entity.equipment_slots.BasicEquipmentSlots;
+import entity.inventory_slots.CollectibleInventory;
+import entity.equipment_slots.item.Armor;
+import entity.equipment_slots.item.Collectible;
+import entity.equipment_slots.item.Weapon;
+import entity.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.EssenceEvent;
+import user_interface.View;
+import user_interface.Visual;
 
 public class EssenceEventTest {
     int maxHP = 100;
@@ -23,7 +30,7 @@ public class EssenceEventTest {
     @BeforeEach
     @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new EssenceEvent();
+        event = new EssenceEvent(new Visual(new View()));
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 
@@ -37,6 +44,6 @@ public class EssenceEventTest {
     @Test
     @DisplayName("Test Enter")
     void testEnter(){
-        Assertions.assertTrue(event.enter());
+        Assertions.assertTrue(event.enter(player));
     }
 }

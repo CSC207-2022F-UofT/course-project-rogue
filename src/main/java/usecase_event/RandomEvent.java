@@ -1,14 +1,16 @@
 package usecase_event;
 
 import java.util.Random;
-import entity.Player;
+import entity.player.Player;
+import user_interface.View;
+import user_interface.Visual;
 
 public class RandomEvent extends Event{
 
     /**
      * Triggering this Event randomly Triggers Fight Event, no Event or Essence Event
      *
-     * @param: player: the player triggering the Event
+     * @param player the player triggering the Event
      */
     @Override
     public void trigger(Player player) {
@@ -19,7 +21,7 @@ public class RandomEvent extends Event{
             fightEvent.trigger(player);
         }
         else {
-            EssenceEvent essenceEvent = new EssenceEvent();
+            EssenceEvent essenceEvent = new EssenceEvent(new Visual(new View()));
             essenceEvent.trigger(player);
         }
     }
@@ -29,7 +31,8 @@ public class RandomEvent extends Event{
      * @return True if player can step on it, false if it can's
      */
     @Override
-    public boolean enter(){
+    public boolean enter(Player player){
+
         return true;
     }
 

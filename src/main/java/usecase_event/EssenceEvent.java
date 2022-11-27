@@ -1,27 +1,37 @@
 package usecase_event;
 
-import entity.Player;
+import entity.player.Player;
+import interface_adapters.OutputBoundary;
 
 import java.util.Random;
 
 public class EssenceEvent extends Event{
+    OutputBoundary outputBoundary;
+
+    public EssenceEvent(OutputBoundary outputBoundary){
+        this.outputBoundary = outputBoundary;
+    }
 
     /**
      * Triggering this Event adds a random amount to the Essence that the player holds
      *
-     * @param: player: the player triggering the Event
+     * @param player the player triggering the Event
      */
     @Override
     public void trigger(Player player) {
         
         Random random = new Random();
-        int random_int = random.nextInt(500);
-        increaseEssence(player, random_int + 1);
+        int random_int = random.nextInt(100);
+        increaseEssence(player, random_int + 1); // get essence from 1 to 100 inclusive
+
+        outputBoundary.update_Text(String.format("You gained %d Essence!", random_int), "", "", "");
+        outputBoundary.update_EssenceCnt(player.getEssence().getNum());
     }
+
 
     /**Adds the Essence by random amount from 0 to 500
      *
-     * @param: player: the player triggering the Event
+     * @param player the player triggering the Event
      *
      */
     private void increaseEssence(Player player, int random){
@@ -34,7 +44,7 @@ public class EssenceEvent extends Event{
      * @return True if player can step on it, false if it can's
      */
     @Override
-    public boolean enter(){
+    public boolean enter(Player player){
         return true;
     }
 }

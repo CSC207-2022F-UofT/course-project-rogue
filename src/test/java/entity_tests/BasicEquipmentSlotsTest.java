@@ -1,8 +1,8 @@
 package entity_tests;
 
-import entity.Armor;
-import entity.BasicEquipmentSlots;
-import entity.Weapon;
+import entity.equipment_slots.item.Armor;
+import entity.equipment_slots.BasicEquipmentSlots;
+import entity.equipment_slots.item.Weapon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

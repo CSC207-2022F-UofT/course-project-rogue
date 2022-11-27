@@ -1,11 +1,18 @@
 package usecase_event_tests;
 
-import entity.*;
+import entity.equipment_slots.BasicEquipmentSlots;
+import entity.inventory_slots.CollectibleInventory;
+import entity.equipment_slots.item.Armor;
+import entity.equipment_slots.item.Collectible;
+import entity.equipment_slots.item.Weapon;
+import entity.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.ArtifactEvent;
+import user_interface.View;
+import user_interface.Visual;
 
 
 public class ArtifactEventTest {
@@ -26,7 +33,7 @@ public class ArtifactEventTest {
     @BeforeEach
     @DisplayName("Setup before Each Test")
     void setUp(){
-        event = new ArtifactEvent();
+        event = new ArtifactEvent(new Visual(new View()));
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 
@@ -39,6 +46,6 @@ public class ArtifactEventTest {
     @Test
     @DisplayName("Test Enter")
     void testEnter(){
-        Assertions.assertTrue(event.enter());
+        Assertions.assertTrue(event.enter(player));
     }
 }

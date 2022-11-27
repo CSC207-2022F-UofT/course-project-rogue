@@ -1,13 +1,13 @@
 package usecase_event;
 
-import entity.Player;
+import entity.player.Player;
 
 public class WallEvent extends Event{
 
     /**
      * Triggering this Event does nothing
      *
-     * @param: player: the player triggering the Event
+     * @param player: the player triggering the Event
      */
     @Override
     public void trigger(Player player) {
@@ -18,7 +18,7 @@ public class WallEvent extends Event{
      * @return True if player can step on it, false if it can's
      */
     @Override
-    public boolean enter() {
+    public boolean enter(Player player) {
         return false;
     }
 
