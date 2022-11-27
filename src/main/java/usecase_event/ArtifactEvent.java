@@ -5,11 +5,8 @@ import user_interface.Visual;
 
 
 public class ArtifactEvent extends Event{
-
-    OutputBoundary outputBoundary;
-
     public ArtifactEvent(OutputBoundary outputBoundary){
-        this.outputBoundary = outputBoundary;
+        super(outputBoundary);
     }
 
     /**

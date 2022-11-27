@@ -5,10 +5,8 @@ import interface_adapters.OutputBoundary;
 
 public class WinEvent extends Event{
 
-    OutputBoundary outputBoundary;
-
     public WinEvent(OutputBoundary outputBoundary){
-        this.outputBoundary = outputBoundary;
+        super(outputBoundary);
     }
 
     @Override

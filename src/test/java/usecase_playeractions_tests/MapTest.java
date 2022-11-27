@@ -45,7 +45,7 @@ public class MapTest {
         map.move(player,0,1);
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
         Assertions.assertEquals(1, player.getArtifact().getNum());
-        map.setBoard(new WallEvent(),0,2);
+        map.setBoard(new WallEvent(new Visual(new View())),0,2);
         map.move(player,0,1);
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
     }
