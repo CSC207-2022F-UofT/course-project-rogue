@@ -13,6 +13,12 @@ The will be able to Heal and Upgrade, after encountering an Event or winning a f
 
 So try to stay alive, collect the artifact and escape the maze!
 
+# Features
+* A pre-generated Map
+* Monsters Player can encounter to fight with
+* Equipments player can use to increase survivability
+* Saving Player progress after Player wins
+
 # UI
 * Artifact: The winning condition for the player, you need at least 5 to Win
 * Essence: The currency to heal player and upgrade equipments
