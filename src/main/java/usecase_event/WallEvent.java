@@ -7,7 +7,7 @@ public class WallEvent extends Event{
     /**
      * Triggering this Event does nothing
      *
-     * @param: player: the player triggering the Event
+     * @param player: the player triggering the Event
      */
     @Override
     public void trigger(Player player) {

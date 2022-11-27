@@ -20,6 +20,8 @@ public class ArtifactEvent extends Event{
     @Override
     public void trigger(Player player) {
         player.changeArtifactAmount(1);
+        outputBoundary.update_Text("You gained 1 Artifact!", "", "", "");
+        outputBoundary.update_EssenceCnt(player.getArtifact().getNum());
     }
 
     /** Tells Map whether this tile could be stepped on by Player

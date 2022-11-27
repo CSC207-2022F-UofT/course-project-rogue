@@ -1,15 +1,25 @@
 package usecase_event;
 
 import entity.player.Player;
+import interface_adapters.OutputBoundary;
 
 public class WinEvent extends Event{
 
+    OutputBoundary outputBoundary;
+
+    public WinEvent(OutputBoundary outputBoundary){
+        this.outputBoundary = outputBoundary;
+    }
+
     @Override
     public void trigger(Player player){
-        if (player.getArtifact().getNum() >= 5){
-            // Player Wins
+        int currArtifactNum = player.getArtifact().getNum();
+        if (currArtifactNum >= 5){
+            outputBoundary.update_Text("You Win!", "", "", "");
         } else{
-            // Notify Player needs 5 artifact
+            int artifactNeeded = 5 - currArtifactNum;
+            outputBoundary.update_Text(String.format("You need %d more Artifact to leave the Maze", artifactNeeded),
+                    "", "", "");
         }
     }
 
