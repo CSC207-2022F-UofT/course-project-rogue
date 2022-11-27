@@ -2,6 +2,7 @@ package usecase_heal_and_upgrade;
 
 import entity.equipment_slots.item.Equipment;
 import entity.player.Player;
+import usecase_heal_and_upgrade.*;
 
 public class UpgradeCalculator {
 
@@ -39,7 +40,7 @@ public class UpgradeCalculator {
     }
 
     /**
-     * Update the require HP of the player
+     * Update the current HP of the player
      */
     private void UpgradeEquipUpdate(){
         this.equipment = getEquipment(player, this.EquipType);
