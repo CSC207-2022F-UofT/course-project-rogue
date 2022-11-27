@@ -14,6 +14,7 @@ public class WinEvent extends Event{
         int currArtifactNum = player.getArtifact().getNum();
         if (currArtifactNum >= 5){
             outputBoundary.update_Text("You Win!", "", "", "");
+            outputBoundary.update_Win();
         } else{
             int artifactNeeded = 5 - currArtifactNum;
             outputBoundary.update_Text(String.format("You need %d more Artifact to leave the Maze", artifactNeeded),

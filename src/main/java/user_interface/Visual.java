@@ -41,7 +41,7 @@ public class Visual implements OutputBoundary {
      * @param s
      */
     @Override
-    public void update_Artifact(String s) {
+    public void update_Artifact(int cnt) {
 
     }
 
