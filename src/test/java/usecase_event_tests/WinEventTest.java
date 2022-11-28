@@ -1,5 +1,6 @@
 package usecase_event_tests;
 
+
 import entity.equipment_slots.BasicEquipmentSlots;
 import entity.inventory_slots.CollectibleInventory;
 import entity.item.Armor;
@@ -10,11 +11,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_event.EssenceEvent;
+import usecase_event.WinEvent;
 import user_interface.View;
 import user_interface.Visual;
 
-public class EssenceEventTest {
+public class WinEventTest {
     int maxHP = 100;
     int atkPt = 10;
     Collectible essence = new Collectible("Essence", 100);
@@ -25,22 +26,15 @@ public class EssenceEventTest {
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
     int[] location = new int[]{0, 0};
     Player player;
-    EssenceEvent event;
+    WinEvent event;
 
     @BeforeEach
     @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new EssenceEvent(new Visual(new View()));
+        event = new WinEvent(new Visual(new View()));
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 
-    @Test
-    @DisplayName("Test Trigger")
-    void testTrigger(){
-        int originalAmount = essence.getNum();
-        event.trigger(player);
-        Assertions.assertTrue(player.getEssence().getNum() > originalAmount);
-    }
     @Test
     @DisplayName("Test Enter")
     void testEnter(){

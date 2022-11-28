@@ -5,11 +5,8 @@ import user_interface.Visual;
 
 
 public class ArtifactEvent extends Event{
-
-    OutputBoundary outputBoundary;
-
     public ArtifactEvent(OutputBoundary outputBoundary){
-        this.outputBoundary = outputBoundary;
+        super(outputBoundary);
     }
 
     /**
@@ -21,7 +18,7 @@ public class ArtifactEvent extends Event{
     public void trigger(Player player) {
         player.changeArtifactAmount(1);
         outputBoundary.update_Text("You gained 1 Artifact!", "", "", "");
-        outputBoundary.update_EssenceCnt(player.getArtifact().getNum());
+        outputBoundary.update_Artifact(player.getArtifact().getNum());
     }
 
     /** Tells Map whether this tile could be stepped on by Player

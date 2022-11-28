@@ -83,7 +83,7 @@ public class Menu extends JPanel{
         super.paintComponent(g);
         Dimension size=this.getParent().getSize();
 
-        if (start == false){
+        if (!start){
 //            Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("C:\\Users\\ZHY\\Desktop\\.idea\\course-project-rogue\\src\\main\\java\\user_interface\\1.jpg"));
             try {
                 BufferedImage img = ImageIO.read(new File("pictures/b9db1d7d93c1709.png"));
@@ -105,7 +105,7 @@ public class Menu extends JPanel{
             add(quitbutton);
         }
 
-        if (start != false){
+        if (start){
             try {
                 BufferedImage img = ImageIO.read(new File("pictures/b9db1d7d93c1709.png"));
                 g.drawImage(img,0,size.height-300,size.width,300,this);

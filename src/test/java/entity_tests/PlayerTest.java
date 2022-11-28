@@ -79,13 +79,17 @@ public class PlayerTest {
     @DisplayName("Test Change Current Hit Point")
     void testSubtractCurrentHitPoint(){
         Assertions.assertAll(
+                // 100 - 20 = 80
                 () -> player.changeCurrHitPoint(-20),
                 () -> Assertions.assertEquals(80, player.getCurrHitPoint()),
+                // 100 - 300 = 0 (Because health cannot be negative)
                 () -> player.changeCurrHitPoint(-300),
                 () -> Assertions.assertEquals(0, player.getCurrHitPoint()),
                 () -> player.changeCurrHitPoint(52),
+                // 0 + 52 = 52
                 () -> Assertions.assertEquals(52, player.getCurrHitPoint()),
                 () -> player.changeCurrHitPoint(30130),
+                // 52 + 30130 = 100 because max hp = 100
                 () -> Assertions.assertEquals(maxHP, player.getCurrHitPoint())
         );
     }
@@ -94,7 +98,7 @@ public class PlayerTest {
     @DisplayName("Test Set Location of Player")
     void testSetLocation(){
         player.setLocation(0, 4);
-        int[] expected = {4, 0};
+        int[] expected = {0, 4};
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expected[0], player.getPlayerLocation()[0]),
                 () -> Assertions.assertEquals(expected[1], player.getPlayerLocation()[1])

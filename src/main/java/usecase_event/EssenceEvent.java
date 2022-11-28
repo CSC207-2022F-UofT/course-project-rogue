@@ -6,10 +6,8 @@ import interface_adapters.OutputBoundary;
 import java.util.Random;
 
 public class EssenceEvent extends Event{
-    OutputBoundary outputBoundary;
-
     public EssenceEvent(OutputBoundary outputBoundary){
-        this.outputBoundary = outputBoundary;
+        super(outputBoundary);
     }
 
     /**
