@@ -1,6 +1,6 @@
 package usecase_fight;
 
-import entity.equipment_slots.item.Equipment;
+import entity.item.Equipment;
 import usecase_factories.EquipmentFactory;
 
 import java.util.Optional;

@@ -1,5 +1,5 @@
 package entity.inventory_slots;
-import entity.equipment_slots.item.Collectible;
+import entity.item.Collectible;
 import file_reader.deserialization.CollectibleInventoryDeserialization;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 

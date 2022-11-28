@@ -2,7 +2,7 @@ package usecase_factories;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.equipment_slots.item.Equipment;
+import entity.item.Equipment;
 import file_reader.GameFileReaderInterface;
 
 public class EquipmentFactory {

@@ -1,7 +1,7 @@
 package entity.equipment_slots;
 
-import entity.equipment_slots.item.Armor;
-import entity.equipment_slots.item.Weapon;
+import entity.item.Armor;
+import entity.item.Weapon;
 import file_reader.deserialization.BasicEquipmentSlotsDeserialization;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
