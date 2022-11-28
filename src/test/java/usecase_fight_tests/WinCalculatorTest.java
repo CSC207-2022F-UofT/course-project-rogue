@@ -52,11 +52,7 @@ public class WinCalculatorTest {
         Monster monster = makeMonster(15, 15);
         WinCalculator wc = new WinCalculator(monster, player);
         Assertions.assertEquals(50, wc.calculate());
-        // pAtk = 10 + 5 = 15, pHp = 10, mAtk = 15 - 5 = 10, mHp = 15
-        // pHits = 10 / 10 = 1
-        // mHits = 15 / 15 = 1
-        // bonus = (1 - 1)*5
-        // win chance = 50 + 0
+        // result is 50 chance
     }
 
     @Test
@@ -67,12 +63,6 @@ public class WinCalculatorTest {
         WinCalculator wc = new WinCalculator(monster, player);
         Assertions.assertEquals(70, wc.calculate());
         // result win chance must be greater than 50
-
-        // pAtk = 10 + 5 = 15, pHp = 10, mAtk = 7 - 5 = 2, mHp = 15
-        // pHits = 10 / 2 = 5
-        // mHits = 15 / 15 = 1
-        // bonus = (5 - 1)*5 = 20
-        // win chance = 50 + 20 = 70
     }
 
     @Test
@@ -83,12 +73,6 @@ public class WinCalculatorTest {
         WinCalculator wc = new WinCalculator(monster, player);
         Assertions.assertEquals(33, wc.calculate());
         // result win chance must be less than 50
-
-        // pAtk = 5 + 0 = 5, pHp = 3, mAtk = 10 - 5 = 5, mHp = 20
-        // pHits = 3 / 5 = 0.6
-        // mHits = 20 / 5 = 4
-        // bonus = (0.6 - 4)*5 = -17
-        // win chance = 50 + (-17) = 33
     }
 
 
@@ -99,12 +83,7 @@ public class WinCalculatorTest {
         Monster monster = makeMonster(5, 10);
         WinCalculator wc = new WinCalculator(monster, player);
         Assertions.assertEquals(100, wc.calculate());
-        // result win chance must be 100 (player always wins cause monster cannot kill player)
-
-        // pAtk = 0 + 0 = 0, pHp = 10, mAtk = 15 - 5 = 10, mHp = 10
-        // pHits = 10 / 0 = undefined
-        // mHits = 10 / 10 = 1
-        // player never killed
+        // result win chance must be 100 (monster cannot kill player)
     }
 
     @Test
@@ -114,13 +93,7 @@ public class WinCalculatorTest {
         Monster monster = makeMonster(7, 1);
         WinCalculator wc = new WinCalculator(monster, player);
         Assertions.assertEquals(100, wc.calculate());
-        // result win chance must be 100 (player always wins cause monster cannot kill player)
-
-        // pAtk = 5 + 5 = 10, pHp = 20, mAtk = 7 - 5 = 2, mHp = 1
-        // pHits = 20 / 2 = 10
-        // mHits = 1 / 10 = 0.1
-        // bonus = (10 - 0.1)*5 = 49.5
-        // win chance = 50 + 49.5 = 99.5 to 100
+        // result win chance must be 100
     }
 
     @Test
@@ -129,13 +102,7 @@ public class WinCalculatorTest {
         Player player = makePlayerStats(1, 1, 1);
         Monster monster = makeMonster(15, 22);
         WinCalculator wc = new WinCalculator(monster, player);
-        Assertions.assertEquals(100, wc.calculate());
-        // pAtk = 1 + 1 = 2, pHp = 1, mAtk = 15 - 5 = 10, mHp = 22
-        // pHits = 1 / 10 = 0.1
-        // mHits = 22 / 2 = 11
-        // bonus = (0.1 - 11)*5 = -54.5
-        // win chance = 50 + (-54.5) = -4.5, returns 0
-
+        Assertions.assertEquals(0, wc.calculate());
         // result win chance is 0.
     }
 
@@ -146,12 +113,7 @@ public class WinCalculatorTest {
         Monster monster = makeMonster(15, 10);
         WinCalculator wc = new WinCalculator(monster, player);
         Assertions.assertEquals(0, wc.calculate());
-        // result win chance is 0.
-
-        // pAtk = 0 + 0 = 0, pHp = 10, mAtk = 15 - 5 = 10, mHp = 10
-        // pHits = 10 / 10 = 1
-        // mHits = 10 / 0 = undefined
-        // monster never killed
+        // result win chance is 0 (monster never killed)
     }
 
     @Test
