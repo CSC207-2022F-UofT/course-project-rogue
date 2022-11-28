@@ -1,6 +1,5 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use.data_calculator;
 
-import entity.item.Collectible;
 import entity.player.Player;
 
 public class CollectibleUseManager {

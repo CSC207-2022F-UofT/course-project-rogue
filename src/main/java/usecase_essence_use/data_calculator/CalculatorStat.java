@@ -1,4 +1,4 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use.data_calculator;
 
 public class CalculatorStat {
     public CalculatorStat(){}

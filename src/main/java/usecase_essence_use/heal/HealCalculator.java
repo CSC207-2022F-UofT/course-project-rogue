@@ -1,6 +1,10 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use.heal;
 
 import entity.player.Player;
+import usecase_essence_use.data_calculator.CollectibleUseManager;
+import usecase_essence_use.HealAndUpgradeInfoDisplay;
+import usecase_essence_use.VisualHealUpgrade;
+import usecase_essence_use.data_calculator.CalculatorCollectible;
 
 public class HealCalculator {
     private CollectibleUseManager collectHelper;

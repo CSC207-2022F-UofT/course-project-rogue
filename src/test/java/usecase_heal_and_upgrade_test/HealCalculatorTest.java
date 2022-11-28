@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.HealCalculator;
+import usecase_essence_use.heal.HealCalculator;
 import usecase_playeractions.Map;
 
 public class HealCalculatorTest {

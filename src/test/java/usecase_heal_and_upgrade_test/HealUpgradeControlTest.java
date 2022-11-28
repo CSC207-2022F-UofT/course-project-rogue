@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.HealUpgradeCalculator;
-import usecase_heal_and_upgrade.HealingUpgradingControl;
+import usecase_essence_use.HealUpgradeCalculator;
+import usecase_essence_use.HealingUpgradingControl;
 import usecase_playeractions.Map;
 
 public class HealUpgradeControlTest {

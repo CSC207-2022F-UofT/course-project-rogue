@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.CollectibleUseManager;
+import usecase_essence_use.data_calculator.CollectibleUseManager;
 import usecase_playeractions.Map;
 
 public class CollectibleUseManagerTest {

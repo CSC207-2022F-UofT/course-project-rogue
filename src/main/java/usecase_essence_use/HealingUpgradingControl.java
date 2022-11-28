@@ -1,6 +1,10 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use;
 
 import entity.player.Player;
+import usecase_essence_use.heal.HealCalculator;
+import usecase_essence_use.heal.Healer;
+import usecase_essence_use.upgrade.UpgradeCalculator;
+import usecase_essence_use.upgrade.Upgrader;
 
 import java.util.Observable;
 

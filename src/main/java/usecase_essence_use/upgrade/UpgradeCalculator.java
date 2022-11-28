@@ -1,7 +1,12 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use.upgrade;
 
 import entity.item.Equipment;
 import entity.player.Player;
+import usecase_essence_use.HealAndUpgradeInfoDisplay;
+import usecase_essence_use.VisualHealUpgrade;
+import usecase_essence_use.data_calculator.CalculatorCollectible;
+import usecase_essence_use.data_calculator.CalculatorStat;
+import usecase_essence_use.data_calculator.CollectibleUseManager;
 
 public class UpgradeCalculator {
 

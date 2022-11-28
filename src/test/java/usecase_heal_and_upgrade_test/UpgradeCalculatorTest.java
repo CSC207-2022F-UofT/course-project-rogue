@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.UpgradeCalculator;
+import usecase_essence_use.upgrade.UpgradeCalculator;
 import usecase_playeractions.Map;
 
 public class UpgradeCalculatorTest {
@@ -30,6 +30,7 @@ public class UpgradeCalculatorTest {
     @BeforeEach
     @DisplayName("Setup before Each Test")
     void setUp(){
+        map = new Map();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
     @Test

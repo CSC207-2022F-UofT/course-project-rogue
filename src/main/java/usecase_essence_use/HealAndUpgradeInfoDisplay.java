@@ -1,4 +1,4 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use;
 
 public class HealAndUpgradeInfoDisplay implements VisualHealUpgrade {
 
