@@ -47,15 +47,24 @@ So try to stay alive, collect the artifact and escape the maze!
 
 
 # Clean Architecture used 
-* Player
+* Player is Entity
 * 
 
 # Test Coverage
 * **Player**
-  * All Methods and Possibilities are tested
+  * All Methods and Possibilities are tested.
+* **State**
+  * All Methods and Possibilities are tested.
+* **Inventory**
+  * **Basic Inventory** Cannot be tested because it is abstract
+  * **Collectible Inventory** All Methods and Possibility are tested
+* **Basic Equipment Slots**
+  * All Methods and Possibilities are tested.
 * **Events**
-  * **Random Event** cannot be tested because it is depending on random number generator
-  * **Essence Event** is tested all methods (there's only 1 possible outcome per method)
-  * **Artifact Event** Event is tested all methods (there's only 1 possible outcome per method)
-  * **WinEvent** (tbd because I need to wait for Presenter to be completed)
-  * **WallEvent** Only test enter(), because triggering the event will not result in anything (and the player isn't supposed to trigger them in the first place)
+  * **Event** cannot be tested because Event is abstract.
+  * **Random Event** cannot be tested because it is depending on random number generator.
+  * **Essence Event** is tested all methods (there's only 1 possible outcome per method).
+  * **Artifact Event** Event is tested all methods (there's only 1 possible outcome per method).
+  * **WinEvent**  Tested only enter(), because trigger will only have a visual display and no other changes made.
+  * **WallEvent** Only test enter(), because triggering the event will not result in anything (and the player isn't supposed to trigger them in the first place).
+  * **No Event** Cannot be tested because it requires player control to choose between upgrade and heal.
