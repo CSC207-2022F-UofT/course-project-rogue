@@ -36,3 +36,26 @@ So try to stay alive, collect the artifact and escape the maze!
 * [U] Upgrade
 * [F] Fight
 * [R] Flee
+
+# Design Patterns used
+* Facade Design Pattern is used in Player 
+  * Where CollectibleInventory takes care of the Inventory
+  * EquipmentSlot takes care of the equipment for the Player.
+  * The State records what actions the player can take.
+  * Method delegation is also used. (We choose to make player a relatively big class compared to having everyone needing to make a train of method calls)
+* Event is using Strategy Design Pattern (Where map is holding an Array of Events, the player will trigger Events differently depending on which Event type it is)
+
+
+# Clean Architecture used 
+* Player
+* 
+
+# Test Coverage
+* **Player**
+  * All Methods and Possibilities are tested
+* **Events**
+  * **Random Event** cannot be tested because it is depending on random number generator
+  * **Essence Event** is tested all methods (there's only 1 possible outcome per method)
+  * **Artifact Event** Event is tested all methods (there's only 1 possible outcome per method)
+  * **WinEvent** (tbd because I need to wait for Presenter to be completed)
+  * **WallEvent** Only test enter(), because triggering the event will not result in anything (and the player isn't supposed to trigger them in the first place)

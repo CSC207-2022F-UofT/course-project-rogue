@@ -2,9 +2,9 @@ package entity_tests;
 
 import entity.equipment_slots.BasicEquipmentSlots;
 import entity.inventory_slots.CollectibleInventory;
-import entity.equipment_slots.item.Armor;
-import entity.equipment_slots.item.Collectible;
-import entity.equipment_slots.item.Weapon;
+import entity.item.Armor;
+import entity.item.Collectible;
+import entity.item.Weapon;
 import entity.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,12 +1,12 @@
 package entity.player;
 
-import entity.equipment_slots.item.Armor;
+import entity.item.Armor;
 import entity.Character;
-import entity.equipment_slots.item.Weapon;
+import entity.item.Weapon;
 import entity.equipment_slots.BasicEquipmentSlots;
 import entity.inventory_slots.CollectibleInventory;
-import entity.equipment_slots.item.Collectible;
-import entity.equipment_slots.item.Equipment;
+import entity.item.Collectible;
+import entity.item.Equipment;
 import usecase_fight.FightSummary;
 
 import file_reader.deserialization.PlayerDeserialization;

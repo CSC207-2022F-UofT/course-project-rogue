@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="usecase_playeractions_tests.ControlTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-27T00:05:18" hostname="LAPTOP-Q425K8M3" time="0.276">
-  <properties/>
-  <testcase name="Test Move" classname="usecase_playeractions_tests.ControlTest" time="0.276"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

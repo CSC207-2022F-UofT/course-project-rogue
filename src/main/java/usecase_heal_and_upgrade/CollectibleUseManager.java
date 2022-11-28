@@ -1,6 +1,6 @@
 package usecase_heal_and_upgrade;
 
-import entity.equipment_slots.item.Collectible;
+import entity.item.Collectible;
 import entity.player.Player;
 
 public class CollectibleUseManager {
