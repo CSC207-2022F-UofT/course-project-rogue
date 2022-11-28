@@ -10,11 +10,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.HealUpgradeCalculator;
-import usecase_heal_and_upgrade.HealingUpgradingControl;
+import usecase_heal_and_upgrade.CollectibleUseManager;
 import usecase_playeractions.Map;
 
-public class HealUpgradeControlTest {
+public class CollectibleUseManagerTest {
     Map map;
     Player player;
     int maxHP = 100;
@@ -31,25 +30,30 @@ public class HealUpgradeControlTest {
     @BeforeEach
     @DisplayName("Setup before Each Test")
     void setUp(){
+        map = new Map();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
+
     @Test
-    @DisplayName("Test Heal and Upgrade Control")
-    void testHealUpgradeControl(){
-        player.setCanHeal(true);
-        player.setCanUpgrade(true);
-        HealUpgradeCalculator healUpgradeCalculator= new HealUpgradeCalculator(player);
-        HealingUpgradingControl control = new HealingUpgradingControl(player, healUpgradeCalculator);
-        player.changeCurrHitPoint(-20);
-        healUpgradeCalculator.updateInfo();
-        control.keyPressed("H");
-        Assertions.assertEquals(player.getCurrHitPoint(),100);
-        control.keyPressed("1");
-        Assertions.assertEquals(player.getWeapon().getStatValue(),1020);
-        control.keyPressed("2");
-        Assertions.assertEquals(player.getArmor().getStatValue(),25);
-        control.keyPressed("N");
-        Assertions.assertFalse(player.getCanHeal());
-        Assertions.assertFalse(player.getCanUpgrade());
+    @DisplayName("Test getAble when it's able")
+    void TestGetAbleTrue(){
+        CollectibleUseManager CollectHelper = new CollectibleUseManager(player,10);
+        Assertions.assertEquals(CollectHelper.getAble(),true);
     }
+
+    @Test
+    @DisplayName("Test getAble when it's not able")
+    void TestGetAbleFalse(){
+        CollectibleUseManager CollectHelper = new CollectibleUseManager(player,110);
+        Assertions.assertEquals(CollectHelper.getAble(),false);
+    }
+
+    @Test
+    @DisplayName("Test the esence can be spent")
+    void TestEssenceSpent(){
+        CollectibleUseManager CollectHelper = new CollectibleUseManager(player,10);
+        CollectHelper.spendCollectible();
+        Assertions.assertEquals(player.getEssence().getNum(),90);
+    }
+
 }

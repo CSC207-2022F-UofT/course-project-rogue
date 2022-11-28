@@ -72,8 +72,10 @@ public class UpgradeCalculator {
     }
 
     public void upgrade(){
-        this.CollectHelper.spendCollectible();
-        this.equipment.addStatValue(this.StatAdded.determineAdd());
-        this.equipment.getTimesUpgraded();
+        if (CollectHelper.getAble()) {
+            this.CollectHelper.spendCollectible();
+            this.equipment.addStatValue(this.StatAdded.determineAdd());
+            this.equipment.addTimesUpgraded(1);
+        }
     }
 }

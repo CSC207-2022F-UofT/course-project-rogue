@@ -35,11 +35,31 @@ public class UpgradeCalculatorTest {
     @Test
     @DisplayName("Test Upgrade Calculator")
     void testUpgradeCalculator(){
-        player.setCanHeal(true);
+        player.setCanUpgrade(true);
         UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
         weaponUpgradeCalculator.UpgradeInfoUpdate();
         weaponUpgradeCalculator.upgrade();
         Assertions.assertEquals(player.getWeapon().getStatValue(), 1020);
-        Assertions.assertEquals(player.getArmor().getTimesUpgraded(),1);
+    }
+
+    @Test
+    @DisplayName("Test essence is used after upgrade")
+    void testEssenceIsUsed(){
+        player.setCanUpgrade(true);
+        UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
+        weaponUpgradeCalculator.UpgradeInfoUpdate();
+        weaponUpgradeCalculator.upgrade();
+        Assertions.assertEquals(player.getEssence().getNum(),80);
+    }
+
+    @Test
+    @DisplayName("Test will not upgrade when Essence not enough")
+    void testEssenceNotEnough(){
+        player.setCanUpgrade(true);
+        UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
+        player.changeEssenceAmount(-90);
+        weaponUpgradeCalculator.UpgradeInfoUpdate();
+        weaponUpgradeCalculator.upgrade();
+        Assertions.assertEquals(player.getWeapon().getStatValue(), 1000);
     }
 }

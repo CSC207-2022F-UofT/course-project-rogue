@@ -25,7 +25,7 @@ public class Healer implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals(this.trigger)) {
+        if(player.getCanHeal() && arg.equals(this.trigger)) {
             Manager.heal();
         }
     }

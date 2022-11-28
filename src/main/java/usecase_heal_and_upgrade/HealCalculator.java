@@ -72,9 +72,13 @@ public class HealCalculator {
                 true, "heal");
     }
 
+    /**
+     * The basic part of the Heal, this method will heal player's HP in the calculate way.
+     */
     public void heal(){
         this.player.changeCurrHitPoint(this.hpToHeal);
-
+        this.collectHelper.spendCollectible();
+        this.player.setCanHeal(false);
         healInfoUpdate();
     }
 

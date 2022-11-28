@@ -1,13 +1,11 @@
 package usecase_heal_and_upgrade;
 
 public class CalculatorCollectible {
-    int healEssenceRate;
-    int upgradeEssenceNeed;
 
-    public CalculatorCollectible(){
-        healEssenceRate = 1;
-        upgradeEssenceNeed =20;
-    }
+    public CalculatorCollectible(){}
+
+    public final int HP_ESSENCE_EXCHANGE_RATE = 1;
+    public final int ESSENCE_FOR_UPGRADE = 20;
 
     /**
      * Determine the Essence required to do the healing. This method will return a non-negative integer.
@@ -16,7 +14,7 @@ public class CalculatorCollectible {
      */
     public int essenceForHeal(int HP){
         int EssenceNum;
-        EssenceNum = HP * this.healEssenceRate;
+        EssenceNum = HP * this.HP_ESSENCE_EXCHANGE_RATE;
         return EssenceNum;
     }
 
@@ -25,7 +23,7 @@ public class CalculatorCollectible {
      * @return the Essence for the upgrade need.
      */
     public int essenceForUpgrade(){
-        return this.upgradeEssenceNeed;
+        return this.ESSENCE_FOR_UPGRADE;
     }
 
     /**
@@ -35,7 +33,7 @@ public class CalculatorCollectible {
      */
     public int affordableHP(int CollectibleNum){
         int i;
-        i = CollectibleNum / this.healEssenceRate;
+        i = CollectibleNum / this.HP_ESSENCE_EXCHANGE_RATE;
         return i;
     }
 }
