@@ -8,7 +8,7 @@ public class CollectibleUseManager {
 
     /**
      * Counstruct the class CollectibleUseManage. This class is in charge of the spend of the collectible items.
-     * @param player the plaeyer
+     * @param player the player
      * @param essenceNeed Essence required for upgrade/heal
      */
 
@@ -25,8 +25,16 @@ public class CollectibleUseManager {
         return this.player.getEssence().getNum() >= this.essenceNeed;
     }
 
+    /**
+     * Return the essence number that player have.
+     * @return number of essence in the form of an integer
+     */
     public int getEssenceNum(){return this.player.getEssence().getNum();}
 
+    /**
+     * Return the number of essence taht we need for upgrade
+     * @return
+     */
     public int getEssenceNeed(){return this.essenceNeed;}
 
     /**
@@ -37,8 +45,8 @@ public class CollectibleUseManager {
     }
 
     /**
-     * Change the Essence the player need
-     * @param NumEssence
+     * Update the Essence need for the player in healing/upgrading
+     * @param NumEssence the number of essence is required for heal/upgrade
      */
     public void essenceNeededToUpdate(int NumEssence){
         this.essenceNeed = NumEssence;
