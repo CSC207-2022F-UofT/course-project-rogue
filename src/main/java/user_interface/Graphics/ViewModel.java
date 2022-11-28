@@ -18,8 +18,7 @@ public class ViewModel {
     private String text3 = "";
     private String text4 = "";
 
-    public ViewModel(){
-    }
+    private MapGraphics map = new MapGraphics(500,10, 650, new String[15][15]);
 
     public void duplicate(ViewModel oldModel){
         this.text1 = oldModel.text1;
@@ -39,7 +38,7 @@ public class ViewModel {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        g.setColor(new Color(0x698C8989, true));
+        g.setColor(new Color(0x69030303, true));
         g.fillRect(0,0,size.width-1000,size.height-300);
         g.setColor(new Color(0xFF090909, true));
         g.setFont(new Font("TimesRoman",Font.CENTER_BASELINE,30));
@@ -54,6 +53,9 @@ public class ViewModel {
         g.drawString(text2 ,100,size.height-170);
         g.drawString(text3 ,100,size.height-120);
         g.drawString(text4 ,100,size.height-70);
+
+        this.map.draw(g);
+
     }
 
     public void setHp(int hp) {

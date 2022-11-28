@@ -65,6 +65,5 @@ public interface GameFileReaderInterface {
         System.out.println("Did not find a player with the key to value combination.");
         return null;
     }
-    public String getMap(String key, );
     public void update(String dir);
 }

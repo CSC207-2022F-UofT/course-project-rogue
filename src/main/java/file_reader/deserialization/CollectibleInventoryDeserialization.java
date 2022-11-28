@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import entity.Collectible;
-import entity.CollectibleInventory;
+import entity.inventory_slots.CollectibleInventory;
+import entity.item.Collectible;
 
 import java.io.IOException;
 

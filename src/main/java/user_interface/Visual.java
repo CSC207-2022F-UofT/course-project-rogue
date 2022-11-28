@@ -89,4 +89,12 @@ public class Visual implements OutputBoundary {
     public void update_Dead() {
 
     }
+
+    /**
+     * @param map
+     */
+    @Override
+    public void update_Map(int[][] map) {
+
+    }
 }
