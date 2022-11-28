@@ -19,7 +19,7 @@ public class NoEvent extends Event{
     public void trigger(Player player) {
         player.setCanHeal(true);
         player.setCanMove(false);
-        // And then let player choose if they want to heal or upgrade
+
 
     }
 

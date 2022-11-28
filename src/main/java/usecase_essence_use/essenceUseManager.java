@@ -8,11 +8,11 @@ import usecase_essence_use.upgrade.Upgrader;
 
 import java.util.Observable;
 
-public class essenceUseManager extends Observable {
+public class EssenceUseManager extends Observable {
     /**
      * Initialize the basic control class with no Observer
      */
-    public essenceUseManager(){
+    public EssenceUseManager(){
 
     }
 
@@ -22,7 +22,7 @@ public class essenceUseManager extends Observable {
      * Initialize the actions choice of the player.
      * The basic Upgrade and Heal actions will be initialized.
      */
-    public essenceUseManager(Player player, essenceUseCalculator essenceUseCalculator){
+    public EssenceUseManager(Player player, EssenceUseCalculator essenceUseCalculator){
         this.setDefaultUP(player, essenceUseCalculator.getHealManage(), essenceUseCalculator.getWeaponUpgradeManage(),
                 essenceUseCalculator.getArmorUpgradeManage());
     }
