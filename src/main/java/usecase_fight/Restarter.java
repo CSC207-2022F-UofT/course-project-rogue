@@ -29,7 +29,7 @@ public class Restarter implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (player.getGameOver() && trigger.equals(arg)){
-            // restart from last save
+            // go to main menu
         }
     }
 }
