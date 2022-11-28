@@ -3,6 +3,8 @@ package usecase_event;
 import entity.player.Player;
 import interface_adapters.OutputBoundary;
 
+import java.util.Observable;
+
 public class NoEvent extends Event{
 
     public NoEvent(OutputBoundary outputBoundary) {
@@ -18,6 +20,7 @@ public class NoEvent extends Event{
     @Override
     public void trigger(Player player) {
         player.setCanHeal(true);
+        player.setCanUpgrade(true);
         player.setCanMove(false);
 
 
