@@ -5,13 +5,30 @@ import entity.Player;
 
 /** A calculator that determines the winning chance of the Player in a fight. */
 public class WinCalculator extends Calculator{
-    Monster monster;
-    Player player;
+    private final Monster monster;
+    private final Player player;
 
     public WinCalculator(Monster monster, Player player){
         this.monster = monster;
         this.player = player;
     }
+
+    /**
+     *
+     * @return The Monster of this WinCalculator
+     */
+    public Monster getMonster(){
+        return this.monster;
+    }
+
+    /**
+     *
+     * @return The Player of this WinCalculator
+     */
+    public Player getPlayer(){
+        return this.player;
+    }
+
 
     /**
      * @return The percentage likelihood of the Player winning a fight against Monster, the maximum likelihood being 100
