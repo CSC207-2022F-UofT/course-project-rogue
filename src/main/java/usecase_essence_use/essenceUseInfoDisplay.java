@@ -1,6 +1,6 @@
 package usecase_essence_use;
 
-public class HealAndUpgradeInfoDisplay implements VisualHealUpgrade {
+public class essenceUseInfoDisplay implements VisualHealUpgrade {
 
     /**
      *The method will be showed in the bottom text part. It will shows that the collectible items the player has verse

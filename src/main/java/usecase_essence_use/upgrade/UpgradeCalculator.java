@@ -2,7 +2,7 @@ package usecase_essence_use.upgrade;
 
 import entity.item.Equipment;
 import entity.player.Player;
-import usecase_essence_use.HealAndUpgradeInfoDisplay;
+import usecase_essence_use.essenceUseInfoDisplay;
 import usecase_essence_use.VisualHealUpgrade;
 import usecase_essence_use.data_calculator.CalculatorCollectible;
 import usecase_essence_use.data_calculator.CalculatorStat;
@@ -23,7 +23,7 @@ public class UpgradeCalculator {
 
     /**
      * Constructor of Heal info. This class will collect the information of player and determine how to heal
-     * @param player
+     * @param player the player of the game
      */
     public UpgradeCalculator(Player player, String equipType){
         this.player = player;
@@ -62,7 +62,7 @@ public class UpgradeCalculator {
      * let the presenter print the information of heal
      */
     public void HealInfoPrint(){
-        VisualHealUpgrade speaker = new HealAndUpgradeInfoDisplay();
+        VisualHealUpgrade speaker = new essenceUseInfoDisplay();
         if (this.equipment.getTimesUpgraded() == 4){
             speaker.warnMaxLv(this.EquipType);
             return;
