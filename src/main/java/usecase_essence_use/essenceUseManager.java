@@ -22,9 +22,9 @@ public class essenceUseManager extends Observable {
      * Initialize the actions choice of the player.
      * The basic Upgrade and Heal actions will be initialized.
      */
-    public essenceUseManager(Player player, essenceUseCalculator essenceUseCalculator){
-        this.setDefaultUP(player, essenceUseCalculator.getHealManage(), essenceUseCalculator.getWeaponUpgradeManage(),
-                essenceUseCalculator.getArmorUpgradeManage());
+    public essenceUseManager(Player player, essenceUseCalculatorFactory essenceUseCalculatorFactory){
+        this.setDefaultUP(player, essenceUseCalculatorFactory.getHealManage(), essenceUseCalculatorFactory.getWeaponUpgradeManage(),
+                essenceUseCalculatorFactory.getArmorUpgradeManage());
     }
 
     /**
@@ -50,6 +50,5 @@ public class essenceUseManager extends Observable {
         this.setChanged();
         this.notifyObservers(s.toUpperCase());
     }
-
 
 }
