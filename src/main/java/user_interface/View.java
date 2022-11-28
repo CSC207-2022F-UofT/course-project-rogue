@@ -22,8 +22,8 @@ public class View implements KeyListener, View_Interface {
         game_play = new JFrame();
         game_play.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         //game_play.setLayout(null);
-        int screen_width = 1500;
-        int screen_hight = 1000;
+        int screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int screen_hight = Toolkit.getDefaultToolkit().getScreenSize().height;
         game_play.setSize(screen_width,screen_hight);
         game_play.setResizable(false);
         //game_play.setUndecorated(true);
