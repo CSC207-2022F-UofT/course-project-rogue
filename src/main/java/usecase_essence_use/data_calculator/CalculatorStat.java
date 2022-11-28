@@ -1,10 +1,11 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use.data_calculator;
 
 public class CalculatorStat {
-    int statIncrease;
+
+    public final int statIncrease;
 
     public CalculatorStat(){
-        this.statIncrease = 20;
+        statIncrease = 20;
     }
 
     /**
@@ -12,6 +13,6 @@ public class CalculatorStat {
      * @return the stat to be added
      */
     public int determineAdd() {
-        return this.statIncrease;
+        return statIncrease;
     }
 }

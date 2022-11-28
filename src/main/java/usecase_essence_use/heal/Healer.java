@@ -1,4 +1,4 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use.heal;
 
 import entity.player.Player;
 
@@ -25,7 +25,7 @@ public class Healer implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals(this.trigger)) {
+        if(player.getCanHeal() && arg.equals(this.trigger)) {
             Manager.heal();
         }
     }
