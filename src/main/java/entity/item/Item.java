@@ -1,4 +1,4 @@
-package entity.equipment_slots.item;
+package entity.item;
 
 public abstract class Item {
     private final String name; // the name of the Item

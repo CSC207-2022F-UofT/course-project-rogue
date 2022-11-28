@@ -1,6 +1,6 @@
 package usecase_heal_and_upgrade;
 
-import entity.equipment_slots.item.Equipment;
+import entity.item.Equipment;
 import entity.player.Player;
 
 public class UpgradeCalculator {
