@@ -47,7 +47,7 @@ So try to stay alive, collect the artifact and escape the maze!
 
 
 # Clean Architecture used 
-* Player is Entity
+* View interacts with Event, Event uses player factory (use case) to create Action Manager which will interact with the other use case
 * 
 
 # Test Coverage
