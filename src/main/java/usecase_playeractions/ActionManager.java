@@ -6,20 +6,23 @@ import entity.Player;
 
 /**
  * A class that stores the actions the user may perform.
- * Use {@code Control.addObserver(Observer o)} to add addition actions(e.g. Heal, UpgradeWeapon, etc.).
+ * Use {@code ActionManager.addObserver(Observer o)} to add addition actions(e.g. Heal, UpgradeWeapon, etc.).
  */
-public class Control extends Observable {
+public class ActionManager extends Observable {
+
+    private Player player;
 
     /**
      * Initialize the basic control class with no Observer
      */
-    public Control(){}
+    public ActionManager(){}
 
     /**
      * Initialize the actions with a Map.
      * The basic WASD actions will be initialized.
      */
-    public Control(Player player,Map map){
+    public ActionManager(Player player, Map map){
+        this.player = player;
         this.setDefaultMover(player,map);
     }
 
