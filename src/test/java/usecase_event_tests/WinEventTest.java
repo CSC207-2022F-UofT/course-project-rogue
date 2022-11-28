@@ -7,6 +7,7 @@ import entity.item.Armor;
 import entity.item.Collectible;
 import entity.item.Weapon;
 import entity.player.Player;
+import file_writer.GameFileWriter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +32,7 @@ public class WinEventTest {
     @BeforeEach
     @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new WinEvent(new Visual(new View()));
+        event = new WinEvent(new Visual(new View()), new GameFileWriter("data_base/Player_save.json"));
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 
