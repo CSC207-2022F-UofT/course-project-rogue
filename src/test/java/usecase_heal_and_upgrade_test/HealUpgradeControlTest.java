@@ -32,10 +32,11 @@ public class HealUpgradeControlTest {
     @DisplayName("Setup before Each Test")
     void setUp(){
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
+        map = new Map();
     }
     @Test
-    @DisplayName("Test Heal and Upgrade Control")
-    void testHealUpgradeControl(){
+    @DisplayName("Test Heal and Upgrade Control: Heal")
+    void testHealUpgradeControlHeal(){
         player.setCanHeal(true);
         player.setCanUpgrade(true);
         HealUpgradeCalculator healUpgradeCalculator= new HealUpgradeCalculator(player);
@@ -44,10 +45,43 @@ public class HealUpgradeControlTest {
         healUpgradeCalculator.updateInfo();
         control.keyPressed("H");
         Assertions.assertEquals(player.getCurrHitPoint(),100);
+    }
+
+    @Test
+    @DisplayName("Test Heal and Upgrade Control: WeaponUpgrade")
+    void testHealUpgradeControlWeapon(){
+        player.setCanHeal(true);
+        player.setCanUpgrade(true);
+        HealUpgradeCalculator healUpgradeCalculator= new HealUpgradeCalculator(player);
+        HealingUpgradingControl control = new HealingUpgradingControl(player, healUpgradeCalculator);
+        player.changeCurrHitPoint(-20);
+        healUpgradeCalculator.updateInfo();
         control.keyPressed("1");
         Assertions.assertEquals(player.getWeapon().getStatValue(),1020);
+    }
+
+    @Test
+    @DisplayName("Test Heal and Upgrade Control: ArmorUpgrade")
+    void testHealUpgradeControlArmor(){
+        player.setCanHeal(true);
+        player.setCanUpgrade(true);
+        HealUpgradeCalculator healUpgradeCalculator= new HealUpgradeCalculator(player);
+        HealingUpgradingControl control = new HealingUpgradingControl(player, healUpgradeCalculator);
+        player.changeCurrHitPoint(-20);
+        healUpgradeCalculator.updateInfo();
         control.keyPressed("2");
         Assertions.assertEquals(player.getArmor().getStatValue(),25);
+    }
+
+    @Test
+    @DisplayName("Test Heal and Upgrade Control: Leave")
+    void testHealUpgradeControlEnd(){
+        player.setCanHeal(true);
+        player.setCanUpgrade(true);
+        HealUpgradeCalculator healUpgradeCalculator= new HealUpgradeCalculator(player);
+        HealingUpgradingControl control = new HealingUpgradingControl(player, healUpgradeCalculator);
+        player.changeCurrHitPoint(-20);
+        healUpgradeCalculator.updateInfo();
         control.keyPressed("N");
         Assertions.assertFalse(player.getCanHeal());
         Assertions.assertFalse(player.getCanUpgrade());

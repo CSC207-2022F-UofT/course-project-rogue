@@ -33,8 +33,8 @@ public class HealingUpgradingControl extends Observable {
 
     private void setHealUpgrade(Player player, HealCalculator HealManage, UpgradeCalculator WeaponUpgradeManage,
                                 UpgradeCalculator ArmorUpgradeManage, String[] Command){
-        this.addObserver(new Upgrader(player, ArmorUpgradeManage, Command[0]));
-        this.addObserver(new Upgrader(player, WeaponUpgradeManage, Command[1]));
+        this.addObserver(new Upgrader(player, WeaponUpgradeManage, Command[0]));
+        this.addObserver(new Upgrader(player, ArmorUpgradeManage, Command[1]));
         this.addObserver(new Healer(player, HealManage, Command[2]));
         this.addObserver(new LeaveRestPoint(player,Command[3]));
     }
