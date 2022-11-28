@@ -48,7 +48,8 @@ So try to stay alive, collect the artifact and escape the maze!
 
 # Clean Architecture used 
 * View interacts with Event, Event uses player factory (use case) to create Action Manager which will interact with the other use case
-* 
+* Open/Closed Principle with Item: Item allows extension because it allows different types of items to be created without having to modify the Item class. If new types of item want to be created, they can just extend the Item class. This is seen with the Collectible class and the Equipment class.
+* Liskov Substitution Principle with Item and its subclasses (Collectible, Equipment, Armor, and Weapon): Each subclass can substitute an Item object. The methods in Item are all appropriate and can be used by the subclasses.
 
 # Test Coverage
 * **Player**
@@ -68,3 +69,9 @@ So try to stay alive, collect the artifact and escape the maze!
   * **WinEvent**  Tested only enter(), because trigger will only have a visual display and no other changes made.
   * **WallEvent** Only test enter(), because triggering the event will not result in anything (and the player isn't supposed to trigger them in the first place).
   * **No Event** Cannot be tested because it requires player control to choose between upgrade and heal.
+* **Collectible**
+  * All Methods and Possibilities are tested.
+* **Armor**
+  * All Methods and Possibilities are tested.
+* **Weapon**
+  * All Methods and Possibiilities are tested.
