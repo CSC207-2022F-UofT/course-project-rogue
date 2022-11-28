@@ -16,7 +16,7 @@ public class EssenceUseManager extends Observable {
 
     }
 
-    public final String[] DEFAULT = new String[]{"1","2","H","N"};
+    public final String[] defaultKeys = new String[]{"1","2","H","N"};
 
     /**
      * Initialize the actions choice of the player.
@@ -32,7 +32,7 @@ public class EssenceUseManager extends Observable {
      */
     private void setDefaultUP(Player player, HealCalculator HealManage, UpgradeCalculator WeaponUpgradeManage,
                               UpgradeCalculator ArmorUpgradeManage) {
-        setHealUpgrade(player,HealManage, WeaponUpgradeManage, ArmorUpgradeManage, DEFAULT);
+        setHealUpgrade(player,HealManage, WeaponUpgradeManage, ArmorUpgradeManage, defaultKeys);
     }
 
     private void setHealUpgrade(Player player, HealCalculator HealManage, UpgradeCalculator WeaponUpgradeManage,

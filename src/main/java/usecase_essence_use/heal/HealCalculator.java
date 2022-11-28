@@ -2,7 +2,7 @@ package usecase_essence_use.heal;
 
 import entity.player.Player;
 import usecase_essence_use.data_calculator.CollectibleUseManager;
-import usecase_essence_use.EessenceUseInfoDisplay;
+import usecase_essence_use.EssenceUseInfoDisplay;
 import usecase_essence_use.VisualHealUpgrade;
 import usecase_essence_use.data_calculator.CalculatorCollectible;
 
@@ -57,7 +57,7 @@ public class HealCalculator {
      * let the presenter print the information of heal
      */
     public void healInfoPrint(){
-        VisualHealUpgrade speaker = new EessenceUseInfoDisplay();
+        VisualHealUpgrade speaker = new EssenceUseInfoDisplay();
         if (this.requireHP ==0){
             speaker.warnFullHP();
             return;
