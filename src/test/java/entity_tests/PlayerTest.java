@@ -98,7 +98,7 @@ public class PlayerTest {
     @DisplayName("Test Set Location of Player")
     void testSetLocation(){
         player.setLocation(0, 4);
-        int[] expected = {4, 0};
+        int[] expected = {0, 4};
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expected[0], player.getPlayerLocation()[0]),
                 () -> Assertions.assertEquals(expected[1], player.getPlayerLocation()[1])

@@ -135,8 +135,9 @@ public class Player extends Character {
      * @param i: the new x or y coordinate of player
      *
      */
-    public void setLocation(int axis, int i){
-        location[axis] = i;
+    public void setLocation(int x, int y){
+        location[0] = x;
+        location[1] = y;
     }
 
 
