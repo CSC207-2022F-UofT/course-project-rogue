@@ -36,3 +36,17 @@ So try to stay alive, collect the artifact and escape the maze!
 * [U] Upgrade
 * [F] Fight
 * [R] Flee
+
+# Design Patterns used
+* Facade Design Pattern is used in Player 
+  * Where CollectibleInventory takes care of the Inventory
+  * EquipmentSlot takes care of the equipment for the Player.
+  * The State records what actions the player can take.
+  * Method delegation is also used. (We choose to make player a relatively big class compared to having everyone needing to make a train of method calls)
+* Event is using Strategy Design Pattern (Where map is holding an Array of Events, the player will trigger Events differently depending on which Event type it is)
+
+
+# Clean Architecture used 
+* The controller is implemented by the input boundary and is injected into 
+
+# Test Coverage
