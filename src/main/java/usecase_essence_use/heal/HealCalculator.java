@@ -40,7 +40,7 @@ public class HealCalculator {
         this.collectHelper.essenceNeededToUpdate(this.essenceNeed.essenceForHeal(this.requireHP));
         this.hpToHeal = this.requireHP;
         if(!this.collectHelper.getAble()){
-            this.hpToHeal = essenceNeed.affordableHP(this.essenceNeed.affordableHP(this.collectHelper.getEssenceNum()));
+            this.hpToHeal = this.essenceNeed.affordableHP(this.collectHelper.getEssenceNum());
             this.collectHelper.essenceNeededToUpdate(this.essenceNeed.essenceForHeal(this.hpToHeal));
         }
     }
