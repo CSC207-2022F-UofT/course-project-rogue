@@ -47,6 +47,15 @@ So try to stay alive, collect the artifact and escape the maze!
 
 
 # Clean Architecture used 
-* The controller is implemented by the input boundary and is injected into 
+* Player
+* 
 
 # Test Coverage
+* **Player**
+ * All Methods are tested
+* **Events**
+ * **Random Event** cannot be tested because it is depending on random number generator
+ * **Essence Event** is tested all methods (there's only 1 possible outcome per method)
+ * **Artifact Event** Event is tested all methods (there's only 1 possible outcome per method)
+ * **WinEvent** (tbd because I need to wait for Presenter to be completed)
+ * **WallEvent** Only test enter(), because triggering the event will not result in anything (and the player isn't supposed to trigger them in the first place)
