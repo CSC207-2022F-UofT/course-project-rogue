@@ -1,11 +1,11 @@
 package usecase_fight;
 
-import entity.equipment_slots.item.Armor;
-import entity.equipment_slots.item.Equipment;
+import entity.item.Armor;
+import entity.item.Equipment;
 import entity.monster.Monster;
 import entity.monster.MonsterPower;
 import entity.player.Player;
-import entity.equipment_slots.item.Weapon;
+import entity.item.Weapon;
 
 import java.util.Observable;
 import java.util.Observer;

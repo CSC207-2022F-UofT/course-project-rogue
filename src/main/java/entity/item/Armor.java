@@ -1,4 +1,4 @@
-package entity.equipment_slots.item;
+package entity.item;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
