@@ -52,7 +52,7 @@ So try to stay alive, collect the artifact and escape the maze!
 
 # Test Coverage
 * **Player**
-  * All Methods are tested
+  * All Methods and Possibilities are tested
 * **Events**
   * **Random Event** cannot be tested because it is depending on random number generator
   * **Essence Event** is tested all methods (there's only 1 possible outcome per method)
