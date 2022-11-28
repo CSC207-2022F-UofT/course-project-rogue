@@ -260,3 +260,5 @@ build/classes/java/main/entity/equipment_slots/BasicEquipmentSlots.class
 .gradle/7.4/fileHashes/fileHashes.bin
 .gradle/7.4/executionHistory/executionHistory.lock
 .gradle/7.4/executionHistory/executionHistory.bin
+*.xml
+*.iml
