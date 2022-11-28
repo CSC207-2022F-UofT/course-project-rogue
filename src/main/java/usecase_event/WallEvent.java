@@ -9,15 +9,6 @@ public class WallEvent extends Event{
         super(outputBoundary);
     }
 
-    /**
-     * Triggering this Event does nothing
-     *
-     * @param player: the player triggering the Event
-     */
-    @Override
-    public void trigger(Player player) {
-    }
-
     /** Tells Map whether this tile could be stepped on by Player
      *
      * @return True if player can step on it, false if it can's
@@ -25,6 +16,10 @@ public class WallEvent extends Event{
     @Override
     public boolean enter(Player player) {
         return false;
+    }
+
+    @Override
+    public void trigger(Player player) {
     }
 
 }
