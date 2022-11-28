@@ -1,14 +1,18 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use;
 
 import entity.player.Player;
+import usecase_essence_use.heal.HealCalculator;
+import usecase_essence_use.heal.Healer;
+import usecase_essence_use.upgrade.UpgradeCalculator;
+import usecase_essence_use.upgrade.Upgrader;
 
 import java.util.Observable;
 
-public class HealingUpgradingControl extends Observable {
+public class essenceUseManager extends Observable {
     /**
      * Initialize the basic control class with no Observer
      */
-    public HealingUpgradingControl(){
+    public essenceUseManager(){
 
     }
 
@@ -18,9 +22,9 @@ public class HealingUpgradingControl extends Observable {
      * Initialize the actions choice of the player.
      * The basic Upgrade and Heal actions will be initialized.
      */
-    public HealingUpgradingControl(Player player, HealUpgradeCalculator healUpgradeCalculator){
-        this.setDefaultUP(player, healUpgradeCalculator.getHealManage(), healUpgradeCalculator.getWeaponUpgradeManage(),
-                healUpgradeCalculator.getArmorUpgradeManage());
+    public essenceUseManager(Player player, essenceUseCalculator essenceUseCalculator){
+        this.setDefaultUP(player, essenceUseCalculator.getHealManage(), essenceUseCalculator.getWeaponUpgradeManage(),
+                essenceUseCalculator.getArmorUpgradeManage());
     }
 
     /**
@@ -33,8 +37,8 @@ public class HealingUpgradingControl extends Observable {
 
     private void setHealUpgrade(Player player, HealCalculator HealManage, UpgradeCalculator WeaponUpgradeManage,
                                 UpgradeCalculator ArmorUpgradeManage, String[] Command){
-        this.addObserver(new Upgrader(player, ArmorUpgradeManage, Command[0]));
-        this.addObserver(new Upgrader(player, WeaponUpgradeManage, Command[1]));
+        this.addObserver(new Upgrader(player, WeaponUpgradeManage, Command[0]));
+        this.addObserver(new Upgrader(player, ArmorUpgradeManage, Command[1]));
         this.addObserver(new Healer(player, HealManage, Command[2]));
         this.addObserver(new LeaveRestPoint(player,Command[3]));
     }

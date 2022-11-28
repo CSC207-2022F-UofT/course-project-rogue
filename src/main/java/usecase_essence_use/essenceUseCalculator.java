@@ -1,13 +1,15 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use;
 
 import entity.player.Player;
+import usecase_essence_use.heal.HealCalculator;
+import usecase_essence_use.upgrade.UpgradeCalculator;
 
-public class HealUpgradeCalculator {
+public class essenceUseCalculator {
     private final HealCalculator healCount;
     private final UpgradeCalculator weaponUpgradeCount;
     private final UpgradeCalculator armorUpgradeCount;
 
-    public HealUpgradeCalculator(Player player){
+    public essenceUseCalculator(Player player){
         healCount = new HealCalculator(player);
         weaponUpgradeCount = new UpgradeCalculator(player, "Weapon");
         armorUpgradeCount = new UpgradeCalculator(player, "Armor");

@@ -1,18 +1,22 @@
-package usecase_heal_and_upgrade;
+package usecase_essence_use.heal;
 
 import entity.player.Player;
+import usecase_essence_use.data_calculator.CollectibleUseManager;
+import usecase_essence_use.essenceUseInfoDisplay;
+import usecase_essence_use.VisualHealUpgrade;
+import usecase_essence_use.data_calculator.CalculatorCollectible;
 
 public class HealCalculator {
-    private CollectibleUseManager collectHelper;
-    private Player player;
-    private CalculatorCollectible essenceNeed;
+    private final CollectibleUseManager collectHelper;
+    private final Player player;
+    private final CalculatorCollectible essenceNeed;
 
     private int requireHP;
     private int hpToHeal;
 
     /**
      * Constructor of Heal info. This class will collect the information of player and determine how to heal
-     * @param player
+     * @param player the player in the game, we only accept one player
      */
     public HealCalculator(Player player){
         this.player = player;
@@ -36,7 +40,7 @@ public class HealCalculator {
         this.collectHelper.essenceNeededToUpdate(this.essenceNeed.essenceForHeal(this.requireHP));
         this.hpToHeal = this.requireHP;
         if(!this.collectHelper.getAble()){
-            this.hpToHeal = essenceNeed.affordableHP(this.essenceNeed.affordableHP(this.collectHelper.getEssenceNum()));
+            this.hpToHeal = this.essenceNeed.affordableHP(this.collectHelper.getEssenceNum());
             this.collectHelper.essenceNeededToUpdate(this.essenceNeed.essenceForHeal(this.hpToHeal));
         }
     }
@@ -53,7 +57,7 @@ public class HealCalculator {
      * let the presenter print the information of heal
      */
     public void healInfoPrint(){
-        VisualHealUpgrade speaker = new HealAndUpgradeInfoDisplay();
+        VisualHealUpgrade speaker = new essenceUseInfoDisplay();
         if (this.requireHP ==0){
             speaker.warnFullHP();
             return;
@@ -72,9 +76,13 @@ public class HealCalculator {
                 true, "heal");
     }
 
+    /**
+     * The basic part of the Heal, this method will heal player's HP in the calculate way.
+     */
     public void heal(){
         this.player.changeCurrHitPoint(this.hpToHeal);
-
+        this.collectHelper.spendCollectible();
+        this.player.setCanHeal(false);
         healInfoUpdate();
     }
 
