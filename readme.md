@@ -49,7 +49,7 @@ So try to stay alive, collect the artifact and escape the maze!
 # Clean Architecture used 
 * View interacts with Event, Event uses player factory (use case) to create Action Manager which will interact with the other use case
 * Open/Closed Principle with Item: Item allows extension because it allows different types of items to be created without having to modify the Item class. If new types of item want to be created, they can just extend the Item class. This is seen with the Collectible class and the Equipment class.
-* Liskov Substitution Principle with Item and its subclasses (Collectible, Equipment, Armor, and Weapon): Each subclass can substitute an Item object. The methods in Item are all appropriate and can be used by the subclasses.
+* Liskov Substitution Principle with Item and its subclasses (Collectible, Equipment, Armor, and Weapon): Each subclass can substitute an Item object. The methods in Item are all appropriate for the subclasses and can be used by the subclasses.
 
 # Test Coverage
 * **Player**
