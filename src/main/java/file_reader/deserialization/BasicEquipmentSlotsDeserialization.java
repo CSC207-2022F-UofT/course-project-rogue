@@ -21,11 +21,18 @@ public class BasicEquipmentSlotsDeserialization extends StdDeserializer<BasicEqu
         super(vc);
     }
 
+    /**
+     * @param p Parsed used for reading JSON content(apart of Jackson, not our design)
+     * @param ctxt Context that can be used to access information about
+     *   this deserialization activity.(apart of Jackson, not our design)
+     *
+     * @return BasicEquipmentSlots read in together with Player
+     * @throws IOException
+     */
     @Override
-    public BasicEquipmentSlots deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
+    public BasicEquipmentSlots deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         ObjectMapper om = new ObjectMapper();
         JsonNode node = p.getCodec().readTree(p);
-        DeserializeHelper h = new DeserializeHelper();
         Weapon w = om.treeToValue(node.get("weapon"), Weapon.class);
         Armor a = om.treeToValue(node.get("armor"), Armor.class);
         return new BasicEquipmentSlots(w, a);
