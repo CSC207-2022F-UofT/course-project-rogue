@@ -1,7 +1,7 @@
 package usecase_fight;
 
-import entity.Equipment;
-import entity.Monster.Monster;
+import entity.item.Equipment;
+import entity.monster.Monster;
 
 /** A summary of the fight a Player is in. */
 public class FightSummary {
@@ -71,5 +71,23 @@ public class FightSummary {
     /** @return The Monster in the fight. */
     public Monster getMonster(){
         return this.monster;
+    }
+
+    /**
+     * @return A list of strings representing this FightSummary.
+     */
+    public String[] getSummary(){
+        String line1 = String.format("You encountered a %s", this.monster);
+        String line2 = String.format("Power: %s, ", this.monster.getPowerString())
+                + String.format("Win chance: %d", this.winChance) + "%, "
+                + String.format("Damage: %d", this.damage);
+        String line3;
+        if (equipment == null){
+            line3 = String.format("Drops: %d essence,", this.essenceNum);
+        } else{
+            line3 = String.format("Drops: %d essence,", this.essenceNum) +
+                    String.format(" %s", this.equipment);
+        }
+        return new String[]{line1, line2, line3};
     }
 }

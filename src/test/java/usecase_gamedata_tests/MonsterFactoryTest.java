@@ -1,11 +1,11 @@
 package usecase_gamedata_tests;
 
-import entity.Monster.Monster;
-import entity.Monster.Steal;
+import entity.monster.Monster;
+import entity.monster.Steal;
 import file_reader.GameFileReader;
 import file_reader.GameFileReaderInterface;
 import org.junit.jupiter.api.*;
-import usecase_gamedata.MonsterFactory;
+import usecase_factories.MonsterFactory;
 
 // Test Notes: MonsterFactory does not pass any tests. FileNotFoundException
 public class MonsterFactoryTest {

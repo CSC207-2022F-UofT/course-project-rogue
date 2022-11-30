@@ -1,6 +1,8 @@
-package entity.Monster;
+package entity.monster;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import entity.Character;
+import file_reader.deserialization.MonsterDeserialization;
 
 import java.util.HashMap;
 
@@ -8,6 +10,8 @@ import java.util.Random;
 
 
 /** A Monster that the Player can encounter in the game.*/
+
+@JsonDeserialize(using = MonsterDeserialization.class)
 public class Monster extends Character {
 
     /** The name of the Monster. */
@@ -112,5 +116,16 @@ public class Monster extends Character {
     @Override
     public String toString(){
         return this.NAME;
+    }
+
+    /**
+     * @return the string representation for the given Monsters power. Returns "None" if Monster has no power.
+     */
+    public String getPowerString(){
+        String power = "None";
+        if (this.isHasPower()){
+            power = this.getPower().toString();
+        }
+        return power;
     }
 }

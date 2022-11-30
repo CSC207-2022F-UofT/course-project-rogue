@@ -1,7 +1,7 @@
 package usecase_fight;
 
-import entity.Monster.Monster;
-import entity.Player;
+import entity.player.Player;
+import entity.monster.Monster;
 
 /** A calculator that determines Monster damage to Player. */
 public class DamageCalculator extends Calculator {
@@ -33,7 +33,7 @@ public class DamageCalculator extends Calculator {
     @Override
     public int calculate() {
         int mAtk = this.monster.getAttack();
-        int pRed = this.player.getEquipment("Armor").getStatValue();
+        int pRed = this.player.getArmor().getStatValue();
         int attackDmg = Math.max((mAtk - pRed), 0); // attack per turn, minimum of 0
         // if attackDmg is 0, then no damage dealt
         if (attackDmg == 0){
@@ -55,7 +55,7 @@ public class DamageCalculator extends Calculator {
     private int getNumberTurns(int monsterAtk){
         int pHp = player.getCurrHitPoint();
         int mHp = monster.getHealth();
-        int pAtk = player.getAttackPoint() + player.getEquipment("Weapon").getStatValue();
+        int pAtk = player.getAttackPoint() + player.getWeapon().getStatValue();
 
         float pHitsRequired = (float) pHp / monsterAtk; // the number hits required to kill player
 

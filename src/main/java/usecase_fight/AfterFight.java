@@ -1,6 +1,6 @@
 package usecase_fight;
 
-import entity.Player;
+import entity.player.Player;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -19,7 +19,7 @@ public class AfterFight implements Observer {
         this.player.setFighting(false);
         this.player.setCanHeal(true);
         this.player.setCanUpgrade(true);
-        // canMove should still be no (I never changed it back in fighter class)
+        // canMove should still be false (I never changed it back in fighter class)
     }
 
     /** Displays a prompt to the user to press [H] or [U]. */

@@ -1,13 +1,12 @@
 package file_reader.deserialization;
 
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import entity.Collectible;
-import entity.CollectibleInventory;
+import entity.item.Collectible;
+import entity.inventory_slots.CollectibleInventory;
 
 import java.io.IOException;
 
@@ -21,8 +20,7 @@ public class CollectibleInventoryDeserialization extends StdDeserializer<Collect
     }
 
     @Override
-    public CollectibleInventory deserialize(JsonParser p, DeserializationContext ctxt) throws IOException,
-            JacksonException {
+    public CollectibleInventory deserialize(JsonParser p, DeserializationContext ctxt) throws IOException{
         ObjectMapper om = new ObjectMapper();
         JsonNode node = p.getCodec().readTree(p);
         DeserializeHelper h = new DeserializeHelper();

@@ -1,8 +1,8 @@
 package usecase_fight_tests;
 
-import entity.Equipment;
-import entity.Monster.Monster;
-import entity.Weapon;
+import entity.item.Equipment;
+import entity.monster.Monster;
+import entity.item.Weapon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

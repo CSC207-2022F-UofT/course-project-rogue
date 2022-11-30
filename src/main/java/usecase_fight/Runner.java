@@ -1,7 +1,8 @@
 package usecase_fight;
 
-import entity.Monster.Monster;
-import entity.Player;
+import entity.monster.Monster;
+import entity.player.Player;
+import interface_adapters.OutputBoundary;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -10,6 +11,7 @@ import java.util.Random;
 /** A runner that allows Player to flee from a fight. */
 public class Runner implements Observer {
 
+    OutputBoundary outputBoundary;
     private final Player player;
 
     /** Keystroke that triggers this runner. */
@@ -20,7 +22,8 @@ public class Runner implements Observer {
      * @param player Player
      * @param trigger Key stroke to trigger this runner.
      */
-    public Runner(Player player, String trigger){
+    public Runner(OutputBoundary outputBoundary, Player player, String trigger){
+        this.outputBoundary = outputBoundary;
         this.player = player;
         this.trigger = trigger;
     }
@@ -29,7 +32,7 @@ public class Runner implements Observer {
      * Flee from a fight. Sets Player's fighting state to false and move state to true.
      * @return The result of the flee attempt.
      */
-    public String flee(){
+    private String flee(){
         player.setFighting(false);
         player.setCanMove(true);
 
@@ -50,7 +53,7 @@ public class Runner implements Observer {
     public void update(Observable o, Object arg) {
         if(player.getFighting() && trigger.equals(arg)){
             String result = this.flee();
-            // call presenter to change text with line1 being result
+            outputBoundary.updateText(result, "", "", "");
         }
     }
 }

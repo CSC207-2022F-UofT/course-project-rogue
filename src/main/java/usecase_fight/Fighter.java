@@ -1,11 +1,12 @@
 package usecase_fight;
 
-import entity.Armor;
-import entity.Equipment;
-import entity.Monster.Monster;
-import entity.Monster.MonsterPower;
-import entity.Player;
-import entity.Weapon;
+import entity.item.Armor;
+import entity.item.Equipment;
+import entity.monster.Monster;
+import entity.monster.MonsterPower;
+import entity.player.Player;
+import entity.item.Weapon;
+import interface_adapters.OutputBoundary;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -13,14 +14,18 @@ import java.util.Random;
 
 /** A fight sequence. */
 public class Fighter implements Observer {
+
+    /** Displayer that formats results of the fight to a string. */
+    private final ResultDisplayer displayer; // is it okay to have hard dependence here?
     private final Player player;
     /** Keystroke that triggers this use case. */
     private final String trigger; // 'F'
 
     /** Creates a new Fighter with the given Player and trigger. */
-    public Fighter(Player player, String trigger){
+    public Fighter(OutputBoundary outputBoundary, Player player, String trigger){
         this.player = player;
         this.trigger = trigger;
+        this.displayer = new ResultDisplayer(outputBoundary);
     }
 
     /** Helper method - get the summary of the fight a player is in. */
@@ -106,13 +111,13 @@ public class Fighter implements Observer {
         Equipment equip = summary.getEquipment();
         if (equip instanceof Weapon){
             // if current weapon is weaker than dropped, replace
-            if (player.getEquipment("Weapon").compareTo(equip) < 0){
+            if (player.getWeapon().compareTo(equip) < 0){
                 player.setEquipment((Weapon) equip);
                 return true;
             }
             return false;
         } else if (equip instanceof Armor) {
-            if (player.getEquipment("Armor").compareTo(equip) < 0){
+            if (player.getArmor().compareTo(equip) < 0){
                 player.setEquipment((Armor) equip);
                 return true;
             }
@@ -130,79 +135,23 @@ public class Fighter implements Observer {
         Monster monster = summary.getMonster();
 
         if (summary.getStaleMate()){    // tie: no drops, no damage received.
-            this.displayResults();
+            displayer.displayResults();
         }
         boolean win = this.determineWin(summary);
         String powerResult = this.getPowerResult(monster, win);
         if (win){   // win: drops, no damage
             this.acceptEssence(summary);
             boolean exchange = this.acceptEquipment(summary);
-            this.displayResults(powerResult, summary.getAmountDrop(), exchange, summary.getEquipment());
+            displayer.displayResults(powerResult, summary.getAmountDrop(), exchange, summary.getEquipment());
         } else {
             this.inflictDamage(summary);
             if (this.checkGameOver()){  // game over
                 this.player.setGameOver();
-                this.displayGameOver();
+                displayer.displayGameOver();
             } else {    // lose: no drops, damage received
-                this.displayResults(powerResult, summary.getDamage());
+                displayer.displayResults(powerResult, summary.getDamage());
             }
         }
-    }
-
-    /**
-     * Display the win results of the fight to the user.
-     *
-     * @param powerResult Result of Monster using its Power.
-     * @param essence The number of essence received
-     * @param exchange Whether Equipment drop was exchanged with current.
-     * @param equipment Equipment to be dropped.
-     */
-    private void displayResults(String powerResult, int essence, boolean exchange, Equipment equipment){
-        String received;
-        if (exchange) { // if exchanged equipment, show equipment gained
-            received = String.format("%d essence, %s", essence, equipment);
-        } else { // if not, equipment not gained
-            received = String.format("%d essence", essence);
-        }
-
-        String line1 = "You won!" + powerResult;
-        String line2 = "Damage Taken: 0";
-        String line3 = "Items Received: " + received;
-        String line5 = "Press [SpaceBar] to continue."; // not sure if space bar or a different key
-
-        // call presenter where line 4 arg is empty string.
-    }
-
-    /**
-     * Display the losing results to user.
-     *
-     * @param powerResult The result of Monster using its Power
-     * @param dmg The damage taken by Player
-     */
-    private void displayResults(String powerResult, int dmg){
-        String line1 = "You lost." + powerResult;
-        String line2 = String.format("Damage Taken: %d", dmg);
-        String line3 = "Items Received: None";
-        String line5 = "Press [SpaceBar] to continue.";
-        // call presenter where line 4 arg is empty string.
-    }
-
-    /**
-     * Display stalemate results to PLayer.
-     */
-    private void displayResults(){
-        String line1 = "A Draw!";
-        String line2 = "Damage Taken: 0";
-        String line3 = "Items Received: None";
-        String line5 = "Press [SpaceBar] to continue.";
-        //  call presenter to update text
-    }
-
-    /**
-     * Display game over results to Player.
-     */
-    private void displayGameOver(){
-        // call presenter to change to game over screen
     }
 
 

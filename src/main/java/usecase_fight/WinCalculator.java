@@ -1,7 +1,7 @@
 package usecase_fight;
 
-import entity.Monster.Monster;
-import entity.Player;
+import entity.monster.Monster;
+import entity.player.Player;
 
 /** A calculator that determines the winning chance of the Player in a fight. */
 public class WinCalculator extends Calculator{
@@ -36,9 +36,9 @@ public class WinCalculator extends Calculator{
      */
     @Override
     public int calculate(){
-        int mAtk = monster.getAttack() - player.getEquipment("Armor").getStatValue();
+        int mAtk = monster.getAttack() - player.getArmor().getStatValue();
         int mHp = monster.getHealth();
-        int pAtk = player.getAttackPoint() + player.getEquipment("Weapon").getStatValue();
+        int pAtk = player.getAttackPoint() + player.getWeapon().getStatValue();
         int pHp = player.getCurrHitPoint();
         if (pAtk == 0 && mAtk == 0){
             return 0; // if in stalemate, no chance in winning

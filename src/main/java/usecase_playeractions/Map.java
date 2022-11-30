@@ -1,7 +1,7 @@
 package usecase_playeractions;
 
 
-import entity.Player;
+import entity.player.Player;
 import usecase_event.Event;
 
 /**

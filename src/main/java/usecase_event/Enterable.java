@@ -1,6 +1,6 @@
 package usecase_event;
 
-import entity.Player;
+import entity.player.Player;
 
 public interface Enterable {
     /**

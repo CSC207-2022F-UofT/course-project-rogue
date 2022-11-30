@@ -82,36 +82,6 @@ public class FightEvent extends Event{
         return summary;
     }
 
-    /**
-     * Displays the summary of the fight to the user.
-     *
-     * @param summary Summary of fight details.
-     */
-    private void displaySummary(FightSummary summary){
-        Monster monster = summary.getMonster();
-        String line1 = String.format("You encountered a %s", monster.toString());
-        String line2 = String.format("Power: %s", this.getPowerString(monster));
-        String line3 = String.format("Win chance: %d", summary.getWinChance()) + "%, "
-                + String.format("Damage: %d", summary.getDamage());
-        String line4 = String.format("Drops: %d essence,", summary.getAmountDrop()) +
-                String.format(" %s", summary.getEquipment().toString());
-        String line5 = "[F]Fight    or      [R]Run";
-        // update view
-    }
-
-
-    /**
-     * @param monster The Monster.
-     * @return the string representation for the given Monsters power.
-     */
-    private String getPowerString(Monster monster){
-        String power = "None";
-        if (monster.isHasPower()){
-            power = monster.getPower().toString();
-        }
-        return power;
-    }
-
 
     /** Tells Map whether this tile could be stepped on by Player
      *

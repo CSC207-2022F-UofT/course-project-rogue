@@ -10,6 +10,9 @@ public class DeserializeHelper {
     public String readString(JsonNode node){
         return node.textValue();
     }
+    public boolean readBoolean(JsonNode node){
+        return node.booleanValue();
+    }
     public int[] readIntArr(JsonNode node){
         int[] ar = new int[node.size()];
         int i = 0;

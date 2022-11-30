@@ -1,4 +1,4 @@
-package entity.Monster;
+package entity.monster;
 
 public abstract class MonsterPower implements Power {
     /** Whether the Monster must be beaten to use this Power. True iff the Monster must be beat, false otherwise. */

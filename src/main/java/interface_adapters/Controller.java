@@ -1,13 +1,11 @@
 package interface_adapters;
 
-import entity.Player;
-import interface_adapters.OutputBoundary;
+import entity.player.Player;
 import usecase_playeractions.Control;
 import usecase_playeractions.Map;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Observer;
 
 /**
  * The Controller used to control player.
@@ -23,7 +21,7 @@ public class Controller implements KeyListener {
     /**
      * Contain actions that depend on a Player only.
      */
-    private Control control;
+    private final Control control;
 
 
     /**
