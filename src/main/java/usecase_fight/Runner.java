@@ -11,7 +11,10 @@ import java.util.Random;
 /** A runner that allows Player to flee from a fight. */
 public class Runner implements Observer {
 
+    /** Output Boundary interface. */
     OutputBoundary outputBoundary;
+
+    /** Player that needs to flee. */
     private final Player player;
 
     /** Keystroke that triggers this runner. */
