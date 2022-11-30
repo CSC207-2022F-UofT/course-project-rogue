@@ -125,7 +125,7 @@ public class Fighter implements Observer {
             }
             return false;
         }
-        return false; // this is just here so that if the equipment is neither, it doesn't get included in string
+        return false; // if somehow equipment is neither or does not exist
     }
 
     /**
