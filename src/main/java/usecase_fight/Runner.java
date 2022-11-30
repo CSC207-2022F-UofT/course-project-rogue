@@ -56,7 +56,7 @@ public class Runner implements Observer {
     public void update(Observable o, Object arg) {
         if(player.getFighting() && trigger.equals(arg)){
             String result = this.flee();
-            outputBoundary.updateText(result, "", "", "");
+            outputBoundary.updateText(result, "", "", "You may continue your journey.");
         }
     }
 }
