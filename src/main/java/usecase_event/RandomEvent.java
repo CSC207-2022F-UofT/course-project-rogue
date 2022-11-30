@@ -2,8 +2,15 @@ package usecase_event;
 
 import java.util.Random;
 import entity.player.Player;
+import interface_adapters.OutputBoundary;
+import user_interface.View;
+import user_interface.Visual;
 
 public class RandomEvent extends Event{
+
+    public RandomEvent(OutputBoundary outputBoundary) {
+        super(outputBoundary);
+    }
 
     /**
      * Triggering this Event randomly Triggers Fight Event, no Event or Essence Event
@@ -15,11 +22,11 @@ public class RandomEvent extends Event{
         Random random = new Random();
         int random_prob = random.nextInt(101);
         if (random_prob < 70){
-            FightEvent fightEvent = new FightEvent();
+            FightEvent fightEvent = new FightEvent(this.outputBoundary);
             fightEvent.trigger(player);
         }
         else {
-            EssenceEvent essenceEvent = new EssenceEvent();
+            EssenceEvent essenceEvent = new EssenceEvent(this.outputBoundary);
             essenceEvent.trigger(player);
         }
     }

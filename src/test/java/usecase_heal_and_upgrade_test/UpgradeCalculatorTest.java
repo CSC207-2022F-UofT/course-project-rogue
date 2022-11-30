@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.UpgradeCalculator;
+import usecase_essence_use.upgrade.UpgradeCalculator;
 import usecase_playeractions.Map;
 
 public class UpgradeCalculatorTest {
@@ -30,16 +30,37 @@ public class UpgradeCalculatorTest {
     @BeforeEach
     @DisplayName("Setup before Each Test")
     void setUp(){
+        map = new Map();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
     @Test
     @DisplayName("Test Upgrade Calculator")
     void testUpgradeCalculator(){
-        player.setCanHeal(true);
+        player.setCanUpgrade(true);
         UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
         weaponUpgradeCalculator.UpgradeInfoUpdate();
         weaponUpgradeCalculator.upgrade();
-        Assertions.assertEquals(player.getEquipment("Weapon").getStatValue(), 1020);
-        Assertions.assertEquals(player.getEquipment("Weapon").getTimesUpgraded(),1);
+        Assertions.assertEquals(player.getWeapon().getStatValue(), 1020);
+    }
+
+    @Test
+    @DisplayName("Test essence is used after upgrade")
+    void testEssenceIsUsed(){
+        player.setCanUpgrade(true);
+        UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
+        weaponUpgradeCalculator.UpgradeInfoUpdate();
+        weaponUpgradeCalculator.upgrade();
+        Assertions.assertEquals(player.getEssence().getNum(),80);
+    }
+
+    @Test
+    @DisplayName("Test will not upgrade when Essence not enough")
+    void testEssenceNotEnough(){
+        player.setCanUpgrade(true);
+        UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
+        player.changeEssenceAmount(-90);
+        weaponUpgradeCalculator.UpgradeInfoUpdate();
+        weaponUpgradeCalculator.upgrade();
+        Assertions.assertEquals(player.getWeapon().getStatValue(), 1000);
     }
 }

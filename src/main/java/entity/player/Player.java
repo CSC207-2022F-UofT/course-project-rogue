@@ -45,22 +45,20 @@ public class Player extends Character {
         this.state = new States();
     }
 
-    /**Gets the equipment that the player is equipping based on the inputted equipment type
+    /**Gets the Weapon that the player is equipping
      *
-     * @param equipmentType: The type of entity.item.Equipment the Player is equipping
-     *                     in this case {"Weapon", "Armor"}
-     *
-     * @return returns the entity.item.Equipment class
+     * @return returns the Weapon in Equipment Slots
      */
-    public Equipment getEquipment(String equipmentType) throws IllegalArgumentException{
+    public Equipment getWeapon(){
+        return this.equipments.getWeapon();
+    }
 
-        if((equipmentType.equals("Weapon"))) {
-            return this.equipments.getWeapon();
-        } else if (equipmentType.equals("Armor")){
-            return this.equipments.getArmor();
-        }else {
-            throw new IllegalArgumentException("equipmentType must be either Weapon or Armor");
-        }
+    /**Gets the Armor that the player is equipping
+     *
+     * @return returns the Armor in Equipment Slots
+     */
+    public Equipment getArmor(){
+        return this.equipments.getArmor();
     }
 
     /** Gets the essence Collectible
@@ -137,8 +135,9 @@ public class Player extends Character {
      * @param i: the new x or y coordinate of player
      *
      */
-    public void setLocation(int axis, int i){
-        location[axis] = i;
+    public void setLocation(int x, int y){
+        location[0] = x;
+        location[1] = y;
     }
 
 

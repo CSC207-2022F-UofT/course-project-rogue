@@ -19,9 +19,9 @@ public class WinCalculator extends Calculator{
      */
     @Override
     public int calculate(){
-        int mAtk = monster.getAttack() - player.getEquipment("Armor").getStatValue();
+        int mAtk = monster.getAttack() - player.getArmor().getStatValue();
         int mHp = monster.getHealth();
-        int pAtk = player.getAttackPoint() + player.getEquipment("Weapon").getStatValue();
+        int pAtk = player.getAttackPoint() + player.getWeapon().getStatValue();
         int pHp = player.getCurrHitPoint();
 
         return this.getWinChance(pHp, mHp, pAtk, mAtk);

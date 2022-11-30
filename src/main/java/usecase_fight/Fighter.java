@@ -105,14 +105,14 @@ public class Fighter implements Observer {
         Equipment equip = summary.getEquipment();
         if (equip instanceof Weapon){
             // if current weapon is weaker than dropped, replace
-            if (player.getEquipment("Weapon").compareTo(equip) < 0){
+            if (player.getWeapon().compareTo(equip) < 0){
                 // then replace equipment
                 player.setEquipment((Weapon) equip);
                 return true;
             }
             return false;
         } else if (equip instanceof Armor) {
-            if (player.getEquipment("Armor").compareTo(equip) < 0){
+            if (player.getArmor().compareTo(equip) < 0){
                 player.setEquipment((Armor) equip);
                 return true;
             }

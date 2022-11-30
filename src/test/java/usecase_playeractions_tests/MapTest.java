@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import usecase_event.ArtifactEvent;
 import usecase_event.WallEvent;
 import usecase_playeractions.Map;
+import user_interface.View;
+import user_interface.Visual;
 
 public class MapTest {
 
@@ -39,11 +41,11 @@ public class MapTest {
     @Test
     @DisplayName("Test Move")
     void testMove(){
-        map.setBoard(new ArtifactEvent(),0,1);
+        map.setBoard(new ArtifactEvent(new Visual(new View())),0,1);
         map.move(player,0,1);
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
         Assertions.assertEquals(1, player.getArtifact().getNum());
-        map.setBoard(new WallEvent(),0,2);
+        map.setBoard(new WallEvent(new Visual(new View())),0,2);
         map.move(player,0,1);
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
     }
