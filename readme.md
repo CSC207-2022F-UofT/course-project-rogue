@@ -67,4 +67,4 @@ So try to stay alive, collect the artifact and escape the maze!
   * **Artifact Event** Event is tested all methods (there's only 1 possible outcome per method).
   * **WinEvent**  Tested only enter(), because trigger will only have a visual display and no other changes made.
   * **WallEvent** Only test enter(), because triggering the event will not result in anything (and the player isn't supposed to trigger them in the first place).
-  * **No Event** Cannot be tested because it requires player control to choose between upgrade and heal.
+  * **No Event** Tested only enter(), because trigger will only have a visual display and no other changes made.
