@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_fight.DropRetriever;
-import usecase_gamedata.EquipmentFactory;
+import usecase_factories.EquipmentFactory;
 
 public class DropRetrieverTest {
 
