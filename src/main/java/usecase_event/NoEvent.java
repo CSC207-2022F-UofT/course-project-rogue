@@ -12,17 +12,14 @@ public class NoEvent extends Event{
     }
 
     /**
-     * Triggering this Event lets the player choose to either heal or upgrade their weapon once. The Player also has the
-     * choice to neither heal nor upgrade if they have insufficient essence.
+     * Triggering this Event will not result in anything, it is meant to be a resting ground for the player.
      *
      * @param player the player triggering the Event
      */
     @Override
     public void trigger(Player player) {
-        player.setCanHeal(true);
-        player.setCanUpgrade(true);
-        player.setCanMove(false);
 
+        outputBoundary.update_Text("Nothing interesting to see here,", "the journey is long so", "you have to keep pushing", "");
 
     }
 
