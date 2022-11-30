@@ -1,4 +1,4 @@
-package usecase_fight_tests;
+package usecase_gamedata_tests;
 
 import entity.Monster.Monster;
 import entity.Monster.Steal;
