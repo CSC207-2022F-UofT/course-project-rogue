@@ -5,8 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.player.Player;
 
-public class PlayerFactory extends Factory<Player>{
-    @Override
+public class PlayerFactory {
     public Player create() {
         GameFileReader pf = new GameFileReader( "data_base");
         try {

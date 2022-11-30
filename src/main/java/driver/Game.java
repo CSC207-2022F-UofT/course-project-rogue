@@ -22,6 +22,7 @@ public class Game {
         GameFileReaderInterface collectibleReader = new GameFileReader("data_base/Collectible.json");
         GameFileWriterInterface playerWriter = new GameFileWriter("data_base/Player_save.json");
         playerWriter.register(playerReader);
+        playerReader.update("data_base/Player_save.json");
 
         //Use cases inject outputBoundary, fileReader, fileWriter
 

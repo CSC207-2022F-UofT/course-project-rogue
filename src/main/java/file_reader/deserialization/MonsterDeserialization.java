@@ -18,10 +18,10 @@ public class MonsterDeserialization  extends StdDeserializer<Monster> {
     }
 
     /**
-     * @param p    Parsed used for reading JSON content
+     * @param p    Parsed used for reading JSON content(apart of Jackson, not our design)
      * @param ctxt Context that can be used to access information about
-     *             this deserialization activity.
-     * @return Monster
+     *             this deserialization activity.(apart of Jackson, not our design)
+     * @return Monster read from file
      * @throws IOException
      * @throws JacksonException
      */
