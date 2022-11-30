@@ -1,14 +1,15 @@
 package usecase_event;
 
-import entity.Equipment;
-import entity.Monster.Monster;
-import entity.Player;
+import entity.item.Equipment;
+import entity.monster.Monster;
+import entity.player.Player;
+import interface_adapters.OutputBoundary;
 import usecase_fight.DamageCalculator;
 import usecase_fight.DropRetriever;
 import usecase_fight.FightSummary;
 import usecase_fight.WinCalculator;
-import usecase_gamedata.EquipmentFactory;
-import usecase_gamedata.MonsterFactory;
+import usecase_factories.EquipmentFactory;
+import usecase_factories.MonsterFactory;
 
 import java.util.Optional;
 import java.util.Random;
@@ -18,13 +19,14 @@ public class FightEvent extends Event{
     private final MonsterFactory mf;
     private final EquipmentFactory ef;
 
-    public FightEvent(MonsterFactory monsterFactory, EquipmentFactory equipmentFactory){
+    public FightEvent(OutputBoundary outputBoundary, MonsterFactory monsterFactory, EquipmentFactory equipmentFactory){
+        super(outputBoundary);
         this.mf = monsterFactory;
         this.ef = equipmentFactory;
     }
 
     /**
-     * Triggers a fight between Player and a Monster. Displays a summary of the following to the user:
+     * Triggers a fight between Player and a Monster which displays a summary of the following to the user:
      *      - Monster name and power
      *      - Possible damage to be taken
      *      - win chance
@@ -41,7 +43,8 @@ public class FightEvent extends Event{
         Monster monster = this.randomMonster();
         FightSummary summary = this.createFight(player, monster);
         player.setFight(summary); // gives player current fight details
-        this.displaySummary(summary);
+        String[] output = summary.getSummary();
+        outputBoundary.updateText(output[0], output[1], output[2], "[F]Fight or [R]Run");
     }
 
     /**
