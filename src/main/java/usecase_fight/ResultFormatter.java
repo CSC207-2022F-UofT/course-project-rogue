@@ -1,27 +1,23 @@
 package usecase_fight;
 
 import entity.item.Equipment;
-import interface_adapters.OutputBoundary;
 
-/** A Displayer that formats fight results into a string. */
-public class ResultDisplayer {
-    /** Output Boundary interface. */
-    OutputBoundary outputBoundary;
+/** A Formatter that formats fight results into a string. */
+public class ResultFormatter {
 
-    /** Creates a new ResultDisplayer with the given OutputBoundary. */
-    public ResultDisplayer(OutputBoundary outputBoundary){
-        this.outputBoundary = outputBoundary;
-    };
+    /** Creates a new ResultFormatter. */
+    public ResultFormatter(){}
+
 
     /**
-     * Display the win results of the fight to the user.
+     * Format the win results of the fight.
      *
      * @param powerResult Result of Monster using its Power.
      * @param essence The number of essence received
      * @param exchange Whether Equipment drop was exchanged with current.
      * @param equipment Equipment to be dropped.
      */
-    public void displayResults(String powerResult, int essence, boolean exchange, Equipment equipment){
+    public String[] formatWin(String powerResult, int essence, boolean exchange, Equipment equipment){
         String received;
         if (exchange) { // if exchanged equipment, show equipment gained
             received = String.format("%d essence, %s", essence, equipment);
@@ -33,39 +29,39 @@ public class ResultDisplayer {
         String line2 = "Damage Taken: 0";
         String line3 = "Items Received: " + received;
         String line4 = "Press [SpaceBar] to continue."; // not sure if space bar or a different key
-        outputBoundary.updateText(line1, line2, line3, line4);
+        return new String[]{line1, line2, line3, line4};
     }
 
     /**
-     * Display the losing results to user.
+     * Format the losing results.
      *
      * @param powerResult The result of Monster using its Power
      * @param dmg The damage taken by Player
      */
-    public void displayResults(String powerResult, int dmg){
+    public String[] formatLoss(String powerResult, int dmg){
         String line1 = "You lost." + powerResult;
         String line2 = String.format("Damage Taken: %d", dmg);
         String line3 = "Items Received: None";
-        String line4 = "Press [SpaceBar] to continue.";
-        outputBoundary.updateText(line1, line2, line3, line4);
+        String line4 = "Press [SpaceBar] to continue."; // space bar or different key
+        return new String[]{line1, line2, line3, line4};
     }
 
     /**
-     * Display stalemate results to PLayer.
+     * Format stalemate results.
      */
-    public void displayResults(){
+    public String[] formatTie(){
         String line1 = "A Draw!";
         String line2 = "Damage Taken: 0";
         String line3 = "Items Received: None";
-        String line4 = "Press [SpaceBar] to continue.";
-        outputBoundary.updateText(line1, line2, line3, line4);
+        String line4 = "Press [SpaceBar] to continue."; // SpaceBar or different key
+        return new String[]{line1, line2, line3, line4};
     }
 
     /**
-     * Display game over results to Player.
+     * Format game over results.
      */
-    public void displayGameOver(){
-        outputBoundary.updateText("GameOver.", "", "", "Press [SpaceBar] to go back to menu.");
+    public String[] formatGameOver(){
+        return new String[]{"GameOver.", "", "", "Press [SpaceBar] to go back to menu."};
         // again not sure if [SpaceBar] or different key
     }
 
