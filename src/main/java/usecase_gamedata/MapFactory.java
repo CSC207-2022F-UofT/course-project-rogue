@@ -16,16 +16,14 @@ public class MapFactory {
     private GameFileReaderInterface mf;
 
     private HashMap<Integer, int[]> startingLocations;
-
     private int level;
-
     public MapFactory(GameFileReaderInterface mf){
-        this.mf = mf;
         startingLocations = new HashMap<>();
+        this.mf = mf;
     }
 
     /**
-     * This method creates a map and record the starting location of the map.
+     * This method creates a map and records the starting location of this map.
      * @param level : The index of the map recorded in Map.json
      * @return A Map instance with the corresponding level value.
      */
@@ -36,7 +34,6 @@ public class MapFactory {
             JsonNode mn = new ObjectMapper().readTree(jsonString);
             int[] location = new DeserializeHelper().readIntArr(mn.get("starting"));
             startingLocations.put(level, location);
-            this.level = level;
             return map;
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
@@ -44,10 +41,10 @@ public class MapFactory {
     }
 
     /**
-     * Set the player to have the starting location of the latest map created.
-     * @param player : player of the game
+     * Sets player location to the starting location of the latest map created.
+     * @param player : The player instance of the game
      */
-    public void setLocation(Player player){
+    public void setPlayerLocation(Player player){
         player.setLocation(startingLocations.get(level)[0], startingLocations.get(level)[1]);
     }
 }
