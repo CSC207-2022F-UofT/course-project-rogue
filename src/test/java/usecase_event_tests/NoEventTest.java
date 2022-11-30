@@ -7,16 +7,15 @@ import entity.item.Armor;
 import entity.item.Collectible;
 import entity.item.Weapon;
 import entity.player.Player;
-import file_writer.GameFileWriter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_event.WinEvent;
+import usecase_event.NoEvent;
 import user_interface.View;
 import user_interface.Visual;
 
-public class WinEventTest {
+public class NoEventTest {
     int maxHP = 100;
     int atkPt = 10;
     Collectible essence = new Collectible("Essence", 100);
@@ -27,12 +26,12 @@ public class WinEventTest {
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
     int[] location = new int[]{0, 0};
     Player player;
-    WinEvent event;
+    NoEvent event;
 
     @BeforeEach
     @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new WinEvent(new Visual(new View()), new GameFileWriter("data_base/Player_save.json"));
+        event = new NoEvent(new Visual(new View()));
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 

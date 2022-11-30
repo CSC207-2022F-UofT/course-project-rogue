@@ -1,4 +1,5 @@
 package user_interface;
+import file_writer.GameFileWriter;
 import interface_adapters.OutputBoundary;
 
 public class Visual implements OutputBoundary {
@@ -58,7 +59,6 @@ public class Visual implements OutputBoundary {
      */
     @Override
     public void update_Win() {
-
     }
 
     /**
