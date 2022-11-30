@@ -129,10 +129,10 @@ public class Player extends Character {
 
     /**Sets the location of Player based on axis and coordinate i
      *
-     * @param axis: The axis x, y on the location array.
-     *            0 = x
-     *            1 = y
-     * @param i: the new x or y coordinate of player
+     * @param x this is the x-axis of the player
+     * @param y this is the y-axis of the player
+     *
+     * x and y-axis should be less than the size of the array list of Map
      *
      */
     public void setLocation(int x, int y){
