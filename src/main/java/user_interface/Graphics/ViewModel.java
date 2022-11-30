@@ -1,5 +1,7 @@
 package user_interface.Graphics;
 
+import usecase_playeractions.Map;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -9,16 +11,19 @@ import java.io.IOException;
 
 public class ViewModel {
 
-    private int hp = 100;
-    private int af = 99;
-    private int es = 66;
+    private int hp;
+    private int af;
+    private int es;
 
-    private String text1 = "Welcome the great adventurer to this evil world.";
+    private String text1 = "";
     private String text2 = "";
     private String text3 = "";
     private String text4 = "";
 
-    private MapGraphics map = new MapGraphics(500,10, 650, new String[15][15]);
+    //length should always be 650;
+    private MapGraphics map = null;
+
+    private Dimension size;
 
     public void duplicate(ViewModel oldModel){
         this.text1 = oldModel.text1;
@@ -27,13 +32,22 @@ public class ViewModel {
         this.text4 = oldModel.text4;
         this.hp = oldModel.hp;
         this.es = oldModel.es;
+        this.map = new MapGraphics();
+        this.map.duplicate(oldModel.map);
+    }
+
+    /**
+     * @return True if instance variable map is not initialized.
+     */
+    private boolean checkReady(){
+        return this.map == null;
     }
 
     public void draw(Graphics g, Dimension size, JPanel gameFrame){
+        this.size = size;
         try {
             BufferedImage img = ImageIO.read(new File("pictures/b9db1d7d93c1709.png"));
             g.drawImage(img,0,size.height-300,size.width,300,gameFrame);
-            //g.drawImage(img,0,0,size.width-1000,size.height-300,this);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -53,11 +67,17 @@ public class ViewModel {
         g.drawString(text2 ,100,size.height-170);
         g.drawString(text3 ,100,size.height-120);
         g.drawString(text4 ,100,size.height-70);
-
-        this.map.draw(g);
-
+        if (this.checkReady()) {
+            this.map.draw(g);
+        }
     }
 
+    public void setPlayerLocation(int[] l){
+        this.map.setPlayerLocation(l);
+    }
+    public void setMap(String[][] map){
+        this.map = new MapGraphics(this.size.width-1000, 0, 650, map);
+    }
     public void setHp(int hp) {
         this.hp = hp;
     }
