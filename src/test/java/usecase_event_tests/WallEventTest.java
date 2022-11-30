@@ -10,12 +10,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_event.ArtifactEvent;
+import usecase_event.WallEvent;
 import user_interface.View;
 import user_interface.Visual;
 
-
-public class ArtifactEventTest {
+public class WallEventTest {
     int maxHP = 100;
     int atkPt = 10;
     Collectible essence = new Collectible("Essence", 100);
@@ -26,26 +25,18 @@ public class ArtifactEventTest {
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
     int[] location = new int[]{0, 0};
     Player player;
-    ArtifactEvent event;
-
-
+    WallEvent event;
 
     @BeforeEach
-    @DisplayName("Setup before Each Test")
+    @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new ArtifactEvent(new Visual(new View()));
+        event = new WallEvent(new Visual(new View()));
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 
     @Test
-    @DisplayName("Test Trigger")
-    void testTrigger(){
-        event.trigger(player);
-        Assertions.assertEquals(2, player.getArtifact().getNum());
-    }
-    @Test
     @DisplayName("Test Enter")
     void testEnter(){
-        Assertions.assertTrue(event.enter(player));
+        Assertions.assertFalse(event.enter(player));
     }
 }

@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.HealUpgradeCalculator;
-import usecase_heal_and_upgrade.HealingUpgradingControl;
+import usecase_essence_use.EssenceUseCalculator;
+import usecase_essence_use.EssenceUseManager;
 import usecase_playeractions.Map;
 
 public class HealUpgradeControlTest {
@@ -32,23 +32,58 @@ public class HealUpgradeControlTest {
     @DisplayName("Setup before Each Test")
     void setUp(){
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
+        map = new Map();
     }
     @Test
-    @DisplayName("Test Heal and Upgrade Control")
-    void testHealUpgradeControl(){
+    @DisplayName("Test Heal and Upgrade Control: Heal")
+    void testHealUpgradeControlHeal(){
         player.setCanHeal(true);
-        HealUpgradeCalculator healUpgradeCalculator= new HealUpgradeCalculator(player);
-        HealingUpgradingControl control = new HealingUpgradingControl(player, healUpgradeCalculator);
+        player.setCanUpgrade(true);
+        EssenceUseCalculator essenceUseCalculator = new EssenceUseCalculator(player);
+        EssenceUseManager control = new EssenceUseManager(player, essenceUseCalculator);
         player.changeCurrHitPoint(-20);
-        healUpgradeCalculator.updateInfo();
+        essenceUseCalculator.updateInfo();
         control.keyPressed("H");
         Assertions.assertEquals(player.getCurrHitPoint(),100);
+    }
+
+    @Test
+    @DisplayName("Test Heal and Upgrade Control: WeaponUpgrade")
+    void testHealUpgradeControlWeapon(){
+        player.setCanHeal(true);
+        player.setCanUpgrade(true);
+        EssenceUseCalculator essenceUseCalculator = new EssenceUseCalculator(player);
+        EssenceUseManager control = new EssenceUseManager(player, essenceUseCalculator);
+        player.changeCurrHitPoint(-20);
+        essenceUseCalculator.updateInfo();
         control.keyPressed("1");
-        Assertions.assertEquals(player.getEquipment("Weapon").getStatValue(),1020);
+        Assertions.assertEquals(player.getWeapon().getStatValue(),1020);
+    }
+
+    @Test
+    @DisplayName("Test Heal and Upgrade Control: ArmorUpgrade")
+    void testHealUpgradeControlArmor(){
+        player.setCanHeal(true);
+        player.setCanUpgrade(true);
+        EssenceUseCalculator essenceUseCalculator = new EssenceUseCalculator(player);
+        EssenceUseManager control = new EssenceUseManager(player, essenceUseCalculator);
+        player.changeCurrHitPoint(-20);
+        essenceUseCalculator.updateInfo();
         control.keyPressed("2");
-        Assertions.assertEquals(player.getEquipment("Armor").getStatValue(),25);
+        Assertions.assertEquals(player.getArmor().getStatValue(),25);
+    }
+
+    @Test
+    @DisplayName("Test Heal and Upgrade Control: Leave")
+    void testHealUpgradeControlEnd(){
+        player.setCanHeal(true);
+        player.setCanUpgrade(true);
+        EssenceUseCalculator essenceUseCalculator = new EssenceUseCalculator(player);
+        EssenceUseManager control = new EssenceUseManager(player, essenceUseCalculator);
+        player.changeCurrHitPoint(-20);
+        essenceUseCalculator.updateInfo();
         control.keyPressed("N");
-        Assertions.assertEquals(player.getCanHeal(), false);
-        Assertions.assertEquals(player.getCanUpgrade(), false);
+        Assertions.assertFalse(player.getCanHeal());
+        Assertions.assertFalse(player.getCanUpgrade());
     }
 }

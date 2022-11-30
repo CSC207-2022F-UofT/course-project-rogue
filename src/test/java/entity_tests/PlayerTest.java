@@ -37,20 +37,9 @@ public class PlayerTest {
     @DisplayName("Test Get Equipment")
     void testGetEquipment(){
         Assertions.assertAll(
-                () -> Assertions.assertEquals(excalibur, player.getEquipment("Weapon")),
-                () -> Assertions.assertEquals(armor, player.getEquipment("Armor"))
+                () -> Assertions.assertEquals(excalibur, player.getWeapon()),
+                () -> Assertions.assertEquals(armor, player.getArmor())
         );
-    }
-
-    @Test
-    @DisplayName("Test for Exceptions in getEquipment")
-    void testForExceptionsOfGetEquipment(){
-        Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                player.getEquipment("SSS"));
-        String expectedMessage = "equipmentType must be either Weapon or Armor";
-        String actualMessage = exception.getMessage();
-
-        Assertions.assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
@@ -90,13 +79,17 @@ public class PlayerTest {
     @DisplayName("Test Change Current Hit Point")
     void testSubtractCurrentHitPoint(){
         Assertions.assertAll(
+                // 100 - 20 = 80
                 () -> player.changeCurrHitPoint(-20),
                 () -> Assertions.assertEquals(80, player.getCurrHitPoint()),
+                // 100 - 300 = 0 (Because health cannot be negative)
                 () -> player.changeCurrHitPoint(-300),
                 () -> Assertions.assertEquals(0, player.getCurrHitPoint()),
                 () -> player.changeCurrHitPoint(52),
+                // 0 + 52 = 52
                 () -> Assertions.assertEquals(52, player.getCurrHitPoint()),
                 () -> player.changeCurrHitPoint(30130),
+                // 52 + 30130 = 100 because max hp = 100
                 () -> Assertions.assertEquals(maxHP, player.getCurrHitPoint())
         );
     }
@@ -105,7 +98,7 @@ public class PlayerTest {
     @DisplayName("Test Set Location of Player")
     void testSetLocation(){
         player.setLocation(0, 4);
-        int[] expected = {4, 0};
+        int[] expected = {0, 4};
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expected[0], player.getPlayerLocation()[0]),
                 () -> Assertions.assertEquals(expected[1], player.getPlayerLocation()[1])
@@ -142,7 +135,7 @@ public class PlayerTest {
     void testChangeArmor(){
         Armor aegisShield = new Armor("Aegis Shield", 600000);
         player.setEquipment(aegisShield);
-        Assertions.assertEquals(aegisShield, player.getEquipment("Armor"));
+        Assertions.assertEquals(aegisShield, player.getArmor());
     }
 
     @Test
@@ -150,7 +143,7 @@ public class PlayerTest {
     void testChangeWeapon(){
         Weapon durandal = new Weapon("Legendary Sword Durandal", 1001);
         player.setEquipment(durandal);
-        Assertions.assertEquals(durandal, player.getEquipment("Weapon"));
+        Assertions.assertEquals(durandal, player.getWeapon());
     }
 
     @Test

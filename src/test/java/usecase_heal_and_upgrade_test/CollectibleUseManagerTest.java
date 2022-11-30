@@ -1,4 +1,4 @@
-package usecase_playeractions_tests;
+package usecase_heal_and_upgrade_test;
 
 import entity.equipment_slots.BasicEquipmentSlots;
 import entity.inventory_slots.CollectibleInventory;
@@ -10,14 +10,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_event.ArtifactEvent;
-import usecase_playeractions.Control;
+import usecase_essence_use.data_calculator.CollectibleUseManager;
 import usecase_playeractions.Map;
-import user_interface.View;
-import user_interface.Visual;
 
-public class ControlTest {
-
+public class CollectibleUseManagerTest {
     Map map;
     Player player;
     int maxHP = 100;
@@ -39,15 +35,25 @@ public class ControlTest {
     }
 
     @Test
-    @DisplayName("Test Move")
-    void testMove(){
-        map.setBoard(new ArtifactEvent(new Visual(new View())),0,1);
-        Control control = new Control(player,map);
-        control.keyPressed("W");
-        Assertions.assertEquals(1, player.getPlayerLocation()[1]);
-        Assertions.assertEquals(1, player.getArtifact().getNum());
-        control.keyPressed("W");
-        Assertions.assertEquals(1, player.getPlayerLocation()[1]);
+    @DisplayName("Test getAble when it's able")
+    void TestGetAbleTrue(){
+        CollectibleUseManager CollectHelper = new CollectibleUseManager(player,10);
+        Assertions.assertEquals(CollectHelper.getAble(),true);
+    }
+
+    @Test
+    @DisplayName("Test getAble when it's not able")
+    void TestGetAbleFalse(){
+        CollectibleUseManager CollectHelper = new CollectibleUseManager(player,110);
+        Assertions.assertEquals(CollectHelper.getAble(),false);
+    }
+
+    @Test
+    @DisplayName("Test the esence can be spent")
+    void TestEssenceSpent(){
+        CollectibleUseManager CollectHelper = new CollectibleUseManager(player,10);
+        CollectHelper.spendCollectible();
+        Assertions.assertEquals(player.getEssence().getNum(),90);
     }
 
 }

@@ -1,8 +1,13 @@
 package usecase_event;
 
 import entity.player.Player;
+import interface_adapters.OutputBoundary;
 
 public class NoEvent extends Event{
+
+    public NoEvent(OutputBoundary outputBoundary) {
+        super(outputBoundary);
+    }
 
     /**
      * Triggering this Event lets the player choose to either heal or upgrade their weapon once. The Player also has the

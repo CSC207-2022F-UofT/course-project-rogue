@@ -33,7 +33,7 @@ public class GameFileWriter implements GameFileWriterInterface {
     }
 
     /**
-     * @param player: the player instance that will replace the player instance in Player.json
+     * @param player: the player instances that will be saved to the original Json file.
      */
     @Override
     public void writeToFile(Player player) {
@@ -51,10 +51,10 @@ public class GameFileWriter implements GameFileWriterInterface {
         JSONObject equipments = new JSONObject();
         JSONObject weapon = new JSONObject();
         JSONObject armor = new JSONObject();
-        weapon.put("name", player.getEquipment("Weapon").getName());
-        weapon.put("weaponAttackPoint", player.getEquipment("Weapon").getStatValue());
-        armor.put("name", player.getEquipment("Armor").getName());
-        armor.put("dmgReduced", player.getEquipment("Armor").getStatValue());
+        weapon.put("name", player.getWeapon().getName());
+        weapon.put("weaponAttackPoint", player.getWeapon().getStatValue());
+        armor.put("name", player.getArmor().getName());
+        armor.put("dmgReduced", player.getArmor().getStatValue());
         equipments.put("weapon", weapon);
         equipments.put("armor", armor);
 

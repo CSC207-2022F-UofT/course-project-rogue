@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_heal_and_upgrade.HealCalculator;
+import usecase_essence_use.heal.HealCalculator;
 import usecase_playeractions.Map;
 
 public class HealCalculatorTest {
@@ -26,22 +26,62 @@ public class HealCalculatorTest {
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
     int[] location = new int[]{0, 0};
 
-
     @BeforeEach
     @DisplayName("Setup before Each Test")
     void setUp(){
+        map = new Map();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
+
     @Test
-    @DisplayName("Test Heal Calculator")
-    void testHealCalculator(){
-        player.setCanHeal(true);
-        HealCalculator healCalculator = new HealCalculator(player);
+    @DisplayName("Test HP loss")
+    void testHPHave(){
         player.changeCurrHitPoint(-20);
-        healCalculator.HealInfoUpdate();
+        Assertions.assertEquals(player.getCurrHitPoint(),80);
+    }
+
+    @Test
+    @DisplayName("Test HP is healed")
+    void testHPIsHealed(){
+        player.setCanHeal(true);
+        player.changeCurrHitPoint(-20);
+        HealCalculator healCalculator = new HealCalculator(player);
+        healCalculator.healInfoUpdate();
         healCalculator.heal();
         Assertions.assertEquals(player.getCurrHitPoint(), 100);
-        Assertions.assertEquals(player.getEssence().getNum(), 80);
-        Assertions.assertEquals(player.getCanHeal(), false);
+    }
+
+    @Test
+    @DisplayName("Test Essence is spent")
+    void testEssenceIsSpent(){
+        player.setCanHeal(true);
+        player.changeCurrHitPoint(-20);
+        HealCalculator healCalculator = new HealCalculator(player);
+        healCalculator.healInfoUpdate();
+        healCalculator.heal();
+        Assertions.assertEquals(player.getEssence().getNum(),80);
+    }
+
+    @Test
+    @DisplayName("Test partly heal when essence are not enough")
+    void testPartlyHeal(){
+        player.setCanHeal(true);
+        player.changeCurrHitPoint(-90);
+        player.changeEssenceAmount(-90);
+        HealCalculator healCalculator = new HealCalculator(player);
+        healCalculator.healInfoUpdate();
+        healCalculator.heal();
+        Assertions.assertEquals(player.getCurrHitPoint(),20);
+    }
+
+    @Test
+    @DisplayName("Test heal function is disabled after healing")
+    void testCannotHeal(){
+        player.setCanHeal(true);
+        player.changeCurrHitPoint(-20);
+        HealCalculator healCalculator = new HealCalculator(player);
+        healCalculator.healInfoUpdate();
+        healCalculator.heal();
+        Assertions.assertEquals(player.getCanHeal(),false);
     }
 }

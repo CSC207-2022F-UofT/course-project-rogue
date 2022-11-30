@@ -18,7 +18,7 @@ public class AfterFight implements Observer {
         this.player.setFighting(false);
         this.player.setCanHeal(true);
         this.player.setCanUpgrade(true);
-        // canMove should still be no (I never changed it back in fighter class)
+        // canMove should still be false (I never changed it back in fighter class)
     }
 
     @Override

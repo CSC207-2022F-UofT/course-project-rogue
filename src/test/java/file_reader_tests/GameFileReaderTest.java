@@ -24,8 +24,8 @@ public class GameFileReaderTest {
         Assertions.assertEquals(1, player.getAttackPoint());
         Assertions.assertEquals(12323, player.getEssence().getNum());
         Assertions.assertEquals(0, player.getArtifact().getNum());
-        Assertions.assertEquals(1223, player.getEquipment("Weapon").getStatValue());
-        Assertions.assertEquals(122, player.getEquipment("Armor").getStatValue());
+        Assertions.assertEquals(1223, player.getWeapon().getStatValue());
+        Assertions.assertEquals(122, player.getArmor().getStatValue());
     }
 
     void verifyPlayer4(Player player){
@@ -33,8 +33,8 @@ public class GameFileReaderTest {
         Assertions.assertEquals(0, player.getAttackPoint());
         Assertions.assertEquals(0, player.getEssence().getNum());
         Assertions.assertEquals(0, player.getArtifact().getNum());
-        Assertions.assertEquals(1, player.getEquipment("Weapon").getStatValue());
-        Assertions.assertEquals(0, player.getEquipment("Armor").getStatValue());
+        Assertions.assertEquals(1, player.getWeapon().getStatValue());
+        Assertions.assertEquals(0, player.getArmor().getStatValue());
     }
 
     void verifyPlayer3(Player player){
@@ -42,8 +42,8 @@ public class GameFileReaderTest {
         Assertions.assertEquals(2, player.getAttackPoint());
         Assertions.assertEquals(-23, player.getEssence().getNum());
         Assertions.assertEquals(0, player.getArtifact().getNum());
-        Assertions.assertEquals(4, player.getEquipment("Weapon").getStatValue());
-        Assertions.assertEquals(5, player.getEquipment("Armor").getStatValue());
+        Assertions.assertEquals(4, player.getWeapon().getStatValue());
+        Assertions.assertEquals(5, player.getArmor().getStatValue());
     }
 
     void verifyPlayer2(Player player){
@@ -51,8 +51,8 @@ public class GameFileReaderTest {
         Assertions.assertEquals(512, player.getAttackPoint());
         Assertions.assertEquals(234, player.getEssence().getNum());
         Assertions.assertEquals(0, player.getArtifact().getNum());
-        Assertions.assertEquals(2, player.getEquipment("Weapon").getStatValue());
-        Assertions.assertEquals(122, player.getEquipment("Armor").getStatValue());
+        Assertions.assertEquals(2, player.getWeapon().getStatValue());
+        Assertions.assertEquals(122, player.getArmor().getStatValue());
     }
     @Test
     void testBasicPlayerCreation(){
