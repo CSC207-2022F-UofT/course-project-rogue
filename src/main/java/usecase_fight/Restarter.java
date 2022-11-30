@@ -25,7 +25,7 @@ public class Restarter implements Observer {
     }
 
     /**
-     * Causes the game to restart from the last save if the Player is in a game over state.
+     * Causes the game to go back to the main menu if the Player is in a game over state.
      * @param o     the observable object.
      * @param arg   key input string
      */
