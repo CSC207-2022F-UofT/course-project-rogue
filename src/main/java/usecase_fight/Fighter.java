@@ -15,17 +15,18 @@ import java.util.Random;
 /** A fight sequence. */
 public class Fighter implements Observer {
 
-    /** Displayer that formats results of the fight to a string. */
-    private final ResultDisplayer displayer; // is it okay to have hard dependence here?
+    /** Formatter that formats results of the fight to a string. */
+    private final ResultFormatter formatter = new ResultFormatter(); // is it okay to have hard dependence here?
+    private final OutputBoundary outputBoundary;
     private final Player player;
     /** Keystroke that triggers this use case. */
     private final String trigger; // 'F'
 
     /** Creates a new Fighter with the given Player and trigger. */
     public Fighter(OutputBoundary outputBoundary, Player player, String trigger){
+        this.outputBoundary = outputBoundary;
         this.player = player;
         this.trigger = trigger;
-        this.displayer = new ResultDisplayer(outputBoundary);
     }
 
     /** Helper method - get the summary of the fight a player is in. */
@@ -51,7 +52,8 @@ public class Fighter implements Observer {
     /**
      * @param monster The Monster.
      * @param win The result of the fight.
-     * @return The result of Monster using a power. Returns empty string if Monster does not have a Power.
+     * @return The result of Monster using a power. Returns empty string if Monster does not have a Power, or the Power
+     * is not used.
      */
     private String getPowerResult(Monster monster, boolean win){
         String result = "";
@@ -131,27 +133,32 @@ public class Fighter implements Observer {
      * fight. If the Player loses, Player takes full damage and receives no rewards.
      */
     private void fight(){
-        FightSummary summary = this.getSummary();
-        Monster monster = summary.getMonster();
+        FightSummary summary = this.getSummary(); // summary of fight details
+        Monster monster = summary.getMonster(); // the monster being fought
+
+        String[] result;
 
         if (summary.getStaleMate()){    // tie: no drops, no damage received.
-            displayer.displayResults();
-        }
-        boolean win = this.determineWin(summary);
-        String powerResult = this.getPowerResult(monster, win);
-        if (win){   // win: drops, no damage
-            this.acceptEssence(summary);
-            boolean exchange = this.acceptEquipment(summary);
-            displayer.displayResults(powerResult, summary.getAmountDrop(), exchange, summary.getEquipment());
-        } else {
-            this.inflictDamage(summary);
-            if (this.checkGameOver()){  // game over
-                this.player.setGameOver();
-                displayer.displayGameOver();
-            } else {    // lose: no drops, damage received
-                displayer.displayResults(powerResult, summary.getDamage());
+            result = formatter.formatTie();
+        } else{
+            boolean win = this.determineWin(summary);
+            String powerResult = this.getPowerResult(monster, win);
+
+            if (win){   // win: drops, no damage
+                this.acceptEssence(summary);
+                boolean exchange = this.acceptEquipment(summary);
+                result = formatter.formatWin(powerResult, summary.getAmountDrop(), exchange, summary.getEquipment());
+            } else {
+                this.inflictDamage(summary);
+                if (this.checkGameOver()){  // game over
+                    this.player.setGameOver();
+                    result = formatter.formatGameOver();
+                } else {    // lose: no drops, damage received
+                    result = formatter.formatLoss(powerResult, summary.getDamage());
+                }
             }
         }
+        outputBoundary.updateText(result[0], result[1], result[2], result[3]);
     }
 
 
