@@ -10,7 +10,7 @@ import usecase_factories.MonsterFactory;
 // Test Notes: MonsterFactory does not pass any tests. FileNotFoundException
 public class MonsterFactoryTest {
 
-    GameFileReaderInterface fr = new GameFileReader("data_base");
+    GameFileReaderInterface fr = new GameFileReader("data_base/Monster.json");
     MonsterFactory mf = new MonsterFactory(fr);
 
 
