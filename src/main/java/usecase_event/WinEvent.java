@@ -19,13 +19,13 @@ public class WinEvent extends Event{
             fileWriter.writeToFile(player);
             fileWriter.notify();
 
-            outputBoundary.update_Text("You Win!", "", "", "");
-            outputBoundary.update_Win();
+            outputBoundary.updateText("You Win!", "", "", "");
+            outputBoundary.updateWin();
 
 
         } else{
             int artifactNeeded = 5 - currArtifactNum;
-            outputBoundary.update_Text(String.format("You need %d more Artifact to leave the Maze", artifactNeeded),
+            outputBoundary.updateText(String.format("You need %d more Artifact to leave the Maze", artifactNeeded),
                     "", "", "");
         }
     }

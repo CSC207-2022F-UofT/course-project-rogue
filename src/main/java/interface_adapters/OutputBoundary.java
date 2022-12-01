@@ -9,4 +9,5 @@ public interface OutputBoundary {
     void updateWin();
     void updateDead();
     void updateMap(int[][] map);
+
 }

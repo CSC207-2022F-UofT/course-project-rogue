@@ -1,13 +1,12 @@
 package user_interface;
-import file_writer.GameFileWriter;
 import interface_adapters.OutputBoundary;
 import user_interface.Graphics.ViewModel;
 
 public class Visual implements OutputBoundary {
 
-    private View_Interface vi;
+    private ViewInterface vi;
     private ViewModel model = new ViewModel();
-    public Visual(View_Interface vi){
+    public Visual(ViewInterface vi){
         this.vi = vi;
     }
 
@@ -32,7 +31,7 @@ public class Visual implements OutputBoundary {
      * @param line4 : words to print in fourth line of Text box in the game.
      */
     @Override
-    public void update_Text(String line1, String line2, String line3, String line4) {
+    public void updateText(String line1, String line2, String line3, String line4) {
         this.model.setText1(line1);
         this.model.setText2(line2);
         this.model.setText3(line3);
@@ -44,7 +43,7 @@ public class Visual implements OutputBoundary {
      * @param hp : the hp value of player given from use case.
      */
     @Override
-    public void update_Hp(int hp) {
+    public void updateHp(int hp) {
         this.model.setHp(hp);
         vi.update(this.sendModel());
     }
@@ -53,7 +52,7 @@ public class Visual implements OutputBoundary {
      * @param cnt : the count of essence that player has given by use case.
      */
     @Override
-    public void update_EssenceCnt(int cnt) {
+    public void updateEssenceCnt(int cnt) {
         this.model.setEs(cnt);
         vi.update(this.sendModel());
     }
@@ -62,7 +61,7 @@ public class Visual implements OutputBoundary {
      * @param cnt : the count of Artifacts the player has given by use case.
      */
     @Override
-    public void update_Artifact(int cnt) {
+    public void updateArtifact(int cnt) {
         this.model.setAf(cnt);
         vi.update(this.sendModel());
     }
@@ -71,7 +70,7 @@ public class Visual implements OutputBoundary {
      * @param location : the location of the player on the map given by use case.
      */
     @Override
-    public void update_Playerlocation(int[] location) {
+    public void updatePlayerlocation(int[] location) {
         //implement today
     }
 
@@ -79,14 +78,15 @@ public class Visual implements OutputBoundary {
      * This method is called to inform the UI that the player has won the game.
      */
     @Override
-    public void update_Win() {
+    public void updateWin() {
+
     }
 
     /**
      *
      */
     @Override
-    public void update_Dead() {
+    public void updateDead() {
 
     }
 
@@ -94,7 +94,7 @@ public class Visual implements OutputBoundary {
      * @param map
      */
     @Override
-    public void update_Map(int[][] map) {
+    public void updateMap(int[][] map) {
 
     }
 }

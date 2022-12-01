@@ -19,7 +19,7 @@ public class NoEvent extends Event{
     @Override
     public void trigger(Player player) {
 
-        outputBoundary.update_Text("Nothing interesting to see here,", "the journey is long so", "you have to keep pushing", "");
+        outputBoundary.updateText("Nothing interesting to see here,", "the journey is long so", "you have to keep pushing", "");
 
     }
 
