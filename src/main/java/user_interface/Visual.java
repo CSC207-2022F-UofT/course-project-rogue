@@ -90,7 +90,7 @@ public class Visual implements OutputBoundary {
      */
     @Override
     public void updateDead() {
-
+        xxx
     }
 
     /**
