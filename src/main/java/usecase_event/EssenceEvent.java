@@ -6,10 +6,6 @@ import interface_adapters.OutputBoundary;
 import java.util.Random;
 
 public class EssenceEvent extends Event{
-    public EssenceEvent(OutputBoundary outputBoundary){
-        super(outputBoundary);
-    }
-
     /**
      * Triggering this Event adds a random amount to the Essence that the player holds
      *
@@ -22,8 +18,8 @@ public class EssenceEvent extends Event{
         int random_int = random.nextInt(100);
         increaseEssence(player, random_int + 1); // get essence from 1 to 100 inclusive
 
-        outputBoundary.update_Text(String.format("You gained %d Essence!", random_int), "", "", "");
-        outputBoundary.update_EssenceCnt(player.getEssence().getNum());
+        outputBoundary.updateText(String.format("You gained %d Essence!", random_int), "", "", "");
+        outputBoundary.updateEssenceCnt(player.getEssence().getNum());
     }
 
 

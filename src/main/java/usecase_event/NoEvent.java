@@ -7,10 +7,6 @@ import java.util.Observable;
 
 public class NoEvent extends Event{
 
-    public NoEvent(OutputBoundary outputBoundary) {
-        super(outputBoundary);
-    }
-
     /**
      * Triggering this Event will not result in anything, it is meant to be a resting ground for the player.
      *
@@ -19,7 +15,7 @@ public class NoEvent extends Event{
     @Override
     public void trigger(Player player) {
 
-        outputBoundary.update_Text("Nothing interesting to see here,", "the journey is long so", "you have to keep pushing", "");
+        outputBoundary.updateText("Nothing interesting to see here,", "the journey is long so", "you have to keep pushing", "");
 
     }
 

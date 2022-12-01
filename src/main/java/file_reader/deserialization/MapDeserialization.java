@@ -58,8 +58,9 @@ public class MapDeserialization extends StdDeserializer<Map> {
                         e = new WallEvent();
                         e = (WallEvent) e;
                     case "W":
-                        e = new WinEvent();
-                        e = (WinEvent) e;
+                        //TODO: Find a way to add GameFileReader inside Win Event
+//                        e = new WinEvent();
+//                        e = (WinEvent) e;
                     default:
                         e = new WallEvent();
                         e = (WallEvent) e;

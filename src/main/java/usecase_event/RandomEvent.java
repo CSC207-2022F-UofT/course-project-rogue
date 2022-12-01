@@ -8,10 +8,6 @@ import user_interface.Visual;
 
 public class RandomEvent extends Event{
 
-    public RandomEvent(OutputBoundary outputBoundary) {
-        super(outputBoundary);
-    }
-
     /**
      * Triggering this Event randomly Triggers Fight Event, no Event or Essence Event
      *
@@ -22,11 +18,11 @@ public class RandomEvent extends Event{
         Random random = new Random();
         int random_prob = random.nextInt(101);
         if (random_prob < 70){
-            FightEvent fightEvent = new FightEvent(this.outputBoundary);
+            FightEvent fightEvent = new FightEvent();
             fightEvent.trigger(player);
         }
         else {
-            EssenceEvent essenceEvent = new EssenceEvent(this.outputBoundary);
+            EssenceEvent essenceEvent = new EssenceEvent();
             essenceEvent.trigger(player);
         }
     }
