@@ -275,7 +275,6 @@ build/classes/java/main/file_reader/deserialization/PlayerDeserialization.class
 build/classes/java/main/file_writer/GameFileWriterInterface.class
 build/classes/java/main/game_data/PlayerInstances.class
 build/classes/java/main/interface_adapters/Controller.class
-build/classes/java/main/interface_adapters/OutputBoundary.class
 build/classes/java/main/usecase_essence_use/data_calculator/CalculatorCollectible.class
 build/classes/java/main/usecase_essence_use/data_calculator/CalculatorStat.class
 build/classes/java/main/usecase_essence_use/data_calculator/CollectibleUseManager.class
@@ -307,9 +306,4 @@ build/classes/java/main/user_interface/Graphics/Grid.class
 build/classes/java/main/user_interface/Graphics/MapGraphics.class
 build/classes/java/main/user_interface/Graphics/ViewModel.class
 build/classes/java/main/user_interface/View$1.class
-build/classes/java/main/user_interface/View.class
 build/classes/java/main/user_interface/ViewInterface.class
-build/classes/java/main/user_interface/View.class
-build/classes/java/main/interface_adapters/OutputBoundary.class
-build/classes/java/main/user_interface/View.class
-build/classes/java/main/interface_adapters/OutputBoundary.class
