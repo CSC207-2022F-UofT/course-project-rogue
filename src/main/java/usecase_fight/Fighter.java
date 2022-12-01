@@ -80,6 +80,7 @@ public class Fighter implements Observer {
     private void inflictDamage(FightSummary summary){
         int damage = summary.getDamage();
         this.player.changeCurrHitPoint(-damage);
+        outputBoundary.updateHp(player.getCurrHitPoint());
     }
 
     /**
@@ -100,6 +101,7 @@ public class Fighter implements Observer {
     private void acceptEssence(FightSummary summary){
         int toAdd = summary.getAmountDrop();
         this.player.changeEssenceAmount(toAdd);
+        outputBoundary.updateEssenceCnt(player.getEssence().getNum());
     }
 
     /**
