@@ -37,14 +37,14 @@ public class Monster extends Character {
      * Creates a Monster with given name and type. The baseAttack and baseHealth of the Monster is
      * randomly assigned from the given ranges. This Monster will not have a power.
      *
-     * @param n     Monster name
-     * @param t     Monster type
+     * @param name     Monster name
+     * @param type     Monster type
      * @param stats The ranges of possible values of baseHealth and baseAttack, inclusive.
      * @param state Whether Monster has a power.
      */
-    public Monster(String n, String t, HashMap<String, int[]> stats, boolean state) {
-        this.name = n;
-        this.type = t;
+    public Monster(String name, String type, HashMap<String, int[]> stats, boolean state) {
+        this.name = name;
+        this.type = type;
         this.hasPower = state;
 
         Random rand = new Random();
