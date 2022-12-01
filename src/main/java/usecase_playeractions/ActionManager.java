@@ -10,31 +10,12 @@ import entity.Player;
  */
 public class ActionManager extends Observable {
 
-    private Player player;
 
     /**
-     * Initialize the basic control class with no Observer
+     * Initialize the basic ActionManager class with no Observer
      */
     public ActionManager(){}
 
-    /**
-     * Initialize the actions with a Map.
-     * The basic WASD actions will be initialized.
-     */
-    public ActionManager(Player player, Map map){
-        this.player = player;
-        this.setDefaultMover(player,map);
-    }
-
-    /**
-     * Sets up the default Mover observer of WASD
-     */
-    private void setDefaultMover(Player player,Map map) {
-        this.addObserver(new Mover(player,map,"W",0,1));
-        this.addObserver(new Mover(player,map,"A",1,0));
-        this.addObserver(new Mover(player,map,"S",0,-1));
-        this.addObserver(new Mover(player,map,"D",-1,0));
-    }
 
     /**
      * Notify observers with the command given.
