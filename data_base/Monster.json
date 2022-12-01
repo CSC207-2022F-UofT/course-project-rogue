@@ -27,5 +27,21 @@
     "stats": {"Attack":  [75, 125], "Health":  [75, 125]},
     "state": true,
     "power": "Steal"
+  },
+  {
+    "index": 4,
+    "name": "Friendly Bear",
+    "type": "Tamable",
+    "stats": {"Attack": [0, 0], "Health":  [100, 100]},
+    "state": true,
+    "power": "Smile"
+  },
+  {
+    "index": 5,
+    "name": "Golden Slime",
+    "type": "Treasure",
+    "stats": {"Attack": [500, 500], "Health":  [500, 500]},
+    "state": true,
+    "power": "ExtraDrops"
   }
 ]
