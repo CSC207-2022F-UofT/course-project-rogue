@@ -14,7 +14,7 @@ public class ExtraDrops extends MonsterPower{
     }
 
     /**
-     * Drops two times the essence dropped in the fight.
+     * Doubles the essence dropped in the fight.
      *
      * @param player The Player receiving the extra drops.
      * @return The result of the power use.
@@ -23,7 +23,7 @@ public class ExtraDrops extends MonsterPower{
     public String usePower(Character player) {
         FightSummary summary = ((Player) player).getFight();
         int original = summary.getAmountDrop();
-        summary.addAmountDrop(original); // doubles the essence drops
+        ((Player) player).changeEssenceAmount(original); // doubles essence dropped
         return String.format("%d extra essence dropped!", original);
     }
 }
