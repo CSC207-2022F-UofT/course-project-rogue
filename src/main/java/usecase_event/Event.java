@@ -5,10 +5,13 @@ import interface_adapters.OutputBoundary;
 
 abstract public class Event implements Enterable{
 
-    OutputBoundary outputBoundary;
+    static OutputBoundary outputBoundary;
 
     public Event(OutputBoundary outputBoundary){
-        this.outputBoundary = outputBoundary;
+        Event.outputBoundary = outputBoundary;
+    }
+
+    protected Event() {
     }
 
     /** Tells Map whether this tile could be stepped on by Player

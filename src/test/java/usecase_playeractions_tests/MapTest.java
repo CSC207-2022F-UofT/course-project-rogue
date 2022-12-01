@@ -41,11 +41,11 @@ public class MapTest {
     @Test
     @DisplayName("Test Move")
     void testMove(){
-        map.setBoard(new ArtifactEvent(new Visual(new View())),0,1);
+        map.setBoard(new ArtifactEvent(),0,1);
         map.move(player,0,1);
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
         Assertions.assertEquals(1, player.getArtifact().getNum());
-        map.setBoard(new WallEvent(new Visual(new View())),0,2);
+        map.setBoard(new WallEvent(),0,2);
         map.move(player,0,1);
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
     }

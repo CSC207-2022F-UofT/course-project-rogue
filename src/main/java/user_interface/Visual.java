@@ -1,6 +1,9 @@
 package user_interface;
 import interface_adapters.OutputBoundary;
+import user_interface.Graphics.MapGraphics;
 import user_interface.Graphics.ViewModel;
+
+import java.awt.*;
 
 public class Visual implements OutputBoundary {
 

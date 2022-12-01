@@ -13,12 +13,12 @@ public class ViewModel {
     private int af = 99;
     private int es = 66;
 
-    private String text1 = "Welcome the great adventurer to this evil world.";
-    private String text2 = "";
-    private String text3 = "";
-    private String text4 = "";
+    private String text1 = "123456789012345678901234567890123456789012345678901234567890";
+    private String text2 = "123456789012345678901234567890123456789012345678901234567890";
+    private String text3 = "123456789012345678901234567890123456789012345678901234567890";
+    private String text4 = "123456789012345678901234567890123456789012345678901234567890";
 
-    private MapGraphics map = new MapGraphics(500,10, 650, new String[15][15]);
+    private MapGraphics map = new MapGraphics(877,0, 650, new String[15][15]);
 
     public void duplicate(ViewModel oldModel){
         this.text1 = oldModel.text1;
@@ -39,7 +39,7 @@ public class ViewModel {
             throw new RuntimeException(e);
         }
         g.setColor(new Color(0x69030303, true));
-        g.fillRect(0,0,size.width-1000,size.height-300);
+        g.fillRect(0,0,size.width-600,size.height-300);
         g.setColor(new Color(0xFF090909, true));
         g.setFont(new Font("TimesRoman",Font.CENTER_BASELINE,30));
         g.drawString("HP:      "+hp,30,120);

@@ -7,8 +7,7 @@ import interface_adapters.OutputBoundary;
 
 public class WinEvent extends Event{
     GameFileWriterInterface fileWriter;
-    public WinEvent(OutputBoundary outputBoundary, GameFileWriterInterface fileWriter){
-        super(outputBoundary);
+    public WinEvent(GameFileWriterInterface fileWriter){
         this.fileWriter = fileWriter;
     }
 
@@ -25,8 +24,8 @@ public class WinEvent extends Event{
 
         } else{
             int artifactNeeded = 5 - currArtifactNum;
-            outputBoundary.updateText(String.format("You need %d more Artifact to leave the Maze", artifactNeeded),
-                    "", "", "");
+            outputBoundary.updateText("",
+                    "", String.format("You need %d more Artifact to leave the Maze", artifactNeeded), "");
         }
     }
 

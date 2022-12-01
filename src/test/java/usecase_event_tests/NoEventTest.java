@@ -31,7 +31,7 @@ public class NoEventTest {
     @BeforeEach
     @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new NoEvent(new Visual(new View()));
+        event = new NoEvent();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 

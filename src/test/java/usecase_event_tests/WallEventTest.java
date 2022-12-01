@@ -30,7 +30,7 @@ public class WallEventTest {
     @BeforeEach
     @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new WallEvent(new Visual(new View()));
+        event = new WallEvent();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 

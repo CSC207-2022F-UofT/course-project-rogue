@@ -11,8 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.EssenceEvent;
-import user_interface.View;
-import user_interface.Visual;
 
 public class EssenceEventTest {
     int maxHP = 100;
@@ -30,7 +28,7 @@ public class EssenceEventTest {
     @BeforeEach
     @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new EssenceEvent(new Visual(new View()));
+        event = new EssenceEvent();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 

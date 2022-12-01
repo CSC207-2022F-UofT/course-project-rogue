@@ -1,11 +1,10 @@
 package file_reader.deserialization;
 
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import file_writer.GameFileWriter;
 import usecase_event.*;
 import usecase_playeractions.Map;
 
@@ -58,7 +57,7 @@ public class MapDeserialization extends StdDeserializer<Map> {
                         e = new WallEvent();
                         e = (WallEvent) e;
                     case "W":
-                        e = new WinEvent();
+                        e = new WinEvent(new GameFileWriter("database/Player_save.json"));
                         e = (WinEvent) e;
                     default:
                         e = new WallEvent();

@@ -6,11 +6,6 @@ import interface_adapters.OutputBoundary;
 import java.util.Observable;
 
 public class NoEvent extends Event{
-
-    public NoEvent(OutputBoundary outputBoundary) {
-        super(outputBoundary);
-    }
-
     /**
      * Triggering this Event will not result in anything, it is meant to be a resting ground for the player.
      *

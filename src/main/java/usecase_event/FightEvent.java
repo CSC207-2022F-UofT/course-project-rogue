@@ -3,7 +3,6 @@ package usecase_event;
 import entity.item.Equipment;
 import entity.monster.Monster;
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
 import usecase_fight.DamageCalculator;
 import usecase_fight.DropRetriever;
 import usecase_fight.FightSummary;
@@ -14,10 +13,6 @@ import java.util.Optional;
 import java.util.Random;
 
 public class FightEvent extends Event{
-    public FightEvent(OutputBoundary outputBoundary){
-        super(outputBoundary);
-    }
-
     /**
      * Triggers a fight between Player and a Monster. Displays a summary of the following to the user:
      *      - Monster name and power
