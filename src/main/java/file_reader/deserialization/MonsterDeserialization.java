@@ -30,8 +30,8 @@ public class MonsterDeserialization  extends StdDeserializer<Monster> {
         ObjectMapper om = new ObjectMapper();
         JsonNode node = p.getCodec().readTree(p);
         DeserializeHelper h = new DeserializeHelper();
-        String name = h.readString(node.get("n"));
-        String type = h.readString(node.get("t"));
+        String name = h.readString(node.get("name"));
+        String type = h.readString(node.get("type"));
         HashMap<String, int[]> stats = new HashMap<>();
         Iterator<String> keys = node.get("stats").fieldNames();
         while(keys.hasNext()){
