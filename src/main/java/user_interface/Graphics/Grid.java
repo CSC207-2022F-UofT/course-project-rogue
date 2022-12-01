@@ -13,6 +13,7 @@ public class Grid {
      */
     private int x, y, length;
     BufferedImage image;
+    BufferedImage playerImage;
 
 
     public Grid(int x, int y, int length, String dir){
@@ -21,9 +22,12 @@ public class Grid {
         this.length = length;
         try {
             this.image = ImageIO.read(new File(dir));
+            this.playerImage = ImageIO.read(new File("pictures/player.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    public Grid(){
     }
 
     /**
@@ -32,8 +36,21 @@ public class Grid {
      */
     public void draw(Graphics g){
         g.drawImage(this.image, this.x, this.y, this.length, this.length, null);
+        if(MapGraphics.playerLocation[0] == x && MapGraphics.playerLocation[1] == y){
+            g.drawImage(this.playerImage, this.x, this.y, this.length, this.length, null);
+        }
     }
 
-
+    public void duplicate(Grid oldGrid){
+        this.x = oldGrid.x;
+        this.y = oldGrid.y;
+        this.length = oldGrid.length;
+        this.image = oldGrid.image;
+        try {
+            this.playerImage = ImageIO.read(new File("pictures/player.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

@@ -8,5 +8,5 @@ public interface OutputBoundary {
     void updatePlayerlocation(int[] location);
     void updateWin();
     void updateDead();
-    void updateMap(int[][] map);
+    void updateMap(String[][] map);
 }

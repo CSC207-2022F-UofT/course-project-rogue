@@ -22,20 +22,22 @@ public class GameFrame extends JPanel{
     int screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
     int screen_hight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
+    private View view;
     private ViewModel viewModel;
 
-    public GameFrame() {
+    private MapGraphics map;
+
+    public GameFrame(View v) {
         JPanel panel = new JPanel();
         panel.setLayout(null);
-
-
+        view = v;
         startbutton.setFocusable(true);
         quitbutton.setFocusable(true);
 
         startbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                start = !start;
+                view.startButtonClicked();
                 startbutton.setVisible(false);
                 quitbutton.setVisible(false);
                 repaint();
@@ -47,10 +49,9 @@ public class GameFrame extends JPanel{
                 System.exit(0);
             }
         });
-
         this.setFocusable(true);
         this.viewModel = new ViewModel();
-
+        this.addKeyListener(view);
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -58,15 +59,12 @@ public class GameFrame extends JPanel{
         Dimension size=this.getParent().getSize();
 
         if (start == false){
-//            Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("C:\\Users\\ZHY\\Desktop\\.idea\\course-project-rogue\\src\\main\\java\\user_interface\\1.jpg"));
             try {
                 BufferedImage img = ImageIO.read(new File("pictures/b9db1d7d93c1709.png"));
                 g.drawImage(img,0,0,size.width,size.height,this);
-
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
             g.setColor(new Color(0xF10707));
             g.setFont(new Font("TimesRoman",Font.CENTER_BASELINE,100));
             g.drawString("Welcome to Adventure !",150,200);
@@ -86,6 +84,15 @@ public class GameFrame extends JPanel{
     }
     public void setViewModel(ViewModel viewModel) {
         this.viewModel = viewModel;
+    }
+    public void goToMenu(){
+        MapGraphics.playerLocation[0] = -1;
+        MapGraphics.playerLocation[1] = -1;
+        this.start = false;
+    }
+
+    public void setStart(boolean s){
+        this.start = s;
     }
 }
 

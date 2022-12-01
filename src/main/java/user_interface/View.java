@@ -8,14 +8,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JFrame;
 
-public class View implements KeyListener, ViewInterface {
-    //Controller control;//keyReleased pass in string
+public class View implements KeyListener, View_Interface {
     private int progress = 0;
-
     private Controller controller;
-
     private JFrame game_play;
-
     private GameFrame gameFrame;
 
     public View(){
@@ -31,7 +27,7 @@ public class View implements KeyListener, ViewInterface {
 
         //Add Menu panel
         if (progress == 0){
-            gameFrame = new GameFrame();
+            gameFrame = new GameFrame(this);
             game_play.add(gameFrame);
         }
 
@@ -47,6 +43,12 @@ public class View implements KeyListener, ViewInterface {
         game_play.setVisible(true);
     }
 
+    /**
+     * This method is called when the start button is clicked. This method is called in GameFrame.
+     */
+    public void startButtonClicked(){
+        controller.newGame();
+    }
     @Override
     public void setVisible(boolean b){
         this.game_play.setVisible(b);
@@ -60,15 +62,35 @@ public class View implements KeyListener, ViewInterface {
         gameFrame.setViewModel(model);
     }
 
+    /**
+     *
+     */
+    @Override
+    public void goBackToMenu() {
+        gameFrame.removeKeyListener(this);
+        gameFrame.goToMenu();
+    }
+
+    //This method is intentionally empty
     @Override
     public void keyTyped(KeyEvent e) {}
 
+    //This method is intentionally empty
     @Override
     public void keyPressed(KeyEvent e) {}
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println(e.getKeyChar());
+        controller.keyReleased(e);
+    }
+
+    /**
+     * @param start : A variable passed from visual to indicate that view can start showing updated view
+     *               model.
+     */
+    @Override
+    public void startGameVisual(boolean start){
+        gameFrame.setStart(start);
     }
 
     /**
