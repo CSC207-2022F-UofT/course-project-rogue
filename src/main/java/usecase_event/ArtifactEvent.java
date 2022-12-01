@@ -1,9 +1,11 @@
 package usecase_event;
 import entity.player.Player;
 import interface_adapters.OutputBoundary;
+import user_interface.Visual;
 
 
 public class ArtifactEvent extends Event{
+
     /**
      * Triggering this Event adds 1 to the Artifact that the player holds
      *
