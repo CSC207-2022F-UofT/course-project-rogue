@@ -37,6 +37,7 @@ public class ActionManagerFactory {
     public ActionManagerFactory(){
         playerFactory = new PlayerFactory();
         playerFactory.create();
+        // Game File Reader is here to improvise, this doesn't follow Clean Architecture so to be changed
         mapFactory = new MapFactory(new GameFileReader("data_base/Map.json"));
         moveManager = new MoveManager();
     }
