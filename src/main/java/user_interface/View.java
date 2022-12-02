@@ -41,7 +41,7 @@ public class View implements KeyListener, View_Interface {
             }
         });
         game_play.setVisible(true);
-        this.controller = new Controller();
+        this.controller = controller;
     }
 
     /**

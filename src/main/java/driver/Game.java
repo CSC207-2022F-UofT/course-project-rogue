@@ -6,6 +6,7 @@ import file_reader.GameFileReader;
 import file_reader.GameFileReaderInterface;
 import file_writer.GameFileWriter;
 import file_writer.GameFileWriterInterface;
+import interface_adapters.Controller;
 import interface_adapters.OutputBoundary;
 import usecase_event.Event;
 import usecase_event.WinEvent;
@@ -37,7 +38,10 @@ public class Game {
         EquipmentFactory.setFileReader(equipmentReader);
         MapFactory.setFileReader(mapReader);
 
-        View_Interface vi = new View();
+        PlayerFactory playerFactory = new PlayerFactory();
+        MapFactory mapFactory = new MapFactory();
+        Controller controller = new Controller(playerFactory, mapFactory);
+        View_Interface vi = new View(controller);
         OutputBoundary outBound = new Visual(vi);
         Event.setOutputBoundary(outBound);
         Map.setOutputBoundary(outBound);

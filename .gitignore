@@ -313,3 +313,7 @@ build/classes/java/main/usecase_playeractions/ActionManager.class
 build/classes/java/main/usecase_gamedata/LevelFactory.class
 build/classes/java/main/usecase_gamedata/ActionManagerFactory.class
 build/classes/java/main/user_interface/View.class
+build/classes/java/main/usecase_gamedata/InputBoundaryFactory.class
+build/classes/java/main/usecase_gamedata/InputBoundaryFactoryInputBoundary.class
+build/classes/java/main/usecase_playeractions/InputBoundary.class
+build/classes/java/main/user_interface/View.class

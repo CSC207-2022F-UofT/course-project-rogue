@@ -45,7 +45,7 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
      * @param level The level ID.
      */
     public void enterLevel(int level){
-        mapFactory.setPlayerLocation(this.playerFactory.create());
+        mapFactory.setSpawnPoint(playerFactory.create(), level);
         this.updateMoveManager(level);
     }
 
