@@ -40,7 +40,7 @@ public class ViewModel {
      * @return True if instance variable map is not initialized.
      */
     private boolean checkReady(){
-        return this.map == null;
+        return this.map != null;
     }
 
     public void draw(Graphics g, Dimension size, JPanel gameFrame){
@@ -76,7 +76,7 @@ public class ViewModel {
         this.map.setPlayerLocation(l);
     }
     public void setMap(String[][] map){
-        this.map = new MapGraphics(this.size.width-1000, 0, 650, map);
+        this.map = new MapGraphics( 500, 100, 650, map);
     }
     public void setHp(int hp) {
         this.hp = hp;

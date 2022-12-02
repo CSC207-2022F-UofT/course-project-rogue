@@ -13,7 +13,8 @@ import entity.player.Player;
 import java.io.IOException;
 
 public class PlayerDeserialization extends StdDeserializer<Player> {
-    public PlayerDeserialization() {
+
+    public PlayerDeserialization(){
         this(null);
     }
     public PlayerDeserialization(Class<?> vc){

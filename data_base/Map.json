@@ -1,22 +1,23 @@
 [
   {
-    "index": 1,
+    "index": 0,
     "map": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      []
-    ]
+      ["N","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["N","WL","WL","WL","WL","WL","WL","WL","WL","WL","N","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"]
+    ],
+    "starting": [1,0]
   }
 ]

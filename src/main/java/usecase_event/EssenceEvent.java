@@ -41,4 +41,8 @@ public class EssenceEvent extends Event{
     public boolean enter(Player player){
         return true;
     }
+    @Override
+    public String toString() {
+        return "EssenceEvent";
+    }
 }

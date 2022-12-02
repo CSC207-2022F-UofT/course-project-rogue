@@ -41,7 +41,7 @@ public class Player extends Character {
         this.attackPoint = attackPoint;
         this.collectibleInventory = inventory;
         this.equipments = equipments;
-        this.location = location;
+        this.location = new int[2];
         this.state = new States();
     }
 
