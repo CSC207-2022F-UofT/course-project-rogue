@@ -1,4 +1,4 @@
-package usecase_gamedata_tests;
+package usecase_factories_tests;
 
 import entity.item.Equipment;
 import file_reader.GameFileReader;
