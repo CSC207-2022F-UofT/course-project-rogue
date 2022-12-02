@@ -1,5 +1,6 @@
 package usecase_gamedata;
 
+import usecase_factories.PlayerFactory;
 import usecase_playeractions.ActionManager;
 import usecase_playeractions.MoveManager;
 
