@@ -52,4 +52,30 @@ public class FightSummaryTest {
                 () -> Assertions.assertFalse(fs1.getStaleMate()));
 
     }
+
+    @Test
+    @DisplayName("Test Get Summary when no equipment")
+    void testGetSummary(){
+        String entry1 = "You encountered a Slime!";
+        String entry2 = "Power: None, Win chance: 60%, Damage: 5";
+        String entry3 = "Drops: 5 essence";
+        String[] result = fs1.getSummary();
+        Assertions.assertAll("Check that getSummary returns the correct output",
+                () -> Assertions.assertEquals(entry1, result[0]),
+                () -> Assertions.assertEquals(entry2, result[1]),
+                () -> Assertions.assertEquals(entry3, result[2]));
+    }
+
+    @Test
+    @DisplayName("Test Get Summary with Equipment in Summary")
+    void testGetSummaryEquipment(){
+        String entry1 = "You encountered a Slime!";
+        String entry2 = "Power: None, Win chance: 0%, Damage: 0";
+        String entry3 = "Drops: 6 essence, Sharp stick";
+        String[] result = fs2.getSummary();
+        Assertions.assertAll("Check that getSummary returns the correct output",
+                () -> Assertions.assertEquals(entry1, result[0]),
+                () -> Assertions.assertEquals(entry2, result[1]),
+                () -> Assertions.assertEquals(entry3, result[2]));
+    }
 }
