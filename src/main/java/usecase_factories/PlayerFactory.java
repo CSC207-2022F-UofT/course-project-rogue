@@ -5,7 +5,7 @@ import file_reader.GameFileReader;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class PlayerFactory extends factory<Player>{
+public class PlayerFactory{
 
     private final Player player;
 
