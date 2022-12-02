@@ -5,6 +5,7 @@ import file_reader.GameFileReaderInterface;
 import file_writer.GameFileWriter;
 import file_writer.GameFileWriterInterface;
 import interface_adapters.OutputBoundary;
+import usecase_event.Event;
 import user_interface.View;
 import user_interface.View_Interface;
 import user_interface.Visual;

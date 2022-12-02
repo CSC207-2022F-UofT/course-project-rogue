@@ -6,7 +6,7 @@ import file_writer.GameFileWriterInterface;
 import interface_adapters.OutputBoundary;
 
 public class WinEvent extends Event{
-    GameFileWriterInterface fileWriter;
+    private final GameFileWriterInterface fileWriter;
     public WinEvent(GameFileWriterInterface fileWriter){
         this.fileWriter = fileWriter;
     }

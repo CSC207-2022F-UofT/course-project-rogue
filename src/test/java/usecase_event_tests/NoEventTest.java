@@ -11,11 +11,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import usecase_event.Event;
 import usecase_event.NoEvent;
 import user_interface.View;
 import user_interface.Visual;
 
 public class NoEventTest {
+    Event x = new Event(new Visual(new View()));
     int maxHP = 100;
     int atkPt = 10;
     Collectible essence = new Collectible("Essence", 100);
@@ -31,7 +33,7 @@ public class NoEventTest {
     @BeforeEach
     @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new NoEvent(new Visual(new View()));
+        event = new NoEvent();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 

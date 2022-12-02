@@ -12,11 +12,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import usecase_event.Event;
 import usecase_event.WinEvent;
 import user_interface.View;
 import user_interface.Visual;
 
 public class WinEventTest {
+    Event x = new Event(new Visual(new View()));
     int maxHP = 100;
     int atkPt = 10;
     Collectible essence = new Collectible("Essence", 100);
@@ -32,7 +34,7 @@ public class WinEventTest {
     @BeforeEach
     @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new WinEvent(new Visual(new View()), new GameFileWriter("data_base/Player_save.json"));
+        event = new WinEvent(new GameFileWriter("data_base/Player_save.json"));
         player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
     }
 

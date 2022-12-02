@@ -1,6 +1,6 @@
 package usecase_gamedata;
 
-import entity.Player;
+import entity.player.Player;
 import usecase_playeractions.Map;
 
 /**
@@ -26,7 +26,7 @@ public class LevelFactory {
      * @param player The Player.
      * @param level The level ID.
      */
-    public void setSpawnPoint(Player player,int level){
+    public void setSpawnPoint(Player player, int level){
         //TODO:implement this
     }
 

@@ -1,9 +1,9 @@
-package usecase_gamedata;
+package usecase_factories;
 
+import entity.player.Player;
 import file_reader.GameFileReader;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.Player;
 
 public class PlayerFactory extends factory<Player>{
 
@@ -13,7 +13,7 @@ public class PlayerFactory extends factory<Player>{
         player = null;
     }
 
-    @Override
+
     public Player create() {
 
         if(player != null){

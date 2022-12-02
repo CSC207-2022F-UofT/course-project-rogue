@@ -127,12 +127,10 @@ public class Player extends Character {
         } else this.currHitPoint = Math.max(afterAmount, 0);
     }
 
-    /**Sets the location of Player based on axis and coordinate i
+    /**Sets the location of Player based on the axis
      *
-     * @param axis: The axis x, y on the location array.
-     *            0 = x
-     *            1 = y
-     * @param i: the new x or y coordinate of player
+     * @param x: the x-axis to change
+     * @param y: the y-axis to change
      *
      */
     public void setLocation(int x, int y){

@@ -1,6 +1,6 @@
 package usecase_playeractions;
 
-import entity.Player;
+import entity.player.Player;
 
 /**
  * An ActionManager that cares about the map.
