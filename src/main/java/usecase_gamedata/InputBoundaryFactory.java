@@ -3,11 +3,17 @@ package usecase_gamedata;
 import usecase_playeractions.ActionManager;
 import usecase_playeractions.MoveManager;
 
-public class ActionManagerFactory {
+public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
     private PlayerFactory playerFactory;
     private LevelFactory levelFactory;
     private MoveManager moveManager;
+
+    public InputBoundaryFactory(PlayerFactory playerFactory, LevelFactory levelFactory) {
+        this.playerFactory = playerFactory;
+        this.levelFactory = levelFactory;
+        this.moveManager = new MoveManager();
+    }
 
     /**
      * The default keys:
@@ -23,15 +29,6 @@ public class ActionManagerFactory {
      */
     private final String[] KEYS = new String[]{"H","Y","N","U","A","S","F","R","W","A","S","D"};
 
-    /**
-     * Create a ActionManagerFactory, by calling this, a Player is being created from file.
-     */
-    public ActionManagerFactory(){
-        playerFactory = new PlayerFactory();
-        playerFactory.create();
-        levelFactory = new LevelFactory();
-        moveManager = new MoveManager();
-    }
 
     /**
      * Change moveManager, so it is on the Map of next level.

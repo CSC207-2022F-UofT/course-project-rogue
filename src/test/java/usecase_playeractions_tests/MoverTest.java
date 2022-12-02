@@ -41,7 +41,7 @@ public class MoverTest {
         Mover mover = new Mover(player,map,"W",0,1);
         mover.update(new Observable(),"W");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
-        Assertions.assertEquals(1, player.getCollectible("Artifact").getNum());
+        Assertions.assertEquals(1, player.getArtifact().getNum());
         map.setBoard(new WallEvent(),0,2);
         mover.update(new Observable(),"W");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);

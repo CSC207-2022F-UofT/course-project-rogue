@@ -8,7 +8,7 @@ import entity.Player;
  * A class that stores the actions the user may perform.
  * Use {@code ActionManager.addObserver(Observer o)} to add addition actions(e.g. Heal, UpgradeWeapon, etc.).
  */
-public class ActionManager extends Observable {
+public class ActionManager extends Observable implements InputBoundary{
 
 
     /**
@@ -27,3 +27,4 @@ public class ActionManager extends Observable {
     }
 
 }
+
