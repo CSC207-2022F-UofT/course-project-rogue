@@ -10,11 +10,6 @@ import java.util.Observable;
 public class ActionManager extends Observable {
 
 
-    /**
-     * Initialize the basic ActionManager class with no Observer
-     */
-    public ActionManager(){}
-
 
     /**
      * Notify observers with the command given.

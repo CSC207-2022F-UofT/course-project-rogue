@@ -8,11 +8,6 @@ import entity.player.Player;
 public class MoveManager extends ActionManager{
 
     /**
-     * Initialize the basic control class with no Observer
-     */
-    public MoveManager(){}
-
-    /**
      * Sets up the default Mover observer of WASD
      */
     private void setDefaultMover(Player player, Map map) {
