@@ -1,17 +1,19 @@
 package usecase_gamedata;
 
+import usecase_factories.PlayerFactory;
 import usecase_playeractions.ActionManager;
+import usecase_playeractions.Map;
 import usecase_playeractions.MoveManager;
 
 public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
     private PlayerFactory playerFactory;
-    private LevelFactory levelFactory;
+    private MapFactory mapFactory;
     private MoveManager moveManager;
 
-    public InputBoundaryFactory(PlayerFactory playerFactory, LevelFactory levelFactory) {
+    public InputBoundaryFactory(PlayerFactory playerFactory, MapFactory mapFactory) {
         this.playerFactory = playerFactory;
-        this.levelFactory = levelFactory;
+        this.mapFactory = mapFactory;
         this.moveManager = new MoveManager();
     }
 
@@ -35,7 +37,7 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
      * @param level The level id.
      */
     private void updateMoveManager(int level){
-        this.moveManager.changeMap(this.playerFactory.create(),levelFactory.create(level));
+        this.moveManager.changeMap(this.playerFactory.create(),mapFactory.create(level));
     }
 
     /**
@@ -43,7 +45,7 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
      * @param level The level ID.
      */
     public void enterLevel(int level){
-        levelFactory.setSpawnPoint(this.playerFactory.create(),level);
+        mapFactory.setPlayerLocation(this.playerFactory.create());
         this.updateMoveManager(level);
     }
 

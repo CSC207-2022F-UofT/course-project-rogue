@@ -14,7 +14,7 @@ public class View implements KeyListener, View_Interface {
     private JFrame game_play;
     private GameFrame gameFrame;
 
-    public View(){
+    public View(Controller controller){
         game_play = new JFrame();
         game_play.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         //game_play.setLayout(null);
@@ -24,7 +24,7 @@ public class View implements KeyListener, View_Interface {
         game_play.setResizable(false);
         //game_play.setUndecorated(true);
         game_play.setTitle("");
-        controller = new Controller();
+        this.controller = controller;
         //Add Menu panel
         if (progress == 0){
             gameFrame = new GameFrame(this);

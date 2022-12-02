@@ -19,7 +19,6 @@ public class PlayerFactory{
         if(player != null){
             return player;
         }
-
         GameFileReader pf = new GameFileReader( "data_base/Player.json");
         try {
             return new ObjectMapper().readValue(pf.findString("class", "Basic Player"), Player.class);
