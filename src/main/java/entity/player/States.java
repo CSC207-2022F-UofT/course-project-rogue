@@ -102,7 +102,7 @@ public class States {
     }
 
     /**
-     * @return Whether Player is in a GameOver state. A Player is in a GameOverState if all states are false.
+     * @return True iff Player is in a GameOver state. A Player is in a GameOverState if all states are false.
      */
     public boolean getGameOver() {
         return ((!canMove) && (!canHeal) && (!canUpgrade) && (!isUpgrading) && (!fighting));
