@@ -1,22 +1,15 @@
 package usecase_playeractions_tests;
 
-import entity.equipment_slots.BasicEquipmentSlots;
-import entity.inventory_slots.CollectibleInventory;
-import entity.item.Armor;
-import entity.item.Collectible;
-import entity.item.Weapon;
-import entity.player.Player;
+import entity.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.ArtifactEvent;
-import usecase_playeractions.Control;
 import usecase_playeractions.Map;
-import user_interface.View;
-import user_interface.Visual;
+import usecase_playeractions.MoveManager;
 
-public class ControlTest {
+public class MoveManagerTest {
 
     Map map;
     Player player;
@@ -41,8 +34,9 @@ public class ControlTest {
     @Test
     @DisplayName("Test Move")
     void testMove(){
-        map.setBoard(new ArtifactEvent(new Visual(new View())),0,1);
-        Control control = new Control(player,map);
+        map.setBoard(new ArtifactEvent(),0,1);
+        MoveManager control = new MoveManager();
+        control.changeMap(player,map);
         control.keyPressed("W");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
         Assertions.assertEquals(1, player.getArtifact().getNum());
