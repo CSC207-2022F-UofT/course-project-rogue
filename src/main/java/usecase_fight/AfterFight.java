@@ -17,9 +17,7 @@ public class AfterFight implements Observer {
     /** Changes the Player fighting state to false and can heal/ can upgrade state to true. */
     private void changeStates(){
         this.player.setFighting(false);
-        this.player.setCanHeal(true);
-        this.player.setCanUpgrade(true);
-        // canMove should still be false (I never changed it back in fighter class)
+        // canMove should still be false
     }
 
     /** Displays a prompt to the user to press [H] or [U]. */
@@ -27,9 +25,7 @@ public class AfterFight implements Observer {
     public void update(Observable o, Object arg) {
         if (this.player.getFighting() && trigger.equals(arg)){
             this.changeStates();
-            String line1 = "Would you like to heal or upgrade a weapon?";
-            String line3 = "[H]Heal     or     [U]Upgrade";
-            // call presenter to ask player if they want to heal or upgrade
+            // call Henry's class
         }
     }
 }
