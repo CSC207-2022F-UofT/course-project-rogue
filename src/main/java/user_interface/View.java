@@ -24,7 +24,7 @@ public class View implements KeyListener, View_Interface {
         game_play.setResizable(false);
         //game_play.setUndecorated(true);
         game_play.setTitle("");
-
+        controller = new Controller();
         //Add Menu panel
         if (progress == 0){
             gameFrame = new GameFrame(this);

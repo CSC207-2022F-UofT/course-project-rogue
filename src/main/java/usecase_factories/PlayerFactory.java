@@ -20,7 +20,7 @@ public class PlayerFactory{
             return player;
         }
 
-        GameFileReader pf = new GameFileReader( "data_base");
+        GameFileReader pf = new GameFileReader( "data_base/Player.json");
         try {
             return new ObjectMapper().readValue(pf.findString("class", "Basic Player"), Player.class);
         } catch (JsonProcessingException e) {

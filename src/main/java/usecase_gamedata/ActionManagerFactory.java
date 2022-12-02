@@ -1,5 +1,6 @@
 package usecase_gamedata;
 
+import file_reader.GameFileReader;
 import usecase_essence_use.heal.HealCalculator;
 import usecase_essence_use.heal.Healer;
 import usecase_essence_use.upgrade.UpgradeCalculator;
@@ -13,7 +14,7 @@ import usecase_playeractions.MoveManager;
 public class ActionManagerFactory {
 
     private PlayerFactory playerFactory;
-    private LevelFactory levelFactory;
+    private MapFactory mapFactory;
     private MoveManager moveManager;
 
     /**
@@ -36,7 +37,7 @@ public class ActionManagerFactory {
     public ActionManagerFactory(){
         playerFactory = new PlayerFactory();
         playerFactory.create();
-        levelFactory = new LevelFactory();
+        mapFactory = new MapFactory(new GameFileReader("data_base/Map.jon"));
         moveManager = new MoveManager();
     }
 
@@ -45,7 +46,7 @@ public class ActionManagerFactory {
      * @param level The level id.
      */
     private void updateMoveManager(int level){
-        this.moveManager.changeMap(this.playerFactory.create(),levelFactory.create(level));
+        this.moveManager.changeMap(this.playerFactory.create(),mapFactory.create(level));
     }
 
     /**
@@ -53,7 +54,7 @@ public class ActionManagerFactory {
      * @param level The level ID.
      */
     public void enterLevel(int level){
-        levelFactory.setSpawnPoint(this.playerFactory.create(),level);
+        mapFactory.setPlayerLocation(this.playerFactory.create());
         this.updateMoveManager(level);
     }
 
