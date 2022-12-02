@@ -5,14 +5,15 @@ import file_reader.GameFileReaderInterface;
 import file_writer.GameFileWriter;
 import file_writer.GameFileWriterInterface;
 import interface_adapters.OutputBoundary;
+import usecase_event.Event;
 import user_interface.View;
-import user_interface.ViewInterface;
+import user_interface.View_Interface;
 import user_interface.Visual;
 
 public class Game {
 
     public static void main(String[] args) {
-        ViewInterface vi = new View();
+        View_Interface vi = new View();
         OutputBoundary outBound = new Visual(vi);
 
         GameFileReaderInterface playerReader = new GameFileReader("data_base/Player.json");
@@ -22,6 +23,7 @@ public class Game {
         GameFileReaderInterface collectibleReader = new GameFileReader("data_base/Collectible.json");
         GameFileWriterInterface playerWriter = new GameFileWriter("data_base/Player_save.json");
         playerWriter.register(playerReader);
+        playerReader.update("data_base/Player_save.json");
 
         //Use cases inject outputBoundary, fileReader, fileWriter
 
@@ -30,6 +32,7 @@ public class Game {
 
 
         //replace c with initialized controller
+ //       Controller
 //        vi.setController(c);
         vi.setVisible(true);
     }

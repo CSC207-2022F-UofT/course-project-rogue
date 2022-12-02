@@ -1,15 +1,15 @@
 package game_data;
 import entity.player.Player;
 import org.json.simple.parser.ParseException;
-import usecase_factories.Factory;
+import usecase_factories.PlayerFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
 
 
 public class PlayerInstances extends GameInstance<Player>{
-    Factory factory;
-    public PlayerInstances(Factory f) throws IOException, ParseException {
+    PlayerFactory factory;
+    public PlayerInstances(PlayerFactory f) throws IOException, ParseException {
         this.entityInstance = new HashMap<String, Player>();
         this.stored = false;
         this.factory = f;

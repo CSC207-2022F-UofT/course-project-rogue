@@ -2,7 +2,6 @@ package usecase_event;
 
 import java.util.Random;
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
 import user_interface.View;
 import user_interface.Visual;
 import usecase_factories.EquipmentFactory;
@@ -13,8 +12,7 @@ public class RandomEvent extends Event{
     MonsterFactory monsterFactory;
     EquipmentFactory equipmentFactory;
 
-    public RandomEvent(OutputBoundary outputBoundary, MonsterFactory mf, EquipmentFactory ef){
-        super(outputBoundary);
+    public RandomEvent(MonsterFactory mf, EquipmentFactory ef){
         this.monsterFactory = mf;
         this.equipmentFactory  = ef;
     }
@@ -29,11 +27,11 @@ public class RandomEvent extends Event{
         Random random = new Random();
         int random_prob = random.nextInt(101);
         if (random_prob < 70){
-            FightEvent fightEvent = new FightEvent(this.outputBoundary, monsterFactory, equipmentFactory);
+            FightEvent fightEvent = new FightEvent(monsterFactory, equipmentFactory);
             fightEvent.trigger(player);
         }
         else {
-            EssenceEvent essenceEvent = new EssenceEvent(this.outputBoundary);
+            EssenceEvent essenceEvent = new EssenceEvent();
             essenceEvent.trigger(player);
         }
     }

@@ -3,23 +3,20 @@ package usecase_event;
 import entity.player.Player;
 import interface_adapters.OutputBoundary;
 
+import java.util.Observable;
+
 public class NoEvent extends Event{
 
-    public NoEvent(OutputBoundary outputBoundary) {
-        super(outputBoundary);
-    }
-
     /**
-     * Triggering this Event lets the player choose to either heal or upgrade their weapon once. The Player also has the
-     * choice to neither heal nor upgrade if they have insufficient essence.
+     * Triggering this Event will not result in anything, it is meant to be a resting ground for the player.
      *
      * @param player the player triggering the Event
      */
     @Override
     public void trigger(Player player) {
-        player.setCanHeal(true);
-        player.setCanMove(false);
-        // And then let player choose if they want to heal or upgrade
+
+        outputBoundary.updateText("Nothing interesting to see here,", "the journey is long so", "you have to keep pushing", "");
+
     }
 
     /** Tells Map whether this tile could be stepped on by Player

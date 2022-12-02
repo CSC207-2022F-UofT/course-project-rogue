@@ -4,9 +4,6 @@ import interface_adapters.OutputBoundary;
 
 
 public class ArtifactEvent extends Event{
-    public ArtifactEvent(OutputBoundary outputBoundary){
-        super(outputBoundary);
-    }
 
     /**
      * Triggering this Event adds 1 to the Artifact that the player holds

@@ -8,8 +8,8 @@ import usecase_event.Event;
  * The Map that the player move on
  */
 public class Map{
-    private final int WIDTH = 15;
-    private final int LENGTH = 15;
+    private static final int WIDTH = 15;
+    private static final int LENGTH = 15;
     private final Event[][] board;
 
     /**

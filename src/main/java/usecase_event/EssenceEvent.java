@@ -6,10 +6,6 @@ import interface_adapters.OutputBoundary;
 import java.util.Random;
 
 public class EssenceEvent extends Event{
-    public EssenceEvent(OutputBoundary outputBoundary){
-        super(outputBoundary);
-    }
-
     /**
      * Triggering this Event adds a random amount to the Essence that the player holds
      *

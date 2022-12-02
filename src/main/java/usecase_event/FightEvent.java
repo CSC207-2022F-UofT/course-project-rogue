@@ -3,7 +3,6 @@ package usecase_event;
 import entity.item.Equipment;
 import entity.monster.Monster;
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
 import usecase_fight.DamageCalculator;
 import usecase_fight.DropRetriever;
 import usecase_fight.FightSummary;
@@ -19,8 +18,7 @@ public class FightEvent extends Event{
     private final MonsterFactory mf;
     private final EquipmentFactory ef;
 
-    public FightEvent(OutputBoundary outputBoundary, MonsterFactory monsterFactory, EquipmentFactory equipmentFactory){
-        super(outputBoundary);
+    public FightEvent(MonsterFactory monsterFactory, EquipmentFactory equipmentFactory){
         this.mf = monsterFactory;
         this.ef = equipmentFactory;
     }

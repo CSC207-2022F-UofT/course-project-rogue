@@ -19,8 +19,17 @@ public class PlayerDeserialization extends StdDeserializer<Player> {
     public PlayerDeserialization(Class<?> vc){
         super(vc);
     }
+
+    /**
+     *
+     * @param p Parsed used for reading JSON content(apart of Jackson, not our design)
+     * @param ctxt Context that can be used to access information about
+     *   this deserialization activity.(apart of Jackson, not our design)
+     * @return Player read from file
+     * @throws IOException
+     */
     @Override
-    public Player deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
+    public Player deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         ObjectMapper om = new ObjectMapper();
         JsonNode node = p.getCodec().readTree(p);
         DeserializeHelper h = new DeserializeHelper();
@@ -28,7 +37,6 @@ public class PlayerDeserialization extends StdDeserializer<Player> {
         int aTP = h.readInt(node.get("attackPoint"));
         CollectibleInventory inventory = om.treeToValue(node.get("inventory"), CollectibleInventory.class);
         BasicEquipmentSlots ep = om.treeToValue(node.get("equipments"), BasicEquipmentSlots.class);
-        int[] location = h.readIntArr(node.get("location"));
-        return new Player(mHP, aTP, inventory, ep, location);
+        return new Player(mHP, aTP, inventory, ep, null);
     }
 }

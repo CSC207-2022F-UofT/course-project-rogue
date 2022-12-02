@@ -1,13 +1,25 @@
 package usecase_factories;
 
+import entity.player.Player;
 import file_reader.GameFileReader;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.player.Player;
 
-public class PlayerFactory extends Factory<Player>{
-    @Override
+public class PlayerFactory{
+
+    private final Player player;
+
+    public PlayerFactory(){
+        player = null;
+    }
+
+
     public Player create() {
+
+        if(player != null){
+            return player;
+        }
+
         GameFileReader pf = new GameFileReader( "data_base");
         try {
             return new ObjectMapper().readValue(pf.findString("class", "Basic Player"), Player.class);

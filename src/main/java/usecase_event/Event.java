@@ -3,13 +3,17 @@ package usecase_event;
 import entity.player.Player;
 import interface_adapters.OutputBoundary;
 
-abstract public class Event implements Enterable{
+public class Event implements Enterable{
 
-    OutputBoundary outputBoundary;
+    protected static OutputBoundary outputBoundary;
 
     public Event(OutputBoundary outputBoundary){
-        this.outputBoundary = outputBoundary;
+        Event.outputBoundary = outputBoundary;
     }
+
+    public Event() {
+    }
+
 
     /** Tells Map whether this tile could be stepped on by Player
      *
@@ -19,6 +23,8 @@ abstract public class Event implements Enterable{
 
         return false;
     }
-    public abstract void trigger(Player player);
+    public void trigger(Player player){
+
+    }
 
 }
