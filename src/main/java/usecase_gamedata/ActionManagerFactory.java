@@ -1,6 +1,12 @@
 package usecase_gamedata;
 
+import usecase_essence_use.heal.HealCalculator;
+import usecase_essence_use.heal.Healer;
+import usecase_essence_use.upgrade.UpgradeCalculator;
+import usecase_essence_use.upgrade.Upgrader;
 import usecase_factories.PlayerFactory;
+import usecase_fight.Fighter;
+import usecase_fight.Runner;
 import usecase_playeractions.ActionManager;
 import usecase_playeractions.MoveManager;
 
@@ -60,9 +66,11 @@ public class ActionManagerFactory {
 
     public ActionManager getActionManager(){
         ActionManager actionManager = new ActionManager();
-        //actionManager.addObserver(new Heal(playerFactory.create();,KEYS[0],KEYS[1],KEYS[2]));
-        //actionManager.addObserver(new Upgrade(playerFactory.create();player,KEYS[3],KEYS[4],KEYS[5]));
-        //actionManager.addObserver(new Combat(playerFactory.create();,KEYS[6],KEYS[7]));
+        actionManager.addObserver(new Healer(playerFactory.create(), new HealCalculator(playerFactory.create()),KEYS[0]));
+        actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Armor"),KEYS[2]));
+        actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Weapon"),KEYS[1]));
+        actionManager.addObserver(new Fighter(playerFactory.create(),KEYS[6]));
+        actionManager.addObserver(new Runner(playerFactory.create(), KEYS[7]));
         return actionManager;
     }
 
