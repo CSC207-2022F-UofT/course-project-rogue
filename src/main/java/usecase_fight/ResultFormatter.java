@@ -28,7 +28,7 @@ public class ResultFormatter {
         String line1 = "You won! " + powerResult;
         String line2 = "Damage Taken: 0";
         String line3 = "Items Received: " + received;
-        String line4 = "Press [SpaceBar] to continue."; // not sure if space bar or a different key
+        String line4 = "Press [C] to continue.";
         return new String[]{line1, line2, line3, line4};
     }
 
@@ -42,7 +42,7 @@ public class ResultFormatter {
         String line1 = "You lost. " + powerResult;
         String line2 = String.format("Damage Taken: %d", dmg);
         String line3 = "Items Received: None";
-        String line4 = "Press [SpaceBar] to continue."; // space bar or different key
+        String line4 = "Press [C] to continue.";
         return new String[]{line1, line2, line3, line4};
     }
 
@@ -53,7 +53,7 @@ public class ResultFormatter {
         String line1 = "A Draw!";
         String line2 = "Damage Taken: 0";
         String line3 = "Items Received: None";
-        String line4 = "Press [SpaceBar] to continue."; // SpaceBar or different key
+        String line4 = "Press [C] to continue.";
         return new String[]{line1, line2, line3, line4};
     }
 
@@ -61,8 +61,7 @@ public class ResultFormatter {
      * Format game over results.
      */
     public String[] formatGameOver(){
-        return new String[]{"GameOver.", "", "", "Press [SpaceBar] to return to main menu."};
-        // again not sure if [SpaceBar] or different key
+        return new String[]{"GameOver.", "", "", "Press [C] to return to main menu."};
     }
 
 
