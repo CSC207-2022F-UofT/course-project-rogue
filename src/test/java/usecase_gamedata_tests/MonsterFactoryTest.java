@@ -7,7 +7,6 @@ import file_reader.GameFileReaderInterface;
 import org.junit.jupiter.api.*;
 import usecase_factories.MonsterFactory;
 
-// Test Notes: MonsterFactory does not pass any tests. FileNotFoundException
 public class MonsterFactoryTest {
 
     GameFileReaderInterface fr = new GameFileReader("data_base/Monster.json");
@@ -39,8 +38,7 @@ public class MonsterFactoryTest {
                 () -> Assertions.assertTrue(75 <= result.getAttack() && result.getAttack() <= 125),
                 () -> Assertions.assertTrue(result.getPower() instanceof Steal));
 
-        // for now this test will not work because of inconsistencies with MonsterFactory and confusion with how to make
-        // a MonsterPower.
+        // this test does not pass since no implementation of making monsters with powers
     }
 
 }
