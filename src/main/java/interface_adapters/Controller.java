@@ -4,15 +4,13 @@ import usecase_factories.PlayerFactory;
 import usecase_gamedata.InputBoundaryFactory;
 import usecase_gamedata.InputBoundaryFactoryInputBoundary;
 import usecase_gamedata.MapFactory;
-import usecase_playeractions.InputBoundary;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
  * The Controller used to control player.
  */
-public class Controller implements KeyListener {
+public class Controller{
 
     /**
      * Contain actions that depend on a Map.
@@ -37,22 +35,15 @@ public class Controller implements KeyListener {
         moveManager = inputBoundaryFactory.getMoveManager();
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
 
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
     public void keyReleased(KeyEvent e) {
         moveManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
         actionManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
     }
-
-    public void newGame() {
+    public void newGame(){
+        this.enterLevel(0);
+    }
+    public void enterLevel(int level){
+        inputBoundaryFactory.enterLevel(level);
     }
 }

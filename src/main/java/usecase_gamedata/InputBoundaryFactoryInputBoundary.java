@@ -1,12 +1,14 @@
 package usecase_gamedata;
 
-import usecase_playeractions.InputBoundary;
+import usecase_playeractions.ActionManager;
+import usecase_playeractions.MoveManager;
 
 public interface InputBoundaryFactoryInputBoundary {
 
 
-    public InputBoundary getMoveManager();
-    public InputBoundary getActionManager();
+    MoveManager getMoveManager();
+    ActionManager getActionManager();
 
+    void enterLevel(int level);
 
 }
