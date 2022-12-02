@@ -307,3 +307,9 @@ build/classes/java/main/user_interface/Graphics/MapGraphics.class
 build/classes/java/main/user_interface/Graphics/ViewModel.class
 build/classes/java/main/user_interface/View$1.class
 build/classes/java/main/user_interface/ViewInterface.class
+build/classes/java/main/user_interface/View.class
+build/classes/java/main/usecase_playeractions/MoveManager.class
+build/classes/java/main/usecase_playeractions/ActionManager.class
+build/classes/java/main/usecase_gamedata/LevelFactory.class
+build/classes/java/main/usecase_gamedata/ActionManagerFactory.class
+build/classes/java/main/user_interface/View.class

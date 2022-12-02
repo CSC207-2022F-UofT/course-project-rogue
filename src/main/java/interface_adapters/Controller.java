@@ -38,6 +38,10 @@ public class Controller implements KeyListener {
      * Place the player in the new level.Called after OutputBoundary.updateWin().
      * @param level Level ID.
      */
+
+    public void newGame(){
+        this.enterLevel(0);
+    }
     public void enterLevel(int level){
        actionManagerFactory.enterLevel(level);
     }
