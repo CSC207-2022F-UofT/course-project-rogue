@@ -7,7 +7,7 @@ import file_reader.GameFileReaderInterface;
 
 public class EquipmentFactory {
 
-    private final GameFileReaderInterface readerInterface; // not sure if its problematic to have this as static
+    private final GameFileReaderInterface readerInterface;
 
     public EquipmentFactory(GameFileReaderInterface ef){
         this.readerInterface = ef;
