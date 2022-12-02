@@ -50,6 +50,7 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
      */
     @Override
     public void enterLevel(int level){
+        mapFactory.create(level);
         mapFactory.setSpawnPoint(playerFactory.create(), level);
         this.updateMoveManager(level);
     }
