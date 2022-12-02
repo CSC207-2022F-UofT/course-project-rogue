@@ -37,7 +37,7 @@ public class ActionManagerFactory {
     public ActionManagerFactory(){
         playerFactory = new PlayerFactory();
         playerFactory.create();
-        mapFactory = new MapFactory(new GameFileReader("data_base/Map.jon"));
+        mapFactory = new MapFactory(new GameFileReader("data_base/Map.json"));
         moveManager = new MoveManager();
     }
 
