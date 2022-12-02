@@ -34,17 +34,19 @@ public class Controller implements KeyListener {
         moveManager = actionManagerFactory.getMoveManager();
     }
 
-    /**
-     * Place the player in the new level.Called after OutputBoundary.updateWin().
-     * @param level Level ID.
-     */
 
     public void newGame(){
         this.enterLevel(0);
     }
+    /**
+     * Place the player in the new level.Called after OutputBoundary.updateWin().
+     * @param level ID.
+     */
+
     public void enterLevel(int level){
        actionManagerFactory.enterLevel(level);
     }
+
 
 
     @Override
