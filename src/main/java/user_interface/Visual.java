@@ -4,10 +4,11 @@ import user_interface.Graphics.ViewModel;
 
 public class Visual implements OutputBoundary {
 
-    private View_Interface vi;
+    private ViewInterface vi;
     private ViewModel model = new ViewModel();
-    public Visual(View_Interface vi){
+    public Visual(ViewInterface vi){
         this.vi = vi;
+
     }
 
 
@@ -71,6 +72,7 @@ public class Visual implements OutputBoundary {
      */
     @Override
     public void updatePlayerlocation(int[] location) {
+        System.out.println(location[0] + " " + location[1]);
         this.model.setPlayerLocation(location);
         vi.update(this.sendModel());
     }

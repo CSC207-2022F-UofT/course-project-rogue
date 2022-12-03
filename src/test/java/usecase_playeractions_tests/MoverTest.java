@@ -21,8 +21,6 @@ import user_interface.Visual;
 import java.util.Observable;
 
 public class MoverTest {
-    Event event = new Event(new Visual(new View()));
-
     Map map;
     Player player;
     int maxHP = 100;
@@ -40,7 +38,7 @@ public class MoverTest {
     @DisplayName("Setup before Each Test")
     void setUp(){
         map = new Map();
-        player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
+        player = new Player(maxHP, atkPt, inventory, equipmentSlots);
     }
 
     @Test

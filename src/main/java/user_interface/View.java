@@ -8,13 +8,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JFrame;
 
-public class View implements KeyListener, View_Interface {
+public class View implements KeyListener, ViewInterface {
     private int progress = 0;
     private Controller controller;
     private JFrame game_play;
     private GameFrame gameFrame;
 
-    public View(){
+    public View(Controller controller){
         game_play = new JFrame();
         game_play.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         //game_play.setLayout(null);
@@ -24,7 +24,7 @@ public class View implements KeyListener, View_Interface {
         game_play.setResizable(false);
         //game_play.setUndecorated(true);
         game_play.setTitle("");
-
+        this.controller = controller;
         //Add Menu panel
         if (progress == 0){
             gameFrame = new GameFrame(this);
@@ -41,6 +41,7 @@ public class View implements KeyListener, View_Interface {
             }
         });
         game_play.setVisible(true);
+        this.controller = controller;
     }
 
     /**
@@ -91,18 +92,6 @@ public class View implements KeyListener, View_Interface {
     @Override
     public void startGameVisual(boolean start){
         gameFrame.setStart(start);
-    }
-
-    /**
-     * @param c : Controller to be passed in
-     */
-    @Override
-    public void setController(Controller c) {
-        this.controller = c;
-    }
-
-    public static void main(String[] args) {
-        new View();
     }
 
 }

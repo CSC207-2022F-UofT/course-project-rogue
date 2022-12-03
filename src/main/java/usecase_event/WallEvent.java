@@ -5,6 +5,7 @@ import interface_adapters.OutputBoundary;
 
 public class WallEvent extends Event{
 
+
     /** Tells Map whether this tile could be stepped on by Player
      *
      * @return True if player can step on it, false if it can's
@@ -16,6 +17,10 @@ public class WallEvent extends Event{
 
     @Override
     public void trigger(Player player) {
+    }
+    @Override
+    public String toString() {
+        return "WallEvent";
     }
 
 }

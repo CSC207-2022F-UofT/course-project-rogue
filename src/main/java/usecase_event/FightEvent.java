@@ -112,4 +112,9 @@ public class FightEvent extends Event{
     public boolean enter(Player player){
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "FightEvent";
+    }
 }

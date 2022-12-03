@@ -11,6 +11,9 @@ public class Event implements Enterable{
         Event.outputBoundary = outputBoundary;
     }
 
+    public static void setOutputBoundary(OutputBoundary output){
+        Event.outputBoundary = output;
+    }
     public Event() {
     }
 
@@ -26,5 +29,4 @@ public class Event implements Enterable{
     public void trigger(Player player){
 
     }
-
 }

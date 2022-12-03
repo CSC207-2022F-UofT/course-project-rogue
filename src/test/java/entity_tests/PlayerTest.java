@@ -30,7 +30,7 @@ public class PlayerTest {
     @BeforeEach
     @DisplayName("Setup before Each Test")
     void setUp(){
-        player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
+        player = new Player(maxHP, atkPt, inventory, equipmentSlots);
     }
 
     @Test

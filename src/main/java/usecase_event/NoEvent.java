@@ -14,7 +14,9 @@ public class NoEvent extends Event{
      */
     @Override
     public void trigger(Player player) {
-
+        outputBoundary.updateHp(player.getCurrHitPoint());
+        outputBoundary.updateArtifact(player.getArtifact().getNum());
+        outputBoundary.updateEssenceCnt(player.getEssence().getNum());
         outputBoundary.updateText("Nothing interesting to see here,", "the journey is long so", "you have to keep pushing", "");
 
     }
@@ -27,5 +29,9 @@ public class NoEvent extends Event{
     public boolean enter(Player player){
 
         return true;
+    }
+    @Override
+    public String toString() {
+        return "NoEvent";
     }
 }

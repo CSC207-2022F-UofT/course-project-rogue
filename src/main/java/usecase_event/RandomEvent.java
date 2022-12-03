@@ -8,6 +8,7 @@ import user_interface.Visual;
 
 public class RandomEvent extends Event{
 
+
     /**
      * Triggering this Event randomly Triggers Fight Event, no Event or Essence Event
      *
@@ -35,6 +36,11 @@ public class RandomEvent extends Event{
     public boolean enter(Player player){
 
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "RandomEvent";
     }
 
 }

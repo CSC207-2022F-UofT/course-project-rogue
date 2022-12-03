@@ -6,6 +6,7 @@ import entity.item.Armor;
 import entity.item.Collectible;
 import entity.item.Weapon;
 import entity.player.Player;
+import interface_adapters.Controller;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +18,6 @@ import user_interface.Visual;
 
 
 public class ArtifactEventTest {
-    Event x = new Event(new Visual(new View()));
     int maxHP = 100;
     int atkPt = 10;
     Collectible essence = new Collectible("Essence", 100);
@@ -36,15 +36,9 @@ public class ArtifactEventTest {
     @DisplayName("Setup before Each Test")
     void setUp(){
         event = new ArtifactEvent();
-        player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
+        player = new Player(maxHP, atkPt, inventory, equipmentSlots);
     }
 
-    @Test
-    @DisplayName("Test Trigger")
-    void testTrigger(){
-        event.trigger(player);
-        Assertions.assertEquals(2, player.getArtifact().getNum());
-    }
     @Test
     @DisplayName("Test Enter")
     void testEnter(){

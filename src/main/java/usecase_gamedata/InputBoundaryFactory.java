@@ -5,16 +5,21 @@ import usecase_essence_use.heal.Healer;
 import usecase_essence_use.upgrade.UpgradeCalculator;
 import usecase_essence_use.upgrade.Upgrader;
 import usecase_factories.PlayerFactory;
-import usecase_fight.Fighter;
-import usecase_fight.Runner;
 import usecase_playeractions.ActionManager;
+import usecase_playeractions.Map;
 import usecase_playeractions.MoveManager;
 
-public class ActionManagerFactory {
+public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
     private PlayerFactory playerFactory;
-    private LevelFactory levelFactory;
+    private MapFactory mapFactory;
     private MoveManager moveManager;
+
+    public InputBoundaryFactory(PlayerFactory playerFactory, MapFactory mapFactory) {
+        this.playerFactory = playerFactory;
+        this.mapFactory = mapFactory;
+        this.moveManager = new MoveManager();
+    }
 
     /**
      * The default keys:
@@ -30,30 +35,23 @@ public class ActionManagerFactory {
      */
     private final String[] KEYS = new String[]{"H","Y","N","U","A","S","F","R","W","A","S","D"};
 
-    /**
-     * Create a ActionManagerFactory, by calling this, a Player is being created from file.
-     */
-    public ActionManagerFactory(){
-        playerFactory = new PlayerFactory();
-        playerFactory.create();
-        levelFactory = new LevelFactory();
-        moveManager = new MoveManager();
-    }
 
     /**
      * Change moveManager, so it is on the Map of next level.
      * @param level The level id.
      */
     private void updateMoveManager(int level){
-        this.moveManager.changeMap(this.playerFactory.create(),levelFactory.create(level));
+        this.moveManager.changeMap(this.playerFactory.create(),mapFactory.create(level));
     }
 
     /**
      * Change MoveManager and Player, so they are in the next level.
      * @param level The level ID.
      */
+    @Override
     public void enterLevel(int level){
-        levelFactory.setSpawnPoint(this.playerFactory.create(),level);
+        mapFactory.create(level);
+        mapFactory.setSpawnPoint(playerFactory.create(), level);
         this.updateMoveManager(level);
     }
 
@@ -69,8 +67,6 @@ public class ActionManagerFactory {
         actionManager.addObserver(new Healer(playerFactory.create(), new HealCalculator(playerFactory.create()),KEYS[0]));
         actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Armor"),KEYS[2]));
         actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Weapon"),KEYS[1]));
-        actionManager.addObserver(new Fighter(playerFactory.create(),KEYS[6]));
-        actionManager.addObserver(new Runner(playerFactory.create(), KEYS[7]));
         return actionManager;
     }
 

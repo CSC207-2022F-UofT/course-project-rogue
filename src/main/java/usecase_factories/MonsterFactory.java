@@ -9,8 +9,12 @@ public class MonsterFactory{
 
     private static GameFileReaderInterface mf; // not sure if its problematic to have this as static
 
-    public MonsterFactory(GameFileReaderInterface mf){
-        MonsterFactory.mf = mf;
+    public MonsterFactory(){
+
+    }
+
+    public static void setFileReader(GameFileReaderInterface fileReader){
+        MonsterFactory.mf = fileReader;
     }
 
     /**

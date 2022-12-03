@@ -36,7 +36,7 @@ public class Grid {
      */
     public void draw(Graphics g){
         g.drawImage(this.image, this.x, this.y, this.length, this.length, null);
-        if(MapGraphics.playerLocation[0] == x && MapGraphics.playerLocation[1] == y){
+        if(MapGraphics.playerLocation[0] == this.x && MapGraphics.playerLocation[1] == this.y){
             g.drawImage(this.playerImage, this.x, this.y, this.length, this.length, null);
         }
     }
