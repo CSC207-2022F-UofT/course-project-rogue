@@ -1,9 +1,9 @@
-package usecase_essence_use.data_calculator;
+package usecase_essence_use.data_preset_normal;
 
-public class CalculatorCollectible {
-    public int essenceHPExchangeRate;
-    public int essenceForUpgrade;
-    public CalculatorCollectible(){
+public final class collectibleNeedSetting {
+    public final int essenceHPExchangeRate;
+    public final int essenceForUpgrade;
+    public collectibleNeedSetting(){
         essenceHPExchangeRate = 1;
         essenceForUpgrade = 20;
     }

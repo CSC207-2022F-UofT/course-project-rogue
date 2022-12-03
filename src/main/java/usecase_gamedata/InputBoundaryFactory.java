@@ -1,12 +1,11 @@
 package usecase_gamedata;
 
-import usecase_essence_use.heal.HealCalculator;
-import usecase_essence_use.heal.Healer;
-import usecase_essence_use.upgrade.UpgradeCalculator;
-import usecase_essence_use.upgrade.Upgrader;
+import usecase_essence_use.manager.HealCalculator;
+import usecase_essence_use.manager.Healer;
+import usecase_essence_use.essenceUseKey.UpgradeCalculator;
+import usecase_essence_use.essenceUseKey.Upgrader;
 import usecase_factories.PlayerFactory;
 import usecase_playeractions.ActionManager;
-import usecase_playeractions.Map;
 import usecase_playeractions.MoveManager;
 
 public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
