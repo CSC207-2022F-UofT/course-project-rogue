@@ -72,6 +72,7 @@ public class Visual implements OutputBoundary {
      */
     @Override
     public void updatePlayerlocation(int[] location) {
+        System.out.println(location[0] + " " + location[1]);
         this.model.setPlayerLocation(location);
         vi.update(this.sendModel());
     }
