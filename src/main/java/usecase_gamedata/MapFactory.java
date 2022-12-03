@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.player.Player;
 import file_reader.GameFileReaderInterface;
 import file_reader.deserialization.DeserializeHelper;
-import game_data.PlayerInstances;
 import interface_adapters.OutputBoundary;
 import usecase_playeractions.Map;
 
@@ -56,7 +55,13 @@ public class MapFactory {
             JsonNode mn = new ObjectMapper().readTree(jsonString);
             int[] location = new DeserializeHelper().readIntArr(mn.get("starting"));
             player.setLocation(location[0], location[1]);
+
             outputBoundary.updatePlayerlocation(location);
+            outputBoundary.updateHp(player.getCurrHitPoint());
+            outputBoundary.updateEssenceCnt(player.getEssence().getNum());
+            outputBoundary.updateArtifact(player.getEssence().getNum());
+            outputBoundary.updateText("A voice whispers to you:", "\" You must get 5 Artifact to leave this place \"","" ,"");
+
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
