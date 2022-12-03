@@ -84,6 +84,7 @@ public class GameFrame extends JPanel{
     }
     public void setViewModel(ViewModel viewModel) {
         this.viewModel = viewModel;
+        repaint();
     }
     public void goToMenu(){
         MapGraphics.playerLocation[0] = -1;
