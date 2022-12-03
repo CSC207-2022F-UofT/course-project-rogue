@@ -6,9 +6,9 @@ import file_writer.GameFileWriterInterface;
 import interface_adapters.OutputBoundary;
 
 public class WinEvent extends Event{
-    private final GameFileWriterInterface fileWriter;
-    public WinEvent(GameFileWriterInterface fileWriter){
-        this.fileWriter = fileWriter;
+    private static GameFileWriterInterface fileWriter;
+    public static void setFileWriter(GameFileWriterInterface fileWriter){
+        WinEvent.fileWriter = fileWriter;
     }
 
     @Override
@@ -16,7 +16,6 @@ public class WinEvent extends Event{
         int currArtifactNum = player.getArtifact().getNum();
         if (currArtifactNum >= 5){
             fileWriter.writeToFile(player);
-            fileWriter.notify();
 
             outputBoundary.updateText("You Win!", "", "", "");
             outputBoundary.updateWin();
@@ -32,6 +31,11 @@ public class WinEvent extends Event{
     @Override
     public boolean enter(Player player){
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "WinEvent";
     }
 
 }

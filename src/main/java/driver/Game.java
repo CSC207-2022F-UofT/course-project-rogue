@@ -1,11 +1,19 @@
 package driver;
 
+import entity.monster.Monster;
+import entity.player.Player;
 import file_reader.GameFileReader;
 import file_reader.GameFileReaderInterface;
 import file_writer.GameFileWriter;
 import file_writer.GameFileWriterInterface;
 import interface_adapters.OutputBoundary;
 import usecase_event.Event;
+import usecase_event.WinEvent;
+import usecase_factories.EquipmentFactory;
+import usecase_factories.MonsterFactory;
+import usecase_factories.PlayerFactory;
+import usecase_gamedata.MapFactory;
+import usecase_playeractions.Map;
 import user_interface.View;
 import user_interface.View_Interface;
 import user_interface.Visual;
@@ -13,9 +21,6 @@ import user_interface.Visual;
 public class Game {
 
     public static void main(String[] args) {
-        View_Interface vi = new View();
-        OutputBoundary outBound = new Visual(vi);
-
         GameFileReaderInterface playerReader = new GameFileReader("data_base/Player.json");
         GameFileReaderInterface monsterReader = new GameFileReader("data_base/Monster.json");
         GameFileReaderInterface mapReader = new GameFileReader("data_base/Map.json");
@@ -26,8 +31,17 @@ public class Game {
         playerReader.update("data_base/Player_save.json");
 
         //Use cases inject outputBoundary, fileReader, fileWriter
+        PlayerFactory.setFileReader(playerReader);
+        WinEvent.setFileWriter(playerWriter);
+        MonsterFactory.setFileReader(monsterReader);
+        EquipmentFactory.setFileReader(equipmentReader);
+        MapFactory.setFileReader(mapReader);
 
-
+        View_Interface vi = new View();
+        OutputBoundary outBound = new Visual(vi);
+        Event.setOutputBoundary(outBound);
+        Map.setOutputBoundary(outBound);
+        MapFactory.setOutputBoundary(outBound);
         //Controller inject inputBoundaries
 
 

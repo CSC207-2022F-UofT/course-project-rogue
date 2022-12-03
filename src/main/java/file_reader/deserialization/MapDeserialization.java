@@ -41,29 +41,27 @@ public class MapDeserialization extends StdDeserializer<Map> {
                 switch (event){
                     case "A":
                         e = new ArtifactEvent();
-                        e = (ArtifactEvent) e;
+                        break;
                     case "Es":
                         e = new EssenceEvent();
-                        e = (EssenceEvent) e;
+                        break;
                     case "F":
                         e = new FightEvent();
-                        e = (FightEvent) e;
+                        break;
                     case "N":
                         e = new NoEvent();
-                        e = (NoEvent) e;
+                        break;
                     case "R":
                         e = new RandomEvent();
-                        e = (RandomEvent) e;
+                        break;
                     case "WL":
                         e = new WallEvent();
-                        e = (WallEvent) e;
+                        break;
                     case "W":
-                        //TODO: Find a way to add GameFileReader inside Win Event
-//                        e = new WinEvent();
-//                        e = (WinEvent) e;
+                        e = new WinEvent();
+                        break;
                     default:
                         e = new WallEvent();
-                        e = (WallEvent) e;
                 }
                 map.setBoard(e, i, o);
             }

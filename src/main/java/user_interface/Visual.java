@@ -8,6 +8,7 @@ public class Visual implements OutputBoundary {
     private ViewModel model = new ViewModel();
     public Visual(View_Interface vi){
         this.vi = vi;
+
     }
 
 

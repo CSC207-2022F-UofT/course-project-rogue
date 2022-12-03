@@ -5,12 +5,11 @@ import usecase_playeractions.ActionManager;
 import usecase_playeractions.MoveManager;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
  * The Controller used to control player.
  */
-public class Controller implements KeyListener {
+public class Controller {
 
     /**
      * Contain actions that depend on a Map.
@@ -36,9 +35,7 @@ public class Controller implements KeyListener {
 
     /**
      * Place the player in the new level.Called after OutputBoundary.updateWin().
-     * @param level Level ID.
      */
-
     public void newGame(){
         this.enterLevel(0);
     }
@@ -46,18 +43,6 @@ public class Controller implements KeyListener {
        actionManagerFactory.enterLevel(level);
     }
 
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
     public void keyReleased(KeyEvent e) {
         moveManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
         actionManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());

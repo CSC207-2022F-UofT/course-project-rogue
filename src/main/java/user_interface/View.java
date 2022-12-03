@@ -41,6 +41,7 @@ public class View implements KeyListener, View_Interface {
             }
         });
         game_play.setVisible(true);
+        this.controller = new Controller();
     }
 
     /**
@@ -91,18 +92,6 @@ public class View implements KeyListener, View_Interface {
     @Override
     public void startGameVisual(boolean start){
         gameFrame.setStart(start);
-    }
-
-    /**
-     * @param c : Controller to be passed in
-     */
-    @Override
-    public void setController(Controller c) {
-        this.controller = c;
-    }
-
-    public static void main(String[] args) {
-        new View();
     }
 
 }

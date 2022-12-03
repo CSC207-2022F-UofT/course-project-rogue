@@ -9,8 +9,12 @@ public class EquipmentFactory {
 
     private static GameFileReaderInterface ef; // not sure if its problematic to have this as static
 
-    public EquipmentFactory(GameFileReaderInterface ef){
-        EquipmentFactory.ef = ef;
+    public EquipmentFactory(){
+
+    }
+
+    public static void setFileReader(GameFileReaderInterface fileReader){
+        EquipmentFactory.ef = fileReader;
     }
 
     /**

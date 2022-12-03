@@ -28,4 +28,8 @@ public class NoEvent extends Event{
 
         return true;
     }
+    @Override
+    public String toString() {
+        return "NoEvent";
+    }
 }

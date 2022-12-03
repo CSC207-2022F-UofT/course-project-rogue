@@ -27,4 +27,8 @@ public class ArtifactEvent extends Event{
 
         return true;
     }
+    @Override
+    public String toString() {
+        return "ArtifactEvent";
+    }
 }

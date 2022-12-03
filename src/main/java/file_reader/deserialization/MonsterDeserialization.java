@@ -13,7 +13,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class MonsterDeserialization  extends StdDeserializer<Monster> {
-    public MonsterDeserialization() {
+
+    public MonsterDeserialization(){
         this(null);
     }
 

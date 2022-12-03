@@ -1,16 +1,24 @@
 package usecase_playeractions;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import entity.player.Player;
+import file_reader.deserialization.MapDeserialization;
+import file_reader.deserialization.PlayerDeserialization;
+import interface_adapters.OutputBoundary;
 import usecase_event.Event;
 
 /**
  * The Map that the player move on
  */
+
+@JsonDeserialize(using = MapDeserialization.class)
 public class Map{
     private static final int WIDTH = 15;
     private static final int LENGTH = 15;
     private final Event[][] board;
+
+    private static OutputBoundary outputBoundary;
 
     /**
      * Initialize an empty Map.
@@ -29,6 +37,20 @@ public class Map{
         board[x][y] = e;
     }
 
+    public static void setOutputBoundary(OutputBoundary output){
+        Map.outputBoundary = output;
+    }
+
+    public String[][] getStringBoard(){
+        String[][] map = new String[WIDTH][LENGTH];
+        for(int i = 0; i < WIDTH; i++){
+            for(int o = 0; o < LENGTH; o++){
+                 map[i][o] = this.board[i][o].toString();
+            }
+        }
+        return map;
+    }
+
     /**
      * Attempts to move the player to (x,y).
      * Return false if (x,y) is unreachable(e.g. is a wall)
@@ -42,8 +64,7 @@ public class Map{
     private boolean moveTo(Player p,int x,int y){
         if(board[x][y].enter(p)){
             board[x][y].trigger(p);
-            p.setLocation(0,x);
-            p.setLocation(1,y);
+            p.setLocation(x,y);
             return true;
         }else{
             return false;

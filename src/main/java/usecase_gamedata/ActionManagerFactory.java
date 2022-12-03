@@ -13,7 +13,7 @@ import usecase_playeractions.MoveManager;
 public class ActionManagerFactory {
 
     private PlayerFactory playerFactory;
-    private LevelFactory levelFactory;
+    private MapFactory levelFactory;
     private MoveManager moveManager;
 
     /**
@@ -36,7 +36,7 @@ public class ActionManagerFactory {
     public ActionManagerFactory(){
         playerFactory = new PlayerFactory();
         playerFactory.create();
-        levelFactory = new LevelFactory();
+        levelFactory = new MapFactory();
         moveManager = new MoveManager();
     }
 
