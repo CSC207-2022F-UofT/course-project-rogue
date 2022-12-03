@@ -25,7 +25,7 @@ public class StealTest {
         Collectible essence = new Collectible("Essence", n);
         Collectible artifact = new Collectible("Artifact");
         CollectibleInventory collect = new CollectibleInventory("1", essence, artifact);
-        return new Player(5, 5, collect, equipment, location);
+        return new Player(5, 5, collect, equipment);
     }
 
     /** Tests Monster.isMustBeat. */

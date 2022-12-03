@@ -18,7 +18,6 @@ import user_interface.View;
 import user_interface.Visual;
 
 public class MapTest {
-    Event event = new Event(new Visual(new View()));
 
     Map map;
     Player player;
@@ -37,7 +36,7 @@ public class MapTest {
     @DisplayName("Setup before Each Test")
     void setUp(){
         map = new Map();
-        player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
+        player = new Player(maxHP, atkPt, inventory, equipmentSlots);
     }
 
     @Test
