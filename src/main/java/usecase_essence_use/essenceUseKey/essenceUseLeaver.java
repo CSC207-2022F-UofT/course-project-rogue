@@ -41,7 +41,7 @@ public class essenceUseLeaver implements Observer {
         }else if (inPage && arg.equals("N")){
             this.speaker.showEssenceUseInfo();
             this.inPage = false;
-        } else if (inPage && arg.equals(" ") &&!player.getCanHeal() && !player.getCanUpgrade()) {
+        } else if (inPage && arg.equals("C") &&!player.getCanHeal() && !player.getCanUpgrade()) {
             this.speaker.showEssenceUseEnd();
             this.inPage = false;
         }

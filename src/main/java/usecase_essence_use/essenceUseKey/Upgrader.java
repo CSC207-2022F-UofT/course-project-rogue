@@ -54,7 +54,7 @@ public class Upgrader implements Observer{
             this.player.setUpgrading(false);
             speaker.showEssenceUseInfo();
         }
-        if (inPage && !player.getCanUpgrade() && arg.equals(" ")){
+        if (inPage && !player.getCanUpgrade() && arg.equals("C")){
             this.inPage = false;
             this.player.setUpgrading(false);
             speaker.showEssenceUseInfo();
