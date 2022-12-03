@@ -9,18 +9,18 @@ import usecase_essence_use.manager.essenceUseManager;
 import usecase_essence_use.manager.essenceUseSpeakerManager;
 import usecase_playeractions.ActionManager;
 
-public class essenceUseActionManager extends ActionManager {
+public class EssenceUseActionManager extends ActionManager {
     /**
      * Initialize the basic control class with no Observer
      */
-    public essenceUseActionManager(){}
+    public EssenceUseActionManager(){}
 
     /**
      * Initialize the actions choice of the player.
      * The basic Upgrade and Heal actions will be initialized.
      * Sets up the default  observer of Heal and Upgrade
      */
-    private void setDefaultKey(Player player, OutputBoundary outputBoundary){
+    public void setDefaultKey(Player player, OutputBoundary outputBoundary){
         collectibleNeedSetting collectibleNeed = new collectibleNeedSetting();
         statSetting statSetting = new statSetting();
         essenceUseManager manager = new essenceUseManager(player, collectibleNeed, statSetting);
