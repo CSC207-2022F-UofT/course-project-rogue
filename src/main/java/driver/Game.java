@@ -1,7 +1,5 @@
 package driver;
 
-import entity.monster.Monster;
-import entity.player.Player;
 import file_reader.GameFileReader;
 import file_reader.GameFileReaderInterface;
 import file_writer.GameFileWriter;
@@ -16,7 +14,7 @@ import usecase_factories.PlayerFactory;
 import usecase_gamedata.MapFactory;
 import usecase_playeractions.Map;
 import user_interface.View;
-import user_interface.View_Interface;
+import user_interface.ViewInterface;
 import user_interface.Visual;
 
 public class Game {
@@ -41,7 +39,7 @@ public class Game {
         PlayerFactory playerFactory = new PlayerFactory();
         MapFactory mapFactory = new MapFactory();
         Controller controller = new Controller(playerFactory, mapFactory);
-        View_Interface vi = new View(controller);
+        ViewInterface vi = new View(controller);
         OutputBoundary outBound = new Visual(vi);
         Event.setOutputBoundary(outBound);
         Map.setOutputBoundary(outBound);
