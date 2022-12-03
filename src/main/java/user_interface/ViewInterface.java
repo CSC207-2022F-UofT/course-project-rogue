@@ -3,8 +3,8 @@ package user_interface;
 import user_interface.Graphics.ViewModel;
 
 public interface ViewInterface {
-    public void setVisible(boolean b);
-    public void update(ViewModel model);
-    public void goBackToMenu();
-    public void startGameVisual(boolean s);
+    void setVisible(boolean b);
+   void update(ViewModel model);
+    void goBackToMenu();
+    void startGameVisual(boolean s);
 }
