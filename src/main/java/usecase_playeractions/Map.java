@@ -79,10 +79,10 @@ public class Map{
      * @return true if (x,y) is an Event.
      */
     private boolean onBoard(int x,int y){
-        if(x<WIDTH && y<LENGTH){
-            return false;
-        } else {
+        if(x<WIDTH && 0 <= x && 0 <= y && y<LENGTH){
             return board[x][y] != null;
+        } else {
+            return false;
     }
     }
 
