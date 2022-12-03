@@ -4,9 +4,9 @@ import user_interface.Graphics.ViewModel;
 
 public class Visual implements OutputBoundary {
 
-    private View_Interface vi;
+    private ViewInterface vi;
     private ViewModel model = new ViewModel();
-    public Visual(View_Interface vi){
+    public Visual(ViewInterface vi){
         this.vi = vi;
 
     }

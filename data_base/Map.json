@@ -2,9 +2,9 @@
   {
     "index": 0,
     "map": [
-      ["N","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["N","N","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
       ["N","N","WL","WL","WL","WL","WL","WL","WL","WL","N","WL","WL","WL","WL"],
-      ["N","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
+      ["N","N","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
       ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
       ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],
       ["WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL","WL"],

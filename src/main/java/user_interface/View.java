@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JFrame;
 
-public class View implements KeyListener, View_Interface {
+public class View implements KeyListener, ViewInterface {
     private int progress = 0;
     private Controller controller;
     private JFrame game_play;
