@@ -36,13 +36,6 @@ public class EssenceEventTest {
     }
 
     @Test
-    @DisplayName("Test Trigger")
-    void testTrigger(){
-        int originalAmount = essence.getNum();
-        event.trigger(player);
-        Assertions.assertTrue(player.getEssence().getNum() > originalAmount);
-    }
-    @Test
     @DisplayName("Test Enter")
     void testEnter(){
         Assertions.assertTrue(event.enter(player));
