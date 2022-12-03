@@ -38,6 +38,6 @@ public class PlayerDeserialization extends StdDeserializer<Player> {
         int aTP = h.readInt(node.get("attackPoint"));
         CollectibleInventory inventory = om.treeToValue(node.get("inventory"), CollectibleInventory.class);
         BasicEquipmentSlots ep = om.treeToValue(node.get("equipments"), BasicEquipmentSlots.class);
-        return new Player(mHP, aTP, inventory, ep, null);
+        return new Player(mHP, aTP, inventory, ep);
     }
 }

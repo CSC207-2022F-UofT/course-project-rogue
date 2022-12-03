@@ -34,12 +34,13 @@ public class MoveManagerTest {
     @DisplayName("Setup before Each Test")
     void setUp(){
         map = new Map();
-        player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
+        player = new Player(maxHP, atkPt, inventory, equipmentSlots);
     }
 
     @Test
     @DisplayName("Test Move")
     void testMove(){
+        player.setLocation(location[0], location[1]);
         map.setBoard(new ArtifactEvent(),0,1);
         MoveManager control = new MoveManager();
         control.changeMap(player,map);
