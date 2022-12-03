@@ -1,24 +1,33 @@
 package usecase_gamedata;
 
+import file_writer.GameFileWriterInterface;
 import usecase_essence_use.heal.HealCalculator;
 import usecase_essence_use.heal.Healer;
 import usecase_essence_use.upgrade.UpgradeCalculator;
 import usecase_essence_use.upgrade.Upgrader;
 import usecase_factories.PlayerFactory;
 import usecase_playeractions.ActionManager;
-import usecase_playeractions.Map;
 import usecase_playeractions.MoveManager;
 
 public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
-    private PlayerFactory playerFactory;
-    private MapFactory mapFactory;
-    private MoveManager moveManager;
+    private final PlayerFactory playerFactory;
+    private final MapFactory mapFactory;
+    private final MoveManager moveManager;
+
+    private static GameFileWriterInterface gameFileWriterInterface = null;
 
     public InputBoundaryFactory(PlayerFactory playerFactory, MapFactory mapFactory) {
         this.playerFactory = playerFactory;
+        InputBoundaryFactory.gameFileWriterInterface.register(playerFactory);
         this.mapFactory = mapFactory;
         this.moveManager = new MoveManager();
+    }
+
+    public static void setFileWriter(GameFileWriterInterface fileWriter){
+        if(gameFileWriterInterface == null){
+            InputBoundaryFactory.gameFileWriterInterface = fileWriter;
+        }
     }
 
     /**

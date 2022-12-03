@@ -4,16 +4,23 @@ import entity.player.Player;
 import file_reader.GameFileReaderInterface;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import usecase_factories.PlayerFactory;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GameFileWriter implements GameFileWriterInterface {
-    private String dir;
+    private final String dir;
     private GameFileReaderInterface reader;
+
+    private final ArrayList<PlayerFactory> factories;
 
     public GameFileWriter(String dir){
         this.dir = dir;
+        factories = new ArrayList<>();
     }
 
     /**
@@ -23,6 +30,25 @@ public class GameFileWriter implements GameFileWriterInterface {
     public void register(GameFileReaderInterface fileReader) {
         this.reader = fileReader;
     }
+
+    /**
+     * @param playerFactory : player factory to notify that the player has won.
+     */
+    @Override
+    public void register(PlayerFactory playerFactory) {
+        this.factories.add(playerFactory);
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void notifyPlayerFactory() {
+        for(PlayerFactory pf: factories){
+            pf.update();
+        }
+    }
+
 
     /**
      * Notifying the reader to switch to a new file to read.
@@ -37,15 +63,24 @@ public class GameFileWriter implements GameFileWriterInterface {
      */
     @Override
     public void writeToFile(Player player) {
-        JSONObject obj = new JSONObject();
-
+        JSONParser parser = new JSONParser();
+        JSONObject obj = null;
+        try {
+            obj = (JSONObject)parser.parse(reader.findString("class", "Basic Player"));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         //Serializing CollectibleInventory inventory
         JSONObject essence = new JSONObject();
+        JSONObject artifact = new JSONObject();
         essence.put("collectibleType", "Essence");
         essence.put("num", player.getEssence().getNum());
+        artifact.put("collectibleType", "Artifact");
+        artifact.put("num", 0);
         JSONObject collectibleInventory = new JSONObject();
         collectibleInventory.put("inventoryName", "Inventory");
         collectibleInventory.put("essence", essence);
+        collectibleInventory.put("artifact", artifact);
 
         //Serializing Equipmentslots
         JSONObject equipments = new JSONObject();
@@ -63,7 +98,6 @@ public class GameFileWriter implements GameFileWriterInterface {
         obj.put("attackPoint", player.getAttackPoint());
         obj.put("inventory", collectibleInventory);
         obj.put("equipments", equipments);
-
         JSONArray arr = new JSONArray();
         arr.add(obj);
 
@@ -72,8 +106,8 @@ public class GameFileWriter implements GameFileWriterInterface {
             String pl = arr.toString();
             fileWriter.write(arr.toJSONString());
             fileWriter.close();
-            System.out.println("Wrote this player to " + this.dir + ": " + pl);
             this.notifyReader();
+            this.notifyPlayerFactory();
         } catch (IOException e) {
             System.out.println("Did not write player to any file");
             throw new RuntimeException(e);

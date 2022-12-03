@@ -1,7 +1,6 @@
 package usecase_factories;
 
 import entity.player.Player;
-import file_reader.GameFileReader;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import file_reader.GameFileReaderInterface;
@@ -9,14 +8,16 @@ import file_reader.GameFileReaderInterface;
 public class PlayerFactory {
 
     private Player player;
-    private static GameFileReaderInterface pf;
+    private static GameFileReaderInterface pf = null;
 
     public PlayerFactory() {
         player = null;
     }
 
     public static void setFileReader(GameFileReaderInterface pf) {
-        PlayerFactory.pf = pf;
+        if(PlayerFactory.pf == null) {
+            PlayerFactory.pf = pf;
+        }
     }
 
     public Player create() {
@@ -31,6 +32,10 @@ public class PlayerFactory {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public void update(){
+        player = null;
     }
 
 }

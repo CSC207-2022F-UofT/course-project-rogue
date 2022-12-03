@@ -7,14 +7,15 @@ import file_reader.GameFileReaderInterface;
 
 public class EquipmentFactory {
 
-    private static GameFileReaderInterface ef; // not sure if its problematic to have this as static
+    private static GameFileReaderInterface ef = null; // not sure if its problematic to have this as static
 
     public EquipmentFactory(){
 
     }
 
     public static void setFileReader(GameFileReaderInterface fileReader){
-        EquipmentFactory.ef = fileReader;
+        if(EquipmentFactory.ef == null)
+            EquipmentFactory.ef = fileReader;
     }
 
     /**

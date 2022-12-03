@@ -7,14 +7,15 @@ import file_reader.GameFileReaderInterface;
 
 public class MonsterFactory{
 
-    private static GameFileReaderInterface mf; // not sure if its problematic to have this as static
+    private static GameFileReaderInterface mf = null; // not sure if its problematic to have this as static
 
     public MonsterFactory(){
 
     }
 
     public static void setFileReader(GameFileReaderInterface fileReader){
-        MonsterFactory.mf = fileReader;
+        if(MonsterFactory.mf == null)
+            MonsterFactory.mf = fileReader;
     }
 
     /**

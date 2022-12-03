@@ -1,14 +1,13 @@
 package usecase_event;
 
 import entity.player.Player;
-import file_writer.GameFileWriter;
 import file_writer.GameFileWriterInterface;
-import interface_adapters.OutputBoundary;
 
 public class WinEvent extends Event{
-    private static GameFileWriterInterface fileWriter;
+    private static GameFileWriterInterface fileWriter = null;
     public static void setFileWriter(GameFileWriterInterface fileWriter){
-        WinEvent.fileWriter = fileWriter;
+        if(WinEvent.fileWriter == null)
+            WinEvent.fileWriter = fileWriter;
     }
 
     @Override
@@ -17,7 +16,8 @@ public class WinEvent extends Event{
         if (currArtifactNum >= 5){
             fileWriter.writeToFile(player);
 
-            outputBoundary.updateText("You Win!", "", "", "");
+
+            outputBoundary.updateText("You Escaped", "", "", "");
             outputBoundary.updateWin();
 
 

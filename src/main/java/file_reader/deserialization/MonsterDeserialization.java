@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import entity.monster.Monster;
 
@@ -30,8 +29,8 @@ public class MonsterDeserialization  extends StdDeserializer<Monster> {
     public Monster deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         JsonNode node = p.getCodec().readTree(p);
         DeserializeHelper h = new DeserializeHelper();
-        String name = h.readString(node.get("n"));
-        String type = h.readString(node.get("t"));
+        String name = h.readString(node.get("name"));
+        String type = h.readString(node.get("type"));
         HashMap<String, int[]> stats = new HashMap<>();
         Iterator<String> keys = node.get("stats").fieldNames();
         while(keys.hasNext()){

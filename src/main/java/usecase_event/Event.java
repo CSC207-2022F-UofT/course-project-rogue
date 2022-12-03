@@ -5,14 +5,16 @@ import interface_adapters.OutputBoundary;
 
 public class Event implements Enterable{
 
-    protected static OutputBoundary outputBoundary;
+    protected static OutputBoundary outputBoundary = null;
 
     public Event(OutputBoundary outputBoundary){
         Event.outputBoundary = outputBoundary;
     }
 
     public static void setOutputBoundary(OutputBoundary output){
-        Event.outputBoundary = output;
+        if(Event.outputBoundary == null) {
+            Event.outputBoundary = output;
+        }
     }
     public Event() {
     }
