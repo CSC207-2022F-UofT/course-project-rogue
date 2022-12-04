@@ -1,7 +1,5 @@
 package usecase_fight_tests;
 
-import file_reader.GameFileReader;
-import file_reader.GameFileReaderInterface;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,9 +8,7 @@ import usecase_fight.DropRetriever;
 import usecase_factories.EquipmentFactory;
 
 public class DropRetrieverTest {
-
-    GameFileReaderInterface fr = new GameFileReader("data_base");
-    EquipmentFactory ef = new EquipmentFactory(fr);
+    EquipmentFactory ef = new EquipmentFactory();
     DropRetriever dr;
 
     @BeforeEach

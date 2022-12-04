@@ -13,8 +13,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_fight.FightSummary;
 import usecase_fight.Runner;
-import user_interface.View;
-import user_interface.Visual;
 
 import java.util.HashMap;
 import java.util.Observable;
@@ -28,7 +26,6 @@ public class RunnerTest {
     Armor armor = new Armor("Padded Jacket", 50);
     Weapon weapon = new Weapon("Plastic Sword", 50);
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(weapon, armor);
-    int[] location = new int[]{0, 0};
     Runner runner;
     Player player;
     Monster monster;
@@ -45,12 +42,12 @@ public class RunnerTest {
         monster = new Monster("Slime", "Basic", stats, false);
         fs = new FightSummary(monster, 5, 100, 20);
 
-        player = new Player(20, 5, inventory, equipmentSlots, location);
+        player = new Player(20, 5, inventory, equipmentSlots);
         player.setFight(fs);
         player.setFighting(true);
         player.setCanMove(false);
 
-        runner = new Runner(new Visual(new View()), player, "R");
+        runner = new Runner(player, "R");
     }
 
     @Test

@@ -14,8 +14,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_fight.FightSummary;
 import usecase_fight.Fighter;
-import user_interface.View;
-import user_interface.Visual;
 
 import java.util.HashMap;
 import java.util.Observable;
@@ -29,7 +27,6 @@ public class FighterTest {
     Armor armor = new Armor("Padded Jacket", 50);
     Weapon weapon = new Weapon("Plastic Sword", 50);
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(weapon, armor);
-    int[] location = new int[]{0, 0};
     Player player;
     FightSummary fs; // 100 win, 5dmg, 5essence, stronger ARMOR
     FightSummary fs1; // 100 win, 5dmg, 5essence, stronger equipment
@@ -59,7 +56,7 @@ public class FighterTest {
         stats.put("Health", health);
         monster = new Monster("Slime", "Basic", stats, false);
 
-        player = new Player(20, 5, inventory, equipmentSlots, location);
+        player = new Player(20, 5, inventory, equipmentSlots);
         player.setFighting(true);
         player.setCanMove(false);
 
@@ -75,7 +72,7 @@ public class FighterTest {
         fs5 = new FightSummary(monster, 5, 0, 20, eq3);
         fs6 = new FightSummary(monster, 5, 0, 0, eq2);
 
-        fighter = new Fighter(new Visual(new View()), player, "F");
+        fighter = new Fighter(player, "F");
     }
 
     @Test

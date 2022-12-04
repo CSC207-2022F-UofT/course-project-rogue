@@ -15,8 +15,6 @@ import org.junit.jupiter.api.Test;
 import usecase_event.FightEvent;
 import usecase_factories.EquipmentFactory;
 import usecase_factories.MonsterFactory;
-import user_interface.View;
-import user_interface.Visual;
 
 public class FightEventTest {
     Collectible essence = new Collectible("Essence", 100);
@@ -30,15 +28,16 @@ public class FightEventTest {
     FightEvent event;
     GameFileReaderInterface fr = new GameFileReader("data_base/Equipment.json");
     GameFileReaderInterface fr2 = new GameFileReader("data_base/Monster.json");
-    MonsterFactory mf = new MonsterFactory(fr2);
-    EquipmentFactory ef = new EquipmentFactory(fr);
+
+    MonsterFactory mf = new MonsterFactory();
+    EquipmentFactory ef = new EquipmentFactory();
 
 
     @BeforeEach
     @DisplayName("SetUp Player and FightEvent")
     void setUp(){
-        // event = new FightEvent(new Visual(new View()), mf, ef);
-        player = new Player(5, 5, inventory, equipmentSlots, location);
+        event = new FightEvent();
+        player = new Player(5, 5, inventory, equipmentSlots);
     }
 
     @Test
