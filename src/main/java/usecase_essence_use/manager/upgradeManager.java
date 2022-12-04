@@ -88,6 +88,9 @@ public class upgradeManager {
      */
     public int getMaxTimes(){return  this.statDetermine.determineMaxUpgradeTimes();}
 
+    public boolean getBelowLimit(){
+        return statDetermine.determineMaxUpgradeTimes() > getEquipment(this.player, this.EquipType).getTimesUpgraded();}
+
     public void upgrade(){
         Equipment equipment = getEquipment(player, EquipType);
         if (CollectHelper.getAble()&& getTimesUpgrade()<getMaxTimes()) {
