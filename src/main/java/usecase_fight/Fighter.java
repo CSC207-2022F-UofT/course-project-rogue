@@ -6,25 +6,22 @@ import entity.monster.Monster;
 import entity.monster.MonsterPower;
 import entity.player.Player;
 import entity.item.Weapon;
-import interface_adapters.OutputBoundary;
 
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
 
-/** A fight sequence. */
-public class Fighter implements Observer {
+/** A path in which the user decides to fight. */
+public class Fighter extends FightPath implements Observer {
 
     /** Formatter that formats results of the fight to a string. */
     private final ResultFormatter formatter = new ResultFormatter(); // is it okay to have hard dependence here?
-    private final OutputBoundary outputBoundary;
     private final Player player;
     /** Keystroke that triggers this use case. */
     private final String trigger; // 'F'
 
     /** Creates a new Fighter with the given Player and trigger. */
-    public Fighter(OutputBoundary outputBoundary, Player player, String trigger){
-        this.outputBoundary = outputBoundary;
+    public Fighter(Player player, String trigger){
         this.player = player;
         this.trigger = trigger;
     }
