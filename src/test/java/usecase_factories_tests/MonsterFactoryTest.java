@@ -37,8 +37,6 @@ public class MonsterFactoryTest {
                 () -> Assertions.assertTrue(75 <= result.getHealth() && result.getHealth() <= 125),
                 () -> Assertions.assertTrue(75 <= result.getAttack() && result.getAttack() <= 125),
                 () -> Assertions.assertTrue(result.getPower() instanceof Steal));
-
-        // this test does not pass since no implementation of making monsters with powers
     }
 
 }
