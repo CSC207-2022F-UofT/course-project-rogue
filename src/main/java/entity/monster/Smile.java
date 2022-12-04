@@ -22,4 +22,7 @@ public class Smile extends MonsterPower{
     public String usePower(Character player) {
         return "The bear smiled at you and left. Strange.";
     }
+
+    @Override
+    public String toString(){ return "Unknown"; }
 }

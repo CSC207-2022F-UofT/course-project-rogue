@@ -26,4 +26,9 @@ public class ExtraDrops extends MonsterPower{
         ((Player) player).changeEssenceAmount(original); // doubles essence dropped
         return String.format("%d extra essence dropped!", original);
     }
+
+    @Override
+    public String toString(){
+        return "Drops 2x essence";
+    }
 }
