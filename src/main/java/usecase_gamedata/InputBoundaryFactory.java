@@ -24,6 +24,7 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
         this.playerFactory = playerFactory;
         this.mapFactory = mapFactory;
         this.moveManager = new MoveManager();
+        this.essenceUseManager = new essenceUseManager();
     }
 
     /**
@@ -70,9 +71,6 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
     public ActionManager getActionManager(){
         ActionManager actionManager = new ActionManager();
-        actionManager.addObserver(new Healer(playerFactory.create(), new HealCalculator(playerFactory.create()),KEYS[0]));
-        actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Armor"),KEYS[2]));
-        actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Weapon"),KEYS[1]));
         actionManager.addObserver(new Fighter(playerFactory.create(), KEYS[6]));
         actionManager.addObserver(new Runner(playerFactory.create(), KEYS[7]));
         actionManager.addObserver(new Restarter(playerFactory.create(), KEYS[12]));
