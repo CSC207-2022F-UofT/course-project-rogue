@@ -69,7 +69,7 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
     }
 
     public EssenceUseActionManager getEssenceUseActionManager(OutputBoundary outputBoundary){
-        this.essenceUseActionManager.setDefaultKey(playerFactory.create(), outputBoundary);
+        this.essenceUseActionManager.setDefaultKey(playerFactory.create());
         return essenceUseActionManager;
     }
 

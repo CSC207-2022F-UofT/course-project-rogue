@@ -1,17 +1,14 @@
 package usecase_essence_use.manager;
 
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
 
-public class essenceUseSpeakerManager {
-    private final OutputBoundary speaker;
+public class essenceUseSpeakerManager extends EssenceUseInfoPass{
     private final Player player;
     private final essenceUseManager essenceUseManager;
 
-    public essenceUseSpeakerManager(Player player, essenceUseManager essenceUseManager, OutputBoundary speaker){
+    public essenceUseSpeakerManager(Player player, essenceUseManager essenceUseManager){
         this.player = player;
         this.essenceUseManager = essenceUseManager;
-        this.speaker = speaker;
     }
 
     /**

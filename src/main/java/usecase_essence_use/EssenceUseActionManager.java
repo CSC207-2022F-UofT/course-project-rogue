@@ -1,7 +1,6 @@
 package usecase_essence_use;
 
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
 import usecase_essence_use.data_preset_normal.collectibleNeedSetting;
 import usecase_essence_use.data_preset_normal.statSetting;
 import usecase_essence_use.essenceUseKey.*;
@@ -20,11 +19,11 @@ public class EssenceUseActionManager extends ActionManager {
      * The basic Upgrade and Heal actions will be initialized.
      * Sets up the default  observer of Heal and Upgrade
      */
-    public void setDefaultKey(Player player, OutputBoundary outputBoundary){
+    public void setDefaultKey(Player player){
         collectibleNeedSetting collectibleNeed = new collectibleNeedSetting();
         statSetting statSetting = new statSetting();
         essenceUseManager manager = new essenceUseManager(player, collectibleNeed, statSetting);
-        essenceUseSpeakerManager speaker = new essenceUseSpeakerManager(player, manager, outputBoundary);
+        essenceUseSpeakerManager speaker = new essenceUseSpeakerManager(player, manager);
         this.addObserver(new Upgrader(player, manager.getWeaponUpgradeManage(), "1", speaker));
         this.addObserver(new Upgrader(player, manager.getArmorUpgradeManage(), "2", speaker));
         this.addObserver(new Healer(player, manager, "H", speaker));
