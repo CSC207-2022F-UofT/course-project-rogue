@@ -1,6 +1,7 @@
 package usecase_fight_tests;
 
 import entity.item.Equipment;
+import entity.monster.ExtraDrops;
 import entity.monster.Monster;
 import entity.item.Weapon;
 import org.junit.jupiter.api.Assertions;
@@ -14,8 +15,10 @@ import java.util.HashMap;
 public class FightSummaryTest {
     FightSummary fs1;
     FightSummary fs2;
+    FightSummary fs3;
     Equipment equipment;
     Monster monster;
+    Monster monster2;
 
     @BeforeEach
     @DisplayName("Set up a Monster and FightSummary")
@@ -26,11 +29,13 @@ public class FightSummaryTest {
         stats.put("Attack", attack);
         stats.put("Health", health);
         monster = new Monster("Slime", "Basic", stats, false);
+        monster2 = new Monster("Friendly Bear", "Tamable", stats, true, new ExtraDrops());
 
         equipment = new Weapon("Sharp stick", 5);
 
         fs1 = new FightSummary(monster, 5, 60, 5);
         fs2 = new FightSummary(monster, 6, 0, 0, equipment);
+        fs3 = new FightSummary(monster2, 6, 0, 0, equipment);
     }
 
     @Test
@@ -73,6 +78,21 @@ public class FightSummaryTest {
         String entry2 = "Power: None, Win chance: 0%, Damage: 0";
         String entry3 = "Drops: 6 essence, Sharp stick";
         String[] result = fs2.getSummary();
+        Assertions.assertAll("Check that getSummary returns the correct output",
+                () -> Assertions.assertEquals(entry1, result[0]),
+                () -> Assertions.assertEquals(entry2, result[1]),
+                () -> Assertions.assertEquals(entry3, result[2]));
+    }
+
+    // make a test with a monster with a power
+
+    @Test
+    @DisplayName("Test Get Summary when Monster has a power in Summary")
+    void testGetSummaryPower(){
+        String entry1 = "You encountered a Friendly Bear!";
+        String entry2 = "Power: Drops 2x essence, Win chance: 0%, Damage: 0";
+        String entry3 = "Drops: 6 essence, Sharp stick";
+        String[] result = fs3.getSummary();
         Assertions.assertAll("Check that getSummary returns the correct output",
                 () -> Assertions.assertEquals(entry1, result[0]),
                 () -> Assertions.assertEquals(entry2, result[1]),
