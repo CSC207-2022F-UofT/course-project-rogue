@@ -11,6 +11,11 @@ public class MonsterFactory{
 
     public MonsterFactory(){}
 
+    /** Constructor for testing purposes */
+    public MonsterFactory(GameFileReaderInterface readerInterface){
+        MonsterFactory.readerInterface = readerInterface;
+    }
+
     public static void setFileReader(GameFileReaderInterface fileReader){
         MonsterFactory.readerInterface = fileReader;
     }

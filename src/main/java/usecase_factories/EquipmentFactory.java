@@ -11,6 +11,11 @@ public class EquipmentFactory {
 
     public EquipmentFactory(){}
 
+    /** Constructor for testing purposes */
+    public EquipmentFactory(GameFileReaderInterface readerInterface){
+        EquipmentFactory.readerInterface = readerInterface;
+    }
+
     public static void setFileReader(GameFileReaderInterface fileReader){
         EquipmentFactory.readerInterface = fileReader;
     }
