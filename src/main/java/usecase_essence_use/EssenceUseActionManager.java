@@ -29,7 +29,7 @@ public class EssenceUseActionManager extends ActionManager {
         this.addObserver(new Healer(player, manager, "H", speaker));
         this.addObserver(new essenceUseLeaver(player, manager, "L", speaker));
         this.addObserver(new upgradeSelect(player, manager,"U", speaker));
-        this.addObserver(new essenceUseStarter(player, manager, "E", speaker));
+        this.addObserver(new essenceUseStarter(player, manager, "C", speaker));
     }
 
 

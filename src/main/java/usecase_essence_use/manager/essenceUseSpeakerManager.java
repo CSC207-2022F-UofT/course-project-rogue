@@ -46,8 +46,11 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
         String EquipName = weaponUpgradeManage.getEquipment().getName();
         int EssenceCost = weaponUpgradeManage.getEssenceCost();
         int statIncrease = weaponUpgradeManage.getStatIncrease();
-        if(able){
+        if(!able){
             return String.format("You don't enough essence to upgrade your %s", EquipName);
+        }
+        if (weaponUpgradeManage.getTimesUpgrade() >= weaponUpgradeManage.getMaxTimes()) {
+            return String.format("Your %s has upgrade to max level", EquipName);
         }
         return String.format("You can cost %d essence to upgrade your %s, it will add %d attack point",
                 EssenceCost, EquipName, statIncrease);
@@ -60,8 +63,11 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
     private String makeArmorUpgradeString(){
         String EquipName = this.essenceUseManager.getArmorUpgradeManage().getEquipment().getName();
         upgradeManager armorUpgradeManager = this.essenceUseManager.getWeaponUpgradeManage();
-        if(armorUpgradeManager.getAble()){
+        if(!armorUpgradeManager.getAble()){
             return String.format("You don't enough essence to upgrade your %s", EquipName);
+        }
+        if (armorUpgradeManager.getTimesUpgrade() >= armorUpgradeManager.getMaxTimes()){
+            return String.format("Your %s has upgrade to max level", EquipName);
         }
         return String.format("You can cost %d essence to upgrade your %s, it will add %d defence point",
                 armorUpgradeManager.getEssenceCost(), EquipName, armorUpgradeManager.getStatIncrease());
@@ -76,7 +82,9 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
             return "You have upgraded! You can only upgrade once everytime";
         }
         String toReturn="";
-        if(this.essenceUseManager.getWeaponUpgradeManage().getAble()){
+
+        if(this.essenceUseManager.getWeaponUpgradeManage().getAble() &&
+                this.essenceUseManager.getWeaponUpgradeManage().getBelowLimit()){
             toReturn = toReturn.concat("Weapon can be upgraded. ");
         }
         if(this.essenceUseManager.getArmorUpgradeManage().getAble()){
@@ -102,12 +110,28 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
     }
 
     public void showEssenceUseInfo(){
-        if (player.getEssence().getNum() == 0){
-            easterEggNothingCanBeDone();
+        if (!player.getCanHeal() && !player.getCanUpgrade()){
+            easterEggEverythingDone();
             return;
         }
-        if (!(player.getCanHeal()&& player.getCanUpgrade())){
+        if (!player.getCanHeal() && !essenceUseManager.getWeaponUpgradeManage().getBelowLimit() &&
+                !essenceUseManager.getArmorUpgradeManage().getBelowLimit()){
             easterEggEverythingDone();
+            return;
+        }
+        if (essenceUseManager.getHealManage().getRequireHP()==0 &&
+                !essenceUseManager.getWeaponUpgradeManage().getBelowLimit() &&
+                !essenceUseManager.getArmorUpgradeManage().getBelowLimit()){
+            easterEggEverythingDone();
+            return;
+        }
+        if (essenceUseManager.getHealManage().getRequireHP()==0 &&
+                player.getCanUpgrade()){
+            easterEggEverythingDone();
+            return;
+        }
+        if (player.getEssence().getNum() == 0){
+            easterEggNothingCanBeDone();
             return;
         }
         String healString = makeHealString();
@@ -119,7 +143,7 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
     public void showUpgradeSelectPage(){
         String weaponUpgradeString = makeWeaponUpgradeString();
         String armorUpgradeString = makeArmorUpgradeString();
-        String line4 = "[N] for no and return to menu";
+        String line4 = "[1] for weapon, [2] for armor ,[N] for no and return to menu";
         speaker.updateText(weaponUpgradeString,armorUpgradeString,"",line4);
     }
 
@@ -141,13 +165,25 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
         }
         speaker.updateEssenceCnt(player.getEssence().getNum());
         String line1 = String.format("You have successfully %s", verb.toLowerCase());
-        String line4 = "Please press [space] to continue";
+        String line4 = "Please press [C] to continue";
         speaker.updateText(line1, "", "", line4);
     }
 
-    private void easterEggNothingCanBeDone(){}
+    private void easterEggNothingCanBeDone(){
+        String line1 = "Orz";
+        String line2 = "You do not have any essence available now";
+        String line3 = "ಥ_ಥ ᖗ";
+        String line4 = "Maybe you can try harder next time, press [L] for leave. ";
+        speaker.updateText(line1, line2, line3, line4);
+    }
 
-    private void easterEggEverythingDone(){}
+    private void easterEggEverythingDone(){
+        String line1 = "(◕ˇ∀ˇ◕。)";
+        String line2 = "You have done everything you can do in this rest point";
+        String line3 = "｡◕‿◕｡";
+        String line4 = "Now let's press [L] for leave";
+        speaker.updateText(line1, line2, line3, line4);
+    }
 
     public void showEssenceUseEnd(){
         String line1 = "You leave the rest point";

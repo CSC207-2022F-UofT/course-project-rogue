@@ -37,7 +37,8 @@ public class Upgrader implements Observer{
     @SuppressWarnings("deprecation")
     @Override
     public void update(Observable o, Object arg) {
-        if(player.getUpgrading() && arg.equals(this.trigger)) {
+        if(player.getUpgrading() && arg.equals(this.trigger) && Manager.getBelowLimit() &&
+                Manager.getAble()) {
             String verb;
             verb = String.format("upgrade %s", Manager.getEquipment().getName());
             this.inPage = true;
