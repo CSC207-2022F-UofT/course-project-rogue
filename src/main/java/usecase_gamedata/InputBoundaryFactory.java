@@ -1,17 +1,14 @@
 package usecase_gamedata;
 
 import org.junit.After;
-import usecase_essence_use.heal.HealCalculator;
-import usecase_essence_use.heal.Healer;
-import usecase_essence_use.upgrade.UpgradeCalculator;
-import usecase_essence_use.upgrade.Upgrader;
+import usecase_essence_use.EssenceUseActionManager;
+
 import usecase_factories.PlayerFactory;
 import usecase_fight.AfterFight;
 import usecase_fight.Fighter;
 import usecase_fight.Restarter;
 import usecase_fight.Runner;
 import usecase_playeractions.ActionManager;
-import usecase_playeractions.Map;
 import usecase_playeractions.MoveManager;
 
 public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
@@ -24,7 +21,6 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
         this.playerFactory = playerFactory;
         this.mapFactory = mapFactory;
         this.moveManager = new MoveManager();
-        this.essenceUseManager = new essenceUseManager();
     }
 
     /**
@@ -76,6 +72,12 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
         actionManager.addObserver(new Restarter(playerFactory.create(), KEYS[12]));
         actionManager.addObserver(new AfterFight(playerFactory.create(), KEYS[12]));
         return actionManager;
+    }
+
+    public EssenceUseActionManager getEssenceUseActionManager(){
+        EssenceUseActionManager essenceUseManager = new EssenceUseActionManager();
+        essenceUseManager.setDefaultKey(playerFactory.create());
+        return essenceUseManager;
     }
 
 }

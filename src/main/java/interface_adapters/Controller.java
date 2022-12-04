@@ -22,6 +22,8 @@ public class Controller{
      * Contain actions that depend on a Player only.
      */
     private InputBoundary actionManager;
+
+    private InputBoundary essenceUseActionManager;
     private InputBoundaryFactoryInputBoundary inputBoundaryFactory;
 
 
@@ -33,13 +35,14 @@ public class Controller{
         inputBoundaryFactory = new InputBoundaryFactory(playerFactory, mapFactory);
         actionManager = inputBoundaryFactory.getActionManager();
         moveManager = inputBoundaryFactory.getMoveManager();
+        essenceUseActionManager = inputBoundaryFactory.getEssenceUseActionManager();
     }
 
 
     public void keyReleased(KeyEvent e) {
         moveManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
         actionManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
-
+        essenceUseActionManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
     }
     public void newGame(){
         this.enterLevel(0);
