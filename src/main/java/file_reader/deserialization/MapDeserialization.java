@@ -46,6 +46,7 @@ public class MapDeserialization extends StdDeserializer<Map> {
                     case "R" -> new RandomEvent();
                     case "WL" -> new WallEvent();
                     case "W" -> new WinEvent();
+                    default -> new WallEvent();
                 };
                 map.setBoard(e, i, o);
             }
