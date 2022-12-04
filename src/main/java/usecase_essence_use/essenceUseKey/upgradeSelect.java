@@ -10,12 +10,10 @@ import java.util.Observer;
 @SuppressWarnings("deprecation")
 public class upgradeSelect implements Observer{
     private final Player player;
-
     private final String trigger;
-
     private final essenceUseManager manager;
-
     private final essenceUseSpeakerManager speaker;
+
 
     /**
      * The constructor of healing. This class is to be triggered by the HealingUpgradingControl. And It will recover the
@@ -35,7 +33,8 @@ public class upgradeSelect implements Observer{
     @SuppressWarnings("deprecation")
     @Override
     public void update(Observable o, Object arg) {
-        if(player.getCanUpgrade() && manager.isNewData() && arg.equals(this.trigger)) {
+        if(player.getCanUpgrade()  && arg.equals(this.trigger) && !manager.isInPage()) {
+            manager.setInPage(true);
             player.setUpgrading(true);
             speaker.showUpgradeSelectPage();
         }

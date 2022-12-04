@@ -8,13 +8,14 @@ public class essenceUseManager {
     private final healManager healCount;
     private final upgradeManager weaponUpgradeCount;
     private final upgradeManager armorUpgradeCount;
-    private boolean newData;
+    private boolean inEssenceUse;
+    private boolean inPage;
 
     public essenceUseManager(Player player, collectibleNeedSetting essenceNeed, statSetting statAdd){
         healCount = new healManager(player, essenceNeed);
         weaponUpgradeCount = new upgradeManager(player, "Weapon", essenceNeed, statAdd);
         armorUpgradeCount = new upgradeManager(player, "Armor", essenceNeed, statAdd);
-        newData = false;
+        inEssenceUse = false;
     }
 
     public healManager getHealManage() {
@@ -30,24 +31,46 @@ public class essenceUseManager {
     }
 
 
+
+
     /**
      * update the infomation of the Calculator in this class, please use it everytime you triger the class.
+     */
+    public void initializeManager(){
+        this.armorUpgradeCount.UpgradeInfoUpdate();
+        this.weaponUpgradeCount.UpgradeInfoUpdate();
+        this.healCount.healInfoUpdate();
+        this.inEssenceUse = true;
+        this.inPage = false;
+    }
+
+    /**
+     * update the infomation of the manager, you need to use the it before show info.
      */
     public void updateInfo(){
         this.armorUpgradeCount.UpgradeInfoUpdate();
         this.weaponUpgradeCount.UpgradeInfoUpdate();
         this.healCount.healInfoUpdate();
-        this.newData = true;
+    }
+
+    /**
+     * set the status of the essenceUse Manager
+     * @param inPage if the essenceUse have open certain page.
+     */
+    public void setInPage(boolean inPage){this.inPage = inPage;}
+
+    public boolean isInPage() {
+        return inPage;
     }
 
     /**
      * Change the status of the manager, let the action manager know that the data is new or not.
      */
     public void setNewDataFalse(){
-        this.newData = false;
+        this.inEssenceUse = false;
     }
 
-    public boolean isNewData() {
-        return newData;
+    public boolean isInEssenceUse() {
+        return inEssenceUse;
     }
 }

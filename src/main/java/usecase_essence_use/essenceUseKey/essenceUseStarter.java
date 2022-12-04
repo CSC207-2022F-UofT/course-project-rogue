@@ -30,8 +30,9 @@ public class essenceUseStarter implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals(this.trigger) && player.getCanUpgrade()&& player.getCanHeal() && !player.getUpgrading()) {
-            manager.updateInfo();
+        if(arg.equals(this.trigger) && player.getCanUpgrade() && player.getCanHeal() && !player.getUpgrading()
+                && !manager.isInEssenceUse()) {
+            manager.initializeManager();
             speaker.showEssenceUseInfo();
         }
     }

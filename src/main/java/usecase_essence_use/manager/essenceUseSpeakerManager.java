@@ -62,7 +62,7 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
      */
     private String makeArmorUpgradeString(){
         String EquipName = this.essenceUseManager.getArmorUpgradeManage().getEquipment().getName();
-        upgradeManager armorUpgradeManager = this.essenceUseManager.getWeaponUpgradeManage();
+        upgradeManager armorUpgradeManager = this.essenceUseManager.getArmorUpgradeManage();
         if(!armorUpgradeManager.getAble()){
             return String.format("You don't enough essence to upgrade your %s", EquipName);
         }
@@ -87,7 +87,8 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
                 this.essenceUseManager.getWeaponUpgradeManage().getBelowLimit()){
             toReturn = toReturn.concat("Weapon can be upgraded. ");
         }
-        if(this.essenceUseManager.getArmorUpgradeManage().getAble()){
+        if(this.essenceUseManager.getArmorUpgradeManage().getAble() &&
+                this.essenceUseManager.getArmorUpgradeManage().getBelowLimit()){
             toReturn = toReturn.concat("Armor can be upgraded.");
         }
         if (toReturn.equals("")){
@@ -110,6 +111,8 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
     }
 
     public void showEssenceUseInfo(){
+        essenceUseManager.updateInfo();
+        essenceUseManager.setInPage(false);
         if (!player.getCanHeal() && !player.getCanUpgrade()){
             easterEggEverythingDone();
             return;
@@ -126,7 +129,7 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
             return;
         }
         if (essenceUseManager.getHealManage().getRequireHP()==0 &&
-                player.getCanUpgrade()){
+                !player.getCanUpgrade()){
             easterEggEverythingDone();
             return;
         }
@@ -143,8 +146,22 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
     public void showUpgradeSelectPage(){
         String weaponUpgradeString = makeWeaponUpgradeString();
         String armorUpgradeString = makeArmorUpgradeString();
-        String line4 = "[1] for weapon, [2] for armor ,[N] for no and return to menu";
+        String line4 = makeStringUpgradeChoice();
         speaker.updateText(weaponUpgradeString,armorUpgradeString,"",line4);
+    }
+
+    private String makeStringUpgradeChoice(){
+        String toReturn = "";
+        if(this.essenceUseManager.getWeaponUpgradeManage().getAble() &&
+                this.essenceUseManager.getWeaponUpgradeManage().getBelowLimit()){
+            toReturn = toReturn.concat("[1] for weapon, ");
+        }
+        if(this.essenceUseManager.getArmorUpgradeManage().getAble() &&
+                this.essenceUseManager.getArmorUpgradeManage().getBelowLimit()){
+            toReturn = toReturn.concat("[2] for armor");
+        }
+        toReturn = toReturn.concat("[N] for no and Return to menu");
+        return toReturn;
     }
 
     public void showVerifyPage(String verb){

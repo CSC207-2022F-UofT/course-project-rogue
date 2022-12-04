@@ -35,9 +35,10 @@ public class Healer implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(this.player.getCanHeal() && Manager.isNewData() && arg.equals(this.trigger) &&
+        if(this.player.getCanHeal() && arg.equals(this.trigger) && !Manager.isInPage() &&
                 Manager.getHealManage().getHPToHeal() != 0 && Manager.getHealManage().getRequireHP() != 0) {
             this.inPage = true;
+            Manager.setInPage(true);
             this.speaker.showVerifyPage("Heal");
         } else if (inPage && player.getCanHeal() && arg.equals("Y")){
             this.Manager.getHealManage().heal();
