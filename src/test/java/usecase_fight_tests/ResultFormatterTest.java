@@ -31,7 +31,7 @@ public class ResultFormatterTest {
                 () -> Assertions.assertEquals("A Draw!", result[0]),
                 () -> Assertions.assertEquals("Damage Taken: 0", result[1]),
                 () -> Assertions.assertEquals("Items Received: None", result[2]),
-                () -> Assertions.assertEquals("Press [SpaceBar] to continue.", result[3]));
+                () -> Assertions.assertEquals("Press [C] to continue.", result[3]));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class ResultFormatterTest {
                 () -> Assertions.assertEquals("You lost. Nothing was stolen!", result[0]),
                 () -> Assertions.assertEquals("Damage Taken: 10", result[1]),
                 () -> Assertions.assertEquals("Items Received: None", result[2]),
-                () -> Assertions.assertEquals("Press [SpaceBar] to continue.", result[3]));
+                () -> Assertions.assertEquals("Press [C] to continue.", result[3]));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ResultFormatterTest {
                 () -> Assertions.assertEquals("You won! ", result[0]),
                 () -> Assertions.assertEquals("Damage Taken: 0", result[1]),
                 () -> Assertions.assertEquals("Items Received: 5 essence, Paper Bag", result[2]),
-                () -> Assertions.assertEquals("Press [SpaceBar] to continue.", result[3]));
+                () -> Assertions.assertEquals("Press [C] to continue.", result[3]));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class ResultFormatterTest {
                 () -> Assertions.assertEquals("You won! ", result[0]),
                 () -> Assertions.assertEquals("Damage Taken: 0", result[1]),
                 () -> Assertions.assertEquals("Items Received: 5 essence, Sharp Stick", result[2]),
-                () -> Assertions.assertEquals("Press [SpaceBar] to continue.", result[3]));
+                () -> Assertions.assertEquals("Press [C] to continue.", result[3]));
     }
 
     @Test
@@ -75,7 +75,7 @@ public class ResultFormatterTest {
                 () -> Assertions.assertEquals("You won! ", result[0]),
                 () -> Assertions.assertEquals("Damage Taken: 0", result[1]),
                 () -> Assertions.assertEquals("Items Received: 5 essence", result[2]),
-                () -> Assertions.assertEquals("Press [SpaceBar] to continue.", result[3]));
+                () -> Assertions.assertEquals("Press [C] to continue.", result[3]));
     }
 
     @Test
@@ -86,7 +86,7 @@ public class ResultFormatterTest {
                 () -> Assertions.assertEquals("You won! ", result[0]),
                 () -> Assertions.assertEquals("Damage Taken: 0", result[1]),
                 () -> Assertions.assertEquals("Items Received: 5 essence", result[2]),
-                () -> Assertions.assertEquals("Press [SpaceBar] to continue.", result[3]));
+                () -> Assertions.assertEquals("Press [C] to continue.", result[3]));
     }
 
     @Test
@@ -97,6 +97,6 @@ public class ResultFormatterTest {
                 () -> Assertions.assertEquals("GameOver.", result[0]),
                 () -> Assertions.assertEquals("", result[1]),
                 () -> Assertions.assertEquals("", result[2]),
-                () -> Assertions.assertEquals("Press [SpaceBar] to return to main menu.", result[3]));
+                () -> Assertions.assertEquals("Press [C] to return to main menu.", result[3]));
     }
 }
