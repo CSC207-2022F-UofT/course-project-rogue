@@ -11,6 +11,48 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
         this.essenceUseManager = essenceUseManager;
     }
 
+    public void showEssenceUseInfo(){
+        essenceUseManager.updateInfo();
+        essenceUseManager.setInPage(false);
+        if (!player.getCanHeal() && !player.getCanUpgrade()){
+            easterEggEverythingDone();
+            return;
+        }
+        if (!player.getCanHeal() && !essenceUseManager.getWeaponUpgradeManage().getBelowLimit() &&
+                !essenceUseManager.getArmorUpgradeManage().getBelowLimit()){
+            easterEggEverythingDone();
+            return;
+        }
+        if (essenceUseManager.getHealManage().getRequireHP()==0 &&
+                !essenceUseManager.getWeaponUpgradeManage().getBelowLimit() &&
+                !essenceUseManager.getArmorUpgradeManage().getBelowLimit()){
+            easterEggEverythingDone();
+            return;
+        }
+        if (essenceUseManager.getHealManage().getRequireHP()==0 &&
+                !player.getCanUpgrade()){
+            easterEggEverythingDone();
+            return;
+        }
+        if (player.getEssence().getNum() == 0){
+            easterEggNothingCanBeDone();
+            return;
+        }
+        String healString = makeHealString();
+        String UpgradeString = makeGeneralUpgradeString();
+        String keypressRequestString = makeKeypressString();
+        this.speaker.updateText(healString, UpgradeString , "" ,keypressRequestString);
+    }
+
+    public void showUpgradeSelectPage(){
+        String weaponUpgradeString = makeWeaponUpgradeString();
+        String armorUpgradeString = makeArmorUpgradeString();
+        String line4 = makeStringUpgradeChoice();
+        speaker.updateText(weaponUpgradeString,armorUpgradeString,"",line4);
+    }
+
+
+
     /**
      * make the string in the small menu for heal/upgrade about healing
      * @return heal info string
@@ -110,45 +152,6 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
         return toReturn;
     }
 
-    public void showEssenceUseInfo(){
-        essenceUseManager.updateInfo();
-        essenceUseManager.setInPage(false);
-        if (!player.getCanHeal() && !player.getCanUpgrade()){
-            easterEggEverythingDone();
-            return;
-        }
-        if (!player.getCanHeal() && !essenceUseManager.getWeaponUpgradeManage().getBelowLimit() &&
-                !essenceUseManager.getArmorUpgradeManage().getBelowLimit()){
-            easterEggEverythingDone();
-            return;
-        }
-        if (essenceUseManager.getHealManage().getRequireHP()==0 &&
-                !essenceUseManager.getWeaponUpgradeManage().getBelowLimit() &&
-                !essenceUseManager.getArmorUpgradeManage().getBelowLimit()){
-            easterEggEverythingDone();
-            return;
-        }
-        if (essenceUseManager.getHealManage().getRequireHP()==0 &&
-                !player.getCanUpgrade()){
-            easterEggEverythingDone();
-            return;
-        }
-        if (player.getEssence().getNum() == 0){
-            easterEggNothingCanBeDone();
-            return;
-        }
-        String healString = makeHealString();
-        String UpgradeString = makeGeneralUpgradeString();
-        String keypressRequestString = makeKeypressString();
-        this.speaker.updateText(healString, UpgradeString , "" ,keypressRequestString);
-    }
-
-    public void showUpgradeSelectPage(){
-        String weaponUpgradeString = makeWeaponUpgradeString();
-        String armorUpgradeString = makeArmorUpgradeString();
-        String line4 = makeStringUpgradeChoice();
-        speaker.updateText(weaponUpgradeString,armorUpgradeString,"",line4);
-    }
 
     private String makeStringUpgradeChoice(){
         String toReturn = "";
