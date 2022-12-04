@@ -11,6 +11,7 @@ import usecase_event.WinEvent;
 import usecase_factories.EquipmentFactory;
 import usecase_factories.MonsterFactory;
 import usecase_factories.PlayerFactory;
+import usecase_fight.FightPath;
 import usecase_gamedata.MapFactory;
 import usecase_playeractions.Map;
 import user_interface.View;
@@ -44,6 +45,7 @@ public class Game {
         Event.setOutputBoundary(outBound);
         Map.setOutputBoundary(outBound);
         MapFactory.setOutputBoundary(outBound);
+        FightPath.setOutputBoundary(outBound);
         //Controller inject inputBoundaries
 
 
