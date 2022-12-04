@@ -68,3 +68,7 @@ So try to stay alive, collect the artifact and escape the maze!
   * **WinEvent**  Tested only enter(), because trigger will only have a visual display and no other changes made.
   * **WallEvent** Only test enter(), because triggering the event will not result in anything (and the player isn't supposed to trigger them in the first place).
   * **No Event** Tested only enter(), because trigger will only have a visual display and no other changes made.
+* **Items**
+  * **Collectible** All Methods and Possibilities are tested.
+  * **Armor** All Methods and Possibilities are tested.
+  * **Weapon** All Methods and Possibiilities are tested.
