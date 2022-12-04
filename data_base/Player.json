@@ -7,7 +7,7 @@
       "inventoryName": "Inventory",
       "essence": {
         "collectibleType": "Essence",
-        "num": 12323
+        "num": 10
       },
       "artifact": {
         "collectibleType" : "Artifact"
