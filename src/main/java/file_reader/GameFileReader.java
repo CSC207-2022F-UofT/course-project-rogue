@@ -3,7 +3,7 @@ package file_reader;
 public class GameFileReader implements GameFileReaderInterface {
 
     private String dir;
-    private String startingDir;
+    private final String startingDir;
     public GameFileReader(String dir){
         this.dir = dir;
         this.startingDir = dir;
@@ -49,4 +49,8 @@ public class GameFileReader implements GameFileReaderInterface {
         this.dir = dir;
     }
 
+    @Override
+    public void update(){
+        this.dir = startingDir;
+    }
 }
