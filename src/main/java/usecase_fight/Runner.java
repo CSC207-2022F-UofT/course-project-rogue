@@ -2,17 +2,13 @@ package usecase_fight;
 
 import entity.monster.Monster;
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
 
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
 
-/** A runner that allows Player to flee from a fight. */
-public class Runner implements Observer {
-
-    /** Output Boundary interface. */
-    OutputBoundary outputBoundary;
+/** A path in which a user runs away from a fight. */
+public class Runner extends FightPath implements Observer {
 
     /** Player that needs to flee. */
     private final Player player;
@@ -25,8 +21,7 @@ public class Runner implements Observer {
      * @param player Player
      * @param trigger Key stroke to trigger this runner.
      */
-    public Runner(OutputBoundary outputBoundary, Player player, String trigger){
-        this.outputBoundary = outputBoundary;
+    public Runner(Player player, String trigger){
         this.player = player;
         this.trigger = trigger;
     }
