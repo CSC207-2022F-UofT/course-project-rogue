@@ -40,7 +40,7 @@
     "index": 5,
     "name": "Golden Slime",
     "type": "Treasure",
-    "stats": {"Attack": [500, 500], "Health":  [500, 500]},
+    "stats": {"Attack": [100, 200], "Health":  [500, 500]},
     "state": true,
     "power": "ExtraDrops"
   }
