@@ -44,11 +44,11 @@ public class MapDeserialization extends StdDeserializer<Map> {
                     case "Es": // can be deleted
                         e = new EssenceEvent();
                     case "F": // this case can be deleted
-                        e = new FightEvent();
+                        // e = new FightEvent();
                     case "N":
                         e = new NoEvent();
                     case "R":
-                        e = new RandomEvent(); // needs MonsterFactory and EquipmentFactory args
+                        // e = new RandomEvent(); // needs MonsterFactory and EquipmentFactory args
                     case "WL":
                         e = new WallEvent();
                     case "W":

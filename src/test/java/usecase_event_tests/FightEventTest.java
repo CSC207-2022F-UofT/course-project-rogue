@@ -37,7 +37,7 @@ public class FightEventTest {
     @BeforeEach
     @DisplayName("SetUp Player and FightEvent")
     void setUp(){
-        event = new FightEvent(new Visual(new View()), mf, ef);
+        // event = new FightEvent(new Visual(new View()), mf, ef);
         player = new Player(5, 5, inventory, equipmentSlots, location);
     }
 

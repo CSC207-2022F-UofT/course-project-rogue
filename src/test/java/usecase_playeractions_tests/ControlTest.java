@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.ArtifactEvent;
-import usecase_playeractions.Control;
+import usecase_playeractions.ActionManager;
 import usecase_playeractions.Map;
 import user_interface.View;
 import user_interface.Visual;
@@ -42,7 +42,7 @@ public class ControlTest {
     @DisplayName("Test Move")
     void testMove(){
         map.setBoard(new ArtifactEvent(new Visual(new View())),0,1);
-        Control control = new Control(player,map);
+        ActionManager control = new ActionManager(player,map);
         control.keyPressed("W");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
         Assertions.assertEquals(1, player.getArtifact().getNum());
