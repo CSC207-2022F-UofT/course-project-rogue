@@ -1,6 +1,5 @@
 package usecase_gamedata;
 
-import interface_adapters.OutputBoundary;
 import usecase_essence_use.EssenceUseActionManager;
 
 import usecase_factories.PlayerFactory;
@@ -68,7 +67,7 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
         return actionManager;
     }
 
-    public EssenceUseActionManager getEssenceUseActionManager(OutputBoundary outputBoundary){
+   public EssenceUseActionManager getEssenceUseActionManager(){
         this.essenceUseActionManager.setDefaultKey(playerFactory.create());
         return essenceUseActionManager;
     }
