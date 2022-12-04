@@ -7,6 +7,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import entity.monster.Monster;
+import entity.monster.MonsterPower;
+import entity.monster.Power;
+import usecase_factories.PowerFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,7 +42,15 @@ public class MonsterDeserialization  extends StdDeserializer<Monster> {
             stats.put(key, h.readIntArr(node.get("stats").get(key)));
         }
         boolean b = h.readBoolean(node.get("state"));
-        return new Monster(name, type, stats, b);
+
+        if (node.get("power") == null){
+            return new Monster(name, type, stats, b);
+        } else {
+            String pwr = h.readString(node.get("power"));
+            PowerFactory pf = new PowerFactory();
+            MonsterPower power = (MonsterPower) pf.getPower(pwr);
+            return new Monster(name, type, stats, b, power);
+        }
     }
 
     public MonsterDeserialization(Class<?> vc){
