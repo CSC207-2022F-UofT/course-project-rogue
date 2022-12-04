@@ -33,14 +33,13 @@ public class DamageCalculatorTest {
 
     /** Makes a new Player with the given base stats and equipment stats. */
     private Player makePlayerStats(int health, int attack, int atk){
-        int[] location = new int[]{1, 2};
         Weapon sword = new Weapon("Sword", atk);
         Armor armor = new Armor("Shield", 5);
         BasicEquipmentSlots equipment = new BasicEquipmentSlots(sword, armor);
         Collectible essence = new Collectible("Essence", 10);
         Collectible artifact = new Collectible("Artifact");
         CollectibleInventory collect = new CollectibleInventory("1", essence, artifact);
-        return new Player(health, attack, collect, equipment, location);
+        return new Player(health, attack, collect, equipment);
     }
 
 
