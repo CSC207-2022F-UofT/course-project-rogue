@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_essence_use.data_calculator.CollectibleUseManager;
+import usecase_essence_use.manager.CollectibleUseManager;
 import usecase_playeractions.Map;
 
 public class CollectibleUseManagerTest {
@@ -24,7 +24,6 @@ public class CollectibleUseManagerTest {
     Armor armor = new Armor("Chain Mail", 5);
     Weapon excalibur = new Weapon("Legendary Sword Excalibur", 1000);
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
-    int[] location = new int[]{0, 0};
 
 
     @BeforeEach
@@ -38,14 +37,14 @@ public class CollectibleUseManagerTest {
     @DisplayName("Test getAble when it's able")
     void TestGetAbleTrue(){
         CollectibleUseManager CollectHelper = new CollectibleUseManager(player,10);
-        Assertions.assertEquals(CollectHelper.getAble(),true);
+        Assertions.assertTrue(CollectHelper.getAble());
     }
 
     @Test
     @DisplayName("Test getAble when it's not able")
     void TestGetAbleFalse(){
         CollectibleUseManager CollectHelper = new CollectibleUseManager(player,110);
-        Assertions.assertEquals(CollectHelper.getAble(),false);
+        Assertions.assertFalse(CollectHelper.getAble());
     }
 
     @Test

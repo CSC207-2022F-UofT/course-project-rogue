@@ -1,4 +1,4 @@
-package usecase_essence_use.data_calculator;
+package usecase_essence_use.manager;
 
 import entity.player.Player;
 
@@ -33,7 +33,7 @@ public class CollectibleUseManager {
 
     /**
      * Return the number of essence taht we need for upgrade
-     * @return
+     * @return the number of essence of player
      */
     public int getEssenceNeed(){return this.essenceNeed;}
 
@@ -48,7 +48,7 @@ public class CollectibleUseManager {
      * Update the Essence need for the player in healing/upgrading
      * @param NumEssence the number of essence is required for heal/upgrade
      */
-    public void essenceNeededToUpdate(int NumEssence){
+    public void essenceNeedUpdate(int NumEssence){
         this.essenceNeed = NumEssence;
     }
 }
