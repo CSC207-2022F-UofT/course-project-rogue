@@ -29,19 +29,17 @@ public class Player extends Character {
      * The inventory is open for adding more items.
      * @param maxHitPoint: Max Hit Point of Player and also the Current Hit Point during construction
      * @param attackPoint: Base Attack Point of the Player
-     * @param location: Array of integers that holds player location coordinates based on (x,y)
      * @param inventory: An inventory class that holds the collectibles or items they have.
      * @param equipments: The player's equipment slot in which they equip equipments to increase their battle strength
      *
      */
-    public Player(int maxHitPoint, int attackPoint, CollectibleInventory inventory, BasicEquipmentSlots equipments,
-                  int[] location){
+    public Player(int maxHitPoint, int attackPoint, CollectibleInventory inventory, BasicEquipmentSlots equipments){
         this.maxHitPoint = maxHitPoint;
         this.currHitPoint = maxHitPoint;
         this.attackPoint = attackPoint;
         this.collectibleInventory = inventory;
         this.equipments = equipments;
-        this.location = location;
+        this.location = new int[2];
         this.state = new States();
     }
 

@@ -6,20 +6,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.player.Player;
 import file_reader.GameFileReaderInterface;
 import file_reader.deserialization.DeserializeHelper;
-import game_data.PlayerInstances;
+import interface_adapters.OutputBoundary;
 import usecase_playeractions.Map;
 
 import java.util.HashMap;
 
 public class MapFactory {
 
-    private GameFileReaderInterface mf;
+    private static GameFileReaderInterface mf;
 
-    private HashMap<Integer, int[]> startingLocations;
-    private int level;
-    public MapFactory(GameFileReaderInterface mf){
-        startingLocations = new HashMap<>();
-        this.mf = mf;
+    private static OutputBoundary outputBoundary = null;
+    public MapFactory(){
+    }
+
+    public static void setOutputBoundary(OutputBoundary outputBoundary){
+        if(MapFactory.outputBoundary == null) {
+            MapFactory.outputBoundary = outputBoundary;
+        }
+    }
+
+    public static void setFileReader(GameFileReaderInterface fileReader){
+        MapFactory.mf = fileReader;
     }
 
     /**
@@ -31,9 +38,7 @@ public class MapFactory {
         String jsonString = mf.findInt("index", level);
         try {
             Map map = new ObjectMapper().readValue(jsonString, Map.class);
-            JsonNode mn = new ObjectMapper().readTree(jsonString);
-            int[] location = new DeserializeHelper().readIntArr(mn.get("starting"));
-            startingLocations.put(level, location);
+            outputBoundary.updateMap(map.getStringBoard());
             return map;
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
@@ -44,7 +49,21 @@ public class MapFactory {
      * Sets player location to the starting location of the latest map created.
      * @param player : The player instance of the game
      */
-    public void setPlayerLocation(Player player){
-        player.setLocation(startingLocations.get(level)[0], startingLocations.get(level)[1]);
+    public void setSpawnPoint(Player player, int level){
+        String jsonString = mf.findInt("index", level);
+        try {
+            JsonNode mn = new ObjectMapper().readTree(jsonString);
+            int[] location = new DeserializeHelper().readIntArr(mn.get("starting"));
+            player.setLocation(location[0], location[1]);
+
+            outputBoundary.updatePlayerLocation(location);
+            outputBoundary.updateHp(player.getCurrHitPoint());
+            outputBoundary.updateEssenceCnt(player.getEssence().getNum());
+            outputBoundary.updateArtifact(player.getEssence().getNum());
+            outputBoundary.updateText("A voice whispers to you:", "\" You must get 5 Artifact to leave this place \"","" ,"");
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

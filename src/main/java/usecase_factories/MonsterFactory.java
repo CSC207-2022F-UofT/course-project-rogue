@@ -7,10 +7,12 @@ import file_reader.GameFileReaderInterface;
 
 public class MonsterFactory{
 
-    private final GameFileReaderInterface mf;
+    private static GameFileReaderInterface readerInterface;
 
-    public MonsterFactory(GameFileReaderInterface reader){
-        this.mf = reader;
+    public MonsterFactory(){}
+
+    public static void setFileReader(GameFileReaderInterface fileReader){
+        MonsterFactory.readerInterface = fileReader;
     }
 
     /**
@@ -20,7 +22,7 @@ public class MonsterFactory{
 
     public Monster create(int index){
         try {
-            return new ObjectMapper().readValue(mf.findInt("index", index), Monster.class);
+            return new ObjectMapper().readValue(readerInterface.findInt("index", index), Monster.class);
         } catch (JsonProcessingException e) {
              throw new RuntimeException(e);
         }

@@ -18,9 +18,9 @@ public class FightEvent extends Event{
     private final MonsterFactory mf;
     private final EquipmentFactory ef;
 
-    public FightEvent(MonsterFactory monsterFactory, EquipmentFactory equipmentFactory){
-        this.mf = monsterFactory;
-        this.ef = equipmentFactory;
+    public FightEvent(){
+        this.mf = new MonsterFactory();
+        this.ef = new EquipmentFactory();
     }
 
     /**
@@ -88,5 +88,10 @@ public class FightEvent extends Event{
     @Override
     public boolean enter(Player player){
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "FightEvent";
     }
 }

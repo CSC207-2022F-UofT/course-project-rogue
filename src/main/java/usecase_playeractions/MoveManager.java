@@ -11,10 +11,10 @@ public class MoveManager extends ActionManager{
      * Sets up the default Mover observer of WASD
      */
     private void setDefaultMover(Player player, Map map) {
-        this.addObserver(new Mover(player,map,"W",0,1));
-        this.addObserver(new Mover(player,map,"A",1,0));
-        this.addObserver(new Mover(player,map,"S",0,-1));
-        this.addObserver(new Mover(player,map,"D",-1,0));
+        this.addObserver(new Mover(player,map,"W",-1,0));
+        this.addObserver(new Mover(player,map,"A",0,-1));
+        this.addObserver(new Mover(player,map,"S",1,0));
+        this.addObserver(new Mover(player,map,"D",0,1));
     }
 
     /**

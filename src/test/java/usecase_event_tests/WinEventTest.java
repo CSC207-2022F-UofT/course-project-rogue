@@ -18,7 +18,6 @@ import user_interface.View;
 import user_interface.Visual;
 
 public class WinEventTest {
-    Event x = new Event(new Visual(new View()));
     int maxHP = 100;
     int atkPt = 10;
     Collectible essence = new Collectible("Essence", 100);
@@ -34,8 +33,8 @@ public class WinEventTest {
     @BeforeEach
     @DisplayName("Creates the same Player class before each test")
     void setUp(){
-        event = new WinEvent(new GameFileWriter("data_base/Player_save.json"));
-        player = new Player(maxHP, atkPt, inventory, equipmentSlots, location);
+        event = new WinEvent();
+        player = new Player(maxHP, atkPt, inventory, equipmentSlots);
     }
 
     @Test

@@ -40,7 +40,7 @@ public class ViewModel {
      * @return True if instance variable map is not initialized.
      */
     private boolean checkReady(){
-        return this.map == null;
+        return this.map != null;
     }
 
     public void draw(Graphics g, Dimension size, JPanel gameFrame){
@@ -53,7 +53,7 @@ public class ViewModel {
             throw new RuntimeException(e);
         }
         g.setColor(new Color(0x69030303, true));
-        g.fillRect(0,0,size.width-1000,size.height-300);
+        g.fillRect(0,0,size.width-600,size.height-300);
         g.setColor(new Color(0xFF090909, true));
         g.setFont(new Font("TimesRoman",Font.CENTER_BASELINE,30));
         g.drawString("HP:      "+hp,30,120);
@@ -76,7 +76,7 @@ public class ViewModel {
         this.map.setPlayerLocation(l);
     }
     public void setMap(String[][] map){
-        this.map = new MapGraphics(this.size.width-1000, 0, 650, map);
+        this.map = new MapGraphics( 877, 0, 650, map);
     }
     public void setHp(int hp) {
         this.hp = hp;

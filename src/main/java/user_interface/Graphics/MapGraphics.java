@@ -14,6 +14,7 @@ public class MapGraphics {
         this.length = length;
         this.events = new Grid[events.length][events[0].length];
         int L = length / events[0].length;
+        System.out.println(L);
         for(int i = 0; i < events.length; i++){
             for(int o = 0; o < events[i].length; o++){
                 int s = x + o * L;
@@ -49,8 +50,9 @@ public class MapGraphics {
      * @param location : the new location of player
      */
     public void setPlayerLocation(int[] location){
-        MapGraphics.playerLocation[0] = location[0];
-        MapGraphics.playerLocation[1] = location[1];
+        int L = length / events[0].length;
+        MapGraphics.playerLocation[0] = x + location[1] * L;
+        MapGraphics.playerLocation[1] = y + location[0] * L;
     }
 
     /**

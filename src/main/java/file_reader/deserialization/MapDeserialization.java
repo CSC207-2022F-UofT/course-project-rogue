@@ -38,25 +38,15 @@ public class MapDeserialization extends StdDeserializer<Map> {
             Event e;
             for(int o = 0; o < a.length; o++){
                 String event = a[o];
-                switch (event){
-                    case "A":
-                        e = new ArtifactEvent();
-                    case "Es": // can be deleted
-                        e = new EssenceEvent();
-                    case "F": // this case can be deleted
-                        // e = new FightEvent();
-                    case "N":
-                        e = new NoEvent();
-                    case "R":
-                        // e = new RandomEvent(); // needs MonsterFactory and EquipmentFactory args
-                    case "WL":
-                        e = new WallEvent();
-                    case "W":
-                        //TODO: Find a way to add GameFileReader inside Win Event
-//                        e = new WinEvent();
-                    default:
-                        e = new WallEvent();
-                }
+                e = switch (event) {
+                    case "A" -> new ArtifactEvent();
+                    case "Es" -> new EssenceEvent();
+                    case "F" -> new FightEvent();
+                    case "N" -> new NoEvent();
+                    case "R" -> new RandomEvent();
+                    case "WL" -> new WallEvent();
+                    case "W" -> new WinEvent();
+                };
                 map.setBoard(e, i, o);
             }
         }

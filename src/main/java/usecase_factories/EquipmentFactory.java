@@ -7,10 +7,12 @@ import file_reader.GameFileReaderInterface;
 
 public class EquipmentFactory {
 
-    private final GameFileReaderInterface readerInterface;
+    private static GameFileReaderInterface readerInterface;
 
-    public EquipmentFactory(GameFileReaderInterface ef){
-        this.readerInterface = ef;
+    public EquipmentFactory(){}
+
+    public static void setFileReader(GameFileReaderInterface fileReader){
+        EquipmentFactory.readerInterface = fileReader;
     }
 
     /**
