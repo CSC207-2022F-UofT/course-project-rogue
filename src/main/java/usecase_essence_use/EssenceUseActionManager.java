@@ -27,9 +27,9 @@ public class EssenceUseActionManager extends ActionManager {
         essenceUseSpeakerManager speaker = new essenceUseSpeakerManager(player, manager, outputBoundary);
         this.addObserver(new Upgrader(player, manager.getWeaponUpgradeManage(), "1", speaker));
         this.addObserver(new Upgrader(player, manager.getArmorUpgradeManage(), "2", speaker));
-        this.addObserver(new Healer(player, manager.getHealManage(), "H", speaker));
-        this.addObserver(new essenceUseLeaver(player, "L", speaker));
-        this.addObserver(new upgradeSelect(player, "U", speaker));
+        this.addObserver(new Healer(player, manager, "H", speaker));
+        this.addObserver(new essenceUseLeaver(player, manager, "L", speaker));
+        this.addObserver(new upgradeSelect(player, manager,"U", speaker));
         this.addObserver(new essenceUseStarter(player, manager, "E", speaker));
     }
 

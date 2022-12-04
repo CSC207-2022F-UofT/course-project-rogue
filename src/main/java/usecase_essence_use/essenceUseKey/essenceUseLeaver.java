@@ -1,6 +1,7 @@
 package usecase_essence_use.essenceUseKey;
 
 import entity.player.Player;
+import usecase_essence_use.manager.essenceUseManager;
 import usecase_essence_use.manager.essenceUseSpeakerManager;
 
 import java.util.Observable;
@@ -10,6 +11,7 @@ import java.util.Observer;
 public class essenceUseLeaver implements Observer {
     private final Player player;
     private final String trigger;
+    private final essenceUseManager manager;
 
     private boolean inPage;
 
@@ -22,9 +24,10 @@ public class essenceUseLeaver implements Observer {
      * @param trigger the trigger word, usually a big capital letter
      * @param speaker the outputBoundary
      */
-    public essenceUseLeaver(Player player, String trigger, essenceUseSpeakerManager speaker) {
+    public essenceUseLeaver(Player player, essenceUseManager manager,String trigger, essenceUseSpeakerManager speaker) {
         this.player = player;
         this.trigger = trigger;
+        this.manager = manager;
         this.inPage = false;
         this.speaker = speaker;
     }
@@ -43,6 +46,7 @@ public class essenceUseLeaver implements Observer {
             this.inPage = false;
         } else if (inPage && arg.equals("C") &&!player.getCanHeal() && !player.getCanUpgrade()) {
             this.speaker.showEssenceUseEnd();
+            this.manager.setNewDataFalse();
             this.inPage = false;
         }
     }
