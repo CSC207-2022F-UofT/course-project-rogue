@@ -44,6 +44,7 @@ So try to stay alive, collect the artifact and escape the maze!
   * The State records what actions the player can take.
   * Method delegation is also used. (We choose to make player a relatively big class compared to having everyone needing to make a train of method calls)
 * Event is using Strategy Design Pattern (Where map is holding an Array of Events, the player will trigger Events differently depending on which Event type it is)
+* Items are using the composite design patter as it branches out to **Collectibles** and **Equipments** and **Equipments** branches out to **Armor** and **Weapons**
 
 
 # Clean Architecture used 
