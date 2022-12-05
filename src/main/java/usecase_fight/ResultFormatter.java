@@ -1,6 +1,7 @@
 package usecase_fight;
 
 import entity.item.Equipment;
+import entity.monster.Monster;
 
 /** A Formatter that formats fight results into a string. */
 public class ResultFormatter {
@@ -44,6 +45,18 @@ public class ResultFormatter {
         String line3 = "Items Received: None";
         String line4 = "Press [C] to continue.";
         return new String[]{line1, line2, line3, line4};
+    }
+
+    /**
+     * Format flee results.
+     *
+     * @param monster The monster the player is fleeing from
+     */
+    public String[] formatRun(Monster monster){
+        String line1 = String.format("Successfully ran away from the %s", monster);
+        String line2 = "You may now continue your journey!";
+        String line4 = "Press [W][A][S][D] to move";
+        return new String[]{line1, line2, "", line4};
     }
 
     /**
