@@ -1,21 +1,21 @@
 package usecase_essence_use.essenceUseKey;
 
 import entity.player.Player;
-import usecase_essence_use.manager.essenceUseManager;
-import usecase_essence_use.manager.essenceUseSpeakerManager;
+import usecase_essence_use.manager.EssenceUseManager;
+import usecase_essence_use.manager.EssenceUseSpeakerManager;
 
 import java.util.Observable;
 import java.util.Observer;
 
 @SuppressWarnings("deprecation")
-public class essenceUseLeaver implements Observer {
+public class EssenceUseLeaver implements Observer {
     private final Player player;
     private final String trigger;
-    private final essenceUseManager manager;
+    private final EssenceUseManager manager;
 
     private boolean inPage;
 
-    private final essenceUseSpeakerManager speaker;
+    private final EssenceUseSpeakerManager speaker;
 
     /**
      * The constructor of healing. This class is to be triggered by the HealingUpgradingControl. And It will recover the
@@ -24,7 +24,7 @@ public class essenceUseLeaver implements Observer {
      * @param trigger the trigger word, usually a big capital letter
      * @param speaker the outputBoundary
      */
-    public essenceUseLeaver(Player player, essenceUseManager manager,String trigger, essenceUseSpeakerManager speaker) {
+    public EssenceUseLeaver(Player player, EssenceUseManager manager, String trigger, EssenceUseSpeakerManager speaker) {
         this.player = player;
         this.trigger = trigger;
         this.manager = manager;

@@ -1,6 +1,8 @@
 package usecase_gamedata;
 
 import org.junit.After;
+import usecase_essence_use.essenceUseKey.Healer;
+import usecase_essence_use.essenceUseKey.Upgrader;
 import usecase_essence_use.heal.HealCalculator;
 import usecase_essence_use.heal.Healer;
 import usecase_essence_use.upgrade.UpgradeCalculator;

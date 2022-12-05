@@ -1,9 +1,9 @@
 package usecase_essence_use.data_preset_normal;
 
-public final class collectibleNeedSetting {
+public final class CollectibleNeedSetting {
     public final int essenceHPExchangeRate;
     public final int essenceForUpgrade;
-    public collectibleNeedSetting(){
+    public CollectibleNeedSetting(){
         essenceHPExchangeRate = 1;
         essenceForUpgrade = 20;
     }

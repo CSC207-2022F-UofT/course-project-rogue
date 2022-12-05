@@ -2,11 +2,11 @@ package usecase_essence_use.manager;
 
 import entity.player.Player;
 
-public class essenceUseSpeakerManager extends EssenceUseInfoPass{
+public class EssenceUseSpeakerManager extends EssenceUseInfoPass{
     private final Player player;
-    private final essenceUseManager essenceUseManager;
+    private final EssenceUseManager essenceUseManager;
 
-    public essenceUseSpeakerManager(Player player, essenceUseManager essenceUseManager){
+    public EssenceUseSpeakerManager(Player player, EssenceUseManager essenceUseManager){
         this.player = player;
         this.essenceUseManager = essenceUseManager;
     }
@@ -58,7 +58,7 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
      * @return heal info string
      */
     private String makeHealString(){
-        healManager healManager= essenceUseManager.getHealManage();
+        HealManager healManager= essenceUseManager.getHealManage();
         int HPToHeal = healManager.getHPToHeal();
         int HPRequired = healManager.getRequireHP();
         int essenceNeed = healManager.getEssenceNeed();
@@ -83,7 +83,7 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
      * @return upgrade weapon info string
      */
     private String makeWeaponUpgradeString(){
-        upgradeManager weaponUpgradeManage = essenceUseManager.getWeaponUpgradeManage();
+        UpgradeManager weaponUpgradeManage = essenceUseManager.getWeaponUpgradeManage();
         boolean able = weaponUpgradeManage.getAble();
         String EquipName = weaponUpgradeManage.getEquipment().getName();
         int EssenceCost = weaponUpgradeManage.getEssenceCost();
@@ -104,7 +104,7 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
      */
     private String makeArmorUpgradeString(){
         String EquipName = this.essenceUseManager.getArmorUpgradeManage().getEquipment().getName();
-        upgradeManager armorUpgradeManager = this.essenceUseManager.getArmorUpgradeManage();
+        UpgradeManager armorUpgradeManager = this.essenceUseManager.getArmorUpgradeManage();
         if(!armorUpgradeManager.getAble()){
             return String.format("You don't enough essence to upgrade your %s", EquipName);
         }

@@ -1,32 +1,32 @@
 package usecase_essence_use.manager;
 
 import entity.player.Player;
-import usecase_essence_use.data_preset_normal.collectibleNeedSetting;
-import usecase_essence_use.data_preset_normal.statSetting;
+import usecase_essence_use.data_preset_normal.CollectibleNeedSetting;
+import usecase_essence_use.data_preset_normal.StatSetting;
 
-public class essenceUseManager {
-    private final healManager healCount;
-    private final upgradeManager weaponUpgradeCount;
-    private final upgradeManager armorUpgradeCount;
+public class EssenceUseManager {
+    private final HealManager healCount;
+    private final UpgradeManager weaponUpgradeCount;
+    private final UpgradeManager armorUpgradeCount;
     private boolean inEssenceUse;
     private boolean inPage;
 
-    public essenceUseManager(Player player, collectibleNeedSetting essenceNeed, statSetting statAdd){
-        healCount = new healManager(player, essenceNeed);
-        weaponUpgradeCount = new upgradeManager(player, "Weapon", essenceNeed, statAdd);
-        armorUpgradeCount = new upgradeManager(player, "Armor", essenceNeed, statAdd);
+    public EssenceUseManager(Player player, CollectibleNeedSetting essenceNeed, StatSetting statAdd){
+        healCount = new HealManager(player, essenceNeed);
+        weaponUpgradeCount = new UpgradeManager(player, "Weapon", essenceNeed, statAdd);
+        armorUpgradeCount = new UpgradeManager(player, "Armor", essenceNeed, statAdd);
         inEssenceUse = false;
     }
 
-    public healManager getHealManage() {
+    public HealManager getHealManage() {
         return healCount;
     }
 
-    public upgradeManager getArmorUpgradeManage() {
+    public UpgradeManager getArmorUpgradeManage() {
         return armorUpgradeCount;
     }
 
-    public upgradeManager getWeaponUpgradeManage() {
+    public UpgradeManager getWeaponUpgradeManage() {
         return weaponUpgradeCount;
     }
 

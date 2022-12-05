@@ -1,18 +1,18 @@
 package usecase_essence_use.essenceUseKey;
 
 import entity.player.Player;
-import usecase_essence_use.manager.essenceUseSpeakerManager;
-import usecase_essence_use.manager.essenceUseManager;
+import usecase_essence_use.manager.EssenceUseSpeakerManager;
+import usecase_essence_use.manager.EssenceUseManager;
 
 import java.util.Observable;
 import java.util.Observer;
 
 @SuppressWarnings("deprecation")
-public class essenceUseStarter implements Observer {
+public class EssenceUseStarter implements Observer {
     private final Player player;
-    private final essenceUseManager manager;
+    private final EssenceUseManager manager;
     private final String trigger;
-    private final essenceUseSpeakerManager speaker;
+    private final EssenceUseSpeakerManager speaker;
 
 
     /**
@@ -21,7 +21,7 @@ public class essenceUseStarter implements Observer {
      * @param player the player
      * @param trigger the trigger word, usually a big capital letter
      */
-    public essenceUseStarter(Player player, essenceUseManager manager,String trigger, essenceUseSpeakerManager speaker) {
+    public EssenceUseStarter(Player player, EssenceUseManager manager, String trigger, EssenceUseSpeakerManager speaker) {
         this.player = player;
         this.manager = manager;
         this.trigger = trigger;

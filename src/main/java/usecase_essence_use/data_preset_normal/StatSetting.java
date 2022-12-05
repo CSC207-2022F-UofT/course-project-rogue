@@ -1,11 +1,11 @@
 package usecase_essence_use.data_preset_normal;
 
-public final class statSetting {
+public final class StatSetting {
 
     private final int statIncrease;
     private final int upgradeTimesMax;
 
-    public statSetting(){
+    public StatSetting(){
         statIncrease = 20;
         upgradeTimesMax = 3;
     }

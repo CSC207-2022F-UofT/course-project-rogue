@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_essence_use.data_preset_normal.collectibleNeedSetting;
-import usecase_essence_use.manager.healManager;
+import usecase_essence_use.data_preset_normal.CollectibleNeedSetting;
+import usecase_essence_use.manager.HealManager;
 import usecase_playeractions.Map;
 
 public class HealCalculatorTest {
@@ -27,7 +27,7 @@ public class HealCalculatorTest {
     Weapon excalibur = new Weapon("Legendary Sword Excalibur", 1000);
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
 
-    collectibleNeedSetting essenceNeed = new collectibleNeedSetting();
+    CollectibleNeedSetting essenceNeed = new CollectibleNeedSetting();
 
     @BeforeEach
     @DisplayName("Setup before Each Test")
@@ -48,7 +48,7 @@ public class HealCalculatorTest {
     void testHPIsHealed(){
         player.setCanHeal(true);
         player.changeCurrHitPoint(-20);
-        healManager healCalculator = new healManager(player, essenceNeed);
+        HealManager healCalculator = new HealManager(player, essenceNeed);
         healCalculator.healInfoUpdate();
         healCalculator.heal();
         Assertions.assertEquals(player.getCurrHitPoint(), 100);
@@ -60,7 +60,7 @@ public class HealCalculatorTest {
 
         player.setCanHeal(true);
         player.changeCurrHitPoint(-20);
-        healManager healCalculator = new healManager(player, essenceNeed);
+        HealManager healCalculator = new HealManager(player, essenceNeed);
         healCalculator.healInfoUpdate();
         healCalculator.heal();
         Assertions.assertEquals(player.getEssence().getNum(),80);
@@ -72,7 +72,7 @@ public class HealCalculatorTest {
         player.setCanHeal(true);
         player.changeCurrHitPoint(-90);
         player.changeEssenceAmount(-90);
-        healManager healCalculator = new healManager(player,essenceNeed);
+        HealManager healCalculator = new HealManager(player,essenceNeed);
         healCalculator.healInfoUpdate();
         healCalculator.heal();
         Assertions.assertEquals(player.getCurrHitPoint(),20);
@@ -83,7 +83,7 @@ public class HealCalculatorTest {
     void testCannotHeal(){
         player.setCanHeal(true);
         player.changeCurrHitPoint(-20);
-        healManager healCalculator = new healManager(player, essenceNeed);
+        HealManager healCalculator = new HealManager(player, essenceNeed);
         healCalculator.healInfoUpdate();
         healCalculator.heal();
         Assertions.assertFalse(player.getCanHeal());

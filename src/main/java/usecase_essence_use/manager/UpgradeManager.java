@@ -2,16 +2,16 @@ package usecase_essence_use.manager;
 
 import entity.item.Equipment;
 import entity.player.Player;
-import usecase_essence_use.data_preset_normal.collectibleNeedSetting;
-import usecase_essence_use.data_preset_normal.statSetting;
+import usecase_essence_use.data_preset_normal.CollectibleNeedSetting;
+import usecase_essence_use.data_preset_normal.StatSetting;
 
-public class upgradeManager {
+public class UpgradeManager {
 
     private final CollectibleUseManager CollectHelper;
     private final Player player;
-    private final collectibleNeedSetting essenceNeed;
+    private final CollectibleNeedSetting essenceNeed;
 
-    private final statSetting statDetermine;
+    private final StatSetting statDetermine;
 
 
     private final String EquipType;
@@ -21,8 +21,8 @@ public class upgradeManager {
      * Constructor of Heal info. This class will collect the information of player and determine how to heal
      * @param player the player of the game
      */
-    public upgradeManager(Player player, String equipType, collectibleNeedSetting essenceNeed,
-                          statSetting statDetermine){
+    public UpgradeManager(Player player, String equipType, CollectibleNeedSetting essenceNeed,
+                          StatSetting statDetermine){
         this.player = player;
         this.essenceNeed = essenceNeed;
         this.CollectHelper = new CollectibleUseManager(player, this.essenceNeed.essenceForUpgrade());

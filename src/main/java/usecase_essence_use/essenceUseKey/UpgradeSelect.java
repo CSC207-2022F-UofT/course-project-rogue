@@ -1,18 +1,18 @@
 package usecase_essence_use.essenceUseKey;
 
 import entity.player.Player;
-import usecase_essence_use.manager.essenceUseManager;
-import usecase_essence_use.manager.essenceUseSpeakerManager;
+import usecase_essence_use.manager.EssenceUseManager;
+import usecase_essence_use.manager.EssenceUseSpeakerManager;
 
 import java.util.Observable;
 import java.util.Observer;
 
 @SuppressWarnings("deprecation")
-public class upgradeSelect implements Observer{
+public class UpgradeSelect implements Observer{
     private final Player player;
     private final String trigger;
-    private final essenceUseManager manager;
-    private final essenceUseSpeakerManager speaker;
+    private final EssenceUseManager manager;
+    private final EssenceUseSpeakerManager speaker;
 
     private boolean inPage;
 
@@ -24,7 +24,7 @@ public class upgradeSelect implements Observer{
      * @param trigger the trigger word, usually a big capital letter
      */
 
-    public upgradeSelect(Player player, essenceUseManager manager,String trigger, essenceUseSpeakerManager speaker) {
+    public UpgradeSelect(Player player, EssenceUseManager manager, String trigger, EssenceUseSpeakerManager speaker) {
         this.player = player;
         this.manager = manager;
         this.trigger = trigger;

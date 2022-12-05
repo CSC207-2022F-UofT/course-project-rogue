@@ -1,12 +1,12 @@
 package usecase_essence_use.manager;
 
 import entity.player.Player;
-import usecase_essence_use.data_preset_normal.collectibleNeedSetting;
+import usecase_essence_use.data_preset_normal.CollectibleNeedSetting;
 
-public class healManager {
+public class HealManager {
     private final CollectibleUseManager collectHelper;
     private final Player player;
-    private final collectibleNeedSetting essenceNeed;
+    private final CollectibleNeedSetting essenceNeed;
 
     private int requireHP;
     private int hpToHeal;
@@ -15,7 +15,7 @@ public class healManager {
      * Constructor of Heal info. This class will collect the information of player and determine how to heal
      * @param player the player in the game, we only accept one player
      */
-    public healManager(Player player, collectibleNeedSetting essenceNeed){
+    public HealManager(Player player, CollectibleNeedSetting essenceNeed){
         this.player = player;
         this.requireHP = 0;
         this.hpToHeal = 0;
