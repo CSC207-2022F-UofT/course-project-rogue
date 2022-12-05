@@ -8,6 +8,7 @@ import java.util.Observer;
 /**
  * The Observer used to make the player move on the map
  */
+@SuppressWarnings("deprecation")
 public class Mover implements Observer {
 
     private final Player player;
@@ -45,7 +46,6 @@ public class Mover implements Observer {
     public void update(Observable o, Object arg) {
         if(player.getCanMove() && trigger.equals(arg)){
             map.move(player, x, y);
-
         }
     }
 }
