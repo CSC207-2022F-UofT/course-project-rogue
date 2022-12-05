@@ -7,23 +7,18 @@ import entity.monster.MonsterPower;
 import entity.player.Player;
 import entity.item.Weapon;
 
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Random;
 
 /** A path in which the user decides to fight. */
-public class Fighter extends FightPath implements Observer {
+public class Fighter extends FightPath {
 
     /** Formatter that formats results of the fight to a string. */
     private final ResultFormatter formatter = new ResultFormatter(); // is it okay to have hard dependence here?
     private final Player player;
-    /** Keystroke that triggers this use case. */
-    private final String trigger; // 'F'
 
     /** Creates a new Fighter with the given Player and trigger. */
-    public Fighter(Player player, String trigger){
+    public Fighter(Player player){
         this.player = player;
-        this.trigger = trigger;
     }
 
     /** Helper method - get the summary of the fight a player is in. */
@@ -163,9 +158,7 @@ public class Fighter extends FightPath implements Observer {
 
     /** Execute a fight if the key input from the user matches trigger and Player is in a fight. */
     @Override
-    public void update(Observable o, Object arg) {
-        if(player.getFighting() && trigger.equals(arg)){
-            this.fight();
-        }
+    public void takePath() {
+        this.fight();
     }
 }

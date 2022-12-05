@@ -9,4 +9,6 @@ public abstract class FightPath {
     public static void setOutputBoundary(OutputBoundary outputBoundary){
         FightPath.outputBoundary = outputBoundary;
     }
+
+    public abstract void takePath();
 }
