@@ -16,9 +16,7 @@ import usecase_fight.FightSummary;
 import usecase_fight.Fighter;
 
 import java.util.HashMap;
-import java.util.Observable;
 
-@SuppressWarnings("deprecation")
 public class FighterTest {
 
     Collectible essence = new Collectible("Essence", 10);
@@ -72,7 +70,7 @@ public class FighterTest {
         fs5 = new FightSummary(monster, 5, 0, 20, eq3);
         fs6 = new FightSummary(monster, 5, 0, 0, eq2);
 
-        fighter = new Fighter(player, "F");
+        fighter = new Fighter(player);
     }
 
     @Test
@@ -83,7 +81,7 @@ public class FighterTest {
         Equipment oldArmor = player.getArmor();
         Equipment oldWeapon = player.getWeapon();
         int oldHP = player.getCurrHitPoint();
-        fighter.update(new Observable(), "F");
+        fighter.takePath();
         Assertions.assertAll("Check that Player HP and equipment does not change and 5 essence",
                 () -> Assertions.assertEquals(oldArmor, player.getArmor()),
                 () -> Assertions.assertEquals(oldWeapon, player.getWeapon()),
@@ -97,7 +95,7 @@ public class FighterTest {
         // check weapon is new weapon
         this.setSummary(player, fs1);
         Equipment oldWeapon = player.getWeapon();
-        fighter.update(new Observable(), "F");
+        fighter.takePath();
         Assertions.assertEquals(eq1, player.getWeapon());
         Assertions.assertNotEquals(oldWeapon, player.getWeapon());
     }
@@ -108,7 +106,7 @@ public class FighterTest {
         // check weapon is same
         this.setSummary(player, fs2);
         Equipment oldWeapon = player.getWeapon();
-        fighter.update(new Observable(), "F");
+        fighter.takePath();
         Assertions.assertEquals(oldWeapon, player.getWeapon());
     }
 
@@ -118,7 +116,7 @@ public class FighterTest {
         // check new armor
         this.setSummary(player, fs);
         Equipment oldArmor = player.getArmor();
-        fighter.update(new Observable(), "F");
+        fighter.takePath();
         Assertions.assertEquals(eq3, player.getArmor());
         Assertions.assertNotEquals(oldArmor, player.getArmor());
     }
@@ -131,7 +129,7 @@ public class FighterTest {
         Equipment oldArmor = player.getArmor();
         Equipment oldWeapon = player.getWeapon();
         int oldEssence = player.getEssence().getNum();
-        fighter.update(new Observable(), "F");
+        fighter.takePath();
         Assertions.assertAll("Check that Player essence count and equipment does not change and takes 5 damage",
                 () -> Assertions.assertEquals(oldArmor, player.getArmor()),
                 () -> Assertions.assertEquals(oldWeapon, player.getWeapon()),
@@ -144,7 +142,7 @@ public class FighterTest {
     void fightGameOver(){
         // check game over state
         this.setSummary(player, fs5);
-        fighter.update(new Observable(), "F");
+        fighter.takePath();
         Assertions.assertTrue(player.getGameOver());
     }
 
@@ -157,7 +155,7 @@ public class FighterTest {
         Equipment oldWeapon = player.getWeapon();
         int oldEssence = player.getEssence().getNum();
         int oldHP = player.getCurrHitPoint();
-        fighter.update(new Observable(), "F");
+        fighter.takePath();
         Assertions.assertAll("Check that Player essence count and equipment does not change and takes 5 damage",
                 () -> Assertions.assertEquals(oldArmor, player.getArmor()),
                 () -> Assertions.assertEquals(oldWeapon, player.getWeapon()),

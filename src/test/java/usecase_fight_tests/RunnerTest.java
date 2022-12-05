@@ -15,9 +15,7 @@ import usecase_fight.FightSummary;
 import usecase_fight.Runner;
 
 import java.util.HashMap;
-import java.util.Observable;
 
-@SuppressWarnings("deprecation")
 public class RunnerTest {
 
     Collectible essence = new Collectible("Essence", 10);
@@ -47,25 +45,15 @@ public class RunnerTest {
         player.setFighting(true);
         player.setCanMove(false);
 
-        runner = new Runner(player, "R");
+        runner = new Runner(player);
     }
 
     @Test
     @DisplayName("Test that flee changes Player states")
     void testChangeStates(){
-        runner.update(new Observable(), "R");
+        runner.takePath();
         Assertions.assertAll("Check that Player is no longer Fighting and can move",
                 () -> Assertions.assertTrue(player.getCanMove()),
                 () -> Assertions.assertFalse(player.getFighting()));
-    }
-
-    @Test
-    @DisplayName("Test that flee can do damage to Player if unsuccessful")
-    void testBadFlee(){
-        runner.update(new Observable(), "R");
-        // check that if player HP is no longer 20, then Player hp is 19
-        if (player.getCurrHitPoint() != 20){
-            Assertions.assertEquals(19, player.getCurrHitPoint());
-        }
     }
 }
