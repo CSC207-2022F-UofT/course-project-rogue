@@ -1,4 +1,4 @@
-package usecase_fight;
+package usecase_fight.states;
 
 import interface_adapters.OutputBoundary;
 
@@ -9,6 +9,4 @@ public abstract class FightPath {
     public static void setOutputBoundary(OutputBoundary outputBoundary){
         FightPath.outputBoundary = outputBoundary;
     }
-
-    public abstract void takePath();
 }

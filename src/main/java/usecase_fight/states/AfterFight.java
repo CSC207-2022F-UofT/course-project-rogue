@@ -1,10 +1,10 @@
-package usecase_fight;
+package usecase_fight.states;
 
 import entity.player.Player;
 
 
 /** A path occurring after a fight. Prompts the user to heal or upgrade a weapon. */
-public class AfterFight extends FightPath {
+public class AfterFight extends FightPath implements FightState {
     private final Player player;
 
     public AfterFight(Player player){
@@ -19,7 +19,6 @@ public class AfterFight extends FightPath {
     }
 
     /** Displays a prompt to the user to press [H] or [U]. */
-    @Override
     public void takePath() {
         this.changeStates();
         outputBoundary.updateText("You can now heal or upgrade a weapon!", "", "", "Press [C] to continue");

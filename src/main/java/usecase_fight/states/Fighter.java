@@ -1,4 +1,4 @@
-package usecase_fight;
+package usecase_fight.states;
 
 import entity.item.Armor;
 import entity.item.Equipment;
@@ -6,11 +6,13 @@ import entity.monster.Monster;
 import entity.monster.MonsterPower;
 import entity.player.Player;
 import entity.item.Weapon;
+import usecase_fight.FightSummary;
+import usecase_fight.ResultFormatter;
 
 import java.util.Random;
 
 /** A path in which the user decides to fight. */
-public class Fighter extends FightPath {
+public class Fighter extends FightPath implements FightState {
 
     /** Formatter that formats results of the fight to a string. */
     private final ResultFormatter formatter = new ResultFormatter(); // is it okay to have hard dependence here?
@@ -72,7 +74,6 @@ public class Fighter extends FightPath {
     private void inflictDamage(FightSummary summary){
         int damage = summary.getDamage();
         this.player.changeCurrHitPoint(-damage);
-        outputBoundary.updateHp(player.getCurrHitPoint());
     }
 
     /**
@@ -93,7 +94,6 @@ public class Fighter extends FightPath {
     private void acceptEssence(FightSummary summary){
         int toAdd = summary.getAmountDrop();
         this.player.changeEssenceAmount(toAdd);
-        outputBoundary.updateEssenceCnt(player.getEssence().getNum());
     }
 
     /**
@@ -153,11 +153,12 @@ public class Fighter extends FightPath {
             }
         }
         outputBoundary.updateText(result[0], result[1], result[2], result[3]);
+        outputBoundary.updateEssenceCnt(player.getEssence().getNum());
+        outputBoundary.updateHp(player.getCurrHitPoint());
     }
 
 
     /** Execute a fight if the key input from the user matches trigger and Player is in a fight. */
-    @Override
     public void takePath() {
         this.fight();
     }

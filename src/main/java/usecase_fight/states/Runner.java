@@ -1,10 +1,11 @@
-package usecase_fight;
+package usecase_fight.states;
 
 import entity.monster.Monster;
 import entity.player.Player;
+import usecase_fight.ResultFormatter;
 
 /** A path in which a user runs away from a fight. */
-public class Runner extends FightPath {
+public class Runner extends FightPath implements FightState {
 
     /** A result formatter */
     ResultFormatter rf = new ResultFormatter();
@@ -36,7 +37,6 @@ public class Runner extends FightPath {
     }
 
     /** Triggers this runner if Player is in a fight and if the user gives key input matching trigger. */
-    @Override
     public void takePath() {
         this.flee();
     }
