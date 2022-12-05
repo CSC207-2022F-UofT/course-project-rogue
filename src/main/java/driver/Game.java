@@ -25,7 +25,6 @@ public class Game {
         GameFileReaderInterface monsterReader = new GameFileReader("data_base/Monster.json");
         GameFileReaderInterface mapReader = new GameFileReader("data_base/Map.json");
         GameFileReaderInterface equipmentReader = new GameFileReader("data_base/Equipment.json");
-        GameFileReaderInterface collectibleReader = new GameFileReader("data_base/Collectible.json");
         GameFileWriterInterface playerWriter = new GameFileWriter("data_base/Player_save.json");
         playerWriter.register(playerReader);
         playerReader.update("data_base/Player_save.json");
