@@ -1,5 +1,6 @@
 package usecase_fight;
 
+import entity.PlayerData;
 import entity.player.Player;
 
 import java.util.Observable;
@@ -9,7 +10,7 @@ import java.util.Observer;
 public class Restarter extends FightPath implements Observer {
     private final Player player;
     /** The keystroke that triggers this restarter. */
-    private final String trigger; // (Continue key)
+    private final String trigger;
 
     /**
      * Creates a Restarter with the given Player and trigger string.
@@ -31,6 +32,7 @@ public class Restarter extends FightPath implements Observer {
     public void update(Observable o, Object arg) {
         if (player.getGameOver() && trigger.equals(arg)){
             outputBoundary.updateDead();
+            PlayerData.setPlayer(null);
         }
     }
 }

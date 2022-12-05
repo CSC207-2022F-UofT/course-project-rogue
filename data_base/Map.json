@@ -2,7 +2,7 @@
   {
     "index": 0,
     "map": [
-      ["N","N","W","N","N","N","N","WL","N","WL","WL","WL","WL","WL","WL"],
+      ["N","F","W","N","N","N","N","WL","N","WL","WL","WL","WL","WL","WL"],
       ["WL","N","WL","WL","WL","WL","N","WL","N","WL","WL","N","N","N","WL"],
       ["WL","N","WL","N","N","N","WL","N","N","N","N","N","WL","N","N"],
       ["N","N","N","N","WL","N","WL","N","WL","N","WL","N","WL","WL","N"],
