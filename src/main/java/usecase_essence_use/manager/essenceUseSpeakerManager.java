@@ -182,6 +182,7 @@ public class essenceUseSpeakerManager extends EssenceUseInfoPass{
     public void showSuccessPage(String verb){
         if(verb.equalsIgnoreCase("heal")){
             speaker.updateHp(player.getCurrHitPoint());
+            speaker.updateEssenceCnt(player.getEssence().getNum());
         }
         speaker.updateEssenceCnt(player.getEssence().getNum());
         String line1 = String.format("You have successfully %s", verb.toLowerCase());
