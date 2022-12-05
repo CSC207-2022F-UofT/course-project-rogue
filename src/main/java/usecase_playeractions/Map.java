@@ -16,7 +16,6 @@ public class Map{
     private static final int WIDTH = 15;
     private static final int LENGTH = 15;
     private final Event[][] board;
-
     private static OutputBoundary outputBoundary;
 
     /**
@@ -36,10 +35,18 @@ public class Map{
         board[x][y] = e;
     }
 
+    /**
+     * Set the OutputBoundary to be used for Map class.
+     * @param output the OutputBoundary being used.
+     */
     public static void setOutputBoundary(OutputBoundary output){
         Map.outputBoundary = output;
     }
 
+    /**
+     * Return a String Array representation of the Map.Done by calling toString() on every Event.
+     * @return a String Array representation of the Map.
+     */
     public String[][] getStringBoard(){
         String[][] map = new String[WIDTH][LENGTH];
         for(int i = 0; i < WIDTH; i++){
@@ -55,7 +62,7 @@ public class Map{
      * Return false if (x,y) is unreachable(e.g. is a wall)
      *, then place the player on that tile
      *, triggers the event on that tile, and return True.
-     * @param p the player.
+     * @param p the Player.
      * @param x The x coordinate to move to.
      * @param y The y coordinate to move to.
      * @return true if the move is successful, false otherwise
@@ -84,7 +91,7 @@ public class Map{
     }
 
     /**
-     * suppose player is at (a,b),
+     * Suppose player is at (a,b),
      * attempts to move the player to (a+x,b+y).
      * Return false if (a+x,b+y) is unreachable(e.g. is a wall)
      *, then place the player on that tile
