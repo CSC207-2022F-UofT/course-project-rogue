@@ -26,7 +26,7 @@ public class AfterFight extends FightPath implements Observer {
     public void update(Observable o, Object arg) {
         if (this.player.getFighting() && trigger.equals(arg)){
             this.changeStates();
-            outputBoundary.updateText("You can now heal or upgrade a weapon!", "", "", "Press [H] to Heal and [U] to Upgrade Equipments");
+            outputBoundary.updateText("You can now heal or upgrade a weapon!", "", "", "Press [C] to Continue");
         }
     }
 }
