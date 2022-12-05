@@ -45,10 +45,16 @@ So try to stay alive, collect the artifact and escape the maze!
   * Method delegation is also used. (We choose to make player a relatively big class compared to having everyone needing to make a train of method calls)
 * Event is using Strategy Design Pattern (Where map is holding an Array of Events, the player will trigger Events differently depending on which Event type it is)
 * Items are using the composite design patter as it branches out to **Collectibles** and **Equipments** and **Equipments** branches out to **Armor** and **Weapons**
-
+* GameFileWriter uses Observer Design Pattern to inform PlayerFactory and GameFileReader(through interfaces to lower coupling)
+  * PlayerFactory is informed to destroy the player instance it has been storing when the player wins a game or dies to be able to create a new player instance.
+  * GameFileReader is informed to change its reading directory to the directory of the file GameFileWriter writes to. This only happens when a player wins(escaped a level).
 
 # Clean Architecture used 
-* View interacts with Event, Event uses player factory (use case) to create Action Manager which will interact with the other use case
+* We follow MVC structure.
+* View interacts with Controller, Controller interacts with usecases(move manager and action manager implement the Input Boundary) through Input boundary.
+* Use cases control visual(presenter) through view interface and visual controls view through output boundary interface.
+* Gateway classes and use case class are the only classes that access entity.
+* Input Boundary, GameFileReaderInterface, GameFileWriterInterface, Output Boundary, ViewInterface all follow Interface Segregation Principle.
 * Open/Closed Principle with Item: Item allows extension because it allows different types of items to be created without having to modify the Item class. If new types of item want to be created, they can just extend the Item class. This is seen with the Collectible class and the Equipment class.
 * Liskov Substitution Principle with Item and its subclasses (Collectible, Equipment, Armor, and Weapon): Each subclass can substitute an Item object. The methods in Item are all appropriate for the subclasses and can be used by the subclasses.
 
@@ -74,3 +80,6 @@ So try to stay alive, collect the artifact and escape the maze!
   * **Collectible** All Methods and Possibilities are tested.
   * **Armor** All Methods and Possibilities are tested.
   * **Weapon** All Methods and Possibiilities are tested.
+* **Entity Creation**
+  * **Player** Test file reader to search for data of a specific player with the requested key to value combination and return relevant data to create the requested player.
+  * **Monster** Test file reader to search for data of a specific monster with the requested key to value combination and return relevant data to create the requested monster.
