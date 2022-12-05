@@ -24,6 +24,10 @@ public class Upgrader implements Observer{
 
 
 
+    /**
+     * Recieves the notification of which key is pressed, if it is the key it needs to perform the action it
+     * runs this section of the use case, if not it'll not do anything.
+     */
     @Override
     public void update(Observable o, Object arg) {
         if (player.getCanUpgrade() && arg.equals(trigger)) {

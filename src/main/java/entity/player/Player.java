@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 @JsonDeserialize(using = PlayerDeserialization.class)
 public class Player extends Character {
 
-    private final int maxHitPoint; // maybe we can combine Player's info into its own class
+    private final int maxHitPoint;
     private int currHitPoint;
     private final int attackPoint;
     private final int[] location;

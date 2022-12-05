@@ -37,7 +37,10 @@ public class RandomEvent extends Event{
 
         return true;
     }
-
+    /**
+     *  Returns String to show which Event type it is
+     * @return "RandomEvent"
+     */
     @Override
     public String toString() {
         return "RandomEvent";

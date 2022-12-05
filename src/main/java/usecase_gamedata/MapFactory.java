@@ -19,12 +19,20 @@ public class MapFactory {
     public MapFactory(){
     }
 
+    /**
+     * Sets up the output boundary if it hasn't been set for Map Factory
+     * @param outputBoundary: the output Boundary for this Map Factory
+     */
     public static void setOutputBoundary(OutputBoundary outputBoundary){
         if(MapFactory.outputBoundary == null) {
             MapFactory.outputBoundary = outputBoundary;
         }
     }
 
+    /**
+     * Sets the static variable GameFileReaderInterface
+     * @param fileReader: The file reader being set
+     */
     public static void setFileReader(GameFileReaderInterface fileReader){
         MapFactory.mf = fileReader;
     }

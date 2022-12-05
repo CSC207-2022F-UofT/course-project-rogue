@@ -35,6 +35,14 @@ public class EssenceUseManager extends Observable {
         setHealUpgrade(player,HealManage, WeaponUpgradeManage, ArmorUpgradeManage, defaultKeys);
     }
 
+    /**
+     *  Sets up the observer for Heal Upgrade
+     * @param player: The player which it will interact with
+     * @param HealManage: The Heal Manager for that player
+     * @param WeaponUpgradeManage: The Weapon Upgrader for that player
+     * @param ArmorUpgradeManage: The Armor Upgrader for that player
+     * @param Command: The key it pays attention to when the player performs an action
+     */
     private void setHealUpgrade(Player player, HealCalculator HealManage, UpgradeCalculator WeaponUpgradeManage,
                                 UpgradeCalculator ArmorUpgradeManage, String[] Command){
         this.addObserver(new Upgrader(player, WeaponUpgradeManage, Command[0]));

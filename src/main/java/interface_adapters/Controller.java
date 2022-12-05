@@ -36,13 +36,26 @@ public class Controller{
     }
 
 
+    /**
+     * Recieves the Key Released from View, and notify to all use cases who are observing if a key is pressed.
+     *
+     * @param e: the user input key being recieved.
+     */
     public void keyReleased(KeyEvent e) {
         moveManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
 
     }
+
+    /**
+     * Calls enterLevel
+     */
     public void newGame(){
         this.enterLevel(0);
     }
+
+    /**
+     * Creates level 1 for the player by calling enter Level in usecase which loads the first level in the data
+     */
     public void enterLevel(int level){
         inputBoundaryFactory.enterLevel(level);
     }

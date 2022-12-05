@@ -7,12 +7,12 @@ import file_reader.GameFileReaderInterface;
 
 public class MonsterFactory{
 
-    private static GameFileReaderInterface mf; // not sure if its problematic to have this as static
+    private static GameFileReaderInterface mf;
 
-    public MonsterFactory(){
-
-    }
-
+    /**
+     * Sets the static variable GameFileReaderInterface
+     * @param fileReader: The file reader being set
+     */
     public static void setFileReader(GameFileReaderInterface fileReader){
         MonsterFactory.mf = fileReader;
     }

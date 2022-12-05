@@ -11,6 +11,11 @@ public class WinEvent extends Event{
         WinEvent.fileWriter = fileWriter;
     }
 
+    /**
+     * If player steps on this tile with at least 5 artifact they win the game, else it'll tell the player to find more
+     * artifact
+     * @param player: The player it'll interact with
+     */
     @Override
     public void trigger(Player player){
         int currArtifactNum = player.getArtifact().getNum();
@@ -28,11 +33,19 @@ public class WinEvent extends Event{
         }
     }
 
+    /** Tells Map whether this tile could be stepped on by Player
+     *
+     * @return True if player can step on it, false if it can's
+     */
     @Override
     public boolean enter(Player player){
         return true;
     }
 
+    /**
+     *  Returns String to show which Event type it is
+     * @return "WinEvent"
+     */
     @Override
     public String toString() {
         return "WinEvent";

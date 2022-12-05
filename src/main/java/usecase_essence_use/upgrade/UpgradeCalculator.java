@@ -34,6 +34,13 @@ public class UpgradeCalculator {
         this.StatAdded = new CalculatorStat();
     }
 
+    /**
+     * Gets the Equipment from Player based on the Type
+     * @param player: player who stepped on the tile
+     * @param equipType: The type of equipment they want to upgrade
+     * @return Equipment class which the player is currently equipping
+     */
+
     private Equipment getEquipment(Player player, String equipType){
         if (equipType.equals("Weapon")){
             return player.getWeapon();

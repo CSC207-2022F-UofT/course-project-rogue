@@ -15,14 +15,26 @@ public class EssenceUseCalculator {
         armorUpgradeCount = new UpgradeCalculator(player, "Armor");
     }
 
+    /**
+     *  Gets the Heal Calculator
+     * @return Heal Calculator Class
+     */
     public HealCalculator getHealManage() {
         return healCount;
     }
 
+    /**
+     *  Gets the Upgrade Calculator for Armor
+     * @return Upgrade Calculator Class for Armor Upgrade
+     */
     public UpgradeCalculator getArmorUpgradeManage() {
         return armorUpgradeCount;
     }
 
+    /**
+     *  Gets the Upgrade Calculator for Weapon
+     * @return Upgrade Calculator Class for Weapon Upgrade
+     */
     public UpgradeCalculator getWeaponUpgradeManage() {
         return weaponUpgradeCount;
     }

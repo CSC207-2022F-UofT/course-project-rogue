@@ -14,6 +14,7 @@ import usecase_essence_use.heal.HealCalculator;
 import usecase_playeractions.Map;
 
 public class HealCalculatorTest {
+
     Map map;
     Player player;
     int maxHP = 100;

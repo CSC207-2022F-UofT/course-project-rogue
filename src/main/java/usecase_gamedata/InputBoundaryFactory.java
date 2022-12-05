@@ -62,6 +62,10 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
         return this.moveManager;
     }
 
+    /**
+     * Gets Action Manager and sets up observers for them
+     * @return Action Manager
+     */
     public ActionManager getActionManager(){
         ActionManager actionManager = new ActionManager();
         actionManager.addObserver(new Healer(playerFactory.create(), new HealCalculator(playerFactory.create()),KEYS[0]));

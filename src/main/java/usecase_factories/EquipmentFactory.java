@@ -7,12 +7,12 @@ import file_reader.GameFileReaderInterface;
 
 public class EquipmentFactory {
 
-    private static GameFileReaderInterface ef; // not sure if its problematic to have this as static
+    private static GameFileReaderInterface ef;
 
-    public EquipmentFactory(){
-
-    }
-
+    /**
+     * Sets the static variable GameFileReaderInterface
+     * @param fileReader: The file reader being set
+     */
     public static void setFileReader(GameFileReaderInterface fileReader){
         EquipmentFactory.ef = fileReader;
     }

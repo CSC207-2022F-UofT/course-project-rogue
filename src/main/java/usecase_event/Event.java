@@ -26,6 +26,11 @@ public class Event implements Enterable{
 
         return false;
     }
+
+    /**
+     * Functions to interact with the player when the player steps on this Event tile
+     * @param player: The player it'll interact with
+     */
     public void trigger(Player player){
 
     }

@@ -14,6 +14,10 @@ public class View implements KeyListener, ViewInterface {
     private JFrame game_play;
     private GameFrame gameFrame;
 
+    /**
+     * Sets up the view with the start button and sets up the controller that it passes information to.
+     * @param controller: The controller it is sending the information to
+     */
     public View(Controller controller){
         game_play = new JFrame();
         game_play.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -63,7 +67,7 @@ public class View implements KeyListener, ViewInterface {
         gameFrame.setViewModel(model);
     }
 
-    /**
+    /** Goes back to the menu if this method is called
      *
      */
     @Override
@@ -80,6 +84,11 @@ public class View implements KeyListener, ViewInterface {
     @Override
     public void keyPressed(KeyEvent e) {}
 
+
+    /**
+     * Detects the key being released and sends it to the controller
+     * @param e the event to be processed
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         controller.keyReleased(e);

@@ -30,6 +30,11 @@ public class NoEvent extends Event{
 
         return true;
     }
+
+    /**
+     *  Returns String to show which Event type it is
+     * @return "NoEvent"
+     */
     @Override
     public String toString() {
         return "NoEvent";

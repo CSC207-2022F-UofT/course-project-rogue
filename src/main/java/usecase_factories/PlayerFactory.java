@@ -15,10 +15,19 @@ public class PlayerFactory {
         player = null;
     }
 
+    /**
+     * Sets the static variable GameFileReaderInterface
+     * @param pf: The file reader being set
+     */
     public static void setFileReader(GameFileReaderInterface pf) {
         PlayerFactory.pf = pf;
     }
 
+    /**
+     * Creates a player from data_base if it hasn't been created, else it gets the player being stored within the
+     * player variable
+     * @return Player
+     */
     public Player create() {
         if (player != null) {
             return player;
