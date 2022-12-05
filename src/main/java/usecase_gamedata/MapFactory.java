@@ -9,11 +9,9 @@ import file_reader.deserialization.DeserializeHelper;
 import interface_adapters.OutputBoundary;
 import usecase_playeractions.Map;
 
-import java.util.HashMap;
-
 public class MapFactory {
 
-    private static GameFileReaderInterface mf;
+    private static GameFileReaderInterface mf = null;
 
     private static OutputBoundary outputBoundary = null;
     public MapFactory(){
@@ -34,7 +32,8 @@ public class MapFactory {
      * @param fileReader: The file reader being set
      */
     public static void setFileReader(GameFileReaderInterface fileReader){
-        MapFactory.mf = fileReader;
+        if(MapFactory.mf == null)
+            MapFactory.mf = fileReader;
     }
 
     /**
@@ -67,7 +66,7 @@ public class MapFactory {
             outputBoundary.updatePlayerlocation(location);
             outputBoundary.updateHp(player.getCurrHitPoint());
             outputBoundary.updateEssenceCnt(player.getEssence().getNum());
-            outputBoundary.updateArtifact(player.getEssence().getNum());
+            outputBoundary.updateArtifact(player.getArtifact().getNum());
             outputBoundary.updateText("A voice whispers to you:", "\" You must get 5 Artifact to leave this place \"","" ,"");
 
         } catch (JsonProcessingException e) {

@@ -9,16 +9,14 @@ import java.awt.*;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class GameFrame extends JPanel{
     boolean start = false;
-    private JButton startbutton = new JButton("START GAME");
-    private JButton quitbutton = new JButton("QUIT");
+    private final JButton startbutton = new JButton("START GAME");
+    private final JButton quitbutton = new JButton("QUIT");
     int screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
     int screen_hight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
@@ -51,6 +49,9 @@ public class GameFrame extends JPanel{
         });
         this.setFocusable(true);
         this.viewModel = new ViewModel();
+    }
+
+    public void addListener(View view){
         this.addKeyListener(view);
     }
     @Override
@@ -87,6 +88,8 @@ public class GameFrame extends JPanel{
         repaint();
     }
     public void goToMenu(){
+        startbutton.setVisible(true);
+        quitbutton.setVisible(true);
         MapGraphics.playerLocation[0] = -1;
         MapGraphics.playerLocation[1] = -1;
         this.start = false;

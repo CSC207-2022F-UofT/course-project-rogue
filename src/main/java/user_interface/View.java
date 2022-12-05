@@ -9,10 +9,9 @@ import java.awt.event.*;
 import javax.swing.JFrame;
 
 public class View implements KeyListener, ViewInterface {
-    private int progress = 0;
     private Controller controller;
-    private JFrame game_play;
-    private GameFrame gameFrame;
+    private final JFrame game_play;
+    private final GameFrame gameFrame;
 
     /**
      * Sets up the view with the start button and sets up the controller that it passes information to.
@@ -30,10 +29,8 @@ public class View implements KeyListener, ViewInterface {
         game_play.setTitle("");
         this.controller = controller;
         //Add Menu panel
-        if (progress == 0){
-            gameFrame = new GameFrame(this);
-            game_play.add(gameFrame);
-        }
+        gameFrame = new GameFrame(this);
+        game_play.add(gameFrame);
 
         game_play.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -52,6 +49,7 @@ public class View implements KeyListener, ViewInterface {
      * This method is called when the start button is clicked. This method is called in GameFrame.
      */
     public void startButtonClicked(){
+        gameFrame.addListener(this);
         controller.newGame();
     }
     @Override
