@@ -7,6 +7,7 @@ import usecase_fight.DamageCalculator;
 import usecase_fight.DropRetriever;
 import usecase_fight.FightSummary;
 import usecase_fight.WinCalculator;
+import usecase_factories.EquipmentFactory;
 import usecase_factories.MonsterFactory;
 
 import java.util.Optional;
@@ -14,11 +15,16 @@ import java.util.Random;
 
 public class FightEvent extends Event{
 
-    public FightEvent() {
+    private final MonsterFactory mf;
+    private final EquipmentFactory ef;
+
+    public FightEvent(){
+        this.mf = new MonsterFactory();
+        this.ef = new EquipmentFactory();
     }
 
     /**
-     * Triggers a fight between Player and a Monster. Displays a summary of the following to the user:
+     * Triggers a fight between Player and a Monster which displays a summary of the following to the user:
      *      - Monster name and power
      *      - Possible damage to be taken
      *      - win chance
@@ -35,7 +41,8 @@ public class FightEvent extends Event{
         Monster monster = this.randomMonster();
         FightSummary summary = this.createFight(player, monster);
         player.setFight(summary); // gives player current fight details
-        this.displaySummary(summary);
+        String[] output = summary.getSummary();
+        outputBoundary.updateText(output[0], output[1], output[2], "[F]Fight or [R]Run");
     }
 
     /**
@@ -43,8 +50,8 @@ public class FightEvent extends Event{
      */
     private Monster randomMonster(){
         Random random = new Random();
-        int index = random.nextInt(4); // for now pick between the first 3 monsters
-        return MonsterFactory.createRandom(index);
+        int index = random.nextInt(6);
+        return mf.create(index);
     }
 
     /**
@@ -57,7 +64,7 @@ public class FightEvent extends Event{
     private FightSummary createFight(Player player, Monster monster){
         DamageCalculator damageCalculator = new DamageCalculator(monster, player);
         WinCalculator winCalculator = new WinCalculator(monster, player);
-        DropRetriever dr = new DropRetriever();
+        DropRetriever dr = new DropRetriever(ef);
         int winChance = winCalculator.calculate();
         int damage = damageCalculator.calculate();
         int essence = dr.getEssenceNum();
@@ -71,36 +78,6 @@ public class FightEvent extends Event{
             summary = new FightSummary(monster, essence, winChance, damage); // DI??
         }
         return summary;
-    }
-
-    /**
-     * Displays the summary of the fight to the user.
-     *
-     * @param summary Summary of fight details.
-     */
-    private void displaySummary(FightSummary summary){
-        Monster monster = summary.getMonster();
-        String line1 = String.format("You encountered a %s", monster.toString());
-        String line2 = String.format("Power: %s", this.getPowerString(monster));
-        String line3 = String.format("Win chance: %d", summary.getWinChance()) + "%, "
-                + String.format("Damage: %d", summary.getDamage());
-        String line4 = String.format("Drops: %d essence,", summary.getAmountDrop()) +
-                String.format(" %s", summary.getEquipment().toString());
-        String line5 = "[F]Fight    or      [R]Run";
-        // update view
-    }
-
-
-    /**
-     * @param monster The Monster.
-     * @return the string representation for the given Monsters power.
-     */
-    private String getPowerString(Monster monster){
-        String power = "None";
-        if (monster.isHasPower()){
-            power = monster.getPower().toString();
-        }
-        return power;
     }
 
 

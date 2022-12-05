@@ -25,7 +25,7 @@ public class MapDeserialization extends StdDeserializer<Map> {
      * @param ctxt Context that can be used to access information about
      *             this deserialization activity.(in the Jackson package)
      * @return A map read from file reader.
-     * @throws IOException
+     * @throws IOException exception
      */
     @Override
     public Map deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
@@ -38,31 +38,16 @@ public class MapDeserialization extends StdDeserializer<Map> {
             Event e;
             for(int o = 0; o < a.length; o++){
                 String event = a[o];
-                switch (event){
-                    case "A":
-                        e = new ArtifactEvent();
-                        break;
-                    case "Es":
-                        e = new EssenceEvent();
-                        break;
-                    case "F":
-                        e = new FightEvent();
-                        break;
-                    case "N":
-                        e = new NoEvent();
-                        break;
-                    case "R":
-                        e = new RandomEvent();
-                        break;
-                    case "WL":
-                        e = new WallEvent();
-                        break;
-                    case "W":
-                        e = new WinEvent();
-                        break;
-                    default:
-                        e = new WallEvent();
-                }
+                e = switch (event) {
+                    case "A" -> new ArtifactEvent();
+                    case "Es" -> new EssenceEvent();
+                    case "F" -> new FightEvent();
+                    case "N" -> new NoEvent();
+                    case "R" -> new RandomEvent();
+                    case "WL" -> new WallEvent();
+                    case "W" -> new WinEvent();
+                    default -> new WallEvent();
+                };
                 map.setBoard(e, i, o);
             }
         }

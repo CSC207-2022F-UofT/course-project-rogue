@@ -3,6 +3,7 @@ package usecase_fight;
 import entity.item.Equipment;
 import entity.monster.Monster;
 
+/** A summary of the fight a Player is in. */
 public class FightSummary {
     private final Monster monster;
     /** The amount of damage to be done to Player. */
@@ -53,6 +54,15 @@ public class FightSummary {
         return this.winChance;
     }
 
+    /**
+     * A fight is a stalemate iff the Player's win chance is 0 and the damage dealt by the Monster is also 0.
+     *
+     * @return True iff this fight is a stalemate.
+     */
+    public boolean getStaleMate(){
+        return (winChance == 0 && damage == 0);
+    }
+
     /** @return The Equipment being dropped. */
     public Equipment getEquipment(){
         return this.equipment;
@@ -61,5 +71,23 @@ public class FightSummary {
     /** @return The Monster in the fight. */
     public Monster getMonster(){
         return this.monster;
+    }
+
+    /**
+     * @return A list of strings representing this FightSummary.
+     */
+    public String[] getSummary(){
+        String line1 = String.format("You encountered a %s!", this.monster);
+        String line2 = String.format("Power: %s, ", this.monster.getPowerString())
+                + String.format("Win chance: %d", this.winChance) + "%, "
+                + String.format("Damage: %d", this.damage);
+        String line3;
+        if (equipment == null){
+            line3 = String.format("Drops: %d essence", this.essenceNum);
+        } else{
+            line3 = String.format("Drops: %d essence,", this.essenceNum) +
+                    String.format(" %s", this.equipment);
+        }
+        return new String[]{line1, line2, line3};
     }
 }

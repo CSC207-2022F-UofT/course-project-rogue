@@ -1,24 +1,29 @@
 package usecase_gamedata;
 
-import usecase_essence_use.EssenceUseActionManager;
-
+import org.junit.After;
+import usecase_essence_use.heal.HealCalculator;
+import usecase_essence_use.heal.Healer;
+import usecase_essence_use.upgrade.UpgradeCalculator;
+import usecase_essence_use.upgrade.Upgrader;
 import usecase_factories.PlayerFactory;
+import usecase_fight.AfterFight;
+import usecase_fight.Fighter;
+import usecase_fight.Restarter;
+import usecase_fight.Runner;
 import usecase_playeractions.ActionManager;
+import usecase_playeractions.Map;
 import usecase_playeractions.MoveManager;
 
 public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
-    private PlayerFactory playerFactory;
-    private MapFactory mapFactory;
-    private MoveManager moveManager;
-
-    private EssenceUseActionManager essenceUseActionManager;
+    private final PlayerFactory playerFactory;
+    private final MapFactory mapFactory;
+    private final MoveManager moveManager;
 
     public InputBoundaryFactory(PlayerFactory playerFactory, MapFactory mapFactory) {
         this.playerFactory = playerFactory;
         this.mapFactory = mapFactory;
         this.moveManager = new MoveManager();
-        this.essenceUseActionManager = new EssenceUseActionManager();
     }
 
     /**
@@ -32,8 +37,9 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
      * 6:Fight
      * 7:Flee
      * 8,9,10,11:moveUP,moveLeft,moveDown,moveRight
+     * 12: Continue
      */
-    private final String[] KEYS = new String[]{"H","Y","N","U","A","S","F","R","W","A","S","D"};
+    private final String[] KEYS = new String[]{"H","Y","N","U","A","S","F","R","W","A","S","D", "C"};
 
 
     /**
@@ -64,12 +70,14 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
     public ActionManager getActionManager(){
         ActionManager actionManager = new ActionManager();
+        actionManager.addObserver(new Healer(playerFactory.create(), new HealCalculator(playerFactory.create()),KEYS[0]));
+        actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Armor"),KEYS[2]));
+        actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Weapon"),KEYS[1]));
+        actionManager.addObserver(new Fighter(playerFactory.create(), KEYS[6]));
+        actionManager.addObserver(new Runner(playerFactory.create(), KEYS[7]));
+        actionManager.addObserver(new Restarter(playerFactory.create(), KEYS[12]));
+        actionManager.addObserver(new AfterFight(playerFactory.create(), KEYS[12]));
         return actionManager;
-    }
-
-   public EssenceUseActionManager getEssenceUseActionManager(){
-        this.essenceUseActionManager.setDefaultKey(playerFactory.create());
-        return essenceUseActionManager;
     }
 
 }

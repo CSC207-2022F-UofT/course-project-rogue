@@ -42,6 +42,10 @@ public class StatesTest {
     }
 
     @Test
+    @DisplayName("Test for get GameOver")
+    void testGetGameOver() {Assertions.assertFalse(states.getGameOver());}
+
+    @Test
     @DisplayName("Test for set can Move")
     void testSetCanMove(){
         states.setCanMove(false);
@@ -83,5 +87,12 @@ public class StatesTest {
         Assertions.assertTrue(states.getUpgrading());
         states.setUpgrading(false);
         Assertions.assertFalse(states.getUpgrading());
+    }
+
+    @Test
+    @DisplayName("Test for set GameOver")
+    void testSetGameOver(){
+        states.setGameOver();
+        Assertions.assertTrue(states.getGameOver());
     }
 }

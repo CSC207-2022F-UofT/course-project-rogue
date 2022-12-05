@@ -63,7 +63,7 @@ public class MapFactory {
             int[] location = new DeserializeHelper().readIntArr(mn.get("starting"));
             player.setLocation(location[0], location[1]);
 
-            outputBoundary.updatePlayerlocation(location);
+            outputBoundary.updatePlayerLocation(location);
             outputBoundary.updateHp(player.getCurrHitPoint());
             outputBoundary.updateEssenceCnt(player.getEssence().getNum());
             outputBoundary.updateArtifact(player.getArtifact().getNum());

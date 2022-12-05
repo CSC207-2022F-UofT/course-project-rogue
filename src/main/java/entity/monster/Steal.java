@@ -66,6 +66,6 @@ public class Steal extends MonsterPower{
 
     @Override
     public String toString(){
-        return "Can steal your essence if not defeated.";
+        return "Steals essence";
     }
 }

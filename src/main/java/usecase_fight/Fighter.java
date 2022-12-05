@@ -11,16 +11,22 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
 
-/** A fight sequence. */
-public class Fighter implements Observer {
+/** A path in which the user decides to fight. */
+public class Fighter extends FightPath implements Observer {
+
+    /** Formatter that formats results of the fight to a string. */
+    private final ResultFormatter formatter = new ResultFormatter(); // is it okay to have hard dependence here?
     private final Player player;
+    /** Keystroke that triggers this use case. */
     private final String trigger; // 'F'
 
+    /** Creates a new Fighter with the given Player and trigger. */
     public Fighter(Player player, String trigger){
         this.player = player;
         this.trigger = trigger;
     }
 
+    /** Helper method - get the summary of the fight a player is in. */
     private FightSummary getSummary(){
         return this.player.getFight();
     }
@@ -38,14 +44,13 @@ public class Fighter implements Observer {
             return false;
         }
         return (rand.nextInt(100) + 1) <= chance; // pick a number between 1 - 100.
-        // if win chance = 1, then win is true only if 1 is picked (1/100 chance)
-        // if win chance = 80, then win is true if 80 and anything less is picked (80/100)
     }
 
     /**
      * @param monster The Monster.
      * @param win The result of the fight.
-     * @return The result of Monster using a power. Returns empty string if Monster does not have a Power.
+     * @return The result of Monster using a power. Returns empty string if Monster does not have a Power, or the Power
+     * is not used.
      */
     private String getPowerResult(Monster monster, boolean win){
         String result = "";
@@ -72,6 +77,7 @@ public class Fighter implements Observer {
     private void inflictDamage(FightSummary summary){
         int damage = summary.getDamage();
         this.player.changeCurrHitPoint(-damage);
+        outputBoundary.updateHp(player.getCurrHitPoint());
     }
 
     /**
@@ -92,6 +98,7 @@ public class Fighter implements Observer {
     private void acceptEssence(FightSummary summary){
         int toAdd = summary.getAmountDrop();
         this.player.changeEssenceAmount(toAdd);
+        outputBoundary.updateEssenceCnt(player.getEssence().getNum());
     }
 
     /**
@@ -106,7 +113,6 @@ public class Fighter implements Observer {
         if (equip instanceof Weapon){
             // if current weapon is weaker than dropped, replace
             if (player.getWeapon().compareTo(equip) < 0){
-                // then replace equipment
                 player.setEquipment((Weapon) equip);
                 return true;
             }
@@ -118,7 +124,7 @@ public class Fighter implements Observer {
             }
             return false;
         }
-        return false; // this is just here so that if the equipment is neither, it doesn't get included in string
+        return false; // if somehow equipment is neither or does not exist
     }
 
     /**
@@ -126,87 +132,36 @@ public class Fighter implements Observer {
      * fight. If the Player loses, Player takes full damage and receives no rewards.
      */
     private void fight(){
-        FightSummary summary = this.getSummary();
-        Monster monster = summary.getMonster();
-        boolean win = this.determineWin(summary);
-        String powerResult = this.getPowerResult(monster, win);
-        if (win){
-            this.acceptEssence(summary);
-            boolean exchange = this.acceptEquipment(summary);
-            this.displayResults(powerResult, summary.getAmountDrop(), exchange, summary.getEquipment());
-        } else {
-            this.inflictDamage(summary);
-            if (this.checkGameOver()){
-                this.player.setGameOver();
-                this.displayResults();
+        FightSummary summary = this.getSummary(); // summary of fight details
+        Monster monster = summary.getMonster(); // the monster being fought
+
+        String[] result;
+
+        if (summary.getStaleMate()){    // tie: no drops, no damage received.
+            result = formatter.formatTie();
+        } else{
+            boolean win = this.determineWin(summary);
+            String powerResult = this.getPowerResult(monster, win);
+
+            if (win){   // win: drops, no damage
+                this.acceptEssence(summary);
+                boolean exchange = this.acceptEquipment(summary);
+                result = formatter.formatWin(powerResult, summary.getAmountDrop(), exchange, summary.getEquipment());
             } else {
-                this.displayResults(powerResult, summary.getDamage());
+                this.inflictDamage(summary);
+                if (this.checkGameOver()){  // game over
+                    this.player.setGameOver();
+                    result = formatter.formatGameOver();
+                } else {    // lose: no drops, damage received
+                    result = formatter.formatLoss(powerResult, summary.getDamage());
+                }
             }
         }
-
-        // if win:
-            // You won! + Power result if it exists
-            // Damage Taken: 0
-            // Items Received: # essence, equipment
-            //
-            // Press [SpaceBar] to continue
-        // if lost:
-            // You lost. Power result
-            // Damage taken:
-            // Items Received: None
-            //
-            // Press [SpaceBar] to continue
-        // if gameover:
-            // call presenter to show gameover screen
-            // do something after gameover
-    }
-
-    /**
-     * Display the win results of the fight to the user.
-     *
-     * @param powerResult Result of Monster using its Power.
-     * @param essence The number of essence received
-     * @param exchange Whether Equipment drop was exchanged with current.
-     * @param equipment Equipment to be dropped.
-     */
-    private void displayResults(String powerResult, int essence, boolean exchange, Equipment equipment){
-        String received;
-        if (exchange) { // if exchanged equipment, show equipment gained
-            received = String.format("%d essence, %s", essence, equipment);
-        } else { // if not, equipment not gained
-            received = String.format("%d essence", essence);
-        }
-
-        String line1 = "You won!" + powerResult;
-        String line2 = "Damage Taken: 0";
-        String line3 = "Items Received: " + received;
-        String line5 = "Press [SpaceBar] to continue.";
-
-        // call presenter where line 4 arg is empty string.
-    }
-
-    /**
-     * Display the losing results to user.
-     *
-     * @param powerResult The result of Monster using its Power
-     * @param dmg The damage taken by Player
-     */
-    private void displayResults(String powerResult, int dmg){
-        String line1 = "You lost." + powerResult;
-        String line2 = String.format("Damage Taken: %d", dmg);
-        String line3 = "Items Received: None";
-        String line5 = "Press [SpaceBar] to continue.";
-        // call presenter where line 4 arg is empty string.
-    }
-
-    /**
-     * Display game over results to Player.
-     */
-    private void displayResults(){
-        // call a presenter to change to a game over screen
+        outputBoundary.updateText(result[0], result[1], result[2], result[3]);
     }
 
 
+    /** Execute a fight if the key input from the user matches trigger and Player is in a fight. */
     @Override
     public void update(Observable o, Object arg) {
         if(player.getFighting() && trigger.equals(arg)){

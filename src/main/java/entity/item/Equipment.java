@@ -1,5 +1,9 @@
 package entity.item;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import file_reader.deserialization.EquipmentDeserialization;
+
+@JsonDeserialize(using = EquipmentDeserialization.class)
 public abstract class Equipment extends Item implements Comparable<Equipment> {
     private final String statType; // the type of stat
     private int statValue; // the value of the stat
@@ -94,12 +98,6 @@ public abstract class Equipment extends Item implements Comparable<Equipment> {
      */
     @Override
     public int compareTo(Equipment newEquip){
-        if (this.statValue > newEquip.statValue){
-            return 1;
-        } else if (this.statValue < newEquip.statValue){
-            return -1;
-        } else {
-            return 0;
-        }
+        return Integer.compare(this.statValue, newEquip.statValue);
     }
 }

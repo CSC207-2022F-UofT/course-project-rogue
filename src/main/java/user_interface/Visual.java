@@ -2,12 +2,10 @@ package user_interface;
 import interface_adapters.OutputBoundary;
 import user_interface.Graphics.ViewModel;
 
-import javax.swing.*;
-
 public class Visual implements OutputBoundary {
 
-    private final ViewInterface vi;
-    private final ViewModel model = new ViewModel();
+    private ViewInterface vi;
+    private ViewModel model = new ViewModel();
     public Visual(ViewInterface vi){
         this.vi = vi;
 
@@ -73,7 +71,8 @@ public class Visual implements OutputBoundary {
      * @param location : the location of the player on the map given by use case.
      */
     @Override
-    public void updatePlayerlocation(int[] location) {
+    public void updatePlayerLocation(int[] location) {
+        System.out.println(location[0] + " " + location[1]);
         this.model.setPlayerLocation(location);
         vi.update(this.sendModel());
     }
@@ -83,8 +82,6 @@ public class Visual implements OutputBoundary {
      */
     @Override
     public void updateWin() {
-        JOptionPane.showMessageDialog(null, "You Won!"
-                , "Congratulation!", JOptionPane.INFORMATION_MESSAGE);
         vi.goBackToMenu();
     }
 

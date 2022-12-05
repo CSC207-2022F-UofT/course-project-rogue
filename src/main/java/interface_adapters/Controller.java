@@ -43,6 +43,7 @@ public class Controller{
      */
     public void keyReleased(KeyEvent e) {
         moveManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
+        actionManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
 
     }
 
