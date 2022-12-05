@@ -1,33 +1,24 @@
 package usecase_gamedata;
 
-import file_writer.GameFileWriterInterface;
-import usecase_essence_use.heal.HealCalculator;
-import usecase_essence_use.heal.Healer;
-import usecase_essence_use.upgrade.UpgradeCalculator;
-import usecase_essence_use.upgrade.Upgrader;
+import usecase_essence_use.EssenceUseActionManager;
+
 import usecase_factories.PlayerFactory;
 import usecase_playeractions.ActionManager;
 import usecase_playeractions.MoveManager;
 
 public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
-    private final PlayerFactory playerFactory;
-    private final MapFactory mapFactory;
-    private final MoveManager moveManager;
+    private PlayerFactory playerFactory;
+    private MapFactory mapFactory;
+    private MoveManager moveManager;
 
-    private static GameFileWriterInterface gameFileWriterInterface = null;
+    private EssenceUseActionManager essenceUseActionManager;
 
     public InputBoundaryFactory(PlayerFactory playerFactory, MapFactory mapFactory) {
         this.playerFactory = playerFactory;
-        InputBoundaryFactory.gameFileWriterInterface.register(playerFactory);
         this.mapFactory = mapFactory;
         this.moveManager = new MoveManager();
-    }
-
-    public static void setFileWriter(GameFileWriterInterface fileWriter){
-        if(gameFileWriterInterface == null){
-            InputBoundaryFactory.gameFileWriterInterface = fileWriter;
-        }
+        this.essenceUseActionManager = new EssenceUseActionManager();
     }
 
     /**
@@ -71,16 +62,14 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
         return this.moveManager;
     }
 
-    /**
-     * Gets Action Manager and sets up observers for them
-     * @return Action Manager
-     */
     public ActionManager getActionManager(){
         ActionManager actionManager = new ActionManager();
-        actionManager.addObserver(new Healer(playerFactory.create(), new HealCalculator(playerFactory.create()),KEYS[0]));
-        actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Armor"),KEYS[2]));
-        actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Weapon"),KEYS[1]));
         return actionManager;
+    }
+
+   public EssenceUseActionManager getEssenceUseActionManager(){
+        this.essenceUseActionManager.setDefaultKey(playerFactory.create());
+        return essenceUseActionManager;
     }
 
 }
