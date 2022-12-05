@@ -16,13 +16,14 @@ public class Controller{
      * Contain actions that depend on a Map.
      * Don't have to be a Mover.
      */
-    private InputBoundary moveManager;
+    private final InputBoundary moveManager;
 
     /**
      * Contain actions that depend on a Player only.
      */
-    private InputBoundary actionManager;
-    private InputBoundaryFactoryInputBoundary inputBoundaryFactory;
+    private final InputBoundary actionManager;
+    private final InputBoundary essenceUseActionManager;
+    private final InputBoundaryFactoryInputBoundary inputBoundaryFactory;
 
 
     /**
@@ -33,6 +34,7 @@ public class Controller{
         inputBoundaryFactory = new InputBoundaryFactory(playerFactory, mapFactory);
         actionManager = inputBoundaryFactory.getActionManager();
         moveManager = inputBoundaryFactory.getMoveManager();
+        essenceUseActionManager = inputBoundaryFactory.getEssenceUseActionManager();
     }
 
 
@@ -44,7 +46,7 @@ public class Controller{
     public void keyReleased(KeyEvent e) {
         moveManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
         actionManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
-
+        essenceUseActionManager.keyPressed(Character.toString(e.getKeyChar()).toUpperCase());
     }
 
     /**
