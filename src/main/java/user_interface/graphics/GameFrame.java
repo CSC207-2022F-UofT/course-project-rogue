@@ -1,12 +1,10 @@
-package user_interface.Graphics;
+package user_interface.graphics;
 
 import user_interface.View;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.JPanel;
 import java.awt.*;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -20,7 +18,7 @@ public class GameFrame extends JPanel{
     int screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
     int screen_hight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
-    private View view;
+    private final View view;
     private ViewModel viewModel;
 
     private MapGraphics map;
@@ -59,7 +57,7 @@ public class GameFrame extends JPanel{
         super.paintComponent(g);
         Dimension size=this.getParent().getSize();
 
-        if (start == false){
+        if (!start){
             try {
                 BufferedImage img = ImageIO.read(new File("pictures/b9db1d7d93c1709.png"));
                 g.drawImage(img,0,0,size.width,size.height,this);
@@ -78,7 +76,7 @@ public class GameFrame extends JPanel{
             add(quitbutton);
         }
 
-        if (start != false){
+        if (start){
             this.viewModel.draw(g, size, this);
         }
 

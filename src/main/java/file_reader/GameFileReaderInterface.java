@@ -66,5 +66,4 @@ public interface GameFileReaderInterface {
         return null;
     }
     void update(String dir);
-    void update();
 }

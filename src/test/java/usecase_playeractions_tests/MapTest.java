@@ -16,7 +16,6 @@ import usecase_event.Event;
 import usecase_event.WallEvent;
 import usecase_playeractions.Map;
 
-
 public class MapTest {
 
     Map map;
@@ -46,7 +45,7 @@ public class MapTest {
             @Override
             public void updateArtifact(int cnt) {}
             @Override
-            public void updatePlayerlocation(int[] location) {}
+            public void updatePlayerLocation(int[] location) {}
             @Override
             public void updateWin() {}
             @Override

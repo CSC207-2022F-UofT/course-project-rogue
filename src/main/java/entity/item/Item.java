@@ -6,7 +6,7 @@ public abstract class Item {
 
     /**
      * Creates a new Item object.
-     * This constructor takes in a single String as and a single int as arguments..
+     * This constructor takes in a single String as and a single int as arguments...
      * @param name the name of the Item.
      * @param num the number of items in the Item object.
      */

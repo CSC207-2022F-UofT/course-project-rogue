@@ -2,13 +2,8 @@ package usecase_gamedata;
 
 
 import usecase_essence_use.EssenceUseActionManager;
-import usecase_essence_use.essenceUseKey.Healer;
-import usecase_essence_use.essenceUseKey.Upgrader;
 import usecase_factories.PlayerFactory;
-import usecase_fight.AfterFight;
-import usecase_fight.Fighter;
-import usecase_fight.Restarter;
-import usecase_fight.Runner;
+import usecase_fight.*;
 import usecase_playeractions.ActionManager;
 import usecase_playeractions.MoveManager;
 
@@ -68,10 +63,7 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
     public ActionManager getActionManager(){
         ActionManager actionManager = new ActionManager();
-        actionManager.addObserver(new Fighter(playerFactory.create(), KEYS[6]));
-        actionManager.addObserver(new Runner(playerFactory.create(), KEYS[7]));
-        actionManager.addObserver(new Restarter(playerFactory.create(), KEYS[12]));
-        actionManager.addObserver(new AfterFight(playerFactory.create(), KEYS[12]));
+        actionManager.addObserver(new Fight(playerFactory.create(), KEYS[6], KEYS[7], KEYS[12]));
         return actionManager;
     }
 

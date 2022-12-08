@@ -1,6 +1,5 @@
 package usecase_playeractions_tests;
 
-
 import entity.equipment_slots.BasicEquipmentSlots;
 import entity.inventory_slots.CollectibleInventory;
 import entity.item.Armor;
@@ -48,7 +47,7 @@ public class MoveManagerTest {
             @Override
             public void updateArtifact(int cnt) {}
             @Override
-            public void updatePlayerlocation(int[] location) {}
+            public void updatePlayerLocation(int[] location) {}
             @Override
             public void updateWin() {}
             @Override

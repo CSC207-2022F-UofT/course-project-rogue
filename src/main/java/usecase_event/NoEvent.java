@@ -1,9 +1,6 @@
 package usecase_event;
 
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
-
-import java.util.Observable;
 
 public class NoEvent extends Event{
 

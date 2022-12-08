@@ -7,10 +7,6 @@ public class Event implements Enterable{
 
     protected static OutputBoundary outputBoundary = null;
 
-    public Event(OutputBoundary outputBoundary){
-        Event.outputBoundary = outputBoundary;
-    }
-
     public static void setOutputBoundary(OutputBoundary output){
         if(Event.outputBoundary == null) {
             Event.outputBoundary = output;

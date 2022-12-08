@@ -1,6 +1,6 @@
 package user_interface;
 import interface_adapters.OutputBoundary;
-import user_interface.Graphics.ViewModel;
+import user_interface.graphics.ViewModel;
 
 public class Visual implements OutputBoundary {
 

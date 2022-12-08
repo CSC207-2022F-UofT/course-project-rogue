@@ -1,13 +1,11 @@
 package file_reader.deserialization;
 
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import entity.monster.Monster;
 import entity.monster.MonsterPower;
-import entity.monster.Power;
 import usecase_factories.PowerFactory;
 
 import java.io.IOException;
@@ -21,15 +19,14 @@ public class MonsterDeserialization  extends StdDeserializer<Monster> {
     }
 
     /**
-     * @param p    Parsed used for reading JSON content(apart of Jackson, not our design)
-     * @param ctxt Context that can be used to access information about
-     *             this deserialization activity.(apart of Jackson, not our design)
+     * @param p    Parsed used for reading JSON content(a part of Jackson, not our design)
+     * @param context Context that can be used to access information about
+     *             this deserialization activity.(a part of Jackson, not our design)
      * @return Monster read from file
-     * @throws IOException
-     * @throws JacksonException
+     * @throws IOException exception
      */
     @Override
-    public Monster deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+    public Monster deserialize(JsonParser p, DeserializationContext context) throws IOException {
         JsonNode node = p.getCodec().readTree(p);
         DeserializeHelper h = new DeserializeHelper();
         String name = h.readString(node.get("name"));

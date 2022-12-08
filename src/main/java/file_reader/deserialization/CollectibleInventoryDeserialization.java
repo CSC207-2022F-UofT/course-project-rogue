@@ -20,9 +20,9 @@ public class CollectibleInventoryDeserialization extends StdDeserializer<Collect
 
     /**
      *
-     * @param p Parsed used for reading JSON content(apart of Jackson, not our design)
+     * @param p Parsed used for reading JSON content(apart from Jackson, not our design)
      * @param ctxt Context that can be used to access information about
-     *   this deserialization activity.(apart of Jackson, not our design)
+     *   this deserialization activity.(apart from Jackson, not our design)
      * @return CollectibleInventory read in together with Player(Player stores CollectibleInventory)
      */
     @Override
@@ -33,7 +33,6 @@ public class CollectibleInventoryDeserialization extends StdDeserializer<Collect
         Collectible e = new Collectible(h.readString(node.get("essence").get("collectibleType")),
                 h.readInt(node.get("essence").get("num")));
         Collectible a = new Collectible("Artifact");
-        a.setNum(h.readInt(node.get("artifact").get("num")));
         return new CollectibleInventory(invN, e, a);
     }
 

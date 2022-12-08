@@ -14,11 +14,10 @@ import org.junit.jupiter.api.Test;
 
 public class StealTest {
 
-    Steal steal = new Steal();
+    final Steal steal = new Steal();
 
     /** Makes a new Player with the given Essence count. */
     private Player makePlayer(int n){
-        int[] location = new int[]{1, 2};
         Weapon sword = new Weapon("Sword", 5);
         Armor armor = new Armor("Shield", 5);
         BasicEquipmentSlots equipment = new BasicEquipmentSlots(sword, armor);
