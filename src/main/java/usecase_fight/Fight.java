@@ -1,6 +1,7 @@
 package usecase_fight;
 
 import entity.player.Player;
+import usecase_fight.states.*;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -9,7 +10,7 @@ import java.util.Observer;
 public class Fight implements Observer {
 
     /** The state of the Fight */
-    private FightPath state;
+    private FightState state;
     private final Player player;
 
     /** Trigger for Fighter state */
@@ -31,7 +32,7 @@ public class Fight implements Observer {
     }
 
     /** Change the state of the Fight. */
-    private void setState(FightPath state){
+    private void setState(FightState state){
         this.state = state;
     }
 
