@@ -22,3 +22,4 @@ public class Collectible extends Item {
         super(collectibleType, num);
     }
 }
+
