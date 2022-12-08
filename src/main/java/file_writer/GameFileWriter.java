@@ -64,7 +64,7 @@ public class GameFileWriter implements GameFileWriterInterface {
     @Override
     public void writeToFile(Player player) {
         JSONParser parser = new JSONParser();
-        JSONObject obj = null;
+        JSONObject obj;
         try {
             obj = (JSONObject)parser.parse(reader.findString("class", "Basic Player"));
         } catch (ParseException e) {
@@ -103,13 +103,27 @@ public class GameFileWriter implements GameFileWriterInterface {
 
         try {
             FileWriter fileWriter = new FileWriter(this.dir);
-            String pl = arr.toString();
             fileWriter.write(arr.toJSONString());
             fileWriter.close();
             this.notifyReader();
             this.notifyPlayerFactory();
         } catch (IOException e) {
             System.out.println("Did not write player to any file");
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * This method stores a new player with starting stats to a file.
+     */
+    @Override
+    public void restartFile(){
+        String newPlayer = "[" + reader.findString("class", "Basic Player") + "]";
+        try {
+            FileWriter fileWriter = new FileWriter(this.dir);
+            fileWriter.write(newPlayer);
+            fileWriter.close();
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

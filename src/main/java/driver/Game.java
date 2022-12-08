@@ -13,6 +13,8 @@ import usecase_factories.EquipmentFactory;
 import usecase_factories.MonsterFactory;
 import usecase_factories.PlayerFactory;
 import usecase_fight.states.FightPath;
+import usecase_fight.states.Restarter;
+import usecase_gamedata.InputBoundaryFactory;
 import usecase_gamedata.MapFactory;
 import usecase_playeractions.Map;
 import user_interface.View;
@@ -36,6 +38,9 @@ public class Game {
         MonsterFactory.setFileReader(monsterReader);
         EquipmentFactory.setFileReader(equipmentReader);
         MapFactory.setFileReader(mapReader);
+        InputBoundaryFactory.setGameFileWriter(playerWriter);
+        Restarter.setFileReader(playerReader);
+        Restarter.setFileWriter(playerWriter);
 
         PlayerFactory playerFactory = new PlayerFactory();
         MapFactory mapFactory = new MapFactory();

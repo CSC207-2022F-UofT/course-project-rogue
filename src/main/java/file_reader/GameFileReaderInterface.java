@@ -38,7 +38,7 @@ public interface GameFileReaderInterface {
             jarr = GameFileReaderInterface.find_helper(dir);
             for (Object o : jarr) {
                 JSONObject jsonObject = (JSONObject) o;
-                if (jsonObject.get(key) instanceof String && ((String) (jsonObject.get(key))).equals(value)) {
+                if (jsonObject.get(key) instanceof String && jsonObject.get(key).equals(value)) {
                     return jsonObject.toJSONString();
                 }
             }
@@ -55,7 +55,7 @@ public interface GameFileReaderInterface {
             jarr = GameFileReaderInterface.find_helper(dir);
             for (Object o : jarr) {
                 JSONObject jsonObject = (JSONObject) o;
-                if (jsonObject.get(key) instanceof Boolean && (Boolean) jsonObject.get(key) == value) {
+                if (jsonObject.get(key) instanceof Boolean && jsonObject.get(key) == value) {
                     return jsonObject.toJSONString();
                 }
             }
@@ -66,4 +66,5 @@ public interface GameFileReaderInterface {
         return null;
     }
     void update(String dir);
+    void update();
 }

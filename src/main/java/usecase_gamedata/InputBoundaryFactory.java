@@ -1,6 +1,7 @@
 package usecase_gamedata;
 
 
+import file_writer.GameFileWriterInterface;
 import usecase_essence_use.EssenceUseActionManager;
 import usecase_factories.PlayerFactory;
 import usecase_fight.*;
@@ -12,11 +13,19 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
     private final PlayerFactory playerFactory;
     private final MapFactory mapFactory;
     private final MoveManager moveManager;
+    private static GameFileWriterInterface fileWriter = null;
 
     public InputBoundaryFactory(PlayerFactory playerFactory, MapFactory mapFactory) {
         this.playerFactory = playerFactory;
+        fileWriter.register(playerFactory);
         this.mapFactory = mapFactory;
         this.moveManager = new MoveManager();
+    }
+
+    public static void setGameFileWriter(GameFileWriterInterface writer){
+        if(InputBoundaryFactory.fileWriter == null){
+            InputBoundaryFactory.fileWriter = writer;
+        }
     }
 
     /**
