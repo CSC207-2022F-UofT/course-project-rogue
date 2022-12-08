@@ -14,7 +14,7 @@ import usecase_essence_use.data_preset_normal.CollectibleNeedSetting;
 import usecase_essence_use.manager.HealManager;
 import usecase_playeractions.Map;
 
-public class HealCalculatorTest {
+public class HealManagerTest {
 
     Map map;
     Player player;

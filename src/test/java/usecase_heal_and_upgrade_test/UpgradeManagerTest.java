@@ -15,7 +15,7 @@ import usecase_essence_use.data_preset_normal.StatSetting;
 import usecase_essence_use.manager.UpgradeManager;
 import usecase_playeractions.Map;
 
-public class UpgradeCalculatorTest {
+public class UpgradeManagerTest {
     Map map;
     Player player;
     int maxHP = 100;
