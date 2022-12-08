@@ -2,8 +2,6 @@ package usecase_gamedata;
 
 
 import usecase_essence_use.EssenceUseActionManager;
-import usecase_essence_use.essenceUseKey.Healer;
-import usecase_essence_use.essenceUseKey.Upgrader;
 import usecase_factories.PlayerFactory;
 import usecase_fight.AfterFight;
 import usecase_fight.Fighter;
