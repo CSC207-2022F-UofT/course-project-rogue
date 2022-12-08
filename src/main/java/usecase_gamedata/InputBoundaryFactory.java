@@ -1,9 +1,7 @@
 package usecase_gamedata;
 
-import usecase_essence_use.heal.HealCalculator;
-import usecase_essence_use.heal.Healer;
-import usecase_essence_use.upgrade.UpgradeCalculator;
-import usecase_essence_use.upgrade.Upgrader;
+
+import usecase_essence_use.EssenceUseActionManager;
 import usecase_factories.PlayerFactory;
 import usecase_fight.*;
 import usecase_playeractions.ActionManager;
@@ -65,11 +63,15 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
     public ActionManager getActionManager(){
         ActionManager actionManager = new ActionManager();
-        actionManager.addObserver(new Healer(playerFactory.create(), new HealCalculator(playerFactory.create()),KEYS[0]));
-        actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Armor"),KEYS[2]));
-        actionManager.addObserver(new Upgrader(playerFactory.create(),new UpgradeCalculator(playerFactory.create(), "Weapon"),KEYS[1]));
         actionManager.addObserver(new Fight(playerFactory.create(), KEYS[6], KEYS[7], KEYS[12]));
         return actionManager;
+    }
+
+    @Override
+    public EssenceUseActionManager getEssenceUseActionManager(){
+        EssenceUseActionManager essenceUseManager = new EssenceUseActionManager();
+        essenceUseManager.setDefaultKey(playerFactory.create());
+        return essenceUseManager;
     }
 
 }
