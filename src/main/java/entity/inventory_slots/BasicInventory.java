@@ -12,13 +12,4 @@ public abstract class BasicInventory {
         this.name = inventoryName;
     }
 
-    /** Gets the name of the inventory
-     *
-     * @return the name of the inventory
-     */
-    public String getName(){
-
-        return this.name;
-    }
-
 }

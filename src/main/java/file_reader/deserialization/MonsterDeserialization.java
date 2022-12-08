@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import entity.monster.Monster;
 import entity.monster.MonsterPower;
-import entity.monster.Power;
 import usecase_factories.PowerFactory;
 
 import java.io.IOException;
@@ -21,12 +20,10 @@ public class MonsterDeserialization  extends StdDeserializer<Monster> {
     }
 
     /**
-     * @param p    Parsed used for reading JSON content(apart of Jackson, not our design)
+     * @param p    Parsed used for reading JSON content(apart from Jackson, not our design)
      * @param ctxt Context that can be used to access information about
-     *             this deserialization activity.(apart of Jackson, not our design)
+     *             this deserialization activity.(apart from Jackson, not our design)
      * @return Monster read from file
-     * @throws IOException
-     * @throws JacksonException
      */
     @Override
     public Monster deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {

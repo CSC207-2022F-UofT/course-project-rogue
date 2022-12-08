@@ -24,7 +24,7 @@ public class HealManager {
     }
 
     /**
-     * Update the require HP of the player
+     * Update the required HP of the player
      */
     private void healRequireHPUpdate(){
         this.requireHP = this.player.getMaxHitPoint() - this.player.getCurrHitPoint();

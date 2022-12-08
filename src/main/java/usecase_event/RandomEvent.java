@@ -2,9 +2,6 @@ package usecase_event;
 
 import java.util.Random;
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
-import user_interface.View;
-import user_interface.Visual;
 
 public class RandomEvent extends Event{
 
