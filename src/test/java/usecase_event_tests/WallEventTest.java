@@ -10,10 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_event.Event;
 import usecase_event.WallEvent;
-import user_interface.View;
-import user_interface.Visual;
 
 public class WallEventTest {
     int maxHP = 100;

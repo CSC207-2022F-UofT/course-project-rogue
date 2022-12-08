@@ -14,7 +14,7 @@ public interface GameFileReaderInterface {
         FileReader reader = new FileReader(dir);
         return (JSONArray) jsonParser.parse(reader);
     }
-    public String findInt(String key, int value);
+    String findInt(String key, int value);
     default String findInt_helper(String key, int value, String dir){
         JSONArray jarr;
         try {
@@ -31,7 +31,7 @@ public interface GameFileReaderInterface {
         System.out.println("Did not find a player with the key to value combination.");
         return null;
     }
-    public String findString(String key, String value);
+    String findString(String key, String value);
     default String findString_helper(String key, String value, String dir){
         JSONArray jarr;
         try {
@@ -48,7 +48,7 @@ public interface GameFileReaderInterface {
         System.out.println("Did not find a player with the key to value combination.");
         return null;
     }
-    public String findBoolean(String key, Boolean value);
+    String findBoolean(String key, Boolean value);
     default String findBoolean_helper(String key, Boolean value, String dir){
         JSONArray jarr;
         try {
@@ -65,5 +65,5 @@ public interface GameFileReaderInterface {
         System.out.println("Did not find a player with the key to value combination.");
         return null;
     }
-    public void update(String dir);
+    void update(String dir);
 }

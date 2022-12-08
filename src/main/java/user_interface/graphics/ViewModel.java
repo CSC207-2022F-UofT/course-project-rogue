@@ -1,6 +1,4 @@
-package user_interface.Graphics;
-
-import usecase_playeractions.Map;
+package user_interface.graphics;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

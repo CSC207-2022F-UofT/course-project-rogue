@@ -11,9 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.EssenceEvent;
-import usecase_event.Event;
-import user_interface.View;
-import user_interface.Visual;
 
 public class EssenceEventTest {
     int maxHP = 100;

@@ -13,18 +13,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_fight.FightSummary;
-import usecase_fight.Fighter;
+import usecase_fight.states.Fighter;
 
 import java.util.HashMap;
 
 public class FighterTest {
 
-    Collectible essence = new Collectible("Essence", 10);
-    Collectible artifact = new Collectible("Artifact", 1);
-    CollectibleInventory inventory = new CollectibleInventory("Collectible Inventory", essence, artifact);
-    Armor armor = new Armor("Padded Jacket", 50);
-    Weapon weapon = new Weapon("Plastic Sword", 50);
-    BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(weapon, armor);
+    final Collectible essence = new Collectible("Essence", 10);
+    final Collectible artifact = new Collectible("Artifact", 1);
+    final CollectibleInventory inventory = new CollectibleInventory("Collectible Inventory", essence, artifact);
+    final Armor armor = new Armor("Padded Jacket", 50);
+    final Weapon weapon = new Weapon("Plastic Sword", 50);
+    final BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(weapon, armor);
     Player player;
     FightSummary fs; // 100 win, 5dmg, 5essence, stronger ARMOR
     FightSummary fs1; // 100 win, 5dmg, 5essence, stronger equipment

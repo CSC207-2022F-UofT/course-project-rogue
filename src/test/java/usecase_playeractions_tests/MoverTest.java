@@ -11,12 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.ArtifactEvent;
-import usecase_event.Event;
 import usecase_event.WallEvent;
 import usecase_playeractions.Map;
 import usecase_playeractions.Mover;
-import user_interface.View;
-import user_interface.Visual;
 
 import java.util.Observable;
 

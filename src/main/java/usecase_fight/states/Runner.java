@@ -8,7 +8,7 @@ import usecase_fight.ResultFormatter;
 public class Runner extends FightPath implements FightState {
 
     /** A result formatter */
-    ResultFormatter rf = new ResultFormatter();
+    private final ResultFormatter rf = new ResultFormatter();
 
     /** Player that needs to flee. */
     private final Player player;

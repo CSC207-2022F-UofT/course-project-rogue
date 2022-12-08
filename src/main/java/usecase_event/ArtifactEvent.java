@@ -1,6 +1,5 @@
 package usecase_event;
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
 
 
 public class ArtifactEvent extends Event{

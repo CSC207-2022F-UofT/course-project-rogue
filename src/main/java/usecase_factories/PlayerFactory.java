@@ -1,7 +1,6 @@
 package usecase_factories;
 
 import entity.player.Player;
-import file_reader.GameFileReader;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import file_reader.GameFileReaderInterface;

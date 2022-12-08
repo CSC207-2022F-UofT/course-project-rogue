@@ -1,4 +1,4 @@
-package user_interface.Graphics;
+package user_interface.graphics;
 
 import java.awt.*;
 

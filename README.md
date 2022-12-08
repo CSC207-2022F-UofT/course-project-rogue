@@ -2,7 +2,7 @@
 Game created by David, Ian, John, Thomas, Jaemi, Henry, Jillian
 ![Adventure Guy Image](https://github.com/CSC207-2022F-UofT/course-project-rogue/blob/main/pictures/Menu%20Sample.PNG?raw=true)
 # Lore
-You are a novice adventurer who has accidentally fell into a maze, your knowledge tells you that this maze is rumored to be ferocious and unforgiving to even the most reputated adventurer. It has been said that only by finding artifacts, the maze will reveal the exit to the surface. Otherwise, the poor souls who has entered the maze will be trapped eternally....
+You are a novice adventurer who has accidentally fell into a maze, your knowledge tells you that this maze is rumored to be ferocious and unforgiving to even the most reputed adventurer. It has been said that only by finding artifacts, the maze will reveal the exit to the surface. Otherwise, the poor souls who have entered the maze will be trapped eternally....
 # Running
 1. Run Game in src/main/java/driver
 
@@ -49,7 +49,7 @@ So try to stay alive, collect the artifact and escape the maze!
 * Event is using Strategy Design Pattern (Where map is holding an Array of Events, the player will trigger Events differently depending on which Event type it is)
 * Items are using the composite design patter as it branches out to **Collectibles** and **Equipments** and **Equipments** branches out to **Armor** and **Weapons**
 * State pattern used for monster fights
-  * Different states of a fight: in a fight, running away, after a fight, and gameover.
+  * Different states of a fight: in a fight, running away, after a fight, and game over.
   * The state of a Fight class determines how the fight occurs
 
 
@@ -71,7 +71,7 @@ So try to stay alive, collect the artifact and escape the maze!
   * All Methods and Possibilities are tested.
 * **Events**
   * **Event** cannot be tested because Event is abstract.
-  * **Random Event** cannot be tested because it is depending on random number generator.
+  * **Random Event** cannot be tested because it depends on random number generation.
   * **Essence Event**  Tested only enter(), because trigger will only have a visual display
   * **Artifact Event**  Tested only enter(), because trigger will only have a visual display
   * **Fight Event** Tested only enter(), as trigger calls a method in the output boundary

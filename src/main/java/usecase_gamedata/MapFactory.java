@@ -9,8 +9,6 @@ import file_reader.deserialization.DeserializeHelper;
 import interface_adapters.OutputBoundary;
 import usecase_playeractions.Map;
 
-import java.util.HashMap;
-
 public class MapFactory {
 
     private static GameFileReaderInterface mf;

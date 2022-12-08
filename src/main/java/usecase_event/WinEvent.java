@@ -1,9 +1,7 @@
 package usecase_event;
 
 import entity.player.Player;
-import file_writer.GameFileWriter;
 import file_writer.GameFileWriterInterface;
-import interface_adapters.OutputBoundary;
 
 public class WinEvent extends Event{
     private static GameFileWriterInterface fileWriter;

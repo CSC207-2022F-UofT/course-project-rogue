@@ -11,10 +11,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_event.Event;
 import usecase_event.NoEvent;
-import user_interface.View;
-import user_interface.Visual;
+
 
 public class NoEventTest {
     int maxHP = 100;

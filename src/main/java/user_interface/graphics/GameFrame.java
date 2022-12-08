@@ -1,4 +1,4 @@
-package user_interface.Graphics;
+package user_interface.graphics;
 
 import user_interface.View;
 
@@ -9,16 +9,14 @@ import java.awt.*;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class GameFrame extends JPanel{
     boolean start = false;
-    private JButton startbutton = new JButton("START GAME");
-    private JButton quitbutton = new JButton("QUIT");
+    private final JButton startbutton = new JButton("START GAME");
+    private final JButton quitbutton = new JButton("QUIT");
     int screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
     int screen_hight = Toolkit.getDefaultToolkit().getScreenSize().height;
 

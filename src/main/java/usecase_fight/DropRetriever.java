@@ -8,9 +8,9 @@ import java.util.Random;
 
 /** A Retriever that obtains the items dropped after a fight. */
 public class DropRetriever {
-    EquipmentFactory ef;
+    private final EquipmentFactory ef;
 
-    Random rand = new Random();
+    private final Random rand = new Random();
 
     public DropRetriever(EquipmentFactory ef) {
         this.ef = ef;
