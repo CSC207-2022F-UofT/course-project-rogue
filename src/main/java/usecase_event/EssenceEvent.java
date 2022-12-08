@@ -14,8 +14,8 @@ public class EssenceEvent extends Event{
     public void trigger(Player player) {
         
         Random random = new Random();
-        int random_int = random.nextInt(100);
-        increaseEssence(player, random_int + 1); // get essence from 1 to 100 inclusive
+        int random_int = random.nextInt(10);
+        increaseEssence(player, random_int + 1); // get essence from 1 to 10 inclusive
 
         outputBoundary.updateText(String.format("You gained %d Essence!", random_int), "", "", "");
         outputBoundary.updateEssenceCnt(player.getEssence().getNum());
