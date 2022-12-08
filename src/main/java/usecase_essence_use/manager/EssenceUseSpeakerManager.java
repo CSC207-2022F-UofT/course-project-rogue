@@ -1,18 +1,15 @@
 package usecase_essence_use.manager;
 
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
 
 public class EssenceUseSpeakerManager extends EssenceUseInfoPass{
     private final Player player;
     private final EssenceUseManager essenceUseManager;
 
-    private final OutputBoundary speaker;
 
     public EssenceUseSpeakerManager(Player player, EssenceUseManager essenceUseManager){
         this.player = player;
         this.essenceUseManager = essenceUseManager;
-        this.speaker = outputBoundary;
     }
 
     public void showEssenceUseInfo(){
@@ -45,14 +42,14 @@ public class EssenceUseSpeakerManager extends EssenceUseInfoPass{
         String healString = makeHealString();
         String UpgradeString = makeGeneralUpgradeString();
         String keypressRequestString = makeKeypressString();
-        this.speaker.updateText(healString, UpgradeString , "" ,keypressRequestString);
+        this.outputBoundary.updateText(healString, UpgradeString , "" ,keypressRequestString);
     }
 
     public void showUpgradeSelectPage(){
         String weaponUpgradeString = makeWeaponUpgradeString();
         String armorUpgradeString = makeArmorUpgradeString();
         String line4 = makeStringUpgradeChoice();
-        speaker.updateText(weaponUpgradeString,armorUpgradeString,"",line4);
+        outputBoundary.updateText(weaponUpgradeString,armorUpgradeString,"",line4);
     }
 
 
@@ -165,7 +162,7 @@ public class EssenceUseSpeakerManager extends EssenceUseInfoPass{
         }
         if(this.essenceUseManager.getArmorUpgradeManage().getAble() &&
                 this.essenceUseManager.getArmorUpgradeManage().getBelowLimit()){
-            toReturn = toReturn.concat("[2] for armor");
+            toReturn = toReturn.concat("[2] for armor, ");
         }
         toReturn = toReturn.concat("[N] for no and return to menu");
         return toReturn;
@@ -179,18 +176,18 @@ public class EssenceUseSpeakerManager extends EssenceUseInfoPass{
         }
         String line3 = String.format("[Y] for yes and %s", verb.toLowerCase());
         String line4 = "[N] for no and return to menu";
-        speaker.updateText(line1, line2, line3, line4);
+        outputBoundary.updateText(line1, line2, line3, line4);
     }
 
 
     public void showSuccessPage(String verb){
         if(verb.equalsIgnoreCase("heal")){
-            speaker.updateHp(player.getCurrHitPoint());
+            outputBoundary.updateHp(player.getCurrHitPoint());
         }
-        speaker.updateEssenceCnt(player.getEssence().getNum());
+        outputBoundary.updateEssenceCnt(player.getEssence().getNum());
         String line1 = String.format("Successfully %s", verb.toLowerCase());
         String line4 = "Please press [C] to continue";
-        speaker.updateText(line1, "", "", line4);
+        outputBoundary.updateText(line1, "", "", line4);
     }
 
     private void easterEggNothingCanBeDone(){
@@ -198,7 +195,7 @@ public class EssenceUseSpeakerManager extends EssenceUseInfoPass{
         String line2 = "You do not have any essence available now";
         String line3 = "ಥ_ಥ ᖗ";
         String line4 = "Maybe you can try harder next time, press [L] for leave. ";
-        speaker.updateText(line1, line2, line3, line4);
+        outputBoundary.updateText(line1, line2, line3, line4);
     }
 
     private void easterEggEverythingDone(){
@@ -206,13 +203,13 @@ public class EssenceUseSpeakerManager extends EssenceUseInfoPass{
         String line2 = "You've done everything you can do. Good Job!";
         String line3 = "｡◕‿◕｡";
         String line4 = "Now let's press [L] for leave";
-        speaker.updateText(line1, line2, line3, line4);
+        outputBoundary.updateText(line1, line2, line3, line4);
     }
 
     public void showEssenceUseEnd(){
         String line1 = "You leave the rest point";
         String line2 = "Good Luck!";
-        speaker.updateText(line1,line2,"","");
+        outputBoundary.updateText(line1,line2,"","");
     }
 
 }
