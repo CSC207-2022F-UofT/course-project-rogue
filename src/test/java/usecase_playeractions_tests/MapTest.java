@@ -16,7 +16,6 @@ import usecase_event.Event;
 import usecase_event.WallEvent;
 import usecase_playeractions.Map;
 
-
 public class MapTest {
 
     Map map;

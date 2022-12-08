@@ -1,4 +1,4 @@
-package usecase_fight;
+package usecase_fight.states;
 
 import interface_adapters.OutputBoundary;
 

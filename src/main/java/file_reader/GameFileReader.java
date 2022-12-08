@@ -49,7 +49,6 @@ public class GameFileReader implements GameFileReaderInterface {
         this.dir = dir;
     }
 
-    @Override
     public void update(){
         this.dir = startingDir;
     }

@@ -3,28 +3,28 @@
     "index": 0,
     "name": "Slime",
     "type": "Normal",
-    "stats": {"Attack":  [1, 75], "Health":  [1, 75]},
+    "stats": {"Attack":  [75, 125], "Health":  [100, 150]},
     "state": false
   },
   {
     "index": 1,
     "name": "Buff Slime",
     "type": "Normal",
-    "stats": {"Attack":  [1, 125], "Health":  [1, 125]},
+    "stats": {"Attack":  [125, 175], "Health":  [150, 200]},
     "state": false
   },
   {
     "index": 2,
     "name": "Swole Slime",
     "type": "Normal",
-    "stats": {"Attack":  [1, 175], "Health":  [1, 175]},
+    "stats": {"Attack":  [175, 225], "Health":  [200, 250]},
     "state": false
   },
   {
     "index": 3,
     "name": "Snatcher",
     "type": "Normal",
-    "stats": {"Attack":  [1, 125], "Health":  [1, 125]},
+    "stats": {"Attack":  [75, 225], "Health":  [100, 250]},
     "state": true,
     "power": "Steal"
   },
@@ -32,7 +32,7 @@
     "index": 4,
     "name": "Friendly Bear",
     "type": "Tamable",
-    "stats": {"Attack": [0, 0], "Health":  [1, 100]},
+    "stats": {"Attack": [0, 0], "Health":  [200, 250]},
     "state": true,
     "power": "Smile"
   },
@@ -40,7 +40,7 @@
     "index": 5,
     "name": "Golden Slime",
     "type": "Treasure",
-    "stats": {"Attack": [1, 1000], "Health":  [1, 1000]},
+    "stats": {"Attack": [225, 325], "Health":  [400, 500]},
     "state": true,
     "power": "ExtraDrops"
   }

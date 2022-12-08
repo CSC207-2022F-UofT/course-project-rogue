@@ -1,32 +1,26 @@
-package usecase_fight;
+package usecase_fight.states;
 
 import entity.monster.Monster;
 import entity.player.Player;
-
-import java.util.Observable;
-import java.util.Observer;
+import usecase_fight.ResultFormatter;
 
 /** A path in which a user runs away from a fight. */
-public class Runner extends FightPath implements Observer {
+public class Runner extends FightPath implements FightState {
 
     /** A result formatter */
-    ResultFormatter rf = new ResultFormatter();
+    private final ResultFormatter rf = new ResultFormatter();
 
     /** Player that needs to flee. */
     private final Player player;
 
-    /** Keystroke that triggers this runner. */
-    private final String trigger; // "R"
 
 
     /**
      * Creates a new Runner with the given Player and trigger.
      * @param player Player
-     * @param trigger Key stroke to trigger this runner.
      */
-    public Runner(Player player, String trigger){
+    public Runner(Player player){
         this.player = player;
-        this.trigger = trigger;
     }
 
 
@@ -43,10 +37,7 @@ public class Runner extends FightPath implements Observer {
     }
 
     /** Triggers this runner if Player is in a fight and if the user gives key input matching trigger. */
-    @Override
-    public void update(Observable o, Object arg) {
-        if(player.getFighting() && trigger.equals(arg)){
-            this.flee();
-        }
+    public void takePath() {
+        this.flee();
     }
 }

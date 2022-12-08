@@ -1,6 +1,5 @@
 package usecase_playeractions_tests;
 
-
 import entity.equipment_slots.BasicEquipmentSlots;
 import entity.inventory_slots.CollectibleInventory;
 import entity.item.Armor;
