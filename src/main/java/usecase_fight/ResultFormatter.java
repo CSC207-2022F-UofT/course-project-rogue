@@ -6,10 +6,6 @@ import entity.monster.Monster;
 /** A Formatter that formats fight results into a string. */
 public class ResultFormatter {
 
-    /** Creates a new ResultFormatter. */
-    public ResultFormatter(){}
-
-
     /**
      * Format the win results of the fight.
      *

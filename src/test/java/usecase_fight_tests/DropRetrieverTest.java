@@ -8,7 +8,7 @@ import usecase_fight.DropRetriever;
 import usecase_factories.EquipmentFactory;
 
 public class DropRetrieverTest {
-    EquipmentFactory ef = new EquipmentFactory();
+    private final EquipmentFactory ef = new EquipmentFactory();
     DropRetriever dr;
 
     @BeforeEach

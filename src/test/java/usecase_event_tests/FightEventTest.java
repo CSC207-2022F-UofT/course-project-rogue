@@ -17,21 +17,14 @@ import usecase_factories.EquipmentFactory;
 import usecase_factories.MonsterFactory;
 
 public class FightEventTest {
-    Collectible essence = new Collectible("Essence", 100);
-    Collectible artifact = new Collectible("Artifact", 1);
-    CollectibleInventory inventory = new CollectibleInventory("Collectible Inventory", essence, artifact);
-    Armor armor = new Armor("Chain Mail", 5);
-    Weapon excalibur = new Weapon("Legendary Sword Excalibur", 1000);
-    BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
-    int[] location = new int[]{0, 0};
+    final Collectible essence = new Collectible("Essence", 100);
+    final Collectible artifact = new Collectible("Artifact", 1);
+    final CollectibleInventory inventory = new CollectibleInventory("Collectible Inventory", essence, artifact);
+    final Armor armor = new Armor("Chain Mail", 5);
+    final Weapon excalibur = new Weapon("Legendary Sword Excalibur", 1000);
+    final BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
     Player player;
     FightEvent event;
-    GameFileReaderInterface fr = new GameFileReader("data_base/Equipment.json");
-    GameFileReaderInterface fr2 = new GameFileReader("data_base/Monster.json");
-
-    MonsterFactory mf = new MonsterFactory();
-    EquipmentFactory ef = new EquipmentFactory();
-
 
     @BeforeEach
     @DisplayName("SetUp Player and FightEvent")

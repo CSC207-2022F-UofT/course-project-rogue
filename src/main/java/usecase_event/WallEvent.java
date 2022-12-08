@@ -1,7 +1,6 @@
 package usecase_event;
 
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
 
 public class WallEvent extends Event{
 
@@ -15,9 +14,10 @@ public class WallEvent extends Event{
         return false;
     }
 
-    @Override
-    public void trigger(Player player) {
-    }
+    /**
+     *  Returns String to show which Event type it is
+     * @return "WallEvent"
+     */
     @Override
     public String toString() {
         return "WallEvent";

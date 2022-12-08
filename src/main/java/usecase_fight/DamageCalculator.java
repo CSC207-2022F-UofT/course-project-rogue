@@ -6,9 +6,9 @@ import entity.monster.Monster;
 /** A calculator that determines Monster damage to Player. */
 public class DamageCalculator extends Calculator {
     /** Monster in this Calculator. */
-    Monster monster;
+    private final Monster monster;
     /** Monster in this Calculator. */
-    Player player;
+    private final Player player;
 
 
     /**

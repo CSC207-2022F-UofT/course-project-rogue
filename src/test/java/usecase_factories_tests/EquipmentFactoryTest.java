@@ -10,8 +10,8 @@ import usecase_factories.EquipmentFactory;
 
 public class EquipmentFactoryTest {
 
-    GameFileReaderInterface readerInterface = new GameFileReader("data_base/Equipment.json");
-    EquipmentFactory ef = new EquipmentFactory(readerInterface);
+    private final GameFileReaderInterface readerInterface = new GameFileReader("data_base/Equipment.json");
+    private final EquipmentFactory ef = new EquipmentFactory(readerInterface);
 
     @Test
     @DisplayName("Test Weapon Creation")

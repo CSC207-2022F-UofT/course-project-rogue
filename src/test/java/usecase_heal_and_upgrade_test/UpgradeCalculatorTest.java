@@ -10,7 +10,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_essence_use.upgrade.UpgradeCalculator;
+import usecase_essence_use.data_preset_normal.CollectibleNeedSetting;
+import usecase_essence_use.data_preset_normal.StatSetting;
+import usecase_essence_use.manager.UpgradeManager;
 import usecase_playeractions.Map;
 
 public class UpgradeCalculatorTest {
@@ -24,7 +26,9 @@ public class UpgradeCalculatorTest {
     Armor armor = new Armor("Chain Mail", 5);
     Weapon excalibur = new Weapon("Legendary Sword Excalibur", 1000);
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
-    int[] location = new int[]{0, 0};
+
+    CollectibleNeedSetting essenceNeed = new CollectibleNeedSetting();
+    StatSetting statSetting = new StatSetting();
 
 
     @BeforeEach
@@ -37,7 +41,7 @@ public class UpgradeCalculatorTest {
     @DisplayName("Test Upgrade Calculator")
     void testUpgradeCalculator(){
         player.setCanUpgrade(true);
-        UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
+        UpgradeManager weaponUpgradeCalculator = new UpgradeManager(player, "Weapon",essenceNeed, statSetting);
         weaponUpgradeCalculator.UpgradeInfoUpdate();
         weaponUpgradeCalculator.upgrade();
         Assertions.assertEquals(player.getWeapon().getStatValue(), 1020);
@@ -47,7 +51,7 @@ public class UpgradeCalculatorTest {
     @DisplayName("Test essence is used after upgrade")
     void testEssenceIsUsed(){
         player.setCanUpgrade(true);
-        UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
+        UpgradeManager weaponUpgradeCalculator = new UpgradeManager(player, "Weapon",essenceNeed, statSetting);
         weaponUpgradeCalculator.UpgradeInfoUpdate();
         weaponUpgradeCalculator.upgrade();
         Assertions.assertEquals(player.getEssence().getNum(),80);
@@ -57,7 +61,7 @@ public class UpgradeCalculatorTest {
     @DisplayName("Test will not upgrade when Essence not enough")
     void testEssenceNotEnough(){
         player.setCanUpgrade(true);
-        UpgradeCalculator weaponUpgradeCalculator = new UpgradeCalculator(player, "Weapon");
+        UpgradeManager weaponUpgradeCalculator = new UpgradeManager(player, "Weapon",essenceNeed, statSetting);
         player.changeEssenceAmount(-90);
         weaponUpgradeCalculator.UpgradeInfoUpdate();
         weaponUpgradeCalculator.upgrade();

@@ -61,11 +61,6 @@ public class DamageCalculatorTest {
         DamageCalculator dc = new DamageCalculator(monster, player);
         int result = dc.calculate();
         Assertions.assertEquals(5, result);
-        // patk = 5 + 5, matk = 5, php = 5, mhp = 10
-        // phits = 5/5 = 1
-        // mhits = 10 / 10 = 1
-        // for 1 turn
-        // damage = 5 * 1
     }
 
     @Test
@@ -76,11 +71,6 @@ public class DamageCalculatorTest {
         DamageCalculator dc = new DamageCalculator(monster, player);
         int result = dc.calculate();
         Assertions.assertEquals(1, result);
-        // patk = 5 + 5 = 10, matk = 6 - 5 = 1, php = 5, mhp = 6
-        // phits = 5/1 = 5
-        // mhits = 6 / 10 = 0.6
-        // turns = 1
-        // damage = 1 * 1 = 1
     }
 
     @Test
@@ -91,11 +81,6 @@ public class DamageCalculatorTest {
         DamageCalculator dc = new DamageCalculator(monster, player);
         int result = dc.calculate();
         Assertions.assertEquals(10, result);
-        // pAtk = 10 + 5, pHp = 10, mAtk = 10 - 5 = 5, mHp = 30
-        // phits = 10 / 5 = 2
-        // mhits = 30 / 15 = 2
-        // turns = 2
-        // damage = 2*5 = 10
     }
 
     @Test
@@ -106,11 +91,6 @@ public class DamageCalculatorTest {
         DamageCalculator dc = new DamageCalculator(monster, player);
         int result = dc.calculate();
         Assertions.assertEquals(10, result);
-        // pAtk = 0, mAtk = 10, mHp = 15, pHp = 2
-        // pHits = 2/10 = 0.2
-        // mHits = undefined (pAtk == 0)
-        // turns = 1
-        // damage = 1*10 = 10
     }
 
 
@@ -122,11 +102,6 @@ public class DamageCalculatorTest {
         DamageCalculator dc = new DamageCalculator(monster, player);
         int result = dc.calculate();
         Assertions.assertEquals(5, result);
-        // pAtk = 0, mAtk = 5, mHp = 15, pHp = 5
-        // pHits = 5 / 5 = 1
-        // mHits = undefined (pAtk == 0)
-        // turns = 1
-        // damage = 1*5 = 5
     }
 
     @Test
@@ -137,11 +112,6 @@ public class DamageCalculatorTest {
         DamageCalculator dc = new DamageCalculator(monster, player);
         int result = dc.calculate();
         Assertions.assertEquals(15, result);
-        // pAtk = 0, mAtk = 5, mHp = 15, pHp = 2
-        // pHits = 15 / 5 = 3
-        // mHits = undefined (pAtk == 0)
-        // turns = 3
-        // damage = 3*5 = 15
     }
 
     @Test

@@ -9,8 +9,8 @@ import usecase_factories.MonsterFactory;
 
 public class MonsterFactoryTest {
 
-    GameFileReaderInterface readerInterface = new GameFileReader("data_base/Monster.json");
-    MonsterFactory mf = new MonsterFactory(readerInterface);
+    final GameFileReaderInterface readerInterface = new GameFileReader("data_base/Monster.json");
+    final MonsterFactory mf = new MonsterFactory(readerInterface);
 
 
     @Test
