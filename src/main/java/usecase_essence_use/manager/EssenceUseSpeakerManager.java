@@ -12,7 +12,7 @@ public class EssenceUseSpeakerManager extends EssenceUseInfoPass{
     public EssenceUseSpeakerManager(Player player, EssenceUseManager essenceUseManager){
         this.player = player;
         this.essenceUseManager = essenceUseManager;
-        speaker = EssenceUseInfoPass.speaker;
+        this.speaker = outputBoundary;
     }
 
     public void showEssenceUseInfo(){
