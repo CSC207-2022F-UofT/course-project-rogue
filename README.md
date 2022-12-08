@@ -7,7 +7,7 @@ You are a novice adventurer who has accidentally fell into a maze, your knowledg
 1. Run Game which is located in the Game Drive
 
 # Basic Flow of the Game
-Player has to explore the maze, obtain at least 5 artifacts and find the exit to win. 
+Player has to explore the maze, obtain at least 5 artifacts and find the exit to win.
 In the maze, the player will encounter monsters and they'll have to fight their way out and find better weapons and armors.
 The will be able to Heal and Upgrade, after encountering an Event or winning a fight.
 
@@ -38,7 +38,7 @@ So try to stay alive, collect the artifact and escape the maze!
 * [R] Flee
 
 # Design Patterns used
-* Facade Design Pattern is used in Player 
+* Facade Design Pattern is used in Player
   * Where CollectibleInventory takes care of the Inventory
   * EquipmentSlot takes care of the equipment for the Player.
   * The State records what actions the player can take.
@@ -48,8 +48,9 @@ So try to stay alive, collect the artifact and escape the maze!
 * GameFileWriter uses Observer Design Pattern to inform PlayerFactory and GameFileReader(through interfaces to lower coupling)
   * PlayerFactory is informed to destroy the player instance it has been storing when the player wins a game or dies to be able to create a new player instance.
   * GameFileReader is informed to change its reading directory to the directory of the file GameFileWriter writes to. This only happens when a player wins(escaped a level).
+* User Input are passed to usecases with Observer Design Pattern. Facade Design Pattern used in ActionManager and MoveManager to manage these usecases.
 
-# Clean Architecture used 
+# Clean Architecture used
 * We follow MVC structure.
 * View interacts with Controller, Controller interacts with usecases(move manager and action manager implement the Input Boundary) through Input boundary.
 * Use cases control visual(presenter) through view interface and visual controls view through output boundary interface.
@@ -57,6 +58,7 @@ So try to stay alive, collect the artifact and escape the maze!
 * Input Boundary, GameFileReaderInterface, GameFileWriterInterface, Output Boundary, ViewInterface all follow Interface Segregation Principle.
 * Open/Closed Principle with Item: Item allows extension because it allows different types of items to be created without having to modify the Item class. If new types of item want to be created, they can just extend the Item class. This is seen with the Collectible class and the Equipment class.
 * Liskov Substitution Principle with Item and its subclasses (Collectible, Equipment, Armor, and Weapon): Each subclass can substitute an Item object. The methods in Item are all appropriate for the subclasses and can be used by the subclasses.
+* Open/Closed Principle with ActionManager, as it allow easy addition of new Observers, and have a stable definition. Liskov substitution principle with MoveManager since this class is only for containing some setup methods.
 
 # Test Coverage
 * **Player**
@@ -76,6 +78,10 @@ So try to stay alive, collect the artifact and escape the maze!
   * **WinEvent**  Tested only enter(), because trigger will only have a visual display and no other changes made.
   * **WallEvent** Only test enter(), because triggering the event will not result in anything (and the player isn't supposed to trigger them in the first place).
   * **No Event** Tested only enter(), because trigger will only have a visual display and no other changes made.
+* **Moving**
+  * **Map** All Methods and Possibilities are tested.
+  * **Mover** All Methods and Possibilities are tested.
+  * **MoveManager** All Methods and Possibilities are tested.
 * **Items**
   * **Collectible** All Methods and Possibilities are tested.
   * **Armor** All Methods and Possibilities are tested.
