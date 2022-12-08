@@ -36,8 +36,8 @@ public class UpgradeSelect implements Observer{
     @SuppressWarnings("deprecation")
     @Override
     public void update(Observable o, Object arg) {
-        if(player.getCanUpgrade()  && arg.equals(this.trigger) && !manager.isInPage()) {
-            manager.setInPage(true);
+        if(player.getCanUpgrade()  && arg.equals(this.trigger) && manager.isInPage()) {
+            manager.setInPage(false);
             player.setUpgrading(true);
             inPage = true;
             speaker.showUpgradeSelectPage();

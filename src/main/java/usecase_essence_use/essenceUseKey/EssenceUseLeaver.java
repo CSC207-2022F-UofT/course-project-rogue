@@ -34,23 +34,23 @@ public class EssenceUseLeaver implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals(this.trigger) && !manager.isInPage()) {
+        if(arg.equals(this.trigger) && manager.isInPage()) {
             this.inPage = true;
-            this.manager.setInPage(true);
+            this.manager.setInPage(false);
             this.speaker.showVerifyPage("Leave");
         } else if (inPage && arg.equals("Y")){
             this.speaker.showSuccessPage("Leave");
             this.player.setCanUpgrade(false);
             this.player.setCanHeal(false);
             this.player.setCanMove(true);
-            this.manager.setInPage(false);
+            this.manager.setInPage(true);
             this.inPage = false;
             this.manager.setNewDataFalse();
             this.player.setCanMove(true);
             this.speaker.showEssenceUseEnd();
         }else if (inPage && arg.equals("N")){
             this.speaker.showEssenceUseInfo();
-            this.manager.setInPage(false);
+            this.manager.setInPage(true);
             this.inPage = false;
     }
 }}

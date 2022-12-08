@@ -17,7 +17,7 @@ public class EssenceUseSpeakerManager extends EssenceUseInfoPass{
 
     public void showEssenceUseInfo(){
         essenceUseManager.updateInfo();
-        essenceUseManager.setInPage(false);
+        essenceUseManager.setInPage(true);
         if (!player.getCanHeal() && !player.getCanUpgrade()){
             easterEggEverythingDone();
             return;

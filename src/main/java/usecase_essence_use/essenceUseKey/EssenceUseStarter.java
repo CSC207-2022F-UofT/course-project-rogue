@@ -34,6 +34,7 @@ public class EssenceUseStarter implements Observer {
                 && !manager.isInEssenceUse()) {
             manager.initializeManager();
             speaker.showEssenceUseInfo();
+            manager.setInPage(true);
         }
     }
 }
