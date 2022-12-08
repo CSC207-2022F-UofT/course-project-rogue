@@ -49,6 +49,9 @@ public class GameFrame extends JPanel{
         });
         this.setFocusable(true);
         this.viewModel = new ViewModel();
+    }
+
+    public void addListener(View view){
         this.addKeyListener(view);
     }
     @Override
@@ -85,6 +88,8 @@ public class GameFrame extends JPanel{
         repaint();
     }
     public void goToMenu(){
+        startbutton.setVisible(true);
+        quitbutton.setVisible(true);
         MapGraphics.playerLocation[0] = -1;
         MapGraphics.playerLocation[1] = -1;
         this.start = false;

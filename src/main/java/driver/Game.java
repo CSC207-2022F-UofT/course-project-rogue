@@ -6,6 +6,7 @@ import file_writer.GameFileWriter;
 import file_writer.GameFileWriterInterface;
 import interface_adapters.Controller;
 import interface_adapters.OutputBoundary;
+import usecase_essence_use.manager.EssenceUseInfoPass;
 import usecase_event.Event;
 import usecase_event.WinEvent;
 import usecase_factories.EquipmentFactory;
@@ -46,6 +47,7 @@ public class Game {
         Map.setOutputBoundary(outBound);
         MapFactory.setOutputBoundary(outBound);
         FightPath.setOutputBoundary(outBound);
+        EssenceUseInfoPass.setOutputBoundary(outBound);
         //Controller inject inputBoundaries
 
 

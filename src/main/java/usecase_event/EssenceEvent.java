@@ -40,6 +40,11 @@ public class EssenceEvent extends Event{
     public boolean enter(Player player){
         return true;
     }
+
+    /**
+     *  Returns String to show which Event type it is
+     * @return "EssenceEvent"
+     */
     @Override
     public String toString() {
         return "EssenceEvent";

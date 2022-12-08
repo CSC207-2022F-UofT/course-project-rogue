@@ -9,6 +9,8 @@ public class MoveManager extends ActionManager{
 
     /**
      * Sets up the default Mover observer of WASD
+     * @param player The Player to move.
+     * @param map The Map that Player moves on.
      */
     private void setDefaultMover(Player player, Map map) {
         this.addObserver(new Mover(player,map,"W",-1,0));
@@ -27,5 +29,6 @@ public class MoveManager extends ActionManager{
         this.deleteObservers();
         this.setDefaultMover(player,map);
     }
+
 
 }

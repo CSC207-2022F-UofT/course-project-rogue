@@ -11,20 +11,29 @@ import usecase_playeractions.Map;
 
 public class MapFactory {
 
-    private static GameFileReaderInterface mf;
+    private static GameFileReaderInterface mf = null;
 
     private static OutputBoundary outputBoundary = null;
     public MapFactory(){
     }
 
+    /**
+     * Sets up the output boundary if it hasn't been set for Map Factory
+     * @param outputBoundary: the output Boundary for this Map Factory
+     */
     public static void setOutputBoundary(OutputBoundary outputBoundary){
         if(MapFactory.outputBoundary == null) {
             MapFactory.outputBoundary = outputBoundary;
         }
     }
 
+    /**
+     * Sets the static variable GameFileReaderInterface
+     * @param fileReader: The file reader being set
+     */
     public static void setFileReader(GameFileReaderInterface fileReader){
-        MapFactory.mf = fileReader;
+        if(MapFactory.mf == null)
+            MapFactory.mf = fileReader;
     }
 
     /**
@@ -57,7 +66,7 @@ public class MapFactory {
             outputBoundary.updatePlayerLocation(location);
             outputBoundary.updateHp(player.getCurrHitPoint());
             outputBoundary.updateEssenceCnt(player.getEssence().getNum());
-            outputBoundary.updateArtifact(player.getEssence().getNum());
+            outputBoundary.updateArtifact(player.getArtifact().getNum());
             outputBoundary.updateText("A voice whispers to you:", "\" You must get 5 Artifact to leave this place \"","" ,"");
 
         } catch (JsonProcessingException e) {

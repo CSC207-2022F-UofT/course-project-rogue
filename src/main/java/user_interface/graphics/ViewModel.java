@@ -21,7 +21,6 @@ public class ViewModel {
     //length should always be 650;
     private MapGraphics map = null;
 
-    private Dimension size;
 
     public void duplicate(ViewModel oldModel){
         this.text1 = oldModel.text1;
@@ -30,6 +29,7 @@ public class ViewModel {
         this.text4 = oldModel.text4;
         this.hp = oldModel.hp;
         this.es = oldModel.es;
+        this.af = oldModel.af;
         this.map = new MapGraphics();
         this.map.duplicate(oldModel.map);
     }
@@ -42,7 +42,6 @@ public class ViewModel {
     }
 
     public void draw(Graphics g, Dimension size, JPanel gameFrame){
-        this.size = size;
         try {
             BufferedImage img = ImageIO.read(new File("pictures/b9db1d7d93c1709.png"));
             g.drawImage(img,0,size.height-300,size.width,300,gameFrame);
@@ -54,9 +53,9 @@ public class ViewModel {
         g.fillRect(0,0,size.width-600,size.height-300);
         g.setColor(new Color(0xFF090909, true));
         g.setFont(new Font("TimesRoman",Font.CENTER_BASELINE,30));
-        g.drawString("HP:      "+hp,30,120);
-        g.drawString("Artifact:      "+af,30,240);
-        g.drawString("Essence:      "+es,30,360);
+        g.drawString("HP:      "+this.hp,30,120);
+        g.drawString("Artifact:      "+this.af,30,240);
+        g.drawString("Essence:      "+this.es,30,360);
 
         g.setColor(new Color(0xA6287886, true));
         g.fillRect(0,size.height-300,size.width,300);
