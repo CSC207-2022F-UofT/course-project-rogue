@@ -4,7 +4,8 @@ Game created by David, Ian, John, Thomas, Jaemi, Henry, Jillian
 # Lore
 You are a novice adventurer who has accidentally fell into a maze, your knowledge tells you that this maze is rumored to be ferocious and unforgiving to even the most reputed adventurer. It has been said that only by finding artifacts, the maze will reveal the exit to the surface. Otherwise, the poor souls who have entered the maze will be trapped eternally....
 # Running
-1. Run Game in src/main/java/driver
+1. Clone Project, run with Java 16 as SDK
+2. Run Game in src/main/java/driver
 
 # Basic Flow of the Game
 Player has to explore the maze, obtain at least 5 artifacts and find the exit to win. 
@@ -41,6 +42,7 @@ So try to stay alive, collect the artifact and escape the maze!
 # Design Patterns used
 * Observer Patter for use cases requiring user input
   * Use case interactors for moving the player, fighting a monster, healing and upgrading equipment are all observer classes that observe another class receiving user input
+  * Facade Design Pattern used in ActionManager and MoveManager to manage these use cases.
   * * Facade Design Pattern used in ActionManager and MoveManager to manage these use cases.
 * Facade Design Pattern is used in Player
   * Where CollectibleInventory takes care of the Inventory

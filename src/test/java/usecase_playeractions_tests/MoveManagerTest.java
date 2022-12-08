@@ -6,11 +6,14 @@ import entity.item.Armor;
 import entity.item.Collectible;
 import entity.item.Weapon;
 import entity.player.Player;
+import interface_adapters.OutputBoundary;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_event.ArtifactEvent;
+import usecase_event.Event;
+import usecase_event.WallEvent;
 import usecase_playeractions.Map;
 import usecase_playeractions.MoveManager;
 
@@ -34,6 +37,26 @@ public class MoveManagerTest {
     void setUp(){
         map = new Map();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots);
+        OutputBoundary outputBoundary = new OutputBoundary() {
+            @Override
+            public void updateText(String line1, String line2, String line3, String line4) {}
+            @Override
+            public void updateHp(int hp) {}
+            @Override
+            public void updateEssenceCnt(int cnt) {}
+            @Override
+            public void updateArtifact(int cnt) {}
+            @Override
+            public void updatePlayerLocation(int[] location) {}
+            @Override
+            public void updateWin() {}
+            @Override
+            public void updateDead() {}
+            @Override
+            public void updateMap(String[][] map) {}
+        };
+        Event.setOutputBoundary(outputBoundary);
+        Map.setOutputBoundary(outputBoundary);
     }
 
     @Test
@@ -41,12 +64,13 @@ public class MoveManagerTest {
     void testMove(){
         player.setLocation(location[0], location[1]);
         map.setBoard(new ArtifactEvent(),0,1);
+        map.setBoard(new WallEvent(),0,2);
         MoveManager control = new MoveManager();
         control.changeMap(player,map);
-        control.keyPressed("W");
+        control.keyPressed("D");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
         Assertions.assertEquals(1, player.getArtifact().getNum());
-        control.keyPressed("W");
+        control.keyPressed("D");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
     }
 

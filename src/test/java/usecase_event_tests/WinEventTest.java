@@ -22,7 +22,6 @@ public class WinEventTest {
     Armor armor = new Armor("Chain Mail", 5);
     Weapon excalibur = new Weapon("Legendary Sword Excalibur", 1000);
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
-    int[] location = new int[]{0, 0};
     Player player;
     WinEvent event;
 

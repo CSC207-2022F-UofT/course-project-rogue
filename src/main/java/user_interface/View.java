@@ -6,7 +6,6 @@ import user_interface.graphics.ViewModel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.JFrame;
 
 public class View implements KeyListener, ViewInterface {
     private Controller controller;

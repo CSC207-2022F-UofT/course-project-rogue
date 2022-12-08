@@ -45,7 +45,7 @@ public class EssenceUseManager {
     }
 
     /**
-     * update the infomation of the manager, you need to use the it before show info.
+     * update the infomation of the manager, you need to use it before show info.
      */
     public void updateInfo(){
         this.armorUpgradeCount.UpgradeInfoUpdate();
