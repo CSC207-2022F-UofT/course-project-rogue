@@ -1,6 +1,6 @@
 package user_interface;
 
-import user_interface.Graphics.ViewModel;
+import user_interface.graphics.ViewModel;
 
 public interface ViewInterface {
     void setVisible(boolean b);
