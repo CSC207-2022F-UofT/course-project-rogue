@@ -46,7 +46,7 @@ public class MapTest {
             @Override
             public void updateArtifact(int cnt) {}
             @Override
-            public void updatePlayerlocation(int[] location) {}
+            public void updatePlayerLocation(int[] location) {}
             @Override
             public void updateWin() {}
             @Override
