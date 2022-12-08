@@ -20,7 +20,7 @@
         "weaponAttackPoint": 50
       },
       "armor": {
-        "name": "Broken Armor",
+        "name": "Fragile Armor",
         "dmgReduced": 50
       }
     }
