@@ -15,13 +15,9 @@ public class GameFrame extends JPanel{
     boolean start = false;
     private final JButton startbutton = new JButton("START GAME");
     private final JButton quitbutton = new JButton("QUIT");
-    int screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
-    int screen_hight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
     private final View view;
     private ViewModel viewModel;
-
-    private MapGraphics map;
 
     public GameFrame(View v) {
         JPanel panel = new JPanel();
@@ -30,21 +26,13 @@ public class GameFrame extends JPanel{
         startbutton.setFocusable(true);
         quitbutton.setFocusable(true);
 
-        startbutton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                view.startButtonClicked();
-                startbutton.setVisible(false);
-                quitbutton.setVisible(false);
-                repaint();
-            }
+        startbutton.addActionListener(e -> {
+            view.startButtonClicked();
+            startbutton.setVisible(false);
+            quitbutton.setVisible(false);
+            repaint();
         });
-        quitbutton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        quitbutton.addActionListener(e -> System.exit(0));
         this.setFocusable(true);
         this.viewModel = new ViewModel();
     }
@@ -91,6 +79,7 @@ public class GameFrame extends JPanel{
         MapGraphics.playerLocation[0] = -1;
         MapGraphics.playerLocation[1] = -1;
         this.start = false;
+        repaint();
     }
 
     public void setStart(boolean s){
