@@ -89,3 +89,4 @@ So try to stay alive, collect the artifact and escape the maze!
 * **Entity Creation**
   * **Player** Test file reader to search for data of a specific player with the requested key to value combination and return relevant data to create the requested player.
   * **Monster** Test file reader to search for data of a specific monster with the requested key to value combination and return relevant data to create the requested monster.
+  
