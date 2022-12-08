@@ -4,7 +4,6 @@ package usecase_playeractions;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import entity.player.Player;
 import file_reader.deserialization.MapDeserialization;
-import file_reader.deserialization.PlayerDeserialization;
 import interface_adapters.OutputBoundary;
 import usecase_event.Event;
 
@@ -67,7 +66,7 @@ public class Map{
             board[x][y].trigger(p);
             p.setLocation(x,y);
             System.out.println(x + " " + y);
-            outputBoundary.updatePlayerlocation(new int[]{x,y});
+            outputBoundary.updatePlayerLocation(new int[]{x,y});
             return true;
         }else{
             return false;

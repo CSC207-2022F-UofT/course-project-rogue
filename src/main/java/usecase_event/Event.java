@@ -5,14 +5,12 @@ import interface_adapters.OutputBoundary;
 
 public class Event implements Enterable{
 
-    protected static OutputBoundary outputBoundary;
-
-    public Event(OutputBoundary outputBoundary){
-        Event.outputBoundary = outputBoundary;
-    }
+    protected static OutputBoundary outputBoundary = null;
 
     public static void setOutputBoundary(OutputBoundary output){
-        Event.outputBoundary = output;
+        if(Event.outputBoundary == null) {
+            Event.outputBoundary = output;
+        }
     }
     public Event() {
     }
@@ -26,6 +24,11 @@ public class Event implements Enterable{
 
         return false;
     }
+
+    /**
+     * Functions to interact with the player when the player steps on this Event tile
+     * @param player: The player it'll interact with
+     */
     public void trigger(Player player){
 
     }

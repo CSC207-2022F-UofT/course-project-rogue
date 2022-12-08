@@ -1,24 +1,22 @@
 package usecase_gamedata;
 
-import usecase_essence_use.EssenceUseActionManager;
 
+import usecase_essence_use.EssenceUseActionManager;
 import usecase_factories.PlayerFactory;
+import usecase_fight.*;
 import usecase_playeractions.ActionManager;
 import usecase_playeractions.MoveManager;
 
 public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
-    private PlayerFactory playerFactory;
-    private MapFactory mapFactory;
-    private MoveManager moveManager;
-
-    private EssenceUseActionManager essenceUseActionManager;
+    private final PlayerFactory playerFactory;
+    private final MapFactory mapFactory;
+    private final MoveManager moveManager;
 
     public InputBoundaryFactory(PlayerFactory playerFactory, MapFactory mapFactory) {
         this.playerFactory = playerFactory;
         this.mapFactory = mapFactory;
         this.moveManager = new MoveManager();
-        this.essenceUseActionManager = new EssenceUseActionManager();
     }
 
     /**
@@ -32,8 +30,9 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
      * 6:Fight
      * 7:Flee
      * 8,9,10,11:moveUP,moveLeft,moveDown,moveRight
+     * 12: Continue
      */
-    private final String[] KEYS = new String[]{"H","Y","N","U","A","S","F","R","W","A","S","D"};
+    private final String[] KEYS = new String[]{"H","Y","N","U","A","S","F","R","W","A","S","D", "C"};
 
 
     /**
@@ -64,12 +63,15 @@ public class InputBoundaryFactory implements InputBoundaryFactoryInputBoundary{
 
     public ActionManager getActionManager(){
         ActionManager actionManager = new ActionManager();
+        actionManager.addObserver(new Fight(playerFactory.create(), KEYS[6], KEYS[7], KEYS[12]));
         return actionManager;
     }
 
-   public EssenceUseActionManager getEssenceUseActionManager(){
-        this.essenceUseActionManager.setDefaultKey(playerFactory.create());
-        return essenceUseActionManager;
+    @Override
+    public EssenceUseActionManager getEssenceUseActionManager(){
+        EssenceUseActionManager essenceUseManager = new EssenceUseActionManager();
+        essenceUseManager.setDefaultKey(playerFactory.create());
+        return essenceUseManager;
     }
 
 }

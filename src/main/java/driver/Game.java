@@ -12,6 +12,7 @@ import usecase_event.WinEvent;
 import usecase_factories.EquipmentFactory;
 import usecase_factories.MonsterFactory;
 import usecase_factories.PlayerFactory;
+import usecase_fight.states.FightPath;
 import usecase_gamedata.MapFactory;
 import usecase_playeractions.Map;
 import user_interface.View;
@@ -25,7 +26,6 @@ public class Game {
         GameFileReaderInterface monsterReader = new GameFileReader("data_base/Monster.json");
         GameFileReaderInterface mapReader = new GameFileReader("data_base/Map.json");
         GameFileReaderInterface equipmentReader = new GameFileReader("data_base/Equipment.json");
-        GameFileReaderInterface collectibleReader = new GameFileReader("data_base/Collectible.json");
         GameFileWriterInterface playerWriter = new GameFileWriter("data_base/Player_save.json");
         playerWriter.register(playerReader);
         playerReader.update("data_base/Player_save.json");
@@ -45,13 +45,9 @@ public class Game {
         Event.setOutputBoundary(outBound);
         Map.setOutputBoundary(outBound);
         MapFactory.setOutputBoundary(outBound);
+        FightPath.setOutputBoundary(outBound);
         EssenceUseInfoPass.setOutputBoundary(outBound);
-        //Controller inject inputBoundaries
 
-
-        //replace c with initialized controller
- //       Controller
-//        vi.setController(c);
         vi.setVisible(true);
     }
 

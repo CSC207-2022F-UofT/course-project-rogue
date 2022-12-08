@@ -8,6 +8,7 @@ import java.util.Observer;
 /**
  * The Observer used to make the player move on the map
  */
+@SuppressWarnings("deprecation")
 public class Mover implements Observer {
 
     private final Player player;
@@ -41,11 +42,14 @@ public class Mover implements Observer {
         this.y = y;
     }
 
+    /**
+     * Recieves the notification of which key is pressed, if it is the key it needs to perform the action it
+     * runs this section of the use case, if not it'll not do anything.
+     */
     @Override
     public void update(Observable o, Object arg) {
         if(player.getCanMove() && trigger.equals(arg)){
             map.move(player, x, y);
-
         }
     }
 }

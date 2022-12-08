@@ -1,8 +1,8 @@
 package usecase_essence_use.essenceUseKey;
 
 import entity.player.Player;
-import usecase_essence_use.manager.upgradeManager;
-import usecase_essence_use.manager.essenceUseSpeakerManager;
+import usecase_essence_use.manager.UpgradeManager;
+import usecase_essence_use.manager.EssenceUseSpeakerManager;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -10,12 +10,12 @@ import java.util.Observer;
 @SuppressWarnings("deprecation")
 public class Upgrader implements Observer{
     private final Player player;
-    private final upgradeManager Manager;
+    private final UpgradeManager Manager;
     private final String trigger;
 
     private boolean inPage;
 
-    private final essenceUseSpeakerManager speaker;
+    private final EssenceUseSpeakerManager speaker;
 
     /**
      * The constructor of healing. This class is to be triggered by the HealingUpgradingControl. And It will recover the
@@ -25,7 +25,7 @@ public class Upgrader implements Observer{
      * @param trigger the trigger word, usually a big capital letter
      */
 
-    public Upgrader(Player player, upgradeManager Manager, String trigger, essenceUseSpeakerManager speaker) {
+    public Upgrader(Player player, UpgradeManager Manager, String trigger, EssenceUseSpeakerManager speaker) {
         this.player = player;
         this.Manager = Manager;
         this.trigger = trigger;

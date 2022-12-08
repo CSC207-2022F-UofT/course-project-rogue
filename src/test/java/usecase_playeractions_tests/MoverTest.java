@@ -6,6 +6,7 @@ import entity.item.Armor;
 import entity.item.Collectible;
 import entity.item.Weapon;
 import entity.player.Player;
+import interface_adapters.OutputBoundary;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,8 +16,6 @@ import usecase_event.Event;
 import usecase_event.WallEvent;
 import usecase_playeractions.Map;
 import usecase_playeractions.Mover;
-import user_interface.View;
-import user_interface.Visual;
 
 import java.util.Observable;
 
@@ -31,7 +30,6 @@ public class MoverTest {
     Armor armor = new Armor("Chain Mail", 5);
     Weapon excalibur = new Weapon("Legendary Sword Excalibur", 1000);
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
-    int[] location = new int[]{0, 0};
 
 
     @BeforeEach
@@ -39,18 +37,39 @@ public class MoverTest {
     void setUp(){
         map = new Map();
         player = new Player(maxHP, atkPt, inventory, equipmentSlots);
+        OutputBoundary outputBoundary = new OutputBoundary() {
+            @Override
+            public void updateText(String line1, String line2, String line3, String line4) {}
+            @Override
+            public void updateHp(int hp) {}
+            @Override
+            public void updateEssenceCnt(int cnt) {}
+            @Override
+            public void updateArtifact(int cnt) {}
+            @Override
+            public void updatePlayerLocation(int[] location) {}
+            @Override
+            public void updateWin() {}
+            @Override
+            public void updateDead() {}
+            @Override
+            public void updateMap(String[][] map) {}
+        };
+        Event.setOutputBoundary(outputBoundary);
+        Map.setOutputBoundary(outputBoundary);
     }
 
     @Test
     @DisplayName("Test Move")
+    @SuppressWarnings("deprecation")
     void testMove(){
         map.setBoard(new ArtifactEvent(),0,1);
-        Mover mover = new Mover(player,map,"W",0,1);
-        mover.update(new Observable(),"W");
+        Mover mover = new Mover(player,map,"D",0,1);
+        mover.update(new Observable(),"D");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
         Assertions.assertEquals(1, player.getArtifact().getNum());
         map.setBoard(new WallEvent(),0,2);
-        mover.update(new Observable(),"W");
+        mover.update(new Observable(),"D");
         Assertions.assertEquals(1, player.getPlayerLocation()[1]);
     }
 

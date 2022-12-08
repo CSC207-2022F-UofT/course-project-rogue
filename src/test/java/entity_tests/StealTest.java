@@ -14,11 +14,10 @@ import org.junit.jupiter.api.Test;
 
 public class StealTest {
 
-    Steal steal = new Steal();
+    final Steal steal = new Steal();
 
     /** Makes a new Player with the given Essence count. */
     private Player makePlayer(int n){
-        int[] location = new int[]{1, 2};
         Weapon sword = new Weapon("Sword", 5);
         Armor armor = new Armor("Shield", 5);
         BasicEquipmentSlots equipment = new BasicEquipmentSlots(sword, armor);
@@ -28,16 +27,14 @@ public class StealTest {
         return new Player(5, 5, collect, equipment);
     }
 
-    /** Tests Monster.isMustBeat. */
     @Test
-    @DisplayName("Test Is Must Beat")
+    @DisplayName("Test isMustBeat")
     void testIsMustBeat(){
         Assertions.assertFalse(steal.isMustBeat());
     }
 
-    /** Tests Steal.usePower when the item to be stolen has a count of 0. Steals nothing. */
     @Test
-    @DisplayName("Test Use Power None")
+    @DisplayName("Test usePower when nothing can be stolen. Always steal 0.")
     void testUsePowerNone(){
         Player player = makePlayer(0);
         String result = steal.usePower(player);
@@ -45,9 +42,8 @@ public class StealTest {
         Assertions.assertEquals(0, player.getEssence().getNum());
     }
 
-    /** Tests Steal.usePower when the item to be stolen has a count of less than 4. Always steals 1. */
     @Test
-    @DisplayName("Test Use Power Less")
+    @DisplayName("Test usePower when Essence count is less than 4. Always steal 1.")
     void testUsePowerLess(){
         Player player = makePlayer(3);
         String result = steal.usePower(player);
@@ -57,9 +53,8 @@ public class StealTest {
         // checks that item count was reduced
     }
 
-    /** Tests Steal.usePower when the item to be stolen has a count of 4. Steals 1 item. */
     @Test
-    @DisplayName("Test Use Power Enough")
+    @DisplayName("Test usePower when Essence count is equal to 4. Always steal 1.")
     void testUsePowerEnough(){
         Player player = makePlayer(4);
         String result = steal.usePower(player);
@@ -69,12 +64,9 @@ public class StealTest {
         // checks that item count was reduced
     }
 
-
-    /**Tests Steal.usePower when the item to be stolen has a count greater than 4. Steals max 1/4 of the
-     * item count.
-     * */
     @Test
-    @DisplayName("Test Use Power Greater")
+    @DisplayName("Test usePower when the Essence count is greater than 4. Steals a maximum of 1/4 of the " +
+            "current count.")
     void testUsePowerGreater(){
         Player player = makePlayer(8);
         String result = steal.usePower(player);

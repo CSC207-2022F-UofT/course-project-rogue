@@ -5,7 +5,7 @@ public interface OutputBoundary {
     void updateHp(int hp);
     void updateEssenceCnt(int cnt);
     void updateArtifact(int cnt);
-    void updatePlayerlocation(int[] location);
+    void updatePlayerLocation(int[] location);
     void updateWin();
     void updateDead();
     void updateMap(String[][] map);

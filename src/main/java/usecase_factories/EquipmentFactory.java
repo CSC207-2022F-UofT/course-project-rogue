@@ -7,14 +7,17 @@ import file_reader.GameFileReaderInterface;
 
 public class EquipmentFactory {
 
-    private static GameFileReaderInterface ef; // not sure if its problematic to have this as static
+    private static GameFileReaderInterface readerInterface;
 
-    public EquipmentFactory(){
+    public EquipmentFactory(){}
 
+    /** Constructor for testing purposes */
+    public EquipmentFactory(GameFileReaderInterface readerInterface){
+        EquipmentFactory.readerInterface = readerInterface;
     }
 
     public static void setFileReader(GameFileReaderInterface fileReader){
-        EquipmentFactory.ef = fileReader;
+        EquipmentFactory.readerInterface = fileReader;
     }
 
     /**
@@ -22,9 +25,9 @@ public class EquipmentFactory {
      * @return A random Monster.
      */
 
-    public static Equipment create(int index){
+    public Equipment create(int index){
         try {
-            return new ObjectMapper().readValue(ef.findInt("index", index), Equipment.class);
+            return new ObjectMapper().readValue(readerInterface.findInt("index", index), Equipment.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

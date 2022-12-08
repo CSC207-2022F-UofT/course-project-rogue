@@ -1,6 +1,6 @@
 package user_interface;
 import interface_adapters.OutputBoundary;
-import user_interface.Graphics.ViewModel;
+import user_interface.graphics.ViewModel;
 
 public class Visual implements OutputBoundary {
 
@@ -71,7 +71,7 @@ public class Visual implements OutputBoundary {
      * @param location : the location of the player on the map given by use case.
      */
     @Override
-    public void updatePlayerlocation(int[] location) {
+    public void updatePlayerLocation(int[] location) {
         System.out.println(location[0] + " " + location[1]);
         this.model.setPlayerLocation(location);
         vi.update(this.sendModel());

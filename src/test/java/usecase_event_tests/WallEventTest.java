@@ -10,10 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import usecase_event.Event;
 import usecase_event.WallEvent;
-import user_interface.View;
-import user_interface.Visual;
 
 public class WallEventTest {
     int maxHP = 100;
@@ -24,7 +21,6 @@ public class WallEventTest {
     Armor armor = new Armor("Chain Mail", 5);
     Weapon excalibur = new Weapon("Legendary Sword Excalibur", 1000);
     BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
-    int[] location = new int[]{0, 0};
     Player player;
     WallEvent event;
 

@@ -2,9 +2,6 @@ package usecase_event;
 
 import java.util.Random;
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
-import user_interface.View;
-import user_interface.Visual;
 
 public class RandomEvent extends Event{
 
@@ -37,7 +34,10 @@ public class RandomEvent extends Event{
 
         return true;
     }
-
+    /**
+     *  Returns String to show which Event type it is
+     * @return "RandomEvent"
+     */
     @Override
     public String toString() {
         return "RandomEvent";

@@ -3,7 +3,6 @@ package entity.monster;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import entity.Character;
 import file_reader.deserialization.MonsterDeserialization;
-import file_reader.deserialization.PlayerDeserialization;
 
 import java.util.HashMap;
 
@@ -16,19 +15,19 @@ import java.util.Random;
 public class Monster extends Character {
 
     /** The name of the Monster. */
-    private final String NAME;
+    private final String name;
 
     /** The type of the Monster. */
-    private final String TYPE; // Maybe not String (so can be of multiple type)
+    private final String type;
 
     /** The base attack of the Monster. */
-    private final int BASE_ATTACK;
+    private final int baseAttack;
 
     /** The base health of the Monster. */
-    private final int BASE_HEALTH;
+    private final int baseHealth;
 
     /** Whether the Monster has a power. */
-    private final boolean HAS_POWER;
+    private final boolean hasPower;
 
     /** The power of the Monster. Null if hasPower is false. */
     private MonsterPower power; // not final to allow for extension of changing powers
@@ -38,22 +37,22 @@ public class Monster extends Character {
      * Creates a Monster with given name and type. The baseAttack and baseHealth of the Monster is
      * randomly assigned from the given ranges. This Monster will not have a power.
      *
-     * @param n     Monster name
-     * @param t     Monster type
+     * @param name     Monster name
+     * @param type     Monster type
      * @param stats The ranges of possible values of baseHealth and baseAttack, inclusive.
      * @param state Whether Monster has a power.
      */
-    public Monster(String n, String t, HashMap<String, int[]> stats, boolean state) {
-        this.NAME = n;
-        this.TYPE = t;
-        this.HAS_POWER = state;
+    public Monster(String name, String type, HashMap<String, int[]> stats, boolean state) {
+        this.name = name;
+        this.type = type;
+        this.hasPower = state;
 
         Random rand = new Random();
         int[] attackStat = stats.get("Attack");
         int[] healthStat = stats.get("Health");
-        this.BASE_ATTACK = rand.nextInt(attackStat[1] - attackStat[0] + 1) + attackStat[0];
+        this.baseAttack = rand.nextInt(attackStat[1] - attackStat[0] + 1) + attackStat[0];
         // selects a random atk between min and max, inclusive
-        this.BASE_HEALTH = rand.nextInt(healthStat[1] - healthStat[0] + 1) + healthStat[0];
+        this.baseHealth = rand.nextInt(healthStat[1] - healthStat[0] + 1) + healthStat[0];
         // selects a random hp between min and max inclusive
     }
 
@@ -72,14 +71,14 @@ public class Monster extends Character {
      * @return The name of the Monster.
      */
     public String getName() {
-        return this.NAME;
+        return this.name;
     }
 
     /**
      * @return The type of the Monster.
      */
     public String getType() {
-        return this.TYPE;
+        return this.type;
     }
     // for now this method is not coded for multiple types
 
@@ -87,21 +86,21 @@ public class Monster extends Character {
      * @return The base attack of the Monster.
      */
     public int getAttack(){
-        return this.BASE_ATTACK;
+        return this.baseAttack;
     }
 
     /**
      * @return The base attack of the Monster.
      */
     public int getHealth(){
-        return this.BASE_HEALTH;
+        return this.baseHealth;
     }
 
     /**
      * @return Whether the Monster has a power.
      */
     public boolean isHasPower(){
-        return this.HAS_POWER;
+        return this.hasPower;
     }
 
 
@@ -116,6 +115,17 @@ public class Monster extends Character {
     /** Represents a Monster as its name. */
     @Override
     public String toString(){
-        return this.NAME;
+        return this.name;
+    }
+
+    /**
+     * @return the string representation for the given Monsters power. Returns "None" if Monster has no power.
+     */
+    public String getPowerString(){
+        String power = "None";
+        if (this.isHasPower()){
+            power = this.getPower().toString();
+        }
+        return power;
     }
 }

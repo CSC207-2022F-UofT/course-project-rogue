@@ -1,7 +1,5 @@
 package usecase_event;
 import entity.player.Player;
-import interface_adapters.OutputBoundary;
-import user_interface.Visual;
 
 
 public class ArtifactEvent extends Event{
@@ -27,6 +25,10 @@ public class ArtifactEvent extends Event{
 
         return true;
     }
+    /**
+     *  Returns String to show which Event type it is
+     * @return "ArtifactEvent"
+     */
     @Override
     public String toString() {
         return "ArtifactEvent";
