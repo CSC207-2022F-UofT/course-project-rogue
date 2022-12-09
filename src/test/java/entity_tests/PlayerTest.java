@@ -6,6 +6,7 @@ import entity.item.Armor;
 import entity.item.Collectible;
 import entity.item.Weapon;
 import entity.player.Player;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -72,7 +73,12 @@ public class PlayerTest {
     @Test
     @DisplayName("Test Get Player Location")
     void testGetPlayerLocation(){
-        Assertions.assertEquals(location, player.getPlayerLocation());
+        int[] actual = player.getPlayerLocation();
+        int[] expected = location;
+        Assertions.assertAll(
+                () ->  Assertions.assertEquals(expected[0], actual[0]),
+                () -> Assertions.assertEquals(expected[1], actual[1])
+        );
     }
 
     @Test
@@ -103,16 +109,6 @@ public class PlayerTest {
                 () -> Assertions.assertEquals(expected[0], player.getPlayerLocation()[0]),
                 () -> Assertions.assertEquals(expected[1], player.getPlayerLocation()[1])
         );
-    }
-
-    @Test
-    @DisplayName("Test Exception of Set Player Location")
-    void testForExceptionForSetPlayerLocation(){
-        Exception exception = assertThrows(IndexOutOfBoundsException.class, () ->
-                player.setLocation(3, 1));
-        String expectedMessage = "out of bounds";
-        String actualMessage = exception.getMessage();
-        Assertions.assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
