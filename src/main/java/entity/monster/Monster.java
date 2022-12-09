@@ -80,7 +80,6 @@ public class Monster extends Character {
     public String getType() {
         return this.type;
     }
-    // for now this method is not coded for multiple types
 
     /**
      * @return The base attack of the Monster.
