@@ -44,12 +44,14 @@ public class Healer implements Observer {
             this.Manager.getHealManage().heal();
             this.speaker.showSuccessPage("Heal");
             this.player.setCanHeal(false);
+            this.player.setUpgrading(true);
         }else if (inPage && player.getCanHeal() && arg.equals("N")){
             this.speaker.showEssenceUseInfo();
             this.inPage = false;
         } else if (inPage && !player.getCanHeal() && arg.equals("C")) {
             this.speaker.showEssenceUseInfo();
             this.inPage = false;
+            this.player.setUpgrading(false);
         }
     }
 }
