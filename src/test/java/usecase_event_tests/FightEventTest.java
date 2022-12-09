@@ -7,13 +7,13 @@ import entity.item.Collectible;
 import entity.item.Weapon;
 import entity.player.Player;
 import file_reader.GameFileReader;
-import file_reader.GameFileReaderInterface;
+import interface_adapters.OutputBoundary;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import usecase_event.Event;
 import usecase_event.FightEvent;
-import usecase_factories.EquipmentFactory;
 import usecase_factories.MonsterFactory;
 
 public class FightEventTest {
@@ -25,12 +25,33 @@ public class FightEventTest {
     final BasicEquipmentSlots equipmentSlots = new BasicEquipmentSlots(excalibur, armor);
     Player player;
     FightEvent event;
+    final GameFileReader fr = new GameFileReader("data_base/Monster.json");
 
     @BeforeEach
     @DisplayName("SetUp Player and FightEvent")
     void setUp(){
         event = new FightEvent();
         player = new Player(5, 5, inventory, equipmentSlots);
+        MonsterFactory.setFileReader(fr);
+        OutputBoundary outputBoundary = new OutputBoundary() {
+            @Override
+            public void updateText(String line1, String line2, String line3, String line4) {}
+            @Override
+            public void updateHp(int hp) {}
+            @Override
+            public void updateEssenceCnt(int cnt) {}
+            @Override
+            public void updateArtifact(int cnt) {}
+            @Override
+            public void updatePlayerLocation(int[] location) {}
+            @Override
+            public void updateWin() {}
+            @Override
+            public void updateDead() {}
+            @Override
+            public void updateMap(String[][] map) {}
+        };
+        Event.setOutputBoundary(outputBoundary);
     }
 
     @Test
