@@ -16,6 +16,7 @@ public class EssenceUseManager {
         weaponUpgradeCount = new UpgradeManager(player, "Weapon", essenceNeed, statAdd);
         armorUpgradeCount = new UpgradeManager(player, "Armor", essenceNeed, statAdd);
         inEssenceUse = false;
+        inPage = false;
     }
 
     public HealManager getHealManage() {
@@ -41,7 +42,7 @@ public class EssenceUseManager {
         this.weaponUpgradeCount.UpgradeInfoUpdate();
         this.healCount.healInfoUpdate();
         this.inEssenceUse = true;
-        this.inPage = false;
+        this.inPage = true;
     }
 
     /**
