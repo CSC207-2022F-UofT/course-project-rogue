@@ -8,11 +8,13 @@ import entity.item.Equipment;
 import entity.item.Weapon;
 import entity.monster.Monster;
 import entity.player.Player;
+import interface_adapters.OutputBoundary;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_fight.FightSummary;
+import usecase_fight.states.FightPath;
 import usecase_fight.states.Fighter;
 
 import java.util.HashMap;
@@ -44,6 +46,7 @@ public class FighterTest {
         player.setFight(summary);
     }
 
+
     @BeforeEach
     @DisplayName("Set up a Monster, Player and different FightSummary.")
     void setUP(){
@@ -71,6 +74,26 @@ public class FighterTest {
         fs6 = new FightSummary(monster, 5, 0, 0, eq2);
 
         fighter = new Fighter(player);
+
+        OutputBoundary outputBoundary = new OutputBoundary() {
+            @Override
+            public void updateText(String line1, String line2, String line3, String line4) {}
+            @Override
+            public void updateHp(int hp) {}
+            @Override
+            public void updateEssenceCnt(int cnt) {}
+            @Override
+            public void updateArtifact(int cnt) {}
+            @Override
+            public void updatePlayerLocation(int[] location) {}
+            @Override
+            public void updateWin() {}
+            @Override
+            public void updateDead() {}
+            @Override
+            public void updateMap(String[][] map) {}
+        };
+        FightPath.setOutputBoundary(outputBoundary);
     }
 
     @Test

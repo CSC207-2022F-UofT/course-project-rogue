@@ -21,8 +21,8 @@ public class MonsterFactoryTest {
                 () -> Assertions.assertFalse(result.isHasPower()),
                 () -> Assertions.assertEquals("Slime", result.getName()),
                 () -> Assertions.assertEquals("Normal", result.getType()),
-                () -> Assertions.assertTrue(25 <= result.getHealth() && result.getHealth() <= 75),
-                () -> Assertions.assertTrue(25 <= result.getAttack() && result.getAttack() <= 75));
+                () -> Assertions.assertTrue(100 <= result.getHealth() && result.getHealth() <= 150),
+                () -> Assertions.assertTrue(75 <= result.getAttack() && result.getAttack() <= 125));
     }
 
     @Test
@@ -34,8 +34,8 @@ public class MonsterFactoryTest {
                 () -> Assertions.assertTrue(result.isHasPower()),
                 () -> Assertions.assertEquals("Snatcher", result.getName()),
                 () -> Assertions.assertEquals("Normal", result.getType()),
-                () -> Assertions.assertTrue(75 <= result.getHealth() && result.getHealth() <= 125),
-                () -> Assertions.assertTrue(75 <= result.getAttack() && result.getAttack() <= 125),
+                () -> Assertions.assertTrue(100 <= result.getHealth() && result.getHealth() <= 250),
+                () -> Assertions.assertTrue(75 <= result.getAttack() && result.getAttack() <= 225),
                 () -> Assertions.assertTrue(result.getPower() instanceof Steal));
     }
 

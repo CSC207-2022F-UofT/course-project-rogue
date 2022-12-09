@@ -7,11 +7,13 @@ import entity.item.Collectible;
 import entity.item.Weapon;
 import entity.monster.Monster;
 import entity.player.Player;
+import interface_adapters.OutputBoundary;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import usecase_fight.FightSummary;
+import usecase_fight.states.FightPath;
 import usecase_fight.states.Runner;
 
 import java.util.HashMap;
@@ -46,6 +48,26 @@ public class RunnerTest {
         player.setCanMove(false);
 
         runner = new Runner(player);
+
+        OutputBoundary outputBoundary = new OutputBoundary() {
+            @Override
+            public void updateText(String line1, String line2, String line3, String line4) {}
+            @Override
+            public void updateHp(int hp) {}
+            @Override
+            public void updateEssenceCnt(int cnt) {}
+            @Override
+            public void updateArtifact(int cnt) {}
+            @Override
+            public void updatePlayerLocation(int[] location) {}
+            @Override
+            public void updateWin() {}
+            @Override
+            public void updateDead() {}
+            @Override
+            public void updateMap(String[][] map) {}
+        };
+        FightPath.setOutputBoundary(outputBoundary);
     }
 
     @Test
