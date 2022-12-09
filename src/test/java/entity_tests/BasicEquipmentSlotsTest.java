@@ -40,10 +40,18 @@ public class BasicEquipmentSlotsTest {
     }
 
     @Test
-    @DisplayName("Test Set Weapon")
-    void testSetWeapon(){
-        Weapon durandal = new Weapon("Legendary Sword Durandal", 1000);
+    @DisplayName("Test Set Weapon Valid (If Weapon ATK Point is Greater")
+    void testSetWeaponTrue(){
+        Weapon durandal = new Weapon("Legendary Sword Durandal", 1001);
         equipmentSlots.setWeapon(durandal);
         Assertions.assertEquals(durandal, equipmentSlots.getWeapon());
+    }
+
+    @Test
+    @DisplayName("Test Set Weapon Not Valid (If Weapon ATK Point is Lesser or Equal to")
+    void testSetWeaponFalse(){
+        Weapon durandal = new Weapon("Legendary Sword Durandal", 1000);
+        equipmentSlots.setWeapon(durandal);
+        Assertions.assertEquals(excalibur, equipmentSlots.getWeapon());
     }
 }
