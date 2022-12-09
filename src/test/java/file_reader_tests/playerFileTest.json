@@ -8,6 +8,10 @@
       "essence": {
         "collectibleType": "Essence",
         "num": 12323
+      },
+      "artifact": {
+        "collectibleType" : "Artifact",
+        "num": 0
       }
     },
     "equipments": {
@@ -15,6 +19,7 @@
         "name": "sword",
         "weaponAttackPoint": 1223
       },
+
       "armor": {
         "name": "armor",
         "dmgReduced": 122
@@ -33,6 +38,10 @@
       "essence": {
         "collectibleType": "2",
         "num": 234
+      },
+      "artifact": {
+        "collectibleType" : "Artifact",
+        "num": 0
       }
     },
     "equipments": {
@@ -58,6 +67,10 @@
       "essence": {
         "collectibleType": "Essence",
         "num": -23
+      },
+      "artifact": {
+        "collectibleType" : "Artifact",
+        "num": 0
       }
     },
     "equipments": {
@@ -83,6 +96,10 @@
       "inventoryName": "Inventory",
       "essence": {
         "collectibleType": "Essence",
+        "num": 0
+      },
+      "artifact": {
+        "collectibleType" : "Artifact",
         "num": 0
       }
     },
