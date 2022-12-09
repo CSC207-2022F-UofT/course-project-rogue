@@ -232,3 +232,15 @@ build/reports/tests/test/css/style.css
 build/reports/tests/test/js/report.js
 build/test-results/test/binary/output.bin
 build/test-results/test/binary/output.bin.idx
+build/reports/tests/test/classes/entity_tests.BasicEquipmentSlotsTest.html
+build/classes/java/main/usecase_fight/states/Runner.class
+build/classes/java/main/usecase_fight/states/Restarter.class
+build/classes/java/main/usecase_fight/states/FightState.class
+build/classes/java/main/usecase_fight/states/FightPath.class
+build/classes/java/main/usecase_fight/states/Fighter.class
+build/classes/java/main/usecase_fight/states/AfterFight.class
+build/classes/java/main/usecase_fight/FightPath.class
+build/classes/java/main/usecase_fight/Fight.class
+build/classes/java/main/usecase_essence_use/manager/EssenceUseSpeakerManager.class
+build/classes/java/main/file_reader/GameFileReaderInterface.class
+build/classes/java/main/file_reader/GameFileReader.class
