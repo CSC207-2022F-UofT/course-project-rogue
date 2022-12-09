@@ -1,7 +1,6 @@
 package file_reader.deserialization;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.IntNode;
 
 public class DeserializeHelper {
 
@@ -10,7 +9,7 @@ public class DeserializeHelper {
      * @return an int represented by a Jackson node
      */
     public int readInt(JsonNode node){
-        return (Integer) ((IntNode) node).numberValue();
+        return (Integer) node.numberValue();
     }
 
     /**

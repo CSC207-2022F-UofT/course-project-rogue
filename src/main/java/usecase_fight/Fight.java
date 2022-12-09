@@ -7,6 +7,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /** A Fight. */
+@SuppressWarnings("deprecation")
 public class Fight implements Observer {
 
     /** The state of the Fight */

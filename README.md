@@ -70,6 +70,7 @@ So try to stay alive, collect the artifact and escape the maze!
 * Open/Closed Principle with ActionManager, as it allow easy addition of new Observers, and have a stable definition. Liskov substitution principle with MoveManager since this class is only for containing some setup methods.
 
 # Test Coverage
+![img.png](pictures/img.png)
 * **Player**
   * All Methods and Possibilities are tested.
 * **State**
@@ -97,14 +98,18 @@ So try to stay alive, collect the artifact and escape the maze!
   * **Armor** All Methods and Possibilities are tested.
   * **Weapon** All Methods and Possibilities are tested.
 * **Monsters and Monster Fights**
+* All tests passed.
   * **Monster** 100% method and line coverage
   * **Monster Power Class (Steal, Smile, ExtraDrops):** 100% method and line coverage
-  * **Calculators (Win and damage)** 100% method and line coverage
+  * **Calculators (Win and damage)** 100% method and class coverage
   * **FightSummary** 100% method and line coverage
-  * **DropRetriever** 100% method and line coverage
-  * Note: All FightState classes cannot be tested (Runner, Fighter, Restarter, AfterFight) due to calls to methods in the output boundary (find a way to work around this?)
+  * **ResultFormatter** 100% method and line coverage
+  * **DropRetriever** 50% method and 33% line coverage (cannot test method that determines equipment drops as it is random)
+  * **FightState classes (Fighter, Runner, AfterFight)** 100% method and class coverage. Test check that the classes correctly alter Player class, but does not check output boundary methods
+  * Note: Fight class cannot be tested on its own as its behavior is determined by one of the FightState classes
+  * Note: Restarter class cannot be tested as its only method makes a call to an output boundary method
 * **Factory Classes**
-  * **Monster Factory** 100% method and line coverage
-  * **Equipment Factory** 100% method and line coverage
+  * **Monster Factory** 100% class coverage, all tests pass
+  * **Equipment Factory** 100% class coverage, all tests pass
   * **Player Factory** Test file reader to search for data of a specific player with the requested key to value combination and return relevant data to create the requested player.
   

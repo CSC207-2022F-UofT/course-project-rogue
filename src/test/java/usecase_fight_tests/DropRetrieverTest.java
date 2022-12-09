@@ -23,6 +23,4 @@ public class DropRetrieverTest {
         int result = dr.getEssenceNum();
         Assertions.assertTrue((1 <= result  && result <= 10));
     }
-
-    // make a test for getEquipment? Maybe? it essentially just needs to test that equipment is being made
 }
