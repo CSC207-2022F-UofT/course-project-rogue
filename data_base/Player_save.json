@@ -7,10 +7,11 @@
       "inventoryName": "Inventory",
       "essence": {
         "collectibleType": "Essence",
-        "num": 50
+        "num": 10
       },
       "artifact": {
-        "collectibleType" : "Artifact"
+        "collectibleType" : "Artifact",
+        "num": 0
       }
     },
     "equipments": {

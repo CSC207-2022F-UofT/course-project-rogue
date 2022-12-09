@@ -2,6 +2,8 @@ package user_interface;
 import interface_adapters.OutputBoundary;
 import user_interface.graphics.ViewModel;
 
+import javax.swing.*;
+
 public class Visual implements OutputBoundary {
 
     private ViewInterface vi;
@@ -72,7 +74,6 @@ public class Visual implements OutputBoundary {
      */
     @Override
     public void updatePlayerLocation(int[] location) {
-        System.out.println(location[0] + " " + location[1]);
         this.model.setPlayerLocation(location);
         vi.update(this.sendModel());
     }
@@ -83,6 +84,7 @@ public class Visual implements OutputBoundary {
     @Override
     public void updateWin() {
         vi.goBackToMenu();
+        JOptionPane.showMessageDialog(null, "Congradulation!", "YOU WON!!!", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**

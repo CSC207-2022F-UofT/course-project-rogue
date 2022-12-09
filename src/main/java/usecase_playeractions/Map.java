@@ -61,11 +61,9 @@ public class Map{
      * @return true if the move is successful, false otherwise
      */
     private boolean moveTo(Player p,int x,int y){
-        System.out.println("moveTo called on "+ x + " " + y);
         if(board[x][y].enter(p)){
             board[x][y].trigger(p);
             p.setLocation(x,y);
-            System.out.println(x + " " + y);
             outputBoundary.updatePlayerLocation(new int[]{x,y});
             return true;
         }else{
@@ -98,7 +96,6 @@ public class Map{
      */
     public boolean move(Player p,int x, int y){
         int[] location = p.getPlayerLocation();
-        System.out.println("move called");
         if(onBoard(location[0]+x,location[1]+y)){
             return moveTo(p,location[0]+x,location[1]+y);
         }else{

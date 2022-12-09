@@ -33,6 +33,7 @@ public class CollectibleInventoryDeserialization extends StdDeserializer<Collect
         Collectible e = new Collectible(h.readString(node.get("essence").get("collectibleType")),
                 h.readInt(node.get("essence").get("num")));
         Collectible a = new Collectible("Artifact");
+        a.setNum(h.readInt(node.get("artifact").get("num")));
         return new CollectibleInventory(invN, e, a);
     }
 
