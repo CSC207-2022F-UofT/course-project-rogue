@@ -31,14 +31,11 @@ public class MapGraphics {
      * @return the directory that stores the picture representing this event.
      */
     private String eventHelper(String eventName){
-        switch (eventName){
-            case "WallEvent":
-                return "pictures/wall.jpg";
-            case "WinEvent":
-                return "pictures/WinDoor.png";
-            default:
-                return "pictures/Blank.jpg";
-        }
+        return switch (eventName) {
+            case "WallEvent" -> "pictures/wall.jpg";
+            case "WinEvent" -> "pictures/WinDoor.png";
+            default -> "pictures/Blank.jpg";
+        };
     }
 
     public MapGraphics(){
@@ -59,9 +56,9 @@ public class MapGraphics {
      * @param g : graphics passed in to be drawn
      */
     public void draw(Graphics g){
-        for(int i = 0; i < this.events.length; i++){
-            for(int o = 0; o < this.events[i].length; o++){
-                this.events[i][o].draw(g);
+        for (Grid[] event : this.events) {
+            for (Grid grid : event) {
+                grid.draw(g);
             }
         }
     }
