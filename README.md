@@ -70,6 +70,7 @@ So try to stay alive, collect the artifact and escape the maze!
 * Open/Closed Principle with ActionManager, as it allow easy addition of new Observers, and have a stable definition. Liskov substitution principle with MoveManager since this class is only for containing some setup methods.
 
 # Test Coverage
+![img.png](img.png)
 * **Player**
   * All Methods and Possibilities are tested.
 * **State**
